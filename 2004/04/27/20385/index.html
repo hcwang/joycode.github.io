@@ -1,0 +1,183 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://blog.joycode.com/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/solid.css">
+
+
+
+
+  <link href="https://blog.joycode.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="开心就好的代码人生 Atom">
+
+
+
+ 
+
+<meta name="author" content="joycode" />
+<meta name="description" content="相信很多人对于BizTalk Server 2004（简称BTS）都有一种误解，认为这是微软出品的工作流引擎。包括我在内，从没有进入MS以来，一直在围绕着 …" />
+<meta name="keywords" content="C#编程, 软件推荐">
+
+
+  <meta property="og:site_name" content="开心就好的代码人生"/>
+  <meta property="og:title" content="谈谈工作流引擎及面向服务编程"/>
+  <meta property="og:description" content="相信很多人对于BizTalk Server 2004（简称BTS）都有一种误解，认为这是微软出品的工作流引擎。包括我在内，从没有进入MS以来，一直在围绕着 …"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://blog.joycode.com/2004/04/27/20385/"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2004-04-27 23:47:00+08:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="https://blog.joycode.com/author/joycode.html">
+  <meta property="article:section" content="业界评论"/>
+  <meta property="article:tag" content="C#编程"/>
+  <meta property="article:tag" content="软件推荐"/>
+  <meta property="og:image" content="">
+
+  <title>开心就好的代码人生 &ndash; 谈谈工作流引擎及面向服务编程</title>
+
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="https://blog.joycode.com/">
+      <img src="https://blog.joycode.com/theme/img/profile.png" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://blog.joycode.com/"></a>
+    </h1>
+
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="https://getpelican.com/" >Pelican</a>
+          </li>
+          <li>
+            <a target="_self" href="https://www.python.org/" >Python.org</a>
+          </li>
+          <li>
+            <a target="_self" href="https://palletsprojects.com/p/jinja/" >Jinja2</a>
+          </li>
+          <li>
+            <a target="_self" href="#" >You can modify those links in your config file</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-You can add links in your config file"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-You can add links in your config file"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-Another social link"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-Another social link"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="20385">谈谈工作流引擎及面向服务编程</h1>
+    <p>
+      Posted on 二 27 四月 2004 in <a href="https://blog.joycode.com/category/ye-jie-ping-lun.html">业界评论</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>相信很多人对于BizTalk Server 2004（简称BTS）都有一种误解，认为这是<a href="http://www.microsoft.com/china" target="_blank">微软</a>出品的工作流引擎。包括我在内，从没有进入MS以来，一直在围绕着BizTalk Server 2004做开发，而加入后，所做的大部分PoC都是基于BizTalk Server 2004的。当然，我做的都是一些外围开发，而不是一些核心性的BizTalk开发。</p>
+<p>所谓的外围开发，就是为工作流做一些UI界面，以便驱动整个工作流能够进行下去。做得久了，经常会有一些疑问，我相信大部分做过BizTalk Server开发的人员都会遇到类似的疑问，因为在我与Partner的研发人员闲聊时，也遇到类似的困惑，那就是<code>&lt;font color="#ff0000"&gt;</code>为什么有了BizTalk Server 2004这么好的工具，我们做工作流开发还这么累呢？？<code>&lt;/font&gt;</code><code>&lt;font color="#000000"&gt;</code>很多时候，为了完成一个简单的公文流转功能，我们用ASP.NET可能几行代码就搞定了，但加上了BizTalk Server 2004后，却发现工作量成倍的增加。<code>&lt;/font&gt;</code></p>
+<p>经过这一个月以来，与同事探讨，终于找到了一个原因。因为我们错了，<code>&lt;font color="#ff0000"&gt;</code><strong>BizTalk Server不是微软的工作流引擎</strong><code>&lt;/font&gt;</code>。这话似乎有一点惊世骇俗，但我相信，我们的观点没有错误。</p>
+<p>博客堂前段时间一直在探讨SOA（面向服务编程），其实在我看来，BizTalk Server 2004正是为了SOA而做准备的，它是为了整合各个System的Service，而建立的自动流程功能，同时，由于各个System的Service所传递的消息的Schema的不统一，所以BTS里面提供了Mapping的功能。在BizTalk Server 2004的文档中，其功能就列了两点：(1)EAI,企业应用整合;(2)B2B的消息传送。</p>
+<p>这种EAI的Service整合，在流程运行时，没有人为因素的干扰，没有UI的驱动，非常适合BTS这种无角色流程引擎进行驱动（BizTalk Server还是有角色的，不过非常淡化）。而类似于OA这种公文工作流的引擎，则BTS根本不适合。</p>
+<p>前段时间，非常有幸看到了ADOBE Workflow Server的介绍（本来也想去看看点击科技王志东老大的工作流系统，可是无缘），对此我更有感悟。ADOBE的这套东西，才是真正基于公文工作流的，我们可以比较它的流程图与BTS流程图的异同。BTS的流程图更像我们的软件逻辑图，在这个图中，你很难一眼就从中找到哪个点应该是一个UI，这个UI上应该有哪些单元。但ADOBE的流程图则不一样，它每个节点就是一个UI，在这个节点旁边可以罗列一些选项，比如“同意”、“不同意”、“退回秘书”之类的，然后从这些选项到它们应该到的下一个节点间连一点线。非常清晰的就把这个工作流的UI都给清晰化了。再配合ADOBE Form Server以及Form Designer，则能够很简单的做出来一个公文工作流系统。</p>
+<p>且慢，难道微软真的没有工作流软件吗？非也非也。加入微软之前，也很有幸接触到了Teamplate的工作流产品，这是一个微软的全球合作伙伴，它的TeamPlate产品基本上把MS的所有Server都包含进来了，比如BizTalk Server 2004、SharePoint Portal Server 2003、Exchange Server 2003，那么这个工作流产品使用了BizTalk Server 2004的什么特性呢？原来使用的是HWS（工作流服务，Human Workflow Service）。</p>
+<p>HWS，翻开BTS的随机文档，发现关于HWS的文档真的是非常珍贵，打印出来估计不到十页纸（估计其中大部分还是HWS的UI方面的，介绍哪个按钮做什么的）。估计没有人能够看得明白，但是再去MSDN Online上找一下，好多了，因为我们发现了BTS的SDK，在Sample里面还是一些料的，不过，我估计再没有人指引的情况下，没有几个人会对这东西能够上手。</p>
+<p>HWS，实现的就是ADOBE Workflow Server所实现的东西，但是在目前，它缺少一个Workflow Desinger的设计工具，所以会造成它的曲高和寡的局面。你必须自己手动写代码去完成你的工作流设计，虽然在SDK里面有Step By Step的指导，但似乎还是很难（想想BizTalk Server 2004本身，本来设计流程就是画画那么简单，但MS还是怕很多人不会，还提供了一个免费的Visio插件，供大家做图玩）。</p>
+<p>可能很多人读了上面的文章，会认为我在贬低BTS，其实不然。我觉得做BTS始终是MS的大智慧所在，它早在2000年就预示到了SOA的到来。只不过由于其流程图画得那么“好看”，导致大家有一些误解，从而杀鸡用坦克，既不顺手，还劳民伤财。在SOA服务来临之日，BTS更能突显其危力。我们想想Longhorn，那里面有一个Indigo。仔细思考一下，其实Indigo的很多功能似乎与BTS有交集，所以有理由相信，在未来，BTS下一版本又有新的面貌了，至于新貌如何，还请各位看倌拭目以待。</p>
+<p>BTW:讲到SOA，想到前段时间博客堂对于SOA中传递消息的讨论，一派人认为SOA应该只传简单类型，一派人认为SOA可以传递复杂自定义对象，甚至包括DataSet在内。我搜集到的材料让我确认第二派会在未来占上方，有时间大家再一起聊聊吧<img alt="笑脸" src="http://messenger.msn.com/Resource/emoticons/regular_smile.gif"></p>
+<p><em>个人拙见，欢迎斧正(没有想到会出现在首页上:()</em></p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://blog.joycode.com/tag/cbian-cheng.html">C#编程</a>
+      <a href="https://blog.joycode.com/tag/ruan-jian-tui-jian.html">软件推荐</a>
+    </p>
+  </div>
+
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'hcwang';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " 开心就好的代码人生 ",
+  "url" : "https://blog.joycode.com",
+  "image": "",
+  "description": ""
+}
+</script>
+</body>
+</html>

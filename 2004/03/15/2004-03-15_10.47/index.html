@@ -1,0 +1,182 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://blog.joycode.com/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/solid.css">
+
+
+
+
+  <link href="https://blog.joycode.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="开心就好的代码人生 Atom">
+
+
+
+ 
+
+<meta name="author" content="joycode" />
+<meta name="description" content="自从得知Kaneboy兄编写了一个基于SPS的信息检索服务之后，就在大功完成的时候，看了一眼SPS的SDK，却发现这东西其实本来就已经有了。看来我又犯 …" />
+<meta name="keywords" content="C#编程, 软件推荐">
+
+
+  <meta property="og:site_name" content="开心就好的代码人生"/>
+  <meta property="og:title" content="SharePoint Portal Server &amp; Office Research Service"/>
+  <meta property="og:description" content="自从得知Kaneboy兄编写了一个基于SPS的信息检索服务之后，就在大功完成的时候，看了一眼SPS的SDK，却发现这东西其实本来就已经有了。看来我又犯 …"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://blog.joycode.com/2004/03/15/2004-03-15_10.47/"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2004-03-15 10:47:00+08:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="https://blog.joycode.com/author/joycode.html">
+  <meta property="article:section" content="业界评论"/>
+  <meta property="article:tag" content="C#编程"/>
+  <meta property="article:tag" content="软件推荐"/>
+  <meta property="og:image" content="">
+
+  <title>开心就好的代码人生 &ndash; SharePoint Portal Server &amp; Office Research Service</title>
+
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="https://blog.joycode.com/">
+      <img src="https://blog.joycode.com/theme/img/profile.png" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://blog.joycode.com/"></a>
+    </h1>
+
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="https://getpelican.com/" >Pelican</a>
+          </li>
+          <li>
+            <a target="_self" href="https://www.python.org/" >Python.org</a>
+          </li>
+          <li>
+            <a target="_self" href="https://palletsprojects.com/p/jinja/" >Jinja2</a>
+          </li>
+          <li>
+            <a target="_self" href="#" >You can modify those links in your config file</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-You can add links in your config file"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-You can add links in your config file"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-Another social link"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-Another social link"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="2004-03-15_10.47">SharePoint Portal Server & Office Research Service</h1>
+    <p>
+      Posted on 一 15 三月 2004 in <a href="https://blog.joycode.com/category/ye-jie-ping-lun.html">业界评论</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p><img alt="" src="http://blog.joycode.com/wp-content/uploads/images/blog.joycode.com/joy/414/t_ShrPt_PS_03_cL.jpg">自从得知<a href="http://blog.joycode.com/kaneboy">Kaneboy</a>兄编写了一个<a href="http://blog.joycode.com/kaneboy/posts/13869.aspx">基于SPS的信息检索服务</a>之后，就在大功完成的时候，看了一眼SPS的SDK，却发现这东西其实本来就已经有了。看来我又犯了“想当然”的错误。</p>
+<p>在开发之前，我一直想寻找SPS是否具有这个功能，但是在看完Kaneboy的文章后，我想当然的以为这东西需要自己开发，于是摩拳擦掌，开始写代码进行实现。中间还遇到种种的问题，分别向<a href="http://blog.joycode.com/moslem">moslem</a>以及kaneboy进行了求教。</p>
+<p>不过虽然SPS原来就有这种功能，但通过这几天的摸索，还是了解了很多原来不了解的知识，如在SPS上如何开发部署自己的Web Service等等。</p>
+<p>大体来说有以下几步:</p>
+<p>(1)在Web站点的属性中新增加一个MIME类型，即“.tmp”，并且将其对应到“common/type”;</p>
+<p>(2)新建一个Web Service项目。注意，其所选的路径应该为<a href="http://portalServer/_layouts/ProjectName">http://portalServer/_layouts/ProjectName</a>。（我是新建了一个虚拟目录，并且在SPS管理中心将其设为排除的路径）;</p>
+<p>(3)增加Microsoft.SharePoint.dll的引用，然后开始开发其功能;</p>
+<p>(4)开发完毕后，将其部署到[driver name]:\Program Files\Common Files\Microsoft Shared\web server extensions\60\ISAPI当中，并且可以使用<a href="http://portalserver/_vti_bin/%5BName%5D.asmx">http://portalserver/_vti_bin/%5BName%5D.asmx</a>来访问;</p>
+<p>(5)此时使用VS.NET注册会出现HTTP错误，你应该使用命令行工具<img alt="咧嘴笑脸" src="http://messenger.china.msn.com/Resource/emoticons/teeth_smile.gif">isco <a href="http://portalserver/_vti_bin/%5Bname%5D.asmx">http://portalserver/_vti_bin/%5Bname%5D.asmx</a>来建立一个disco以及wsdl文件，并且按照SDK中的描述对其进行修改及重命名，再部署过来。</p>
+<p><img alt="恶魔的脸" src="http://messenger.china.msn.com/Resource/emoticons/devil_smile.gif">现在就可以像普通的Web Service进行访问了。</p>
+<p>另外，SPS自带的信息检索功能其实就在<a href="http://portalserver/_vti_bin/search.asmx">http://portalserver/_vti_bin/search.asmx</a>中，大家可以试一下<img alt="笑脸" src="http://messenger.msn.com/Resource/emoticons/regular_smile.gif"></p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://blog.joycode.com/tag/cbian-cheng.html">C#编程</a>
+      <a href="https://blog.joycode.com/tag/ruan-jian-tui-jian.html">软件推荐</a>
+    </p>
+  </div>
+
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'hcwang';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " 开心就好的代码人生 ",
+  "url" : "https://blog.joycode.com",
+  "image": "",
+  "description": ""
+}
+</script>
+</body>
+</html>

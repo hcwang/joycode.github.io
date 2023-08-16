@@ -1,0 +1,206 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://blog.joycode.com/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/solid.css">
+
+
+
+
+  <link href="https://blog.joycode.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="开心就好的代码人生 Atom">
+
+
+
+ 
+
+<meta name="author" content="joycode" />
+<meta name="description" content="译自:http://blogs.msdn.com/sidebar/archive/2006/08/31/733880.aspx 作者：Brian Teutsch，Windows Sidebar PM（译文中含个人演绎） Windows Sidebar作为Widnows Vista中的一个组件，提供了对于“Gadget（小工具）”的运行时支持。Gadget是一种迷你程序，用以向 …" />
+<meta name="keywords" content="">
+
+
+  <meta property="og:site_name" content="开心就好的代码人生"/>
+  <meta property="og:title" content="译文:Sidebar安全性探讨"/>
+  <meta property="og:description" content="译自:http://blogs.msdn.com/sidebar/archive/2006/08/31/733880.aspx 作者：Brian Teutsch，Windows Sidebar PM（译文中含个人演绎） Windows Sidebar作为Widnows Vista中的一个组件，提供了对于“Gadget（小工具）”的运行时支持。Gadget是一种迷你程序，用以向 …"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://blog.joycode.com/2006/10/24/85594/"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2006-10-24 11:10:00+08:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="https://blog.joycode.com/author/joycode.html">
+  <meta property="article:section" content="业界评论"/>
+  <meta property="og:image" content="">
+
+  <title>开心就好的代码人生 &ndash; 译文:Sidebar安全性探讨</title>
+
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="https://blog.joycode.com/">
+      <img src="https://blog.joycode.com/theme/img/profile.png" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://blog.joycode.com/"></a>
+    </h1>
+
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="https://getpelican.com/" >Pelican</a>
+          </li>
+          <li>
+            <a target="_self" href="https://www.python.org/" >Python.org</a>
+          </li>
+          <li>
+            <a target="_self" href="https://palletsprojects.com/p/jinja/" >Jinja2</a>
+          </li>
+          <li>
+            <a target="_self" href="#" >You can modify those links in your config file</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-You can add links in your config file"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-You can add links in your config file"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-Another social link"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-Another social link"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="85594">译文:Sidebar安全性探讨</h1>
+    <p>
+      Posted on 二 24 十月 2006 in <a href="https://blog.joycode.com/category/ye-jie-ping-lun.html">业界评论</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>译自:<a href="http://blogs.msdn.com/sidebar/archive/2006/08/31/733880.aspx">http://blogs.msdn.com/sidebar/archive/2006/08/31/733880.aspx</a></p>
+<p>作者：Brian Teutsch，Windows Sidebar PM（译文中含个人演绎）</p>
+<p>Windows Sidebar作为Widnows Vista中的一个组件，提供了对于“Gadget（小工具）”的运行时支持。Gadget是一种迷你程序，用以向用户呈现信息，提供辅助功能。Sidebar运行Gadget的方式类似于Windows Vista运行可执行代码的方式。Sidebar团队致力于使Windows Vista成为史上更加安全的Windows版本，我们也承认为Gadget提供安全并且可信赖的执行环境。</p>
+<p><strong>Sidebar Gadget开发方式</strong></p>
+<p>在Windows Vista中提供的Sidebar版本中，我们使用Microsoft HTML引擎来开发Gadget，这包括HTML标签、脚本、图片以及其它相关的特性。Sidebar也提供了丰富的APIs集，使得Gadget中的脚本可以调用Windows中已经安装的ActiveX对象。</p>
+<p><strong>Gadget下载</strong></p>
+<p>Gadget是使用HTML以及脚本开发完成的，但是这个HTML并非在远程Web服务器上执行。首先，我们需要将Sidebar Gadget从服务器上下载，然后在本地机器上执行。这种过程比较类似于从服务器端下载可执行文件(.exe)，然后执行的过程。</p>
+<p>Gadget文件本身是一种压缩格式，可以采用的压缩机制包括ZIP方式或者CAB方式。如果使用CAB方式打包，我们为其添加证书，进行数字签名。数字签名工具可以使用Visual Studio 2005中的“Signtool.exe”命令。</p>
+<p>只有当用户查看过Gadget提供的相关信息后，Sidebar才开始载入MSHTML控件进行呈现，并且执行脚本代码。</p>
+<p><strong>注</strong>：以下图片来自于预发行版本的Windows Vista，在未来有可能会有所不同：</p>
+<p><img alt="" src="http://blogs.msdn.com/photos/sbblogmicrosoftcom/images/732519/original.aspx"></p>
+<p><em>图1：带有代码签名的安装对话框</em></p>
+<p><img alt="" src="http://blogs.msdn.com/photos/sbblogmicrosoftcom/images/732525/original.aspx"></p>
+<p><em>图2：不带有代码签名的安装对话框</em></p>
+<p>由于代码签名需要耗费一定的时间，而且并不普遍，我们并没有强制要求所有的Gadget都必须签名后才可以部署。</p>
+<p><strong>HTML 运行时</strong></p>
+<p>HTML Gadgets将会遵照Internet Explorer以及域沙盒(Domain sandboxing)的安全设置来执行。不过，因为Gadget类似于其它可执行文件，拥有相似的下载过程以及安装体验。所以HTML运行时给予了Gadget相当的权限来执行，类似于HTML Application(HTA)运行时权限以及本地机器区域的安全配置。</p>
+<p>Gadget在其安全配置上，与普通的Web网页有很多不同点。第一点，Gadget可以创建任何已安装的ActiveX对象的实例，因为其被配置为“可以初始化并且脚本访问未被标记为安全的ActiveX”。其次，Gadget也可以访问跨域的数据源，因为只有将不同位置的数据进行相应的集成，Gadget对于开发人员和最终用户才有意义。最后一点特殊的是，在SideBar的HTML页面中禁止下载任何新的ActiveX控件，无论这个ActiveX控件是签名或者未签名的。</p>
+<p><strong>User Account Control (UAC) 交互</strong></p>
+<p>User Account Control (UAC) 是Windows Vista提供的一个新特性，使用户能够以标准用户权限来运行Windows。如果当前Windows用户是标准用户，那么Sidebar Gadgets也会为标准用户权限来执行，从而避免Gadget做出破坏系统的行为。在UAC审批模式下，即使当前用户是Administrators组中的成员，默认情况下，Gadgets也会为标准用户权限来执行。这样做可以有效阻止Gadget修改系统中受保护的资源。</p>
+<p>另外一个我们需要知道的是，虽然其它可执行软件在需要较高权限运行时，会弹出相应的对话框，来要求用户给予完全的Administrator权限。但Sidebar Gadget在此种情况下，不会显示此对话框。不过，通过Gadget来调用的应用程序仍然会显示此对话框，以获得更高权限。</p>
+<p>举个例子，如果Gadget试图删掉System32系统目录中的一个文件，虽然此操作会失败，但不会给予最终用户任何提示。失败的原因是由于系统文件无法被标准用户修改。</p>
+<p><strong>分级模式交互</strong></p>
+<p>IE中的分级模式也会影响SideBar Gadget的执行。IE 7的分级模式可以由父母或者其它监护人模式设置安全浏览以及所执行的一系列策略，比如禁止儿童访问一些成人或者其它非法站点。举例来说，如果分级模式仅允许儿童访问站点A或者B，而Gadget试图与站点C进行通讯，那么将会失败。</p>
+<p><strong>Windows Defender 交互</strong></p>
+<p>由于Windows Vista中的Windows Defender中的存在，Gadget的下载会更加安全。如果允许，Windows Defender可以在IE下载Gadget时，会自动扫描Gadget包中是否存在恶意代码。这种操作可以有效的保护用户，因为它是在Gadget运行前，甚至安装前就已经进行了。</p>
+<p><strong>Internet Explorer 7 保护模式</strong></p>
+<p>在Windows Vista中的Internet Explorer 7有一个新的安全特性，即保护模式。保护模式可以有效的阻止不被信任的站点中的恶意软件的侵扰。但保护模式对于Gadget无效，因为Gadget是运行在本地计算机上，并且与本地文件以及API相互交互。</p>
+<p><strong>完全信任</strong></p>
+<p>Gadget是迷你型的应用程序。虽然每一个单独的Gadget只有单一需求，比如读取文件或者远程机器上的信息，或者仅仅是显示一个按钮，或者其它功能等等。但是各个单独的需求汇集起来，就成为一个巨大的集合。为了更好的集成，所以我们给每一个单独的Gadget都设置为了完全信任模式，即第一次通过Windows Sidebar添加新Gadget对话框，并且信任后，以后执行时不再提示任何对话框。</p>
+<p><strong>附加的安全信息</strong></p>
+<p>如果您的客户在一个受组策略控制的环境下使用Gadget，可以限制Gadget的使用，以避免以上所提及的境况。Sidebar支持一种称之为共享Gadget文件夹的模式，这个文件夹可以在Program Files文件夹中找到。你可以将Gadget存放在此文件夹下，从而让本机上所有用户均可使用一份代码。你可以设置一个策略阻止用户再安装新的Gadget到他们自己的独享文件夹中。这个策略选项也可以阻止使用任何非共享Gadgets文件夹下的Gadget，而且只能通过某Administrator来更改此项策略。</p>
+<p>Windows Sidebar共有以下的组策略选项以供定制：</p>
+<ul>
+<li>关闭Windows Sidebar</li>
+<li>禁止解压缩或者安装未签名的Gadget</li>
+<li>关闭用户安装的Windows Sidebar Gadgets</li>
+<li>覆盖“获取更多在线上小工具”链接</li>
+</ul>
+  </div>
+  <div class="tag-cloud">
+    <p>
+    </p>
+  </div>
+
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'hcwang';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " 开心就好的代码人生 ",
+  "url" : "https://blog.joycode.com",
+  "image": "",
+  "description": ""
+}
+</script>
+</body>
+</html>

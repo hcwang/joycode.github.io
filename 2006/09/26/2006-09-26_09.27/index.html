@@ -1,0 +1,232 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://blog.joycode.com/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/solid.css">
+
+
+
+
+  <link href="https://blog.joycode.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="开心就好的代码人生 Atom">
+
+
+
+ 
+
+<meta name="author" content="joycode" />
+<meta name="description" content="【原文地址】Tip/Trick: Optimizing ASP.NET 2.0 Web Project Build Performance with VS 2005 【原文发表日期】Friday, September 22, 2006 11:47 AM 这个帖子讨论在Visual Studio 2005中开发web项目时，如何优化其Build性能。如果你 …" />
+<meta name="keywords" content="ASP.NET, Tips and Tricks, Visual Studio">
+
+
+  <meta property="og:site_name" content="开心就好的代码人生"/>
+  <meta property="og:title" content="技巧和诀窍；在VS 2005里优化ASP.NET 2.0Web项目的Build性能"/>
+  <meta property="og:description" content="【原文地址】Tip/Trick: Optimizing ASP.NET 2.0 Web Project Build Performance with VS 2005 【原文发表日期】Friday, September 22, 2006 11:47 AM 这个帖子讨论在Visual Studio 2005中开发web项目时，如何优化其Build性能。如果你 …"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://blog.joycode.com/2006/09/26/2006-09-26_09.27/"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2006-09-26 09:27:00+08:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="https://blog.joycode.com/author/joycode.html">
+  <meta property="article:section" content="业界评论"/>
+  <meta property="article:tag" content="ASP.NET"/>
+  <meta property="article:tag" content="Tips and Tricks"/>
+  <meta property="article:tag" content="Visual Studio"/>
+  <meta property="og:image" content="">
+
+  <title>开心就好的代码人生 &ndash; 技巧和诀窍；在VS 2005里优化ASP.NET 2.0Web项目的Build性能</title>
+
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="https://blog.joycode.com/">
+      <img src="https://blog.joycode.com/theme/img/profile.png" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://blog.joycode.com/"></a>
+    </h1>
+
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="https://getpelican.com/" >Pelican</a>
+          </li>
+          <li>
+            <a target="_self" href="https://www.python.org/" >Python.org</a>
+          </li>
+          <li>
+            <a target="_self" href="https://palletsprojects.com/p/jinja/" >Jinja2</a>
+          </li>
+          <li>
+            <a target="_self" href="#" >You can modify those links in your config file</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-You can add links in your config file"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-You can add links in your config file"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-Another social link"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-Another social link"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="2006-09-26_09.27">技巧和诀窍；在VS 2005里优化ASP.NET 2.0Web项目的Build性能</h1>
+    <p>
+      Posted on 二 26 九月 2006 in <a href="https://blog.joycode.com/category/ye-jie-ping-lun.html">业界评论</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>【原文地址】<a href="http://weblogs.asp.net/scottgu/archive/2006/09/22/Tip_2F00_Trick_3A00_-Optimizing-ASP.NET-2.0-Web-Project-Build-Performance-with-VS-2005.aspx" target="" title="技巧和诀窍；在VS 2005里优化ASP.NET 2.0Web项目的Build性能">Tip/Trick: Optimizing ASP.NET 2.0 Web Project Build Performance with VS 2005</a><br>
+【原文发表日期】Friday, September 22, 2006 11:47 AM</p>
+<p>这个帖子讨论在Visual Studio 2005中开发web项目时，如何优化其Build性能。如果你正受缓慢Build的煎熬，或者想知道怎么提高Build速度，请继续读下去。</p>
+<p><strong>VS 2005 网站项目和VS 2005 Web应用项目简介</strong></p>
+<p><img align="right" alt="" src="http://webproject.scottgu.com/intro.png"> VS 2005 支持两种项目模型：<a href="http://weblogs.asp.net/scottgu/archive/2005/08/21/423201.aspx" target="_blank">VS 2005 网站项目(Web Site Projects)</a> 和 <a href="http://weblogs.asp.net/scottgu/archive/2006/05/08/VS-2005-Web-Application-Project-V1.0-Released.aspx" target="_blank">VS 2005 Web应用项目(Web Application Projects)</a>。</p>
+<p>VS 2005 网站项目是VS 2005刚发行时内置的项目模型，它提供了一个基于无项目 (project-less)的模型来开发web应用，该模型使用了ASP.NET 2.0在运行时使用的同个动态编译系统。而VS 2005 Web应用项目则是今春早些时候发布的一个完全支持的可下载项目模型，它提供了一个使用了基于MSBuild的build系统的项目模型，可以把一个项目中的所有编码编译成单个程序集 (与VS 2003类似，但又少了VS 2003 web项目中涉及FrontPage服务器扩展，IIS依赖性，以及其他问题的种种限制)。想进一步了解VS 2005 Web应用项目的话，请参考我发表在 <a href="http://webproject.scottgu.com/" target="_blank">http://webproject.scottgu.com</a>网站上的系列教程。注意，对VS 2005 Web应用项目的支持将包含在VS 2005 SP1中，这样以后就不用另外下载了。</p>
+<p>VS 2005网站项目和VS 2005 Web应用项目两个模型在将来的Visual Studio版本中将会继续被[完全支持]{.underline}。我们发现，有些人喜欢一个模型，憎恶另外一个模型，反之亦然。从特性(feature)的角度看，没有“最佳的模型选择”这一说，完全取决于你个人的爱好和你们的团队协作机制(team dynamics)来决定哪个模型最适于你。譬如，许多的企业开发人员喜欢VS 2005 Web应用项目模型，因为它提供了更多的build控制和团队集成支持，而许多的web开发人员则喜欢VS 2005网站项目模型，因为它的“即存即行(just hit save)”的动态模型和灵活性。</p>
+<p>有2篇文章，你也许会发现在决定采用哪个模型时有用，<a href="http://msdn.microsoft.com/vstudio/default.aspx?pull=/library/en-us/dnvs05/html/WAP.asp" target="_blank">这篇MSDN上的白皮书</a>内含对这两个模型的比较， 而Rick Strahl的<a href="http://west-wind.com/weblog/posts/5601.aspx" target="_blank">《Web应用项目和Web 部署项目发布了》</a>一文对不同选项的利弊做了一个很好的讨论。</p>
+<p>想从VS 2005 网站项目模型迁移到VS 2005 Web应用项目模型的话，请按这个<a href="http://webproject.scottgu.com/CSharp/Migration2/Migration2.aspx" target="_blank">C#</a>或<a href="http://webproject.scottgu.com/VisualBasic/Migration2/Migration2.aspx" target="_blank">VB</a>版的教程里示范的步骤做。</p>
+<p><strong>那么哪个项目模型Build起来快些呢？</strong></p>
+<p>在对项目做full build时，VS 2005 Web 应用项目模型编译起项目来会比VS 2005 网站项目模型快很多。full build是指对项目里的每一个类和网页要做编译或重新编译的情形，要么因为你在build菜单里选了Rebuild，要么因为你修改了一个依赖的类库项目或者/app_code子目录里的编码，然后点击了build或按了ctrl-shift-b来编译解决方案。</p>
+<p>在这些“全部重新编译(full rebuild)”的情形下，VS 2005 Web 应用项目编译比VS 2005 网站项目快很多有几个原因。主要原因是，跟在VS 2003中一样，VS 2005 Web 应用项目只编译你的页面的后台编码(code-behind)以及你项目中的其他类文件。它既不分析也不编译你的.aspx 页面内的内容/控件/行内(inline)编码，这意味着，它不需要parse那些文件。坏处是，这也意味着，在编译过程中，它不会检查那些文件是否有错(而VS 2005 网站项目则会识别其中的任何错误)。好处是，这使得编译极其快。</p>
+<p>那么，这是否意味着你总是应该在大型项目的情形下使用VS 2005 Web 应用项目模型来得到最快的build 时间呢？不，不一定。VS 2005 网站项目的一个很好的特性是对“按需编译(on demand compilation)”的支持。这在你对所依赖的文件做了变化(dependent changes)后，让你避免常规地重新编译整个项目，而是只需要对那些你正在编辑的页面做重新编译，而且这个编译是按需进行的。这会给你的解决方案带来build性能上的极大改进，而且也会在开发非常大的项目时给予你非常好的工作流程。如果你想要在保持网站模型灵活性的同时改进build性能，我强烈推荐使用这个模型。</p>
+<p>下面几节提供了针对VS 2005 网站项目模型和VS 2005 Web 应用项目模型优化技术方面的特定教程，包括我上面描述的“按需编译(on demand compilation)” build 选项。</p>
+<p><strong>优化VS 2005 网站项目Build时间的特定技巧和诀窍</strong></p>
+<p>在使用VS 2005 网站项目模型时，按下述步骤做的话，你就可以极大地改进build性能：</p>
+<p>1) 确认你没有遭受我称之为“程序集引用冲突(Dueling Assembly References)”的问题。我在<a href="http://weblogs.asp.net/scottgu/archive/2006/07/30/Common-Gotcha_3A00_-Slow-VS-2005-Web-Site-Build-Performance-Because-of-_1C20_Dueling-Assembly-References_1D20_.aspx" target="_blank">这个博客帖子</a>里描述了如何发觉和解决这个问题。如果你曾经在build时看到编译过程好像在“正验证网站(Validating Web Site)”这个编译阶段停顿了(意即，输出窗口里超过几秒钟都没有输出)的话，你非常可能是遇上这个问题了。使用<a href="http://weblogs.asp.net/scottgu/archive/2006/07/30/Common-Gotcha_3A00_-Slow-VS-2005-Web-Site-Build-Performance-Because-of-_1C20_Dueling-Assembly-References_1D20_.aspx" target="_blank">上述这个博客帖子</a>里概述的技术来解决这个问题。</p>
+<p>2) 把在/app_code子目录里的文件的数目保持在很小的范围。如果你最后在这个目录里有一大堆类文件的话，我建议在你的VS解决方案里另建一个类库项目，把这些类移到这个类库项目里去，因为类库项目比/app_code子目录里的类编译快多了。如果在/app_code目录里只有小数量的文件的话，这通常不是个问题，但你有很多目录或数十个文件，那么把这些文件移到一个单独的类库项目里，然后在你的网站项目里引用这个类库项目，你将能改进build速度。另一个需要知道的事情是，每次你在VS HTML设计器里从源码视图转换到设计视图时，设计器会在设计表面加载之前引起/app_code目录的编译。原因是，这样你就可以在设计器里使用在/app_code目录里定义的控件。如果你没有/app_code目录，或者里面没几个文件，那么页面设计器加载起来就会极快，因为它不需要先做很大的编译工作。</p>
+<p>3) 在你的网站项目中激活“按需编译(on-demand compilation)”。右击你的网站项目，打开项目属性页。在左边点击Build区，打开项目的build设置。在设置里把“F5启动操作(F5 Start Action)”从“Build Web Site(网站)”改成“Build Page(页面)”或“No Build (不Build)”选项。然后，确认清除了“把网站当作解决方案一部分来Build (Build Web site as part of solution)”复选框：</p>
+<p><img alt="" src="http://www.scottgu.com/blogposts/buildperf/step1.jpg"></p>
+<p>在你点击ok接受设置改动后，你将处于“按需编译”模式下。这意味着，在上面的对话框你选了“Build Page(页面)”的话，你编辑了一个页面，按F5(以调试模式运行)或Ctrl-F5(以非调试模式运行)时，解决方案将跟以前一样，编译所有的类库项目，然后编译 /app_code 目录以及Global.asax文件，然后，不再对网站里所有的页面做重新核实，而是只核实你手头的网页，以及这个页面引用的任何用户控件。在含有大量网页的大型甚至中型项目中，这很明显会带来极大的性能改观。注意，ASP.NET 会自动重新编译你在运行时访问的任何其他页面或控件，这样，你运行的应用程序用的总是最新的编码，而不必担心老的编码在运行。你也可以选“No Build”，省略IDE里page级的验证，很明显会进一步提高整个过程的build速度。我建议你对这两个选项都尝试一下，看你喜欢哪个。</p>
+<p>不选“把网站当作解决方案一部分来Build (Build Web site as part of solution)”复选框，你会发现Ctrl-Shift-B键(触发build解决方案)会继续编译所有的类库项目，但不会重新build你网站项目里的所有页面。在此场景下，你依然会得到完整的intellisense支持，这样你不会失去任何设计时的支持。在打开页面时你也会继续得到警告/出错的弯曲的下划线提示(warning/error squiggles)。如果你需要对没有打开的页面，或对所有的页面强迫做重新编译的话，你可以使用Visual Studio的Build菜单里的Build Page或Build Web Site菜单选项：</p>
+<p><img alt="" src="http://www.scottgu.com/blogposts/buildperf/step2.jpg"></p>
+<p>这让你来控制你要核实你网站上的哪些页面以及什么时候核实，可以极大地改进build性能。我推荐做的一个诀窍是，在你的环境里添加一个快捷键，允许你很快地触发Build Page操作，以避免使用鼠标和菜单。你可以这么做，选择工具-&gt;定制菜单选项，然后在定制对话框的左下方点击“键盘”按钮。这会打开一个对话框，让你选择VS Build.BuildPage命令，然后与你想要的任何键组合相关联：</p>
+<p><img alt="" src="http://www.scottgu.com/blogposts/buildperf/step3.jpg"></p>
+<p>设置完毕后，在任何页面上，你可以打入Ctrl-Shift-P (或者你设置的任何键)，会引起VS编译任何改动过的类库项目(效果跟Ctrl-Shift-B一样)，然后核实/app_code目录里的所有类，然后重新build当前项目里你手头正编辑的页面或用户控件(以及被引用的母板页或所使用的用户控件)。</p>
+<p>应用上述步骤之后，你应该发现你的build性能和灵活性大为提高，而且你对build什么时候发生有完全的控制。</p>
+<p><strong>优化VS 2005 Web应用项目Build时间的特定技巧和诀窍</strong></p>
+<p>如果你使用VS 2005 Web 应用项目模型的话，下面是几个你可以考虑的优化手段：</p>
+<p>1) 如果你有一个很大的项目，或者与很多其他开发人员在一同开发一个项目，那么你也许要考虑把这个项目分成多个子web项目。我不见得会为性能的原因推荐这么做(除非你有成千上万个页面，否则效果不大)，但它有时会有助于管理一个大项目。请阅读我以前写的这个关于<a href="http://weblogs.asp.net/scottgu/archive/2006/08/16/Tip_2F00_Trick_3A00_-Creating-Sub_2D00_Web-Projects-using-the-VS-2005-Web-Application-Project-Option.aspx" target="_blank">怎么建立子web项目</a>的帖子来了解怎么使用这个手段。</p>
+<p>2) 考虑给你的解决方案添加一个VS 2005 Web部署项目来作深层的校验(verification)。在上面我提到，使用VS 2005 Web 应用项目的一个弊处是，它只编译你的页面的后台(code-behind)源码，并不对实际的.aspx标识符做进一步的校验，所以它会错过你在.aspx 页面里写错了tag的那些情形。这提供了与VS 2003 同等级别的校验支持(这样你也没有损失什么)，但没有网站项目模型那么深入。有一个方法，你仍旧可以在VS 2005 Web 应用项目模型里得到网站项目模型那个级别的校验，就是添加一个<a href="http://weblogs.asp.net/scottgu/archive/2005/11/06/429723.aspx" target="_blank">VS 2005 Web部署项目</a>到你的解决方案里(Web部署项目既可以和网站项目模型，也可以和web应用项目模型合作使用)。你可以配置它只在build你解决方案的release和staging版本时才运行，以避免在开发时build受影响，然后在发布你的应用前，用它来同时提供对你的内容和源码的深层的校验。</p>
+<p><strong>优化任何VS 2005项目Build时间的常用技巧和诀窍</strong></p>
+<p>在编译项目/解决方案时有性能问题时，我建议检查的几样东西：(注：当我听说新的技巧时，我会不断地添加到这个列单上，所以，以后请不时回来查看一下新内容)：</p>
+<p>1) [提防Virus Checkers，Spy-Bots和Search/Indexing工具]{.underline}</p>
+<p>VS频繁访问文件系统，很明显地，每次它编译时，都需要重新parse一个项目里变动过的任何文件。有一个问题，我见到不少人报告过的，是在病毒扫描程序，spy-bot 检测程序，或者桌面 search indexing工具过分密切监测一个内含项目的目录的情形下造成的，因为它们不断地变更这些文件的时间戳(timestamp)。它们并不改变文件的内容，但它们确是改变最后访问的时间戳，而VS也使用这个时间戳。这就会造成一个模式：你对某个文件做了一个变动，重新build，然后在后台(background)，这些病毒/搜寻工具进去，重新搜寻/检查这个文件，然后把这个文件标记为改动过了，从而导致 VS重新把它编译一遍。如果你看到build性能问题，检查一下是不是这个问题，以及考虑禁止别的程序扫描你在工作的目录。我也见过报告说，某些Spybot工具会导致VS 调试时极其缓慢，所以你也许也应该确认一下你的问题是否跟那些工具有关。</p>
+<p>2) [关闭Windows Forms 设计器选项中的AutoToolboxPopulate]{.underline}</p>
+<p>VS 2005里有个会导致VS自动把作为你解决方案一部分一起编译的任何控件加载到工具箱的选项。这是个在开发控件时非常有用的特性，因为当你编译时，VS会自动更新它们。但我看到几个报告，报告人说这个选项在某些情形下会导致VS编译时花非常长的时间(几乎象死机一样)。注意，这同时适用于Windows Forms和 Web 项目。想禁止这个选项的话，选择工具-&gt;选项菜单，然后勾销Windows Forms Designer/General/AutoToolboxPopulate复选框。(见相关议题：<a href="http://forums.asp.net/1108115/ShowPost.aspx" target="_blank">http://forums.asp.net/1108115/ShowPost.aspx</a>)</p>
+<p>3) [检查哪些第三方工具包正在Visual Studio中运行]{.underline}</p>
+<p>有很多很棒的第三方VS工具包你可以插入Visual Studio。这些工具可以带来很高的生产力，而且提供成堆的功能。但有时我也看到有些性能和系统稳定性问题是受了它们的影响，特别是在使用了这些工具包的早期(或者beta)版本的情形下(你应该总是留心什么时候工具包制造商会更新这些版本)。如果你看到与性能和稳定性有关的问题的话，你也许要尝试一下卸载任何工具包来看是否有作用。如果有作用的话，你可以跟第三方工具包制造商合作识别问题所在。</p>
+<p><strong>Visual Basic之Build性能HotFix</strong></p>
+<p>Visual Basic产品组刚发布了涉及大型VB项目编译性能问题的几个hotfixes。你可以从这个博客帖子里了解到<a href="http://blogs.msdn.com/webdevtools/archive/2006/07/24/677180.aspx" target="_blank">如何立即得到这些hotfixes</a>。Visual Basic产品组还有一个直通email 地址，<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#118;&#98;&#112;&#101;&#114;&#102;&#64;&#109;&#105;&#99;&#114;&#111;&#115;&#111;&#102;&#116;&#46;&#99;&#111;&#109;">&#118;&#98;&#112;&#101;&#114;&#102;&#64;&#109;&#105;&#99;&#114;&#111;&#115;&#111;&#102;&#116;&#46;&#99;&#111;&#109;</a>，你可以用它来直接联系他们，假如你遇到性能问题的话。</p>
+<p>希望本文对你有所帮助，</p>
+<p>Scott</p>
+<p><code>&lt;/font&gt;</code></p>
+<p>::: postfoot</p>
+<div>
+
+标签：[ASP.NET](http://weblogs.asp.net/scottgu/archive/tags/ASP.NET/default.aspx){rel="tag"}, [Visual Studio](http://weblogs.asp.net/scottgu/archive/tags/Visual+Studio/default.aspx){rel="tag"}, [Tips and Tricks](http://weblogs.asp.net/scottgu/archive/tags/Tips+and+Tricks/default.aspx){rel="tag"}
+
+</div>
+
+<div>
+
+ 
+
+</div>
+
+<p>(思归译)
+:::</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://blog.joycode.com/tag/aspnet.html">ASP.NET</a>
+      <a href="https://blog.joycode.com/tag/tips-and-tricks.html">Tips and Tricks</a>
+      <a href="https://blog.joycode.com/tag/visual-studio.html">Visual Studio</a>
+    </p>
+  </div>
+
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'hcwang';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " 开心就好的代码人生 ",
+  "url" : "https://blog.joycode.com",
+  "image": "",
+  "description": ""
+}
+</script>
+</body>
+</html>

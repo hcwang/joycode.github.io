@@ -1,0 +1,192 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://blog.joycode.com/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/solid.css">
+
+
+
+
+  <link href="https://blog.joycode.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="开心就好的代码人生 Atom">
+
+
+
+ 
+
+<meta name="author" content="joycode" />
+<meta name="description" content="由于近期在努力学习Sidebar Gadget开发技术，并且也与中国汽车网合作做了一个Sidebar Gadget，所以耽误了一些时间，但同时，也通过这个机会加深了 …" />
+<meta name="keywords" content="C#编程, 软件推荐">
+
+
+  <meta property="og:site_name" content="开心就好的代码人生"/>
+  <meta property="og:title" content="Sidebar Gadget开发教程(2)"/>
+  <meta property="og:description" content="由于近期在努力学习Sidebar Gadget开发技术，并且也与中国汽车网合作做了一个Sidebar Gadget，所以耽误了一些时间，但同时，也通过这个机会加深了 …"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://blog.joycode.com/2006/11/01/86016/"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2006-11-01 22:00:00+08:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="https://blog.joycode.com/author/joycode.html">
+  <meta property="article:section" content="业界评论"/>
+  <meta property="article:tag" content="C#编程"/>
+  <meta property="article:tag" content="软件推荐"/>
+  <meta property="og:image" content="">
+
+  <title>开心就好的代码人生 &ndash; Sidebar Gadget开发教程(2)</title>
+
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="https://blog.joycode.com/">
+      <img src="https://blog.joycode.com/theme/img/profile.png" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://blog.joycode.com/"></a>
+    </h1>
+
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="https://getpelican.com/" >Pelican</a>
+          </li>
+          <li>
+            <a target="_self" href="https://www.python.org/" >Python.org</a>
+          </li>
+          <li>
+            <a target="_self" href="https://palletsprojects.com/p/jinja/" >Jinja2</a>
+          </li>
+          <li>
+            <a target="_self" href="#" >You can modify those links in your config file</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-You can add links in your config file"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-You can add links in your config file"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-Another social link"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-Another social link"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="86016">Sidebar Gadget开发教程(2)</h1>
+    <p>
+      Posted on 三 01 十一月 2006 in <a href="https://blog.joycode.com/category/ye-jie-ping-lun.html">业界评论</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>由于近期在努力学习Sidebar Gadget开发技术，并且也与<a href="http://www.chinacars.com" title="中国汽车网">中国汽车网</a>合作做了一个Sidebar Gadget，所以耽误了一些时间，但同时，也通过这个机会加深了学习印象。</p>
+<p>很多朋友在学习新技术的时候，都喜欢做Hello World。我原来也是这种情况。其实我认为这种方式有百害而无一利，就类似于学英语开始背单词一样，背了十多年，还没有背到F开头的单词呢。因为Hello world就让你产生了一种虚伪的成就感，而稍微一深入进去，遇到一点挫折，就会有畏难情绪，再也坚持不下去了。最后产生的结果无非就是眼高手低，或者眼低手低。</p>
+<p>所以本教程我想使用一个实际项目开始，这个项目就是为<a href="http://www.chinacars.com/" target="_blank" title="中国汽车网">ChinaCars.com</a>开发一个小型的Gadget，要完成的主要功能如下：<a href="http://blog.joycode.com/wp-content/uploads/images/blog.joycode.com/joy/1308/o_WindowsLiveWriter_SidebarGadget2_1355B_image%7B0%7D%5B6%5D.png"><img align="right" alt="" border="0" height="246" src="http://blog.joycode.com/wp-content/uploads/images/blog.joycode.com/joy/1308/o_WindowsLiveWriter_SidebarGadget2_1355B_image%7B0%7D_thumb%5B4%5D.png" style="border-right: 0px;border-top: 0px;border-left: 0px;border-bottom: 0px" width="265"></a></p>
+<ol>
+<li>根据你选择的城市以及价格区间，以幻灯片形式来显示符合条件的车型图片;</li>
+<li>图片切换可以实现Powerpoint中的那种幻灯片切换效果;</li>
+<li>点击某个车型图片，可以显示该车型的详细信息。</li>
+</ol>
+<p>功能需求很简单，但使用HTML+Javascript+CSS完成它，可能就需要时间了。因为：</p>
+<ul>
+<li>开发Gadget没有一个IDE，无非所见即所得;</li>
+<li>无法进行Debug，只能写Track信息来追踪;</li>
+<li>资料比较少，只能看Windows Vista自带的Gadget源代码，或者去看<a href="http://microsoftgadgets.com/build" target="_blank" title="Windows Vista Sidebar Gadget SDK">SDK</a>；</li>
+<li>用ASP.NET时间久了，Javascript与HTML知识忘光光了。</li>
+</ul>
+<p>另外一点，<a href="http://www.chinacars.com/" target="_blank" title="中国汽车网">中国汽车网</a>没有提供API怎么办？不会让我自己来去分析HTML吧？没有关系，我把这个接口暴露给大家，大家可以自己尝试一下。使用<a href="http://gadgets.chinacars.com/Chinacars.Gadgets.Web/carpricequery.aspx?StartPrice=0&amp;endprice=100&amp;city=bj&amp;recordnumber=10" target="_blank" title="API">接口1</a>，你可以得到一个车型信息列表;使用<a href="http://gadgets.chinacars.com/Chinacars.Gadgets.Web/carpricequery.aspx?StartPrice=0&amp;endprice=100&amp;city=bj&amp;recordnumber=10" target="_blank" title="API">接口2</a>，你可以得到一个车型详细信息的RSS。简单吧？具体参数的使用说明，自己多试几下就知道了。</p>
+<p>那么建立远程HTTP连接呢？在.NET中我们还有HttpRequest来使用，在Javascript中，我们就只能使用Microsoft.XmlHTTP这个ActiveX对象了，不过也非常好用，而且像异步呀、状态信息呀都一个不少的实现了。分析XML也不必使用XmlDocument这个.NET类，你完全可以使用Microsoft.XmlDom这个ActiveX对象。</p>
+<p>我的Gadget其实已经完成了，现在来考考大家了。虽然我平常工作比较忙，但仍然使用三个晚上的时间完成了这部分代码。那么我留出一周的时间，如果大家感兴趣，先自己试着开发一下。一周后，我会公布我的源代码给大家的。如果您在一周内完成了，欢迎打包成.gadget文件，通过<a href="mailto:joycode@gmail.com" rel="邮件信息">邮件</a>发送给我，说不定会有神秘礼品呢。</p>
+<p>另外，也号召一下各网站的开发高手，发挥你的创意，为你的网站增加Gadget。抢占完用户的桌面，霸占了用户的IE，现在到了抢占用户Sidebar的时候了！让客户接受你，你就要有好的创意。如果贵网站在国内按流量综合排名在前一百以上，或者是比较酷的网站，有应用Gadget的好创意的话，也可以与<a href="mailto:joycode@gmail.com">我联系</a>。Microsoft将会选择一部分网站做相关的市场活动。</p>
+<p>BTW: 如果您的公司在开发类似于Forums、Blog等相关Web通用系统的话，如果想应用Gadget，或者想迁移到ASP.NET，或者想与Microsoft作一系列的市场活动，也可以与我<a href="mailto:joycode@gmail.com">联系</a>。(曾经给Discuz!发过一封邮件，但石沉大海)</p>
+<p>BTW Again: 如果贵公司或者个人精通Gadget，Expression，AJAX，Card Space，也可以与我<a href="mailto:joycode@gmail.com">联系</a>。我们需要合作伙伴，帮助我们的客户进行培训与实施，并且支付相关费用。</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://blog.joycode.com/tag/cbian-cheng.html">C#编程</a>
+      <a href="https://blog.joycode.com/tag/ruan-jian-tui-jian.html">软件推荐</a>
+    </p>
+  </div>
+
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'hcwang';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " 开心就好的代码人生 ",
+  "url" : "https://blog.joycode.com",
+  "image": "",
+  "description": ""
+}
+</script>
+</body>
+</html>

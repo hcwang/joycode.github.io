@@ -1,0 +1,177 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://blog.joycode.com/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/solid.css">
+
+
+
+
+  <link href="https://blog.joycode.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="开心就好的代码人生 Atom">
+
+
+
+ 
+
+<meta name="author" content="joycode" />
+<meta name="description" content="IT界是一个特别适合“创新”的地方，尤其是各种各样的术语。各大厂商为了自己的利益，不断的推出一些新的术语，而媒体们也在不断的站队，跟 …" />
+<meta name="keywords" content="">
+
+
+  <meta property="og:site_name" content="开心就好的代码人生"/>
+  <meta property="og:title" content="聊聊云计算(1):什么是云计算"/>
+  <meta property="og:description" content="IT界是一个特别适合“创新”的地方，尤其是各种各样的术语。各大厂商为了自己的利益，不断的推出一些新的术语，而媒体们也在不断的站队，跟 …"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://blog.joycode.com/2008/07/04/115163/"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2008-07-04 13:56:00+08:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="https://blog.joycode.com/author/joycode.html">
+  <meta property="article:section" content="业界评论"/>
+  <meta property="og:image" content="">
+
+  <title>开心就好的代码人生 &ndash; 聊聊云计算(1):什么是云计算</title>
+
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="https://blog.joycode.com/">
+      <img src="https://blog.joycode.com/theme/img/profile.png" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://blog.joycode.com/"></a>
+    </h1>
+
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="https://getpelican.com/" >Pelican</a>
+          </li>
+          <li>
+            <a target="_self" href="https://www.python.org/" >Python.org</a>
+          </li>
+          <li>
+            <a target="_self" href="https://palletsprojects.com/p/jinja/" >Jinja2</a>
+          </li>
+          <li>
+            <a target="_self" href="#" >You can modify those links in your config file</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-You can add links in your config file"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-You can add links in your config file"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-Another social link"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-Another social link"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="115163">聊聊云计算(1):什么是云计算</h1>
+    <p>
+      Posted on 五 04 七月 2008 in <a href="https://blog.joycode.com/category/ye-jie-ping-lun.html">业界评论</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>IT界是一个特别适合“创新”的地方，尤其是各种各样的术语。各大厂商为了自己的利益，不断的推出一些新的术语，而媒体们也在不断的站队，跟着一些忽悠，搞得我们这些IT界的前线战士们一阵一阵得晕。刚刚有了B/S、C/S、SaaS、SOA、Mash Up以及S+S，现在又出来了云计算。</p>
+<p>什么叫云计算？根据<a href="http://zh.wikipedia.org/w/index.php?title=%E4%BA%91%E8%AE%A1%E7%AE%97&amp;variant=zh-cn" target="_blank">维基百科</a>当中的定义（基于某种原因，可能无法访问维基百科）：<strong>云计算</strong>（<strong>cloud computing</strong>，<a href="http://zh.wikipedia.org/w/index.php?title=%E5%8F%B0%E6%B9%BE&amp;amp），是%3Ca%20href=">分布式计算</a>技术的一种，其最基本的概念，是透过<a href="http://zh.wikipedia.org/w/index.php?title=%E7%B6%B2%E8%B7%AF&amp;variant=zh-cn">网络</a>将庞大的计算处理程序自动分拆成无数个较小的子程序，再交由多部服务器所组成的庞大系统经搜寻、计算分析之后将处理结果回传给用户。透过这项技术，网络服务提供者可以在数秒之内，达成处理数以千万计甚至亿计的信息，达到和“<a href="http://zh.wikipedia.org/w/index.php?title=%E8%B6%85%E7%B4%9A%E9%9B%BB%E8%85%A6&amp;variant=zh-cn">超级计算机</a>”同样强大效能的网络服务。</p>
+<p>很深奥的概念，相信很多朋友可能和开心一样，有些云里雾里，真的掉到云里面去了。而且在下面的云计算示例一节当中，又给出了两个简单的云计算案例，即搜索引擎以及网络邮箱。俺就有一些搞不明白了，按照这种示例，<strong>所谓的云计算，与B/S以及C/S架构到底有什么不同呢？</strong>如果再看看各大媒体举的例子，把一些在线文档编辑器也称之为云计算，那么云计算与SaaS又有什么区别呢？这不就是经典的新瓶装旧酒吗？</p>
+<p>其实，云计算的先驱真的不是Google（谷歌）或者微软，而是亚马逊（Amazon）。让我们来看一下所谓的B/S以及C/S架构，如果从分层上来看，其实都是Client to Server的层次（只不过B/S中把C换成了Browser而已）。而无论在Client端还是Server端，都适用于经典的软件销售，在Client端，我们有Office、Windows Vista、Firefxo，而在Server端，则有SQL Server、Oracle、Apache。这些软件都适用于software license的销售模式（软件收费或者支持服务收费）。</p>
+<p>而亚马逊的<a href="http://www.amazon.com/gp/browse.html?node=201590011" target="_blank">EC2</a>则更改了Server端的software license模式，其最主要的含义是将软件的功能以服务的方式提供出来，然后根据类似于SLA（<a href="http://en.wikipedia.org/wiki/Service_level_agreement" target="_blank">Service Level Agreement</a>）的方式为其客户提供相应的服务。比如EC2当中的Simple DB，就是一个网络存储服务，类似于SQL Server/Oracle等等，你在开发的时候，不需要安装经典的数据库应用程序在服务器上，根本不用在意我的数据到底存在“哪块云里面”，而且开发的时候还可以使用原来的SQL语句进行CRUD（不知道CRUD是什么意思？赶快做一下功课去吧），任何时间，任何地点，任何设备都可以进行访问。听上去很美吧？</p>
+<p>所以<strong>云计算其实就是C/S的一个扩展版本，简单可以描述为C to S to S (C/S/S)</strong>，<strong>实质就是一个更新版本的SaaS，服务器端的Software As A Service</strong>。大小S之间进行计算以及数据的传输，最终把结果输给C，让C来展示就可以了。而云计算指的其实就是S to S这一端，所以<strong>与最终用户根本无关</strong>，甚至最终用户根本感觉不到这种改动，所改动的其实就是开发商如何<strong><em>采购</em></strong>其服务而已（是购买软件还是租用服务）。所以俺开心个人认为，传统的搜索引擎以及网络邮箱，或者在线文档编辑器(Google Docs)还称不上什么云计算（当然，你硬说里面也有S to S之类的云端交流，俺也不没有什么理由来说服你）。</p>
+<p>ASP(Application Service Provider)其实也是云计算的一个先驱，但它是把应用构建在云端，而不是把服务构建在云端，所以造成了其上的二次开发商非常稀少，而没有建立起完整的生态链系统，最终进入到失败。而云计算由于只是把服务器端的Software更改为Service方式应用（云上的API），所以可以召募很多的二次开发商，从而快速得构建起完整的生态链。相当于IT界的一次洗牌过程，抓住了云也就抓住了未来，对于传统软件厂商来说，其危害要比Open source有过之而无不及。整个生态链可以基本上划分为云间服务提供商（相当于原来的服务器端的软件厂商：微软、甲骨文、IBM等）、应用开发商（基于服务构建应用的厂商，SI或者ISV等）以及最终用户等。</p>
+<p>但云计算也不会一帆风顺，肯定会有乌云时期，有兴趣的话，可以去了解一下Amazon的EC2的业绩。我们可以先抛开欧美日印市场，从国内的IT环境来看，无论是从政策、技术或者信用等来说，目前还极度不成熟。非死不可（Facebook）本周在国内的突然病亡会在很长一段时期让大家对于云计算充满怀疑（谁又能够预料哪一天App Engine突然发动不起来了？），现有的云计算的开发模式对于重视技术迁移成本的开发商也处于观望状态。</p>
+<p>所以云计算虽然看上去很美，但实际上要走得路还是很长。</p>
+<p>在接下来的话题当中，开心还想聊聊云端的梦（从最终用户角度会感觉到的优势）、吞云吐雾的幻术（从开发者角度选择最好的云计算平台）等话题，欢迎大家交流。</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+    </p>
+  </div>
+
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'hcwang';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " 开心就好的代码人生 ",
+  "url" : "https://blog.joycode.com",
+  "image": "",
+  "description": ""
+}
+</script>
+</body>
+</html>

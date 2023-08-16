@@ -1,0 +1,196 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://blog.joycode.com/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/solid.css">
+
+
+
+
+  <link href="https://blog.joycode.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="开心就好的代码人生 Atom">
+
+
+
+ 
+
+<meta name="author" content="joycode" />
+<meta name="description" content="下面是我原先用的调用CDOEXM中IMailboxStore接口给用户创建Mailbox的代码： DirectoryEntry deUser; // deUser为域中的用户 String sHomeMDB; // sHomeMDB为域中Exchange Mailbox Store的路径 CDOEXM.IMailboxStore mailboxStore = (IMailboxStore) deUser.NativeObject; mailboxStore.CreateMailbox(sHomeMDB); deUser.Update(); 运行到CreateMailbox()这个方法时，Exchange返回来一个“致命性故障”，上面的代码 …" />
+<meta name="keywords" content="">
+
+
+  <meta property="og:site_name" content="开心就好的代码人生"/>
+  <meta property="og:title" content="被CDOEXM折磨了一把"/>
+  <meta property="og:description" content="下面是我原先用的调用CDOEXM中IMailboxStore接口给用户创建Mailbox的代码： DirectoryEntry deUser; // deUser为域中的用户 String sHomeMDB; // sHomeMDB为域中Exchange Mailbox Store的路径 CDOEXM.IMailboxStore mailboxStore = (IMailboxStore) deUser.NativeObject; mailboxStore.CreateMailbox(sHomeMDB); deUser.Update(); 运行到CreateMailbox()这个方法时，Exchange返回来一个“致命性故障”，上面的代码 …"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://blog.joycode.com/2003/11/19/2003-11-19_15.39/"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2003-11-19 15:39:00+08:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="https://blog.joycode.com/author/joycode.html">
+  <meta property="article:section" content="业界评论"/>
+  <meta property="og:image" content="">
+
+  <title>开心就好的代码人生 &ndash; 被CDOEXM折磨了一把</title>
+
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="https://blog.joycode.com/">
+      <img src="https://blog.joycode.com/theme/img/profile.png" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://blog.joycode.com/"></a>
+    </h1>
+
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="https://getpelican.com/" >Pelican</a>
+          </li>
+          <li>
+            <a target="_self" href="https://www.python.org/" >Python.org</a>
+          </li>
+          <li>
+            <a target="_self" href="https://palletsprojects.com/p/jinja/" >Jinja2</a>
+          </li>
+          <li>
+            <a target="_self" href="#" >You can modify those links in your config file</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-You can add links in your config file"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-You can add links in your config file"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-Another social link"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-Another social link"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="2003-11-19_15.39">被CDOEXM折磨了一把</h1>
+    <p>
+      Posted on 三 19 十一月 2003 in <a href="https://blog.joycode.com/category/ye-jie-ping-lun.html">业界评论</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>下面是我原先用的调用CDOEXM中IMailboxStore接口给用户创建Mailbox的代码：</p>
+<p>DirectoryEntry deUser; // deUser为域中的用户<br>
+String sHomeMDB; // sHomeMDB为域中Exchange Mailbox Store的路径</p>
+<p>CDOEXM.IMailboxStore mailboxStore = (IMailboxStore) deUser.NativeObject;<br>
+mailboxStore.CreateMailbox(sHomeMDB);<br>
+deUser.Update();</p>
+<p>运行到CreateMailbox()这个方法时，Exchange返回来一个“致命性故障”，上面的代码实在是标准得不能再标准的代码，Microsoft在KB中提供的代码示例都是这么几句，郁闷...难道是把DirectoryEntry对象的NativeObject本地对象映射转换成IMailboxStore有问题？</p>
+<p>于是，再隔上一层，先转成ADSI中的IADsUser：</p>
+<p>ActiveDs.IADsUser adsUser = (IADsUser) deUser.NativeObject;<br>
+CDOEXM.IMailboxStore mailboxStore = (IMailboxStore) adsUser;<br>
+mailboxStore.CreateMailbox(sHomeMDB);<br>
+adsUser.SetInfo();</p>
+<p>还是“致命性故障”...于是，Google...终于检索到<a href="http://www.dotnet247.com/247reference/msgs/18/92050.aspx">一个网页</a>，那可怜的哥们和偶一样，也是“Catastrophic failure”，但是好像他比偶聪明那么一点点，他用VB.NET把代码写了一遍，就发现正常了...</p>
+<p>就像这样：</p>
+<p>Dim oMailboxStore As CDOEXM.IMailboxStore<br>
+Dim oADsUser As ActiveDs.IADsUser</p>
+<p>oADsUser = GetObject(adsuserPath) ' 这里的adsuserPath就是用户的LDAP路径<br>
+oMailboxStore = oADsUser</p>
+<p>oMailboxStore.CreateMailbox(homeMdb)<br>
+oADsUser.SetInfo()</p>
+<p>偶再把这段代码在VB.NET里面生成了一个类库，然后在C#中引用、调用，It also works！</p>
+<p>但是实在不爽啊...于是盯上了VB.NET中的GetObject()这个函数，暗自想，如果偶在C#里面也调用这个函数...</p>
+<p>于是：</p>
+<p>IADsUser adsUser = (IADsUser) Microsoft.VisualBasic.Interaction.GetObject(deUser.Path, null);<br>
+IMailboxStore mailboxStore = (IMailboxStore) adsUser;</p>
+<p>mailboxStore.CreateMailbox(sHomeMDB);<br>
+adsUser.SetInfo();</p>
+<p>嘿嘿，果真好了！</p>
+<p>值得一提的是，VB.NET的类型Late Binding是C#所不具备的，虽然它的意义存在争议，但有些时候的确很有用。</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+    </p>
+  </div>
+
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'hcwang';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " 开心就好的代码人生 ",
+  "url" : "https://blog.joycode.com",
+  "image": "",
+  "description": ""
+}
+</script>
+</body>
+</html>

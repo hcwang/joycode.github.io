@@ -1,0 +1,292 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://blog.joycode.com/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/solid.css">
+
+
+
+
+  <link href="https://blog.joycode.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="开心就好的代码人生 Atom">
+
+
+
+ 
+
+<meta name="author" content="joycode" />
+<meta name="description" content="话说公元2003年12月17日，MSDN Library网站上悄无声息的多了一篇文章，介绍了关于构建一个PlugIn Framework的一些基础知识，于是，有了这篇随笔… PlugIn，很COOL的特性，下面将演示如何给我们的IBuySpy定制一个Page Start PlugIn，这个PlugIn可以让用户自己来创建PlugIn …" />
+<meta name="keywords" content="">
+
+
+  <meta property="og:site_name" content="开心就好的代码人生"/>
+  <meta property="og:title" content="给IBuySpy构建一个PlugIn系统"/>
+  <meta property="og:description" content="话说公元2003年12月17日，MSDN Library网站上悄无声息的多了一篇文章，介绍了关于构建一个PlugIn Framework的一些基础知识，于是，有了这篇随笔… PlugIn，很COOL的特性，下面将演示如何给我们的IBuySpy定制一个Page Start PlugIn，这个PlugIn可以让用户自己来创建PlugIn …"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://blog.joycode.com/2003/12/18/2003-12-18_15.34/"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2003-12-18 15:34:00+08:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="https://blog.joycode.com/author/joycode.html">
+  <meta property="article:section" content="业界评论"/>
+  <meta property="og:image" content="">
+
+  <title>开心就好的代码人生 &ndash; 给IBuySpy构建一个PlugIn系统</title>
+
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="https://blog.joycode.com/">
+      <img src="https://blog.joycode.com/theme/img/profile.png" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://blog.joycode.com/"></a>
+    </h1>
+
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="https://getpelican.com/" >Pelican</a>
+          </li>
+          <li>
+            <a target="_self" href="https://www.python.org/" >Python.org</a>
+          </li>
+          <li>
+            <a target="_self" href="https://palletsprojects.com/p/jinja/" >Jinja2</a>
+          </li>
+          <li>
+            <a target="_self" href="#" >You can modify those links in your config file</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-You can add links in your config file"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-You can add links in your config file"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-Another social link"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-Another social link"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="2003-12-18_15.34">给IBuySpy构建一个PlugIn系统</h1>
+    <p>
+      Posted on 四 18 十二月 2003 in <a href="https://blog.joycode.com/category/ye-jie-ping-lun.html">业界评论</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>话说公元2003年12月17日，MSDN Library网站上悄无声息的多了<a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dnaspp/html/pluginframework.asp">一篇文章</a>，介绍了关于构建一个PlugIn Framework的一些基础知识，于是，有了这篇随笔…</p>
+<p>PlugIn，很COOL的特性，下面将演示如何给我们的IBuySpy定制一个Page Start PlugIn，这个PlugIn可以让用户自己来创建PlugIn，嵌入到IBuySpy的Page Start PlugIn里面，在网站页面载入的时候，会执行用户嵌入的PlugIn。</p>
+<p>可我们为什么要给IBuySpy创建PlugIn接口呢？我们要实现同样的功能，可以直接的修改它的代码，岂不是直接很多？原因：IBuySpy只是用来演示PlugIn的，你可以把同样的技术应用到其他的WebForm甚至WinForm，而它们可能并不会像IBuySpy一样是免费的，我们交付的产品里面不会附上代码，如果我们提供了PlugIn的接口，无疑会让我们的产品更加具有扩展性。何况很多功能可能可以直接作成PlugIn来嵌入到原有的系统中，这个时候无需再改动原有的代码，再去编译它。</p>
+<p><code>&lt;font color="#006400"&gt;</code>1、构建IBuySpy的PlugIn所需的接口，这些接口就是可以公开给用户代码的：<code>&lt;/font&gt;</code></p>
+<p>首先需要的是一个通用的IPlugIn接口，所有具体的插件将实现这个接口：</p>
+<p>namespace ASPNetPortal.PlugIns {</p>
+<p>public interface IPlugIn {<br>
+  String Name {get;}<br>
+  String Version {get;}<br>
+  void DoAction(IPlugInArgs args);    <br>
+ }<br>
+}</p>
+<p>这个接口有三个成员：<br>
+Name属性，公开插件的名称<br>
+Version属性，公开插件的版本<br>
+DoAction()方法，执行插件要做的操作，这个方法还有一个IPlugInArgs的参数，需要传递给方法所参数可以通过它传递出去。</p>
+<p>然后就是这个IPlugInArgs接口：</p>
+<p>namespace ASPNetPortal.PlugIns {</p>
+<p>public interface IPlugInArgs { <br>
+  System.Web.HttpContext Context {get;}<br>
+  Object Data {get;}<br>
+ }<br>
+}</p>
+<p>它有两个成员：<br>
+Context属性，一个HttpContext类型的对象，如果我们要让插件能够在页面上做些事，不给它HttpContext肯定不行。<br>
+Data属性，一个Object类型的对象，预留的，什么地方需要就什么地方用上。</p>
+<p>接着是一个接口集合类：</p>
+<p>namespace ASPNetPortal.PlugIns {</p>
+<p>public class PlugInCollection : CollectionBase {</p>
+<p>public Int32 Add(IPlugIn plugIn) {<br>
+   return this.List.Add(plugIn);<br>
+  }</p>
+<p>public IPlugIn this[Int32 index] {<br>
+   get {<br>
+    return (IPlugIn) this.List[index];<br>
+   }<br>
+  }<br>
+ }<br>
+}</p>
+<p>很简单明了。用户可能不止嵌入一个插件。</p>
+<p>PlugIn也可以有很多类型，比如我们这里要实现的Page Start PlugIn，是一个在页面载入的时候可以让嵌入的PlugIn执行的。当然你也可以创建各种类型的PlugIn。</p>
+<p>namespace ASPNetPortal.PlugIns {</p>
+<p>public interface IPageStartPlugIn : IPlugIn {}<br>
+}</p>
+<p>这个PlugIn接口不需要再做任何事，直接继承IPlugIn就可以了。</p>
+<p><code>&lt;font color="#006400"&gt;</code>2、修改IBuySpy，让它支持执行PlugIn：<code>&lt;/font&gt;</code></p>
+<p>根据我们的需求，我们创建一个实际的插件参数类，这个类继承自IPlugInArgs：</p>
+<p>namespace ASPNetPortal.PlugIns {</p>
+<p>public class PlugInArgs : IPlugInArgs {<br>
+  private System.Web.HttpContext _context;<br>
+  private Object _data;</p>
+<p>public PlugInArgs(System.Web.HttpContext context, Object data) {<br>
+   _context = context;<br>
+   _data = data;<br>
+  }</p>
+<p>public System.Web.HttpContext Context {<br>
+   get {<br>
+    return _context;<br>
+   }<br>
+  }</p>
+<p>public Object Data {<br>
+   get {<br>
+    return _data;<br>
+   }<br>
+  }<br>
+ }<br>
+}</p>
+<p>我们需要地方来标示用户嵌入的PlugIn的列表，我们放在web.config里面的里面，我们加上一项，来表示我们要添上的Page Start PlugIn：</p>
+<p>《ADD key="PageStartPlugIns" value="" /》</p>
+<p>value里面可以写入嵌入的PlugIn的列表，格式像这样：Value = "插件一的类名, 插件一的程序集名; 插件二的类名, 插件二的程序集名"</p>
+<p>然后，我们构建一个PlugInHelper类，来执行获取PlugIn、执行PlugIn的操作：</p>
+<p>namespace ASPNetPortal.PlugIns {</p>
+<p>public class PlugInHelper {</p>
+<p>private PlugInHelper() {}</p>
+<p>public static PlugInCollection GetPlugIns(String plugInType) {<br>
+  PlugInCollection plugIns = new PlugInCollection();<br>
+  String sPageStartPlugIns = System.Configuration.ConfigurationSettings.AppSettings[plugInType];<br>
+  if ((sPageStartPlugIns != null) &amp;&amp; (sPageStartPlugIns != "")) {<br>
+   String[] asPlugInStr = sPageStartPlugIns.Split(';');    foreach(String plugInStr in asPlugInStr) {<br>
+    plugIns.Add( (IPageStartPlugIn) System.Activator.CreateInstance(System.Type.GetType(plugInStr)));<br>
+   }<br>
+  }<br>
+  return plugIns;<br>
+ }</p>
+<p>public static void ExecutePlugIns(PlugInCollection plugIns, IPlugInArgs args) {<br>
+  foreach(IPlugIn plugIn in plugIns) {<br>
+   plugIn.DoAction(args);<br>
+  }<br>
+ }<br>
+ }<br>
+}</p>
+<p>GetPlugIns()方法返回指定类型的PlugIn的列表，返回类型是PlugInCollection，ExecutePlugIns()用来执行参数中的PlugIn。</p>
+<p>最后，我们要把执行插件的代码加入到页面的执行队列中。为了在每个页面开始的时候能够执行用户嵌入的Page Start Plug，标准方法是在Global.asa里面来实现，更标准的方法是构建一个httpModule，然后在这个httpModule中来执行这个PlugIn（关于构建自定义的httpModule，<a href="http://blog.joycode.com/uestc95/">辣椒</a>是个中高手）。我这里就偷懒了，因为IBuySpy几乎所有的内容页面都是DesktopDefault.aspx这个页面中载入，所以我们先在这个页面里面创建一个方法来执行插件：</p>
+<p>private void PerformPlugIns() {<br>
+ PlugInCollection plugIns = PlugInHelper.GetPlugIns("PageStartPlugIns");<br>
+ PlugInArgs args = new PlugInArgs(Context, null);<br>
+ PlugInHelper.ExecutePlugIns(plugIns, args);<br>
+}</p>
+<p>第一句得到所有的Page Start PlugIn，第二句创建一个传递给插件的PlugInArgs对象，第三句调用PlugInHelper.ExecutePlugIns()来执行第一句得到的PlugIn队列。</p>
+<p>在DesktopDefault.aspx的Page_Init事件中调用上面的这个PerformPlugIns()方法就OK了。</p>
+<p><code>&lt;font color="#006400"&gt;</code>3、演示如何创建一个Page Start PlugIn：<code>&lt;/font&gt;</code></p>
+<p>前面两步已经让IBuySpy可以嵌入用户自定义的Page Start PlugIn了，现在我们来做一个实际的PlugIn嵌进去。</p>
+<p>启动VS，创建一个“C#类库”项目，引入IBuySpy的程序集Portal.dll，这是因为我们需要用到IBuySpy里面的PlugIn相关的那些接口，更好的方法是把IBuySpy中与PlugIn相关的公共接口放在一个单独的程序集里面。</p>
+<p>namespace WelcomeMessage {</p>
+<p>public class ShowWelcome : ASPNetPortal.PlugIns.IPageStartPlugIn {</p>
+<p>public string Name {<br>
+   get {<br>
+    return "Show Page Welcome Message";<br>
+   }<br>
+  }</p>
+<p>public string Version {<br>
+   get {<br>
+    return "1.0.0.1";<br>
+   }<br>
+  }</p>
+<p>public void DoAction(IPlugInArgs args) {<br>
+   args.Context.Response.Write(“\&lt;<em>script</em>&gt;alert(‘Hello, world!’);”);  // 故意写错了<br>
+，不然...<br>
+}<br>
+}<br>
+}</p>
+<p>这个ShowWelcome类继承自IPageStartPlugIn，表示它是一个Page Start PlugIn，用来具体执行操作的DoAction()方法只做了一件事，从参数中得到页面相关的HttpContext对象，然后输出一段字符以在页面内容载入之前弹出一个“Hello,world!”的提示框。</p>
+<p>然后我们修改IBuySpy的web.config里面相关的那句设定：</p>
+<p>《ADD value="WelcomeMessage.ShowWelcome, WelcomeMessage" key="PageStartPlugIns" /》</p>
+<p>OK了，编译，把生成的dll放到IBuySpy的bin目录，打开浏览器浏览IBuySpy网站，你会看到每次载入页面内容时，都会弹出一个“Hello,world!”的提示框。</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+    </p>
+  </div>
+
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'hcwang';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " 开心就好的代码人生 ",
+  "url" : "https://blog.joycode.com",
+  "image": "",
+  "description": ""
+}
+</script>
+</body>
+</html>

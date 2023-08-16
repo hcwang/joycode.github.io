@@ -1,0 +1,182 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://blog.joycode.com/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/solid.css">
+
+
+
+
+  <link href="https://blog.joycode.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="开心就好的代码人生 Atom">
+
+
+
+ 
+
+<meta name="author" content="joycode" />
+<meta name="description" content="周六接到任务，协助我们公司的几位同事开发一个POC（Proof of Concept）项目，给我们的开发时间是四天，使用BizTalk 04 &amp; .NET来开发。而我们的对手已 …" />
+<meta name="keywords" content="C#编程">
+
+
+  <meta property="og:site_name" content="开心就好的代码人生"/>
+  <meta property="og:title" content="工作流监控及短信子系统"/>
+  <meta property="og:description" content="周六接到任务，协助我们公司的几位同事开发一个POC（Proof of Concept）项目，给我们的开发时间是四天，使用BizTalk 04 &amp; .NET来开发。而我们的对手已 …"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://blog.joycode.com/2004/03/22/16786/"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2004-03-22 01:02:00+08:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="https://blog.joycode.com/author/joycode.html">
+  <meta property="article:section" content="业界评论"/>
+  <meta property="article:tag" content="C#编程"/>
+  <meta property="og:image" content="">
+
+  <title>开心就好的代码人生 &ndash; 工作流监控及短信子系统</title>
+
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="https://blog.joycode.com/">
+      <img src="https://blog.joycode.com/theme/img/profile.png" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://blog.joycode.com/"></a>
+    </h1>
+
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="https://getpelican.com/" >Pelican</a>
+          </li>
+          <li>
+            <a target="_self" href="https://www.python.org/" >Python.org</a>
+          </li>
+          <li>
+            <a target="_self" href="https://palletsprojects.com/p/jinja/" >Jinja2</a>
+          </li>
+          <li>
+            <a target="_self" href="#" >You can modify those links in your config file</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-You can add links in your config file"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-You can add links in your config file"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-Another social link"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-Another social link"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="16786">工作流监控及短信子系统</h1>
+    <p>
+      Posted on 一 22 三月 2004 in <a href="https://blog.joycode.com/category/ye-jie-ping-lun.html">业界评论</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p><img alt="" src="http://65.54.184.24/crs_1389.gif"></p>
+<p>周六接到任务，协助我们公司的几位同事开发一个POC（Proof of Concept）项目，给我们的开发时间是四天，使用BizTalk 04 &amp; .NET来开发。而我们的对手已经开发了一个多月。</p>
+<p>任务非常紧张，周六从早上十点钟加班到周日凌晨五点左右，回家睡了一小觉，上午十一点赶到客户处继续开始工作。</p>
+<p>我的任务主要是做一些外围工作，不参与具体的工作流编制任务，所以不需要理解具体的业务，主要的工作有以下两部分：</p>
+<ul>
+<li>工作流程图形监控：由于BizTalk提供的图形监控具体普遍抽象性，不牵涉具体的业务环境，而且仅提供WinForm方式，还需要安装BTS Server，所以根据客户的需要，需要一个基于Browser的图形监控系统，可以查看到系统中所有的流程，并且可以可以标志当前流程的进程的状态，以及查看某一具体环节的详细信息;</li>
+<li>工作流程通知系统：当有新任务分配到具体的工作人员时，通过手机短信或者MSN Messenger方式，将该通知发送给相关的业务人员;</li>
+</ul>
+<p>对于第一个任务，由于经常碰到类似的客户需求。所以我决定做一个比较通用的系统，利于以后重用。</p>
+<p><a href="http://blog.joycode.com/wp-content/uploads/images/blog.joycode.com/joy/414/o_taskimage.jpg" target="_blank"><img alt="" src="http://blog.joycode.com/wp-content/uploads/images/blog.joycode.com/joy/414/r_taskimage.jpg"></a>所以在开发中，我把绘图的核心类包装了一个单独的Assemly。利用此核心类，我们可以组织出来基本的流程图。左图中的开始结点、中间结点、判断节点以及结束结点均是对象，根据节点的状态从对应的色彩模板中选择颜色进行绘制，做为一个整图输出（由于开发时间比较紧张，我还做不出来特别复杂的流程图，比如两线相交、曲线等，以后慢慢整理）。</p>
+<p>图形绘制出来后，通过Response.OutStream将其直接绘制为一个jpg图形，再在另外一个ASPX页面中使用Image控件引用它，使用Map元素为其添加Tooltip以及Href等功能。这个功能到今晨两点左右已经比较完善了。</p>
+<p>第二个任务比较简单，我直接调用了新浪的SMS的Web Service，只用了几行代码就加以实现。而使用MSN Messenger则的确难为了我一阵子，最终的方法是使用了DotMSN程序集，并且在里面实现了机器人功能，通过输入相应的命令，可以查看当前处理的订单、监控系统运行状态、启动或者关闭监控系统。在有新任务到达时，主动发送消息通知用户。这个功能今晚十二点左右也比较完善了。而且客户反应，已经远远超过他们的期望。另外，还有一个监控系统，是一个Windows Application，可以以列表方式查看当前正在处理的订单信息。</p>
+<p>等本周Demo完系统后，准备抽时间把这套子系统进行细化，在未来的项目中加以复用。上周还一直应另外一个客户要求，做一个SharePoint Portal Server 2003的插件，在文档库中的右键菜单中增加一项右键菜单，如果是Word文档，则查看其“索引及目录”，而如果是PowerPoint，则查看其所有Slide的标题。不过还未做完，可能要等到周末左右才能完成了。</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://blog.joycode.com/tag/cbian-cheng.html">C#编程</a>
+    </p>
+  </div>
+
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'hcwang';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " 开心就好的代码人生 ",
+  "url" : "https://blog.joycode.com",
+  "image": "",
+  "description": ""
+}
+</script>
+</body>
+</html>

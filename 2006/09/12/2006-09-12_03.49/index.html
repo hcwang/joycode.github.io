@@ -1,0 +1,215 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://blog.joycode.com/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/solid.css">
+
+
+
+
+  <link href="https://blog.joycode.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="开心就好的代码人生 Atom">
+
+
+
+ 
+
+<meta name="author" content="joycode" />
+<meta name="description" content="【原文地址】&#34;Atlas&#34; 1.0 Naming and Roadmap 【原文发表日期】Monday, September 11, 2006 10:01 AM 在过去的一年内，我们一直在奋力开发Atlas。Atlas一直在发展，变化和成长，是因为我 …" />
+<meta name="keywords" content=".NET, ASP.NET, Atlas, Visual Studio">
+
+
+  <meta property="og:site_name" content="开心就好的代码人生"/>
+  <meta property="og:title" content="Atlas 1.0版的命名和产品发布计划"/>
+  <meta property="og:description" content="【原文地址】&#34;Atlas&#34; 1.0 Naming and Roadmap 【原文发表日期】Monday, September 11, 2006 10:01 AM 在过去的一年内，我们一直在奋力开发Atlas。Atlas一直在发展，变化和成长，是因为我 …"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://blog.joycode.com/2006/09/12/2006-09-12_03.49/"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2006-09-12 03:49:00+08:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="https://blog.joycode.com/author/joycode.html">
+  <meta property="article:section" content="业界评论"/>
+  <meta property="article:tag" content=".NET"/>
+  <meta property="article:tag" content="ASP.NET"/>
+  <meta property="article:tag" content="Atlas"/>
+  <meta property="article:tag" content="Visual Studio"/>
+  <meta property="og:image" content="">
+
+  <title>开心就好的代码人生 &ndash; Atlas 1.0版的命名和产品发布计划</title>
+
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="https://blog.joycode.com/">
+      <img src="https://blog.joycode.com/theme/img/profile.png" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://blog.joycode.com/"></a>
+    </h1>
+
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="https://getpelican.com/" >Pelican</a>
+          </li>
+          <li>
+            <a target="_self" href="https://www.python.org/" >Python.org</a>
+          </li>
+          <li>
+            <a target="_self" href="https://palletsprojects.com/p/jinja/" >Jinja2</a>
+          </li>
+          <li>
+            <a target="_self" href="#" >You can modify those links in your config file</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-You can add links in your config file"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-You can add links in your config file"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-Another social link"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-Another social link"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="2006-09-12_03.49">Atlas 1.0版的命名和产品发布计划</h1>
+    <p>
+      Posted on 二 12 九月 2006 in <a href="https://blog.joycode.com/category/ye-jie-ping-lun.html">业界评论</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>【原文地址】<a href="http://weblogs.asp.net/scottgu/archive/2006/09/11/_2200_Atlas_2200_-1.0-Naming-and-Roadmap.aspx" target="">"Atlas" 1.0 Naming and Roadmap</a><br>
+【原文发表日期】Monday, September 11, 2006 10:01 AM</p>
+<p>在过去的一年内，我们一直在奋力开发Atlas。Atlas一直在发展，变化和成长，是因为我们得到了惊人数量的反馈和早期采纳。我们看到了围绕着这个产品的难以置信的兴趣和兴奋，光是今年，下载数目就超过25万次。</p>
+<p><strong>[发布Atlas 1.0版]{.underline}</strong></p>
+<p>很多人要求我们在Visual Studio下个版本发布之前推出一个完全支持的Atlas 1.0版。完全支持(Fully supported)意味着，Microsoft提供每天24个小时，每周7天，一年365天的产品支持，以及任何客户可以得到热补丁(hotfix)，假如他们遇到影响他们应用的bug的话。这也意味着，产品将有一个为期10年的<a href="http://support.microsoft.com/gp/lifepolicy">产品生命周期的承诺</a>─这样客户公司就能靠这个产品来开发关键业务(mission critical)的应用程序。</p>
+<p>今天，我非常兴奋地宣布，我们将发布基于ASP.NET 2.0的完全支持的Atlas 1.0 版，而且将确保它与Visual Studio 2005的兼容。我们的目标是在年底左右发布Atlas 1.0 版。计划是，先有一个Beta，然后是RC(发布候选)，然后会根据客户反馈来决定最后的发布日期。</p>
+<p><strong>[Atlas功能(Feature)推出计划]{.underline}</strong></p>
+<p>为加速日程安排和能在今年推出完全支持的版本，我们将集中精力推出一套完全支持的核心(core)功能。这套核心功能包括，能允许开发人员建立客户端控件/组件所需的所有常用组件，以及提供与ASP.NET集成的服务器端功能(包括无比受欢迎的UpdatePanel以及其他的服务器控件)。</p>
+<p>目前Atlas CTP版本支持的一些功能(feature)不会出现在完全支持的核心功能中。但这些功能会以单独下载的形式继续存在下去，而且会在支持的核心版本之上工作。我们并不是要撤销这些功能，而只是想试着把握好(optimize the timing)第一套完全支持的功能的发布时间，而且确保我们具有以更敏捷的方式继续发展和创新一些功能的灵活性，同时，我们想把核心层的功能“烧制好(bake down)”，以避免将来要对它们做影响巨大的变动。</p>
+<p>很明显，我们将在未来对<strong>[所有]{.underline}</strong>的功能继续支持Go-Live  license。那些只想使用受完全支持协议保障的产品的企业客户，可以选择只使用核心版中的那些功能。</p>
+<p>随着时间的迁移，我们会把越来越多的功能转移到完全支持的范围中去。我们也将在未来的几个星期内发表一个详细的白皮书，列出支持的功能，发布计划，对CTP版做的产品变动等。</p>
+<p><strong>[对Atlas的命名]{.underline}</strong></p>
+<p>作为发布Atlas的一部分，我们也将最后锁定我们以后将开始使用的产品的官方名称。以前笼统叫做Atlas的东西，从现在开始将有几个名字：</p>
+<p>1) 客户端Atlas javascript库将被称作“<strong>微软AJAX库</strong>(<strong>Microsoft AJAX Library</strong>)”。这将能在任何浏览器中使用，也将支持任何后端web服务器 (阅读这些博客帖子以了解如何在<a href="http://www.shankun.com/Atlas_Php_2.aspx">PHP</a>和<a href="http://blogs.msdn.com/brada/archive/2006/06/29/649944.aspx">ColdFusion</a>里运行)</p>
+<p>2) 与ASP.NET 集成极佳的服务器端Atlas功能，将被称作“<strong>ASP.NET 2.0 AJAX 扩展</strong>(<strong>ASP.NET 2.0 AJAX Extensions</strong>)”。作为改动的一部分，Atlas控件的标识前缀也将从\&lt;atlas:&gt;变成\&lt;asp:&gt;。这些控件将成为ASP.NET下个版本的一部分。</p>
+<p>3) 今天的<a href="http://atlas.asp.net/default.aspx?tabid=47&amp;subtabid=477">“Atlas控件工具包(Atlas Control Toolkit)</a>是套免费的共享源码的控件和组件，使用它，你可以从ASP.NET 2.0 AJAX Extension中获取最大的价值。以后，这个项目的名称将变成 “<strong>ASP.NET AJAX 控件工具包</strong>(<strong>ASP.NET AJAX Control Toolkit</strong>)”。</p>
+<p><strong>[结语]{.underline}</strong></p>
+<p>我们非常兴奋，我们将能推出完全支持的1.0 版。它将是100%的跨浏览器和跨平台。它将简化向ASP.NET应用添加丰富的AJAX功能，以及提供给用户改进的用户体验(UX)。把这个功能以最灵活的方式送到你的手中是我们的首要任务，我们相信，我在上面描述的计划将能达到这个目的。</p>
+<p>等到明年的Visual Studio “Orcas”版，生活将变得更加美好，我们将添加丰富的JavaScript Intellisense，调试，和在Visual Studio中对ASP.NET AJAX Extensions的WYSIWYG设计器支持，以及还有许多其他非常棒的功能可利用。</p>
+<p>谢谢，</p>
+<p>Scott</p>
+<p>::: postfoot</p>
+<div>
+
+标签：[ASP.NET](http://weblogs.asp.net/scottgu/archive/tags/ASP.NET/default.aspx){rel="tag"}, [Visual Studio](http://weblogs.asp.net/scottgu/archive/tags/Visual+Studio/default.aspx){rel="tag"}, [.NET](http://weblogs.asp.net/scottgu/archive/tags/.NET/default.aspx){rel="tag"}, [Atlas](http://weblogs.asp.net/scottgu/archive/tags/Atlas/default.aspx){rel="tag"}
+
+</div>
+
+<div>
+
+ 
+
+</div>
+
+<div>
+
+(思归译)
+
+</div>
+<p>:::</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://blog.joycode.com/tag/net.html">.NET</a>
+      <a href="https://blog.joycode.com/tag/aspnet.html">ASP.NET</a>
+      <a href="https://blog.joycode.com/tag/atlas.html">Atlas</a>
+      <a href="https://blog.joycode.com/tag/visual-studio.html">Visual Studio</a>
+    </p>
+  </div>
+
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'hcwang';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " 开心就好的代码人生 ",
+  "url" : "https://blog.joycode.com",
+  "image": "",
+  "description": ""
+}
+</script>
+</body>
+</html>

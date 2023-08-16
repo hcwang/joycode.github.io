@@ -1,0 +1,343 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://blog.joycode.com/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/solid.css">
+
+
+
+
+  <link href="https://blog.joycode.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="开心就好的代码人生 Atom">
+
+
+
+ 
+
+<meta name="author" content="joycode" />
+<meta name="description" content="根据下面这个blog修改而成: http://blog.aspcool.com/billy_zh/archive/2005/11/12/926.html#3337 &lt;p&gt; &lt;textarea cols=&#34;80&#34;&gt;1. 生成数据库&lt;/p&gt; &lt;p&gt;use master&lt;br /&gt; go&lt;br /&gt; create database Hibernate&lt;br /&gt; go&lt;br /&gt; use Hibernate&lt;br /&gt; go&lt;/p&gt; &lt;p&gt;create table …" />
+<meta name="keywords" content="">
+
+
+  <meta property="og:site_name" content="开心就好的代码人生"/>
+  <meta property="og:title" content="NHibernate中的many-to-many关系示范"/>
+  <meta property="og:description" content="根据下面这个blog修改而成: http://blog.aspcool.com/billy_zh/archive/2005/11/12/926.html#3337 &lt;p&gt; &lt;textarea cols=&#34;80&#34;&gt;1. 生成数据库&lt;/p&gt; &lt;p&gt;use master&lt;br /&gt; go&lt;br /&gt; create database Hibernate&lt;br /&gt; go&lt;br /&gt; use Hibernate&lt;br /&gt; go&lt;/p&gt; &lt;p&gt;create table …"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://blog.joycode.com/2005/11/17/2005-11-17_02.59/"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2005-11-17 02:59:00+08:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="https://blog.joycode.com/author/joycode.html">
+  <meta property="article:section" content="业界评论"/>
+  <meta property="og:image" content="">
+
+  <title>开心就好的代码人生 &ndash; NHibernate中的many-to-many关系示范</title>
+
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="https://blog.joycode.com/">
+      <img src="https://blog.joycode.com/theme/img/profile.png" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://blog.joycode.com/"></a>
+    </h1>
+
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="https://getpelican.com/" >Pelican</a>
+          </li>
+          <li>
+            <a target="_self" href="https://www.python.org/" >Python.org</a>
+          </li>
+          <li>
+            <a target="_self" href="https://palletsprojects.com/p/jinja/" >Jinja2</a>
+          </li>
+          <li>
+            <a target="_self" href="#" >You can modify those links in your config file</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-You can add links in your config file"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-You can add links in your config file"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-Another social link"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-Another social link"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="2005-11-17_02.59">NHibernate中的many-to-many关系示范</h1>
+    <p>
+      Posted on 四 17 十一月 2005 in <a href="https://blog.joycode.com/category/ye-jie-ping-lun.html">业界评论</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>根据下面这个blog修改而成:<br>
+<a href="http://blog.aspcool.com/billy_zh/archive/2005/11/12/926.html#3337">http://blog.aspcool.com/billy_zh/archive/2005/11/12/926.html#3337</a></p>
+<div class="highlight"><pre><span></span><code>&lt;p&gt;
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;textarea</span><span class="w"> </span><span class="na">cols=</span><span class="s">&quot;80&quot;</span><span class="nt">&gt;</span>1.<span class="w"> </span>生成数据库<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;p&gt;</span>use<span class="w"> </span>master<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+go<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+create<span class="w"> </span>database<span class="w"> </span>Hibernate<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+go<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+use<span class="w"> </span>Hibernate<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+go<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;p&gt;</span>create<span class="w"> </span>table<span class="w"> </span>Users<span class="w"> </span>(user_id<span class="w"> </span>int<span class="w"> </span>identity<span class="w"> </span>primary<span class="w"> </span>key,<span class="w"> </span>name<span class="w"> </span>varchar(100))<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+go<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;p&gt;</span>create<span class="w"> </span>table<span class="w"> </span>Groups(group_id<span class="w"> </span>int<span class="w"> </span>identity<span class="w">  </span>primary<span class="w"> </span>key,<span class="w"> </span>name<span class="w"> </span>varchar(100),<span class="w"> </span>description<span class="w"> </span>varchar(100))<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+go<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;p&gt;</span>create<span class="w"> </span>table<span class="w"> </span>UserGroups<span class="w"> </span>(group_id<span class="w"> </span>int<span class="w"> </span>foreign<span class="w"> </span>key<span class="w"> </span>references<span class="w"> </span>Groups(group_id),<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+user_id<span class="w"> </span>int<span class="w"> </span>foreign<span class="w"> </span>key<span class="w"> </span>references<span class="w"> </span>Users(user_id))<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+go<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;ol&gt;</span>
+<span class="nt">&lt;li&gt;</span>User.cs<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ol&gt;</span>
+<span class="nt">&lt;p&gt;</span>using<span class="w"> </span>System;<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+using<span class="w"> </span>System.Collections;<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;p&gt;</span>public<span class="w"> </span>class<span class="w"> </span>User<span class="w"> </span>{<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;p&gt;</span>public<span class="w"> </span>User()<span class="w"> </span>{<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">   </span>}<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;p&gt;</span>public<span class="w"> </span>int<span class="w"> </span>UserId<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">   </span>{<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">      </span>get<span class="w"> </span>{<span class="w"> </span>return<span class="w"> </span>userId;<span class="w"> </span>}<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">      </span>set<span class="w"> </span>{<span class="w"> </span>userId<span class="w"> </span>=<span class="w"> </span>value;<span class="w"> </span>}<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">   </span>}<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;p&gt;</span>public<span class="w"> </span>string<span class="w"> </span>Name<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">   </span>{<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">      </span>get<span class="w"> </span>{<span class="w"> </span>return<span class="w"> </span>name;<span class="w"> </span>}<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">      </span>set<span class="w"> </span>{<span class="w"> </span>name<span class="w"> </span>=<span class="w"> </span>value;<span class="w"> </span>}<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">   </span>}<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;p&gt;</span>public<span class="w"> </span>IList<span class="w"> </span>Groups<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">   </span>{<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">      </span>get<span class="w"> </span>{<span class="w"> </span>return<span class="w"> </span>groups;<span class="w"> </span>}<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">      </span>set<span class="w"> </span>{<span class="w"> </span>groups<span class="w"> </span>=<span class="w"> </span>value;<span class="w"> </span>}<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">   </span>}<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;p&gt;</span>private<span class="w"> </span>int<span class="w"> </span>userId;<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">   </span>private<span class="w"> </span>string<span class="w"> </span>name;<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">   </span>private<span class="w"> </span>IList<span class="w"> </span>groups<span class="w"> </span>=<span class="w"> </span>new<span class="w"> </span>ArrayList();<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;p&gt;</span>}<span class="w"> </span>//class<span class="w"> </span>User<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;ol&gt;</span>
+<span class="nt">&lt;li&gt;</span>Group.cs<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ol&gt;</span>
+<span class="nt">&lt;p&gt;</span>using<span class="w"> </span>System;<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+using<span class="w"> </span>System.Collections;<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;p&gt;</span>public<span class="w"> </span>class<span class="w"> </span>Group<span class="w"> </span>{<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;p&gt;</span>public<span class="w"> </span>Group()<span class="w"> </span>{<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">   </span>}<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;p&gt;</span>public<span class="w"> </span>int<span class="w"> </span>GroupId<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">   </span>{<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">      </span>get<span class="w"> </span>{<span class="w"> </span>return<span class="w"> </span>groupId;<span class="w"> </span>}<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">      </span>set<span class="w"> </span>{<span class="w"> </span>groupId<span class="w"> </span>=<span class="w"> </span>value;<span class="w"> </span>}<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">   </span>}<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;p&gt;</span>public<span class="w"> </span>string<span class="w"> </span>Name<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">   </span>{<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">      </span>get<span class="w"> </span>{<span class="w"> </span>return<span class="w"> </span>name;<span class="w"> </span>}<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">      </span>set<span class="w"> </span>{<span class="w"> </span>name<span class="w"> </span>=<span class="w"> </span>value;<span class="w"> </span>}<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">   </span>}<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;p&gt;</span>public<span class="w"> </span>string<span class="w"> </span>Description<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">   </span>{<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">      </span>get<span class="w"> </span>{<span class="w"> </span>return<span class="w"> </span>description;<span class="w"> </span>}<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">      </span>set<span class="w"> </span>{<span class="w"> </span>description<span class="w"> </span>=<span class="w"> </span>value;<span class="w"> </span>}<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">   </span>}<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;p&gt;</span>public<span class="w"> </span>IList<span class="w"> </span>Users<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">   </span>{<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">      </span>get<span class="w"> </span>{<span class="w"> </span>return<span class="w"> </span>users;<span class="w"> </span>}<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">      </span>set<span class="w"> </span>{<span class="w"> </span>users<span class="w"> </span>=<span class="w"> </span>value;<span class="w"> </span>}<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">   </span>}<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;p&gt;</span>private<span class="w"> </span>int<span class="w"> </span>groupId;<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">   </span>private<span class="w"> </span>string<span class="w"> </span>name;<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">   </span>private<span class="w"> </span>string<span class="w"> </span>description;<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">   </span>private<span class="w"> </span>IList<span class="w"> </span>users<span class="w"> </span>=<span class="w"> </span>new<span class="w"> </span>ArrayList();<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;p&gt;</span>}<span class="w"> </span>//class<span class="w"> </span>Group<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;ol&gt;</span>
+<span class="nt">&lt;li&gt;</span>User.hbm.xml<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;li&gt;</span>
+<span class="nt">&lt;p&gt;</span>Group.hbm.xml<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;li&gt;</span>
+<span class="nt">&lt;p&gt;</span>TestUser.cs<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ol&gt;</span>
+<span class="nt">&lt;p&gt;</span>using<span class="w"> </span>System;<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+using<span class="w"> </span>NHibernate;<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+using<span class="w"> </span>NHibernate.Cfg;<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+using<span class="w"> </span>System.Text;<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+using<span class="w"> </span>System.Collections;<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+using<span class="w"> </span>NHibernate.Expression;<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;p&gt;</span>public<span class="w"> </span>class<span class="w"> </span>TestCreate<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+{<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">    </span>ISession<span class="w"> </span>session;<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;pre&gt;&lt;code&gt;</span>public<span class="w"> </span>TestCreate()
+{
+
+Configuration<span class="w"> </span>cfg<span class="w"> </span>=<span class="w"> </span>new<span class="w"> </span>Configuration();
+
+cfg.AddXmlFile(<span class="ni">&amp;quot;</span>User.hbm.xml<span class="ni">&amp;quot;</span>);
+cfg.AddXmlFile(<span class="ni">&amp;quot;</span>Group.hbm.xml<span class="ni">&amp;quot;</span>);
+
+ISessionFactory<span class="w"> </span>factory<span class="w"> </span>=<span class="w"> </span>cfg.BuildSessionFactory();
+session<span class="w"> </span>=<span class="w"> </span>factory.OpenSession();
+}
+<span class="nt">&lt;/code&gt;&lt;/pre&gt;</span>
+<span class="nt">&lt;p&gt;</span>public<span class="w"> </span>void<span class="w"> </span>Test()<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+{<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">   </span>User<span class="w"> </span>user1<span class="w"> </span>=<span class="w"> </span>new<span class="w"> </span>User();<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">   </span>user1.Name<span class="w"> </span>=<span class="w"> </span><span class="ni">&amp;quot;</span>test1<span class="ni">&amp;quot;</span>;<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">   </span>User<span class="w"> </span>user2<span class="w"> </span>=<span class="w"> </span>new<span class="w"> </span>User();<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">   </span>user2.Name<span class="w"> </span>=<span class="w"> </span><span class="ni">&amp;quot;</span>test2<span class="ni">&amp;quot;</span>;<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;p&gt;</span>Group<span class="w"> </span>group1<span class="w"> </span>=<span class="w"> </span>new<span class="w"> </span>Group();<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">   </span>group1.Name<span class="w"> </span>=<span class="w"> </span><span class="ni">&amp;quot;</span>group1<span class="ni">&amp;quot;</span>;<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">   </span>Group<span class="w"> </span>group2<span class="w"> </span>=<span class="w"> </span>new<span class="w"> </span>Group();<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">   </span>group2.Name<span class="w"> </span>=<span class="w"> </span><span class="ni">&amp;quot;</span>group2<span class="ni">&amp;quot;</span>;<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;p&gt;</span>user1.Groups.Add(<span class="w"> </span>group2);<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">   </span>user2.Groups.Add(<span class="w"> </span>group1<span class="w"> </span>);<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">   </span>group1.Users.Add(<span class="w"> </span>user2<span class="w"> </span>);<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">   </span>group2.Users.Add(<span class="w"> </span>user1);<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;p&gt;</span>ITransaction<span class="w"> </span>trans<span class="w"> </span>=<span class="w"> </span>null;<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">   </span>try<span class="w"> </span>{<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">      </span>trans<span class="w"> </span>=<span class="w"> </span>session.BeginTransaction();<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;pre&gt;&lt;code&gt;</span><span class="w">  </span>session.Save(<span class="w"> </span>user1<span class="w"> </span>);
+<span class="w">  </span>session.Save(<span class="w"> </span>user2<span class="w"> </span>);
+<span class="w">  </span>session.Save(<span class="w"> </span>group1<span class="w"> </span>);
+<span class="w">  </span>session.Save(<span class="w"> </span>group2<span class="w"> </span>);
+
+<span class="w">  </span>trans.Commit();
+<span class="nt">&lt;/code&gt;&lt;/pre&gt;</span>
+<span class="nt">&lt;p&gt;</span>}<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">   </span>catch<span class="w"> </span>(<span class="w"> </span>Exception<span class="w"> </span>e<span class="w"> </span>)<span class="w"> </span>{<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">      </span>if<span class="w"> </span>(<span class="w"> </span>trans<span class="w"> </span>!=<span class="w"> </span>null<span class="w"> </span>)<span class="w"> </span>trans.Rollback();<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">      </span>throw<span class="w"> </span>e;<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">   </span>}<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">   </span>finally<span class="w"> </span>{<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">      </span>session.Close();<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">   </span>}<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;p&gt;</span>}<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;pre&gt;&lt;code&gt;</span>static<span class="w"> </span>void<span class="w"> </span>Main()
+{
+<span class="w">    </span>TestCreate<span class="w"> </span>tc<span class="w"> </span>=<span class="w"> </span>new<span class="w"> </span>TestCreate();
+<span class="w">    </span>tc.Test();
+}
+<span class="nt">&lt;/code&gt;&lt;/pre&gt;</span>
+<span class="nt">&lt;p&gt;</span>}<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;ol&gt;</span>
+<span class="nt">&lt;li&gt;</span>TestUser.exe.config
+<span class="nt">&lt;pre&gt;&lt;code&gt;</span><span class="w"> </span><span class="ni">&amp;lt;</span>section<span class="w"> </span>/<span class="ni">&amp;gt;</span>
+<span class="w"> </span><span class="ni">&amp;lt;</span>section<span class="w"> </span>/<span class="ni">&amp;gt;</span>
+<span class="nt">&lt;/code&gt;&lt;/pre&gt;</span>
+<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;li&gt;</span>UserGroup.dll<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ol&gt;</span>
+<span class="nt">&lt;p&gt;</span>csc<span class="w"> </span>/t:library<span class="w"> </span>/out:UserGroup.dll<span class="w"> </span>User.cs<span class="w"> </span>Group.cs<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;ol&gt;</span>
+<span class="nt">&lt;li&gt;</span>TestUser.exe<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ol&gt;</span>
+<span class="nt">&lt;p&gt;</span>csc<span class="w"> </span>/r:Nhibernate.dll,UserGroup.dll<span class="w"> </span>TestUser.cs<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;ol&gt;</span>
+<span class="nt">&lt;li&gt;</span>runtime<span class="w"> </span>assemblies<span class="w"> </span>needed<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ol&gt;</span>
+<span class="nt">&lt;p&gt;</span>HashCodeProvider.dll<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+Iesi.Collections.dll<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+log4net.dll<span class="nt">&lt;br</span><span class="w"> </span><span class="nt">/&gt;</span>
+NHibernate.dll<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;p&gt;&lt;/textarea&gt;</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>&lt;/p&gt;
+</code></pre></div>
+  </div>
+  <div class="tag-cloud">
+    <p>
+    </p>
+  </div>
+
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'hcwang';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " 开心就好的代码人生 ",
+  "url" : "https://blog.joycode.com",
+  "image": "",
+  "description": ""
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,220 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://blog.joycode.com/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/solid.css">
+
+
+
+
+  <link href="https://blog.joycode.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="开心就好的代码人生 Atom">
+
+
+
+ 
+
+<meta name="author" content="joycode" />
+<meta name="description" content="【原文地址】Tip/Trick: UpdateProgress Control and AJAX Activity Image Animations 【原文发表日期】Thursday, September 21, 2006 1:06 PM ASP.NET AJAX扩展（即Atlas) 提供的很酷的新控件之一是UpdateProgress控件。这个控件允许 …" />
+<meta name="keywords" content="ASP.NET, Atlas, Tips and Tricks">
+
+
+  <meta property="og:site_name" content="开心就好的代码人生"/>
+  <meta property="og:title" content="技巧和诀窍：UpdateProgress控件和AJAX活动图像动画"/>
+  <meta property="og:description" content="【原文地址】Tip/Trick: UpdateProgress Control and AJAX Activity Image Animations 【原文发表日期】Thursday, September 21, 2006 1:06 PM ASP.NET AJAX扩展（即Atlas) 提供的很酷的新控件之一是UpdateProgress控件。这个控件允许 …"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://blog.joycode.com/2006/09/22/2006-09-22_16.15/"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2006-09-22 16:15:00+08:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="https://blog.joycode.com/author/joycode.html">
+  <meta property="article:section" content="业界评论"/>
+  <meta property="article:tag" content="ASP.NET"/>
+  <meta property="article:tag" content="Atlas"/>
+  <meta property="article:tag" content="Tips and Tricks"/>
+  <meta property="og:image" content="">
+
+  <title>开心就好的代码人生 &ndash; 技巧和诀窍：UpdateProgress控件和AJAX活动图像动画</title>
+
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="https://blog.joycode.com/">
+      <img src="https://blog.joycode.com/theme/img/profile.png" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://blog.joycode.com/"></a>
+    </h1>
+
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="https://getpelican.com/" >Pelican</a>
+          </li>
+          <li>
+            <a target="_self" href="https://www.python.org/" >Python.org</a>
+          </li>
+          <li>
+            <a target="_self" href="https://palletsprojects.com/p/jinja/" >Jinja2</a>
+          </li>
+          <li>
+            <a target="_self" href="#" >You can modify those links in your config file</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-You can add links in your config file"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-You can add links in your config file"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-Another social link"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-Another social link"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="2006-09-22_16.15">技巧和诀窍：UpdateProgress控件和AJAX活动图像动画</h1>
+    <p>
+      Posted on 五 22 九月 2006 in <a href="https://blog.joycode.com/category/ye-jie-ping-lun.html">业界评论</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>【原文地址】<a href="http://weblogs.asp.net/scottgu/archive/2006/09/21/Tip_2F00_Trick_3A00_-UpdateProgress-Control-and-AJAX-Activity-Image-Animations.aspx" target="" title="技巧和诀窍：UpdateProgress控件和AJAX活动图像动画">Tip/Trick: UpdateProgress Control and AJAX Activity Image Animations</a><br>
+【原文发表日期】Thursday, September 21, 2006 1:06 PM</p>
+<p>ASP.NET AJAX扩展（即Atlas) 提供的很酷的新控件之一是UpdateProgress控件。这个控件允许你在AJAX回调的进行过程中，自动在页面上显示指定的UI。同时，如果AJAX回调耗时太长，你还可以在UI上提供一个选项让用户来取消AJAX回调。在页面上使用该控件，只须这样声明：</p>
+<div>
+
+    `<font color="blue">`{=html}\<`</font>`{=html}`<font color="maroon">`{=html}atlas:UpdateProgress`</font>`{=html}`<font color="red">`{=html} ID`</font>`{=html}`<font color="blue">`{=html}="progress1"`</font>`{=html}`<font color="red">`{=html} runat`</font>`{=html}`<font color="blue">`{=html}="server"\>`</font>`{=html}`<font color="black">`{=html}  
+        `</font>`{=html}`<font color="blue">`{=html}\<`</font>`{=html}`<font color="maroon">`{=html}ProgressTemplate`</font>`{=html}`<font color="blue">`{=html}\>`</font>`{=html}`<font color="black">`{=html}  
+          
+            `</font>`{=html}`<font color="blue">`{=html}\<`</font>`{=html}`<font color="maroon">`{=html}div`</font>`{=html}`<font color="red">`{=html} class`</font>`{=html}`<font color="blue">`{=html}="progress"\>`</font>`{=html}`<font color="black">`{=html}  
+                `</font>`{=html}`<font color="blue">`{=html}\<`</font>`{=html}`<font color="maroon">`{=html}img`</font>`{=html}`<font color="red">`{=html} src`</font>`{=html}`<font color="blue">`{=html}="indicator.gif"`</font>`{=html}`<font color="red">`{=html} `</font>`{=html}`<font color="blue">`{=html}/\>   
+                Please Wait...  
+            \<!--`</font-->`{=html}`<font color="maroon">`{=html}div`</font>`{=html}`<font color="blue">`{=html}\>`</font>`{=html}`<font color="black">`{=html}  
+          
+        `</font>`{=html}`<font color="blue">`{=html}\<!--`</font-->`{=html}`<font color="maroon">`{=html}ProgressTemplate`</font>`{=html}`<font color="blue">`{=html}\>`</font>`{=html}`<font color="black">`{=html}  
+    `</font>`{=html}`<font color="blue">`{=html}\<!--`</font-->`{=html}`<font color="maroon">`{=html}atlas:UpdateProgress`</font>`{=html}`<font color="blue">`{=html}\>`</font>`{=html}`<font color="black">`{=html}`</font>`{=html}
+
+</div>
+
+<p>在AJAX回调进行中，\&lt;ProgressTemplate&gt;里的内容就会显示。你可以通过CSS将里面的内容显示在页面的任何位置，例如，你可能想直接在GridView或其他元素上方通过渐显效果把它显示出来。开发人员经常使用动画图像显示进度，现在也可以在\&lt;ProgressTemplate&gt;里面实现这样的效果。</p>
+<p>Alan Le最近发了<a href="http://blogs.vertigosoftware.com/alanl/archive/2006/09/21/Icons_for_UpdateProgress_Control.aspx" target="_blank">一个很酷的链接</a>，指向几个非常有用的网站，这些网站提供了许多动画进度的图标。你可以很容易地将它们与UpdateProgress控件结合使用，来显示回调操作的进度：</p>
+<ul>
+<li><a href="http://www.napyfab.com/ajax-indicators/" target="_blank">http://www.napyfab.com/ajax-indicators/</a></li>
+<li><a href="http://www.ajaxload.info/" target="_blank">http://www.ajaxload.info/</a></li>
+<li><a href="http://mentalized.net/activity-indicators/">http://mentalized.net/activity-indicators/</a></li>
+</ul>
+<p>你可以从这几个网站上下载到可用的旋转齿轮和进度图标。下面是几个例子：</p>
+<p><img alt="" src="http://www.napyfab.com/ajax-indicators/images/progressbar_long_green.gif"></p>
+<p><img alt="" src="http://www.napyfab.com/ajax-indicators/images/progressbar_long.gif"></p>
+<p><img alt="" src="http://www.napyfab.com/ajax-indicators/images/indicator_mozilla_blu.gif"></p>
+<p>本周早些时候，我提到<a href="http://blog.joycode.com/scottgu/archive/2006/09/20/83916.aspx">新发布的Atlas控件工具包现在包含了一个动画效果库</a>，可以和ASP.NET AJAX扩展一起使用。与UpdateProgress控件配合使用的话，它们能给你的网站增添很好的视觉效果。</p>
+<p>希望本文对你有所帮助，</p>
+<p>Scott</p>
+<p>::: postfoot</p>
+<div>
+
+标签： [ASP.NET](http://weblogs.asp.net/scottgu/archive/tags/ASP.NET/default.aspx){rel="tag"}, [Atlas](http://weblogs.asp.net/scottgu/archive/tags/Atlas/default.aspx){rel="tag"}, [Tips and Tricks](http://weblogs.asp.net/scottgu/archive/tags/Tips+and+Tricks/default.aspx){rel="tag"}
+
+</div>
+
+<div>
+
+ 
+
+</div>
+
+<p>(<a href="http://www.cnblogs.com/ring1981">Ring</a>译)
+:::</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://blog.joycode.com/tag/aspnet.html">ASP.NET</a>
+      <a href="https://blog.joycode.com/tag/atlas.html">Atlas</a>
+      <a href="https://blog.joycode.com/tag/tips-and-tricks.html">Tips and Tricks</a>
+    </p>
+  </div>
+
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'hcwang';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " 开心就好的代码人生 ",
+  "url" : "https://blog.joycode.com",
+  "image": "",
+  "description": ""
+}
+</script>
+</body>
+</html>

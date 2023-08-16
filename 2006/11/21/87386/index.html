@@ -1,0 +1,197 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://blog.joycode.com/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/solid.css">
+
+
+
+
+  <link href="https://blog.joycode.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="开心就好的代码人生 Atom">
+
+
+
+ 
+
+<meta name="author" content="joycode" />
+<meta name="description" content="今天继续讲Sidebar Gadget的开发。此篇将是本教程的最后一篇，因为了解了Gadget的大体情况后，接下来就需要大家自己进行练习了。只有勤于练习，而不是安 …" />
+<meta name="keywords" content="C#编程, 操作系统, 软件推荐">
+
+
+  <meta property="og:site_name" content="开心就好的代码人生"/>
+  <meta property="og:title" content="Sidebar Gadget开发教程(4)"/>
+  <meta property="og:description" content="今天继续讲Sidebar Gadget的开发。此篇将是本教程的最后一篇，因为了解了Gadget的大体情况后，接下来就需要大家自己进行练习了。只有勤于练习，而不是安 …"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://blog.joycode.com/2006/11/21/87386/"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2006-11-21 11:34:00+08:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="https://blog.joycode.com/author/joycode.html">
+  <meta property="article:section" content="业界评论"/>
+  <meta property="article:tag" content="C#编程"/>
+  <meta property="article:tag" content="操作系统"/>
+  <meta property="article:tag" content="软件推荐"/>
+  <meta property="og:image" content="">
+
+  <title>开心就好的代码人生 &ndash; Sidebar Gadget开发教程(4)</title>
+
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="https://blog.joycode.com/">
+      <img src="https://blog.joycode.com/theme/img/profile.png" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://blog.joycode.com/"></a>
+    </h1>
+
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="https://getpelican.com/" >Pelican</a>
+          </li>
+          <li>
+            <a target="_self" href="https://www.python.org/" >Python.org</a>
+          </li>
+          <li>
+            <a target="_self" href="https://palletsprojects.com/p/jinja/" >Jinja2</a>
+          </li>
+          <li>
+            <a target="_self" href="#" >You can modify those links in your config file</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-You can add links in your config file"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-You can add links in your config file"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-Another social link"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-Another social link"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="87386">Sidebar Gadget开发教程(4)</h1>
+    <p>
+      Posted on 二 21 十一月 2006 in <a href="https://blog.joycode.com/category/ye-jie-ping-lun.html">业界评论</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>今天继续讲Sidebar Gadget的开发。此篇将是本教程的最后一篇，因为了解了Gadget的大体情况后，接下来就需要大家自己进行练习了。只有勤于练习，而不是安心看教程，你才会积累丰富的开发经验。而且有些细节其实只需要点一下即可，不需要再详述。</p>
+<p>从两周前开始，我们面对两个Partner进行了Gadget开发的Workshop。并且每个Partner均讲述了真实的Requirement，进行Job training。目前来看，这种效果非常不错，建议各位也可以在工作中进行学习。</p>
+<p>在上一节<a href="http://blog.joycode.com/joy/archive/2006/11/04/86110.aspx" target="_blank">教程</a>当中，我们在最后给出了几个问题。现在一一回答该问题。</p>
+<ul>
+<li>Gadget当中如何含有设置界面？即那个类似于小板手似的图标？</li>
+</ul>
+<p><em>其实这个问题的答案很简单，只需要在主界面所关联的Javascript中加入一句：System.Gadget.settingsUI = "[settings.htm"]{.underline};即可，该语句中的[settings.htm]{.underline}可以取代为其它名字.</em></p>
+<ul>
+<li>如何使Gadget出现Flyout界面？</li>
+</ul>
+<p><em>这个问题如上所示，只需要加一句：System.Gadget.Flyout.file="[flyout.htm]{.underline}" 即可，同理，此句中的[flyout.htm]{.underline}也可以换成其它的文件名。在需要显示Flyout界面时（比如某个超链接点击事件，或者某个图片控件的双击事件），调用System.Gadget.Flyout.show=true即可，不需要其它设置。当然，你可以在显示时进行一些其它的处理，那么可以调用它的事件函数即System.Gadget.Flyout.onShow(指向一个函数名），其对应的隐藏事件函数为System.Gadget.Flyout.onHide函数</em></p>
+<ul>
+<li>如何得到系统信息？</li>
+</ul>
+<p><em>Sidebar为Javascript扩充了一些API，用于执行外部命令，或者得到系统信息，或者对于Gadget内部本身的调用（如上面的Flyout以及SettingsUI），关于这些API的详细信息，可以参阅：</em><a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/sidebar/sidebar/reference/refs.asp" target="_blank" title="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/sidebar/sidebar/reference/refs.asp"><em>http://msdn.microsoft.com/library/default.asp?url=/library/en-us/sidebar/sidebar/reference/refs.asp</em></a><em> 得到更加详细的信息。</em></p>
+<ul>
+<li>如何在没有使用ASP.NET AJAX框架的基础上出现局部刷新效果？</li>
+</ul>
+<p><em>更加简单了，使用Microsoft XMLHTTP这个函数的异步调用方式，关于XMLHTTP的更加详细信息，可以参阅<a href="http://search.live.com/results.aspx?q=XMLHttp&amp;src=IE-SearchBox" target="_blank">相关信息</a>。其中有关于如何实现异步调用的。另外，在调用时，如果遇到IE缓存问题，可以使用setRequestHeader("If-Modified-Since","0")方式解决（感谢Symbio提供信息），而分析XML，可以使用Microsoft XMLDom来进行。</em></p>
+<ul>
+<li>有些Gadget当置放在Sidebar上显示样式是一种，而拖到桌面上会有另外一种显示方式，这是如何实现的？</li>
+</ul>
+<p><em>这个更简单了，查看了下这些Gadget的源代码，可以知道，通过Gadget的System.Gadget.docked的属性可以得到其是否放置在Sidebar上（当为True时，是在Sidebar上），然后再调用JS来对于其CSS特性进行更改即可。</em></p>
+<p><em>好了，Sidebar Gadget的教程到此结束。非常感谢大家。:)</em></p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://blog.joycode.com/tag/cbian-cheng.html">C#编程</a>
+      <a href="https://blog.joycode.com/tag/cao-zuo-xi-tong.html">操作系统</a>
+      <a href="https://blog.joycode.com/tag/ruan-jian-tui-jian.html">软件推荐</a>
+    </p>
+  </div>
+
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'hcwang';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " 开心就好的代码人生 ",
+  "url" : "https://blog.joycode.com",
+  "image": "",
+  "description": ""
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,195 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://blog.joycode.com/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/solid.css">
+
+
+
+
+  <link href="https://blog.joycode.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="开心就好的代码人生 Atom">
+
+
+
+ 
+
+<meta name="author" content="joycode" />
+<meta name="description" content="1。[来源：Scott Guthrie] ASP.NET 2.0 Providers的源码供下载了，很多人都报道这个消息了，这绝对是个好消息 http://download.microsoft.com/download/a/b/3/ab3c284b-dc9a-473d-b7e3-33bacfcc8e98/ProviderToolkitSamples.msi 如果你对Provider模型不熟，可以参考MSDN上的系列文章 …" />
+<meta name="keywords" content=".NET, 杂类">
+
+
+  <meta property="og:site_name" content="开心就好的代码人生"/>
+  <meta property="og:title" content=".NET 点滴"/>
+  <meta property="og:description" content="1。[来源：Scott Guthrie] ASP.NET 2.0 Providers的源码供下载了，很多人都报道这个消息了，这绝对是个好消息 http://download.microsoft.com/download/a/b/3/ab3c284b-dc9a-473d-b7e3-33bacfcc8e98/ProviderToolkitSamples.msi 如果你对Provider模型不熟，可以参考MSDN上的系列文章 …"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://blog.joycode.com/2006/04/18/2006-04-18_02.01/"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2006-04-18 02:01:00+08:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="https://blog.joycode.com/author/joycode.html">
+  <meta property="article:section" content="业界评论"/>
+  <meta property="article:tag" content=".NET"/>
+  <meta property="article:tag" content="杂类"/>
+  <meta property="og:image" content="">
+
+  <title>开心就好的代码人生 &ndash; .NET 点滴</title>
+
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="https://blog.joycode.com/">
+      <img src="https://blog.joycode.com/theme/img/profile.png" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://blog.joycode.com/"></a>
+    </h1>
+
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="https://getpelican.com/" >Pelican</a>
+          </li>
+          <li>
+            <a target="_self" href="https://www.python.org/" >Python.org</a>
+          </li>
+          <li>
+            <a target="_self" href="https://palletsprojects.com/p/jinja/" >Jinja2</a>
+          </li>
+          <li>
+            <a target="_self" href="#" >You can modify those links in your config file</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-You can add links in your config file"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-You can add links in your config file"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-Another social link"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-Another social link"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="2006-04-18_02.01">.NET 点滴</h1>
+    <p>
+      Posted on 二 18 四月 2006 in <a href="https://blog.joycode.com/category/ye-jie-ping-lun.html">业界评论</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>1。[来源：<a href="http://weblogs.asp.net/scottgu/archive/2006/04/13/442772.aspx" target="_blank">Scott Guthrie</a>] ASP.NET 2.0 Providers的源码供下载了，很多人都报道这个消息了，这绝对是个好消息</p>
+<p><a href="http://download.microsoft.com/download/a/b/3/ab3c284b-dc9a-473d-b7e3-33bacfcc8e98/ProviderToolkitSamples.msi">http://download.microsoft.com/download/a/b/3/ab3c284b-dc9a-473d-b7e3-33bacfcc8e98/ProviderToolkitSamples.msi</a></p>
+<p>如果你对Provider模型不熟，可以参考MSDN上的系列文章</p>
+<p>Microsoft ASP.NET 2.0 Providers: Introduction<br>
+<a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dnaspp/html/asp2prvdr01.asp">http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dnaspp/html/asp2prvdr01.asp</a></p>
+<p>Jeff Prosise写的ASP.NET2.0 Provider Model: Introduction to the Provider Model<br>
+<a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dnaspp/html/aspnetprovmod_intro.asp">http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dnaspp/html/aspnetprovmod_intro.asp</a></p>
+<p>2。Atlas开发组的Bertrand Le Roy对Atlas浏览器兼容层的解释<br>
+<a href="http://weblogs.asp.net/bleroy/archive/2006/04/13/442815.aspx">http://weblogs.asp.net/bleroy/archive/2006/04/13/442815.aspx</a></p>
+<p>“。。。一般来说，使Javascript类库跨浏览器兼容有三种方式：</p>
+<ul>
+<li>每次调用时你都检查浏览器是否支持某些功能。这么做的话，所有新的编码都要考虑所有的浏览器，添加一个新的浏览器需要修改所有的编码库</li>
+<li>你写一个抽象层，建立另一套的API来抽象每个浏览器的具体API，跟其他两种方式相比，这种做法并不标准，因为你实际上是在现有的标准API和浏览器开发商自己的API之上又建立了一套新的非标准API。而且，这也使得编码调用路径更长了，因为每次API调用需要经过额外的函数调用，而且每次调用还必须检测浏览器是否支持</li>
+<li>Atlas的做法，你扩展其他的浏览器使得所有的浏览器都拥有一致的API，这样，编码调用路径是最直接的，而且兼容层生成时，只要做一次浏览器检测。这个做法另外的好处是，你每次添加一个新的浏览器，只要写它的兼容层就可以了，而不需要碰实际使用的Javascript类库</li>
+</ul>
+<p>。。。”</p>
+<p>3。 <a href="http://blogs.msdn.com/fyuan/default.aspx" target="_blank">袁峰大侠</a>的Windows Graphics Programming经典著作重印版出来了</p>
+<p><a href="http://blogs.msdn.com/fyuan/archive/2006/04/15/576934.aspx">http://blogs.msdn.com/fyuan/archive/2006/04/15/576934.aspx</a></p>
+<p>4。 <a href="http://blogs.msdn.com/mikhailarkhipov/default.aspx">Mikhail Arkhipov</a> 开发了一个能检查拼法的Visual Studio add-on</p>
+<p>Spell Checker for HTML and ASP.NET pages<br>
+<a href="http://blogs.msdn.com/mikhailarkhipov/archive/2006/04/17/577471.aspx">http://blogs.msdn.com/mikhailarkhipov/archive/2006/04/17/577471.aspx</a></p>
+<p>5。 英国的Phil Winstanley的新技术列单，要学的东西太多了，真是学不过来</p>
+<p>New Technology Shopping List<br>
+<a href="http://weblogs.asp.net/Plip/archive/2006/04/16/443059.aspx">http://weblogs.asp.net/Plip/archive/2006/04/16/443059.aspx</a></p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://blog.joycode.com/tag/net.html">.NET</a>
+      <a href="https://blog.joycode.com/tag/za-lei.html">杂类</a>
+    </p>
+  </div>
+
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'hcwang';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " 开心就好的代码人生 ",
+  "url" : "https://blog.joycode.com",
+  "image": "",
+  "description": ""
+}
+</script>
+</body>
+</html>

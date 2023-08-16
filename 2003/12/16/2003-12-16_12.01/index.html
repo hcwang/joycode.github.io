@@ -1,0 +1,231 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://blog.joycode.com/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/solid.css">
+
+
+
+
+  <link href="https://blog.joycode.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="开心就好的代码人生 Atom">
+
+
+
+ 
+
+<meta name="author" content="joycode" />
+<meta name="description" content="ASP.NET在页面的Context.User里面放了一个实现IPrincipal的对象，用来实现对已验证用户的管理。ASP.NET系统中，通常采用的方式就是扩展这个Context.User，让它里面保存定制的信息。 1、扩展方式 扩 …" />
+<meta name="keywords" content="">
+
+
+  <meta property="og:site_name" content="开心就好的代码人生"/>
+  <meta property="og:title" content="昨晚上写的关于IBuySpy里面用户权限验证方面的东西"/>
+  <meta property="og:description" content="ASP.NET在页面的Context.User里面放了一个实现IPrincipal的对象，用来实现对已验证用户的管理。ASP.NET系统中，通常采用的方式就是扩展这个Context.User，让它里面保存定制的信息。 1、扩展方式 扩 …"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://blog.joycode.com/2003/12/16/2003-12-16_12.01/"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2003-12-16 12:01:00+08:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="https://blog.joycode.com/author/joycode.html">
+  <meta property="article:section" content="业界评论"/>
+  <meta property="og:image" content="">
+
+  <title>开心就好的代码人生 &ndash; 昨晚上写的关于IBuySpy里面用户权限验证方面的东西</title>
+
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="https://blog.joycode.com/">
+      <img src="https://blog.joycode.com/theme/img/profile.png" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://blog.joycode.com/"></a>
+    </h1>
+
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="https://getpelican.com/" >Pelican</a>
+          </li>
+          <li>
+            <a target="_self" href="https://www.python.org/" >Python.org</a>
+          </li>
+          <li>
+            <a target="_self" href="https://palletsprojects.com/p/jinja/" >Jinja2</a>
+          </li>
+          <li>
+            <a target="_self" href="#" >You can modify those links in your config file</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-You can add links in your config file"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-You can add links in your config file"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-Another social link"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-Another social link"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="2003-12-16_12.01">昨晚上写的关于IBuySpy里面用户权限验证方面的东西</h1>
+    <p>
+      Posted on 二 16 十二月 2003 in <a href="https://blog.joycode.com/category/ye-jie-ping-lun.html">业界评论</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>ASP.NET在页面的Context.User里面放了一个实现IPrincipal的对象，用来实现对已验证用户的管理。ASP.NET系统中，通常采用的方式就是扩展这个Context.User，让它里面保存定制的信息。</p>
+<p>1、扩展方式</p>
+<p>扩展方式基本上有两种：直接利用GenericPrincipal和自己写一个实现IPrincipal的类。IBuySpy用的前者，优点就是N简单。</p>
+<p>Context.User = new GenericPrincipal(Context.User.Identity, roles);</p>
+<p>roles是一个保存了当前用户的角色信息的String，各个角色间用“;”分隔，由前面的代码调用数据层中的UserDB.GetRoles()方法来得到。</p>
+<p>自己写一个实现IPrincipal的类其实也是N简单，你只需要实现两个接口：Identity属性返回一个IIdentity的用户标识对象，IsInRole(String role)判断用户是否具有参数中的角色。下面是我写的一个替代IBuySpy中原有扩展模式的类：</p>
+<p>public class IBSPrincipal : IPrincipal {</p>
+<p>private IIdentity _identity;</p>
+<p>private String[] _asRole;</p>
+<p>下面是两个构造函数：</p>
+<p>public IBSPrincipal(IIdentity identity, String roles) {</p>
+<p>_identity = identity;</p>
+<p>_asRole = roles.Split(';');</p>
+<p>}</p>
+<p>public IBSPrincipal(IIdentity identity, String[] roles) {</p>
+<p>_identity = identity;</p>
+<p>_asRole = roles;</p>
+<p>}</p>
+<p>然后是用来实现IPrincipal的一个属性和一个方法：</p>
+<p>public IIdentity Identity {</p>
+<p>get {</p>
+<p>return _identity;</p>
+<p>}</p>
+<p>}</p>
+<p>public bool IsInRole(string role) {</p>
+<p>// 下面一行幸得“JGTM'2003”告知Array有一个static的IndexOf()</p>
+<p>// 原来是用循环查询_asRole....土不可及...</p>
+<p>return (System.Array.IndexOf(_asRole, role) &gt; -1);</p>
+<p>}</p>
+<p>OK，然后我们就可以用下面这句替代上面IBuySpy原有的那句了：</p>
+<p>Context.User = new IBSPrincipal(Context.User.Identity, roles);</p>
+<p>看起来好像自己创建这个IBSPrincipal并不划算，它没有提供比GenericPrincipal更多的功能，但好处是我们以后可以随时扩展它，而且实现的成本也很低。</p>
+<p>2、时机</p>
+<p>我们在什么时候进行上面所说的这样的扩展行为呢？</p>
+<p>IBuySpy选择在Global.asax里面的Application_AuthenticateRequest事件里面进行这些动作，只要ASP.NET程序需要进行用户验证，那么肯定要经过这里，这个地方不错。</p>
+<p>另一个好地方就是在“页面基类”的Page_Init方法中，我们在构造网站的时候就可以先构建一个“页面基类”(即使一开始里面什么都没有)，所有的页面都从这个基类继承下来而不是从默认的System.Web.UI.Page，这样做的好处是我们可以随时把类似的动作放在基类中。可惜IBuySpy本身并没有应用这种“页面基类”的方式。</p>
+<p>3、FormsAuthenticationTicket</p>
+<p>这个类是一个“验证票据”类，我们可以利用这个票据来保存用户的信息，并把这个票据写到客户端的Cookie里面，以后客户再来时，从Cookie中把这个票据取回来，就可以得到用户的信息了。</p>
+<p>上面这一段说的就是IBuySpy做的，但是一定要注意，我们自己做这些操作，和ASP.NET内置的Forms验证没有任何关系，虽然它也是通过类似的保存票据到Cookie来实现的。</p>
+<p>用这个票据来写到Cookie与我们自定义一个Cookie去写相比有什么好处呢，首先可以设定票据的过期时间、决定是否永久在Cookie保存票据、票据中可以写入自定义的信息（比如用户所具有的角色），而且，.NET内置的FormsAuthentication.Encrypt()方法和FormsAuthentication.Decrypt()方法可以把一个票据加密成一个字符串，和从一个字符串解密出一个票据，这样省掉了我们很多的工作了。</p>
+<p>来看看IBuySpy里面的代码，创建一个票据并写到Cookie：</p>
+<p>FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(</p>
+<p>1,  // version</p>
+<p>Context.User.Identity.Name,  // user name</p>
+<p>DateTime.Now,  // issue time</p>
+<p>DateTime.Now.AddHours(1),  // expires every hour</p>
+<p>false,  // don't persist cookie</p>
+<p>roleStr  // roles</p>
+<p>);</p>
+<p>// Encrypt the ticket</p>
+<p>String cookieStr = FormsAuthentication.Encrypt(ticket);</p>
+<p>// Send the cookie to the client</p>
+<p>Response.Cookies["portalroles"].Value = cookieStr;</p>
+<p>Response.Cookies["portalroles"].Path = "/";</p>
+<p>Response.Cookies["portalroles"].Expires = DateTime.Now.AddMinutes(1);</p>
+<p>从Cookie中读出票据，再从票据中得到用户具有的角色：</p>
+<p>// Get roles from roles cookie</p>
+<p>FormsAuthenticationTicket ticket = FormsAuthentication.Decrypt(Context.Request.Cookies["portalroles"].Value);</p>
+<p>//convert the string representation of the role data into a string array</p>
+<p>ArrayList userRoles = new ArrayList();</p>
+<p>foreach (String role in ticket.UserData.Split( new char[] {';'} )) {</p>
+<p>userRoles.Add(role);</p>
+<p>}</p>
+<p>roles = (String[]) userRoles.ToArray(typeof(String));</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+    </p>
+  </div>
+
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'hcwang';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " 开心就好的代码人生 ",
+  "url" : "https://blog.joycode.com",
+  "image": "",
+  "description": ""
+}
+</script>
+</body>
+</html>

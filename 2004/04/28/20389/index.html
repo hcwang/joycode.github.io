@@ -1,0 +1,182 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://blog.joycode.com/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/solid.css">
+
+
+
+
+  <link href="https://blog.joycode.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="开心就好的代码人生 Atom">
+
+
+
+ 
+
+<meta name="author" content="joycode" />
+<meta name="description" content="SPS真的是一个非常好非常好的东西，不是吗？我相信N多人跟我一个想法。里面的很多概念都给微软的其它产品很多启发。比如Web Part的概念，就在Whidbey里面有了体现，当然，Whidbey更进一步，至少比SPS的Web Part有了可视化设计界面。在我看到的SPS Web …" />
+<meta name="keywords" content="C#编程, 软件推荐">
+
+
+  <meta property="og:site_name" content="开心就好的代码人生"/>
+  <meta property="og:title" content="Microsoft SharePoint Portal Server做外网门户"/>
+  <meta property="og:description" content="SPS真的是一个非常好非常好的东西，不是吗？我相信N多人跟我一个想法。里面的很多概念都给微软的其它产品很多启发。比如Web Part的概念，就在Whidbey里面有了体现，当然，Whidbey更进一步，至少比SPS的Web Part有了可视化设计界面。在我看到的SPS Web …"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://blog.joycode.com/2004/04/28/20389/"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2004-04-28 00:22:00+08:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="https://blog.joycode.com/author/joycode.html">
+  <meta property="article:section" content="业界评论"/>
+  <meta property="article:tag" content="C#编程"/>
+  <meta property="article:tag" content="软件推荐"/>
+  <meta property="og:image" content="">
+
+  <title>开心就好的代码人生 &ndash; Microsoft SharePoint Portal Server做外网门户</title>
+
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="https://blog.joycode.com/">
+      <img src="https://blog.joycode.com/theme/img/profile.png" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://blog.joycode.com/"></a>
+    </h1>
+
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="https://getpelican.com/" >Pelican</a>
+          </li>
+          <li>
+            <a target="_self" href="https://www.python.org/" >Python.org</a>
+          </li>
+          <li>
+            <a target="_self" href="https://palletsprojects.com/p/jinja/" >Jinja2</a>
+          </li>
+          <li>
+            <a target="_self" href="#" >You can modify those links in your config file</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-You can add links in your config file"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-You can add links in your config file"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-Another social link"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-Another social link"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="20389">Microsoft SharePoint Portal Server做外网门户</h1>
+    <p>
+      Posted on 三 28 四月 2004 in <a href="https://blog.joycode.com/category/ye-jie-ping-lun.html">业界评论</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>SPS真的是一个非常好非常好的东西，不是吗？我相信N多人跟我一个想法。里面的很多概念都给<a href="http://www.microsoft.com/china" target="_blank">微软</a>的其它产品很多启发。比如Web Part的概念，就在Whidbey里面有了体现，当然，Whidbey更进一步，至少比SPS的Web Part有了可视化设计界面。在我看到的SPS Web Part Wish里面，大家把“提供可视化Web Part的设计工具”放在了第一位，我想在SPS 2004的时候，这个愿望得借助Whidbey来实现了。在目前，你只能通过一些“歪门邪道”来借力Web User Control来做这个工作，这方面的详细资料可以参看Kaneboy的精彩连载，或者我提供的这个<a href="http://blog.joycode.com/webpart.zip">PPT</a></p>
+<p>另外，FrontPage其实是我一直不看好的工具，但自从开始做SPS的PoC(很多人问我啥是PoC，其实就是Proof Of Concept，说白了，就是Demo）之后，FrontPage就成了我的必备利器，因为通过它，可以非常方便的定制SPS的界面细节。前段时间，使用Frontpage并且配合CSS的功底，在不到一天的功夫，我们将SPS进行移头换面，将某政府网站移植成了SPS界面，如果不事先做心理准备，估计很难看出来这是SPS做的网站。</p>
+<p>政府网站，当然不能只是内网办公这么简单了，其中遇到的最大问题，就是如何在允许匿名访问的情况下，仍然能够对SPS进行管理。</p>
+<p>大家知道，SPS 2003是基于AD的，必须在AD环境下进行安装。它的用户身份验证等功能全部来自于AD。在安装SPS后，默认会把Portal所在Virtual Server设置为不允许“匿名访问”，所有人员都需要有一个登录过程。如果你启用了SPS的匿名功能，那么更不幸的事情发生了：即使你是域管理员，你会发现你的身份自动Downlevel成了匿名用户，根本不再具备管理权限，这可如何是好？？？</p>
+<p>嗯，让我们再看看一个活生生的在外网的SPS网站吧：靠近我(<a href="http://www.run2me.com">http://www.run2me.com</a>),这是刘润大哥做的SPS网站，同样的，上面也都是MS的员工。从第一天看到它开始，我就一直在疑惑，它是如何在启用匿名后，仍然可以对其进行管理的？而且很显然，每个人的身份还都不一样。</p>
+<p>恰巧这次PoC的时候，同事正好有刘润大哥的电话，于是我们就用电话向刘润大哥请教了一下，在得知其机理后，才发现，一切都是那么简单：IIS中两个Virtual Server（一个匿名，一个非匿名），一个SPS。在SPS当中设置两个代理访问Url，即可以起到此效果，一切得来都是不费功夫。</p>
+<p>虽然说起来简单，但设置起来还是需要一定技巧的，因为SPS过于庞杂，想要玩转，也需要一份功夫，如果您在做SPS开发，并且对这种做法感兴趣，可以联系我，我会将具体资料文档发送给您。</p>
+<p>另外，很多公司在内网部署了SPS，但是访问者的机器都没有加入到AD中，所以更改密码也成了问题，我恰巧也做了一个显示登录者信息并且能够更改登录者密码的Web Part，有需要者也可以与我联系，Free。</p>
+<p>BTW:<strong><code>&lt;font color="#ff0000"&gt;</code>仔细看看下面的留言，不要再留您的邮件了，您应该知道在哪儿找到下载了。唉:'(<code>&lt;/font&gt;</code></strong></p>
+<div class="highlight"><pre><span></span><code>&lt;/p&gt;
+</code></pre></div>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://blog.joycode.com/tag/cbian-cheng.html">C#编程</a>
+      <a href="https://blog.joycode.com/tag/ruan-jian-tui-jian.html">软件推荐</a>
+    </p>
+  </div>
+
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'hcwang';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " 开心就好的代码人生 ",
+  "url" : "https://blog.joycode.com",
+  "image": "",
+  "description": ""
+}
+</script>
+</body>
+</html>

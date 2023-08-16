@@ -1,0 +1,200 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://blog.joycode.com/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/solid.css">
+
+
+
+
+  <link href="https://blog.joycode.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="开心就好的代码人生 Atom">
+
+
+
+ 
+
+<meta name="author" content="joycode" />
+<meta name="description" content="【原文地址】Writing Custom Web Parts for SharePoint 2007 【原文发表日期】Saturday, September 02, 2006 10:46 AM Sahil Malik最近发布了一篇好文章，介绍了如何使用ASP.NET 2.0来定制web part以及 …" />
+<meta name="keywords" content="">
+
+
+  <meta property="og:site_name" content="开心就好的代码人生"/>
+  <meta property="og:title" content="编程定制SharePoint 2007的Web Parts"/>
+  <meta property="og:description" content="【原文地址】Writing Custom Web Parts for SharePoint 2007 【原文发表日期】Saturday, September 02, 2006 10:46 AM Sahil Malik最近发布了一篇好文章，介绍了如何使用ASP.NET 2.0来定制web part以及 …"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://blog.joycode.com/2006/09/19/2006-09-19_10.07/"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2006-09-19 10:07:00+08:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="https://blog.joycode.com/author/joycode.html">
+  <meta property="article:section" content="业界评论"/>
+  <meta property="og:image" content="">
+
+  <title>开心就好的代码人生 &ndash; 编程定制SharePoint 2007的Web Parts</title>
+
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="https://blog.joycode.com/">
+      <img src="https://blog.joycode.com/theme/img/profile.png" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://blog.joycode.com/"></a>
+    </h1>
+
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="https://getpelican.com/" >Pelican</a>
+          </li>
+          <li>
+            <a target="_self" href="https://www.python.org/" >Python.org</a>
+          </li>
+          <li>
+            <a target="_self" href="https://palletsprojects.com/p/jinja/" >Jinja2</a>
+          </li>
+          <li>
+            <a target="_self" href="#" >You can modify those links in your config file</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-You can add links in your config file"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-You can add links in your config file"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-Another social link"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-Another social link"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="2006-09-19_10.07">编程定制SharePoint 2007的Web Parts</h1>
+    <p>
+      Posted on 二 19 九月 2006 in <a href="https://blog.joycode.com/category/ye-jie-ping-lun.html">业界评论</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>【原文地址】<a href="http://weblogs.asp.net/scottgu/archive/2006/09/02/Writing-Custom-Web-Parts-for-SharePoint-2007.aspx">Writing Custom Web Parts for SharePoint 2007</a><br>
+【原文发表日期】Saturday, September 02, 2006 10:46 AM</p>
+<p><a href="http://blah.winsmarts.com/" target="_blank">Sahil Malik</a>最近发布了一篇<a href="http://www.codeguru.com/csharp/.net/net_asp/webforms/article.php/c12293/" target="_blank">好文章，介绍了如何使用ASP.NET 2.0来定制web part</a>以及如何在SharePoint 2007中使用它。</p>
+<p>正如我以前的一篇文章中提到的那样，<a href="http://weblogs.asp.net/scottgu/archive/2006/04/30/SharePoint-2007-_2D002D00_-Built-on-ASP.NET-2.0-.aspx" target="_blank">SharePoint 2007 是建立在ASP.NET 2.0之上的</a>, 这就意味著当你构建SharePoint站点的时候就可以使用ASP.NET 2.0的特性，譬如表单认证(Forms Authentication)，母板页(Master Pages)，成员(Membership)，网址导航(Site Navigation)，以及新的数据控件(Data Controls)等等）。无论对新的Windows SharePoint Services 3.0版本（将可以免费下载）还是Microsoft Office SharePoint Server 2007 (需要花钱购买)，这都是正确的。</p>
+<p>对开发人员来说，一个很酷的情形就是，你可以创建自定义的Web Part 控件，然后既能用于SharePoint站点，也能用于平常的单纯ASP.NET 2.0应用程序中。这让你能够重用所有这些内置的SharePoint特性，将它们用于协作，文档共享和内容管理。与此同时，你还可以添加自己定制的UI和行为，例如，假如你想把定制数据编辑和报表整合到一个网站上。</p>
+<p>Sahil的上述文章描述了如何创建一个Web Part控件，这个控件是经编译的定制控件。现在你也能用ASP.NET的用户控件（.ascx文件）来创建Web Parts──这使得组合和封装UI功能变得更容易。一些网友在我上一篇博客帖子的评论中询问我：是否可能将以ASP.NET 2.0用户控件的形式创建的Web Parts使用于SharePoint 2007中？为此我和SharePoint产品组校对过，他们告诉我他们将支持这个情形，你可以通过添加一个附加的组件到SharePoint中的方式来实现。他们将在今年晚些时候发布一个白皮书和一个介绍怎么做的例子。</p>
+<p>这个<a href="http://channel9.msdn.com/showpost.aspx?postid=208577" target="_blank">Channel9上的SharePoint产品组的录像</a>，提供了SharePoint2007中一些很酷的新特性的详细信息，包括它对Wiki特性的支持。Mark Kruger<a href="http://www.sharepointblogs.com/mkruger/archive/2006/05/25/7570.aspx" target="_blank">在这里提供了有关SharePoint的好文章的列表</a>。Sahil写了许多非常好的博客帖子，列举如下，它们讨论了一些定制／开发SharePoint的场景，你也许想查看一下：</p>
+<ul>
+<li><a href="http://blah.winsmarts.com//2006-7-Customizing_Sharepoint_2007__Customizing_through_the_browser.aspx" target="_blank">定制SharePoint 2007: 通过浏览器定制</a></li>
+<li><a href="http://blah.winsmarts.com//2006-7-Customizing_Sharepoint_2007__Customizing_using_SharePoint_Designer_2007.aspx" target="_blank">定制SharePoint 2007: 使用SharePoint Designer 2007定制</a></li>
+<li><a href="http://blah.winsmarts.com//2006-7-Sharepoint_Webparts_AS_-_Writing_the_WebParts_-_The_RSS_Feed_WebPart.aspx" target="_blank">SharePoint WebParts: 创建一个RSS Feed WebPart</a></li>
+<li><a href="http://blah.winsmarts.com//2006-7-Sharepoint_Webparts_AS_-_Writing_the_WebParts_-_The_OPMLEditor_WebPart.aspx" target="_blank">SharePoint WebParts: 创建一个OPMLEditor WebPart</a></li>
+<li><a href="http://blah.winsmarts.com//2006-7-Sharepoint_Webparts_AS_-_Connecting_the_WebParts_-_making_an_RSS_Reader_Application.aspx" target="_blank">SharePoint WebParts: 连接WebParts - 建立一个RSS Reader应用程序</a></li>
+<li><a href="http://blah.winsmarts.com//2006-7-Sharepoint_2007__List_Events_Practical_Example__Creating_a_rigged_survey.aspx" target="_blank">列表事件实践例子: 如何创建一个作弊调查!</a></li>
+</ul>
+<p>Fritz Onion上个月写了一篇<a href="http://msdn.microsoft.com/msdnmag/issues/06/07/ExtremeASPNET/" target="_blank">非常好的文章</a>，讨论了在ASP.NET中，如何利用新的异步特性来在Web Part控件中实现高效的网络调用，而不阻塞当前的请求处理线程。这允许你同时从多个不同的web part中执行多个网络请求，并且更快更高效地呈现页面。</p>
+<p>希望本文对你有所帮助，</p>
+<p>Scott</p>
+<p>::: postfoot</p>
+<div>
+
+标签： [ASP.NET](http://weblogs.asp.net/scottgu/archive/tags/ASP.NET/default.aspx){rel="tag"}, [.NET](http://weblogs.asp.net/scottgu/archive/tags/.NET/default.aspx){rel="tag"}
+
+</div>
+
+<div>
+
+ 
+
+</div>
+
+<p>(<a href="http://www.cnblogs.com/ring1981">Ring</a>译)
+:::</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+    </p>
+  </div>
+
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'hcwang';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " 开心就好的代码人生 ",
+  "url" : "https://blog.joycode.com",
+  "image": "",
+  "description": ""
+}
+</script>
+</body>
+</html>

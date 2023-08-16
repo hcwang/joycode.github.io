@@ -1,0 +1,172 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://blog.joycode.com/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/solid.css">
+
+
+
+
+  <link href="https://blog.joycode.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="开心就好的代码人生 Atom">
+
+
+
+ 
+
+<meta name="author" content="joycode" />
+<meta name="description" content="最开始玩博客的时候是2002年左右，把Scott的dotText进行了汉化，找了一哥们的家用电脑做了服务器，就正式对外提供服务了，那时候也没有备案之类的事 …" />
+<meta name="keywords" content="">
+
+
+  <meta property="og:site_name" content="开心就好的代码人生"/>
+  <meta property="og:title" content="初识Kubernetes on AWS"/>
+  <meta property="og:description" content="最开始玩博客的时候是2002年左右，把Scott的dotText进行了汉化，找了一哥们的家用电脑做了服务器，就正式对外提供服务了，那时候也没有备案之类的事 …"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://blog.joycode.com/2019/08/26/2019-08-26_19.54/"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2019-08-26 19:54:00+08:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="https://blog.joycode.com/author/joycode.html">
+  <meta property="article:section" content="业界评论"/>
+  <meta property="og:image" content="">
+
+  <title>开心就好的代码人生 &ndash; 初识Kubernetes on AWS</title>
+
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="https://blog.joycode.com/">
+      <img src="https://blog.joycode.com/theme/img/profile.png" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://blog.joycode.com/"></a>
+    </h1>
+
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="https://getpelican.com/" >Pelican</a>
+          </li>
+          <li>
+            <a target="_self" href="https://www.python.org/" >Python.org</a>
+          </li>
+          <li>
+            <a target="_self" href="https://palletsprojects.com/p/jinja/" >Jinja2</a>
+          </li>
+          <li>
+            <a target="_self" href="#" >You can modify those links in your config file</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-You can add links in your config file"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-You can add links in your config file"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-Another social link"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-Another social link"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="2019-08-26_19.54">初识Kubernetes on AWS</h1>
+    <p>
+      Posted on 一 26 八月 2019 in <a href="https://blog.joycode.com/category/ye-jie-ping-lun.html">业界评论</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>最开始玩博客的时候是2002年左右，把Scott的dotText进行了汉化，找了一哥们的家用电脑做了服务器，就正式对外提供服务了，那时候也没有备案之类的事情。虽然简陋，但作为国内最早提供博客托管服务的网站，还是吸引了不少志同道合的朋友。随着我后来加入了微软，博客堂在微软技术圈越来越知名，而后博客园以及CSDN也对外进行服务。</p>
+<p>后来我进入了新公司，而新公司从事的技术与微软完全不同，所以对于博客堂也没有精力维护，使其日见荒芜，而写博客的朋友们也开始转向了微信公众号等战场，在不同的领域散发光热，正所谓沉舟侧畔千帆过。不过博客堂的文字毕竟是这么多朋友的青春时光，所以我一直还是将相关内容进行了备份。由于.NET/C#技术栈对于我渐行渐远，所以博客堂也不再使用WISE(Windows/IIS/SQL Server/Expression)，而转向了Wordpress。</p>
+<p>改到Wordpress之后，可以选择的Hosting服务也变得宽广起来，这些年来，出于省钱的目的，先后试用了Digital Ocean、Linode以及Vultr等托管服务，最后搬到了搬瓦工。Wordpress也由刚开始自己在VPS上安装，也逐渐改到了Docker compose上。</p>
+<p>两周前，突然对于Kubernetes产生了兴趣，于是利用业余时间，在自己的Mac上搭建了Kubernetes集群进行了学习，逐步掌握了Kubernetes的基础知识，然后上周开始在搬瓦工的主机上将博客堂迁移到了Kubernetes上，由于搬瓦工主机就是一个年费99美金的单VPS，所以只能构建一个Master Node，存储也只是采用了Local的方式，且由于跑了Gitea、Pypi、Jupyter Notebook(Tensorflow version)等众多服务，所以资源总是捉襟见肘，经常见到Pod会被Evicted的情况，使得博客堂服务经常性中断，真是苦不堪言呀。 从周六开始，启用了AWS，阅读了大量AWS的文档，决定采用的架构是AWS EKS，带了两个work nodes(两个t2.medium类型的EC2实例），另起一个EC2，挂载了EBS硬盘，作为NFS Server，而周日一天都在解决NFS connection time out的问题，终于今天彻底解决（原来是security group权限配置的问题）。 Ingress方案采用了Traefik，其整合了Let's Encrypt的SSL证书自动续签服务，比较符合我的要求。MySQL目前还是使用docker版的MariaDB，但后期准备迁移到AWS RDS上，数据库也准备改用我近一年来用的Postgres上。</p>
+<p>目前运转一切正常，以此为记。</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+    </p>
+  </div>
+
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'hcwang';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " 开心就好的代码人生 ",
+  "url" : "https://blog.joycode.com",
+  "image": "",
+  "description": ""
+}
+</script>
+</body>
+</html>

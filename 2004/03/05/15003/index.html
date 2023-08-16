@@ -1,0 +1,188 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://blog.joycode.com/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/solid.css">
+
+
+
+
+  <link href="https://blog.joycode.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="开心就好的代码人生 Atom">
+
+
+
+ 
+
+<meta name="author" content="joycode" />
+<meta name="description" content="可能大家都已经知道了，基于MS与Sun的官司，从今年9月30日开始，微软将无权使用Java的License。即MSJVM将不再归Microsoft所有。也就是说，微软将不会再对MSJVM进行维护，即使出现安全漏洞，微软也 …" />
+<meta name="keywords" content="业界评论">
+
+
+  <meta property="og:site_name" content="开心就好的代码人生"/>
+  <meta property="og:title" content="MS JVM：2004-9-30"/>
+  <meta property="og:description" content="可能大家都已经知道了，基于MS与Sun的官司，从今年9月30日开始，微软将无权使用Java的License。即MSJVM将不再归Microsoft所有。也就是说，微软将不会再对MSJVM进行维护，即使出现安全漏洞，微软也 …"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://blog.joycode.com/2004/03/05/15003/"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2004-03-05 22:37:00+08:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="https://blog.joycode.com/author/joycode.html">
+  <meta property="article:section" content="业界评论"/>
+  <meta property="article:tag" content="业界评论"/>
+  <meta property="og:image" content="">
+
+  <title>开心就好的代码人生 &ndash; MS JVM：2004-9-30</title>
+
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="https://blog.joycode.com/">
+      <img src="https://blog.joycode.com/theme/img/profile.png" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://blog.joycode.com/"></a>
+    </h1>
+
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="https://getpelican.com/" >Pelican</a>
+          </li>
+          <li>
+            <a target="_self" href="https://www.python.org/" >Python.org</a>
+          </li>
+          <li>
+            <a target="_self" href="https://palletsprojects.com/p/jinja/" >Jinja2</a>
+          </li>
+          <li>
+            <a target="_self" href="#" >You can modify those links in your config file</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-You can add links in your config file"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-You can add links in your config file"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-Another social link"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-Another social link"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="15003">MS JVM：2004-9-30</h1>
+    <p>
+      Posted on 五 05 三月 2004 in <a href="https://blog.joycode.com/category/ye-jie-ping-lun.html">业界评论</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p><img alt="" src="http://java.sun.com/im/logo_java.gif"></p>
+<p>可能大家都已经知道了，基于MS与Sun的官司，从今年9月30日开始，<a href="http://www.microsoft.com/china" target="_blank">微软</a>将无权使用Java的License。即MSJVM将不再归Microsoft所有。也就是说，微软将不会再对MSJVM进行维护，即使出现安全漏洞，微软也不会再推出任何补丁。在9月30日，MSJVM的源代码也将归SUN所有。</p>
+<p>MSJVM最新的漏洞出现在去年四月份左右，而微软无权对其维护后，MSJVM将成为您的操作系统当中的炸弹。目前推出的操作系统，除Windows Server 2003之外，包括Windows XP(含SP1）在内，均内置了MSJVM。为了保证广大用户的安全，微软将在今年9月份前推出MSJVM的Remove Tools，帮助大家摘除这颗炸弹。对于当前基于MSJVM的程序，微软提供以下步骤供大家选择：</p>
+<ul>
+<li>使用JLCA<code>&lt;font color="#000000"&gt;</code>（<strong>Microsoft Java Language Conversion Assis）</strong><code>&lt;/font&gt;</code>来升级您的程序;</li>
+<li>使用Flash、DHTML等来替代Java Applet程序;</li>
+<li>在Remove Tool推出前，请将Internet Explorer的安全级别设高;</li>
+<li>使用SUN MicroSystem及其它公司的虚拟机;</li>
+</ul>
+<p>请注意，MSJVM是系统级文件，无法通过删除文件来卸载，即使你删除，也会自动恢复。</p>
+<p>MVP可以在MSDN 订阅者下载站点中可以看到哪些产品将会因此而不再能够下载。</p>
+<p>我估计这个消息会让N多人出来指责MS，又来一场口水战。希望大家可以非常理智的看待这个问题，那些SUN的崇拜者看明白，联系一下Open Source的领导人给SUN总裁所写的那封信来看待这个问题。</p>
+<p>更多信息：</p>
+<ul>
+<li><a href="http://www.microsoft.com/mscorp/java/">Microsoft Java</a></li>
+<li><a href="http://msdn.microsoft.com/vstudio/downloads/tools/jlca/30beta/default.aspx">JLCA 3.0 Beta</a></li>
+<li><a href="http://www.chinabyte.com/homepage/219001834121986048/20040215/1768224.shtml">雷蒙德要求SUN放弃对Java的控制</a></li>
+<li><a href="http://www.csdn.net/news/newstopic/14/14984.shtml">IBM要求SUN放弃对Java的控制</a></li>
+</ul>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://blog.joycode.com/tag/ye-jie-ping-lun.html">业界评论</a>
+    </p>
+  </div>
+
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'hcwang';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " 开心就好的代码人生 ",
+  "url" : "https://blog.joycode.com",
+  "image": "",
+  "description": ""
+}
+</script>
+</body>
+</html>

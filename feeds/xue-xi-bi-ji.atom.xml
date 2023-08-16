@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>开心就好的代码人生 - 学习笔记</title><link href="https://blog.joycode.com/" rel="alternate"></link><link href="https://blog.joycode.com/feeds/xue-xi-bi-ji.atom.xml" rel="self"></link><id>https://blog.joycode.com/</id><updated>2018-01-10T21:35:00+08:00</updated><entry><title>机器学习笔记（1）</title><link href="https://blog.joycode.com/2018/01/10/2018-01-10_21.35/" rel="alternate"></link><published>2018-01-10T21:35:00+08:00</published><updated>2018-01-10T21:35:00+08:00</updated><author><name>joycode</name></author><id>tag:blog.joycode.com,2018-01-10:/2018/01/10/2018-01-10_21.35/</id><summary type="html">&lt;h1&gt;学习笔记序言&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;年过四十，却仍然对业界热点非常感兴趣，但更多的时间只是人云亦云，属于眼高手低的类型。和同事朋友们 …&lt;/p&gt;&lt;/blockquote&gt;</summary><content type="html">&lt;h1&gt;学习笔记序言&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;年过四十，却仍然对业界热点非常感兴趣，但更多的时间只是人云亦云，属于眼高手低的类型。和同事朋友们聚会时，大家都会提到比特币、人工智能或者大数据、机器学习等等。虽然勉强可以跟着讨论几句，可是一旦深入，却发现自己其实对这些概念仅仅了解皮毛。&lt;/p&gt;
+&lt;p&gt;遂想到自己年轻时，为了真正掌握.NET技术，发愿写了一本书，并且最终将其完成并且出版于世。并且建立了博客堂技术讨论社区。雄关漫道真如铁，而今迈步从头越。开心老矣，但仍然想通过撰写学习笔记的方式，让自己深入学习这些技术。不光知其然，还要知其所以然。&lt;/p&gt;
+&lt;p&gt;正好看到吴恩达(Andrew Ng)的机器学习课程，决定从头开始。以下是本人的学习笔记。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1&gt;初始问题集&lt;/h1&gt;
+&lt;p&gt;在学习一个全新领域时，尤其处于完全盲人摸象的阶段，很难给自己定下切实可行的学习目标，因为连完整的术语集都未掌握，所以开心个人的习惯 ，在初时阶段先给自己定下问题集，这个问题集会随着学习的深入而不断修正，有些问题会有答案，有些问题会分解成更多的小问题，而有些问题甚至最后根本烟消云散。&lt;/p&gt;
+&lt;p&gt;以下是开心为自己罗列的初始问题集。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;什么是机器学习？机器学习与人工智能的关系是什么？
+    &lt;code&gt;{=html}
+    &amp;lt;/p&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;机器学习需要掌握什么样的开发语言？&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;机器学习除了需要开发技能外，还需要哪些技能？&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;应该如何从入门到精通？七天之内可以吗？&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;目前业界有哪些公司在从事机器学习？&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;好了，以上就是初始问题集，都是非常肤浅的问题，因为开心现在的确是一个机器学习的门外汉。&lt;/p&gt;
+&lt;h1&gt;学习方法&lt;/h1&gt;
+&lt;p&gt;还好，现在资讯如此发达，在网上可以很容易找到吴恩达(Andrew Ng)的教学视频。开心使用的是Youtube上的版本，有英文字幕，正好可以锻炼英文。&lt;/p&gt;
+&lt;p&gt;除了看视频，维基百科以及搜索引擎也将会是开心学习的朋友，不排除后期真正入门后，将会购买相应的书籍进行深入学习。&lt;/p&gt;
+&lt;p&gt;欢迎大家对我进行监督，争取每周至少有一篇学习笔记发布，谢谢。&lt;/p&gt;</content><category term="学习笔记"></category><category term="吴恩达"></category><category term="机器学习"></category></entry></feed>

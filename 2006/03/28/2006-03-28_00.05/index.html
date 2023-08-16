@@ -1,0 +1,201 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://blog.joycode.com/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/solid.css">
+
+
+
+
+  <link href="https://blog.joycode.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="开心就好的代码人生 Atom">
+
+
+
+ 
+
+<meta name="author" content="joycode" />
+<meta name="description" content="1。根据Scott Guthrie，MySpace.com每天的Page View量高达15亿，他们现在用的是ASP.NET 2.0和IIS6。移植到ASP.NET 2.0后，服务器的CPU平均利用率从85%下降到27%。 http://weblogs.asp.net/scottgu/archive/2006/03/25/441074.aspx …" />
+<meta name="keywords" content=".NET, 杂类">
+
+
+  <meta property="og:site_name" content="开心就好的代码人生"/>
+  <meta property="og:title" content=".NET 点滴"/>
+  <meta property="og:description" content="1。根据Scott Guthrie，MySpace.com每天的Page View量高达15亿，他们现在用的是ASP.NET 2.0和IIS6。移植到ASP.NET 2.0后，服务器的CPU平均利用率从85%下降到27%。 http://weblogs.asp.net/scottgu/archive/2006/03/25/441074.aspx …"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://blog.joycode.com/2006/03/28/2006-03-28_00.05/"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2006-03-28 00:05:00+08:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="https://blog.joycode.com/author/joycode.html">
+  <meta property="article:section" content="业界评论"/>
+  <meta property="article:tag" content=".NET"/>
+  <meta property="article:tag" content="杂类"/>
+  <meta property="og:image" content="">
+
+  <title>开心就好的代码人生 &ndash; .NET 点滴</title>
+
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="https://blog.joycode.com/">
+      <img src="https://blog.joycode.com/theme/img/profile.png" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://blog.joycode.com/"></a>
+    </h1>
+
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="https://getpelican.com/" >Pelican</a>
+          </li>
+          <li>
+            <a target="_self" href="https://www.python.org/" >Python.org</a>
+          </li>
+          <li>
+            <a target="_self" href="https://palletsprojects.com/p/jinja/" >Jinja2</a>
+          </li>
+          <li>
+            <a target="_self" href="#" >You can modify those links in your config file</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-You can add links in your config file"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-You can add links in your config file"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-Another social link"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-Another social link"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="2006-03-28_00.05">.NET 点滴</h1>
+    <p>
+      Posted on 二 28 三月 2006 in <a href="https://blog.joycode.com/category/ye-jie-ping-lun.html">业界评论</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>1。根据Scott Guthrie，<a href="http://www.myspace.com/" target="_blank">MySpace.com</a>每天的Page View量高达15亿，他们现在用的是ASP.NET 2.0和IIS6。移植到ASP.NET 2.0后，服务器的CPU平均利用率从85%下降到27%。</p>
+<p><a href="http://weblogs.asp.net/scottgu/archive/2006/03/25/441074.aspx">http://weblogs.asp.net/scottgu/archive/2006/03/25/441074.aspx</a></p>
+<p>根据Media Metrix的统计，2月份访问量最高的6个网站为<br>
+Yahoo<br>
+MySpace<br>
+MSN<br>
+Ebay<br>
+Google<br>
+Hotmail</p>
+<p>其中四个网站，MySpace，MSN，Ebay和Hotmail，用的是IIS和Windows。</p>
+<p>注：在MySpace.com上还能看到.cfm(Cold Fusion)连接，在上面这个帖子里的回复中，该网站的技术人员澄清说，这是为了连接兼容，其背后采用的是<a href="http://www.newatlanta.com/products/bluedragon/index.cfm" target="_blank">BlueDragon.NET</a>技术，该技术能让你在ASP.NET上运行Cold Fusion脚本。</p>
+<p>2。Scott Guthrie博客上的几个跟Atlas有关的帖子</p>
+<p>Drag and Drop ASP.NET 2.0 Web Parts in FireFox (with Atlas)<br>
+<a href="http://weblogs.asp.net/scottgu/archive/2006/03/24/441044.aspx">http://weblogs.asp.net/scottgu/archive/2006/03/24/441044.aspx</a></p>
+<p>Atlas Presentation and Samples<br>
+<a href="http://weblogs.asp.net/scottgu/archive/2006/03/12/440068.aspx">http://weblogs.asp.net/scottgu/archive/2006/03/12/440068.aspx</a></p>
+<p>Making a List, Checking it Twice (Cool Ajax Sample App with ASP.NET 2.0 and Atlas)<br>
+<a href="http://weblogs.asp.net/scottgu/archive/2005/12/26/433997.aspx">http://weblogs.asp.net/scottgu/archive/2005/12/26/433997.aspx</a></p>
+<p>Paging through lots of data efficiently (and in an Ajax way) with ASP.NET 2.0<br>
+<a href="http://weblogs.asp.net/scottgu/archive/2006/01/01/434314.aspx">http://weblogs.asp.net/scottgu/archive/2006/01/01/434314.aspx</a></p>
+<p>3。使用AJAX是为了改进用户与基于浏览器应用的交互以及提供良好的用户体验，目前一个很红的应用趋势是<a href="http://en.wikipedia.org/wiki/Mashup_%28web_application_hybrid%29" target="_blank">Mashup</a>，整合多渠道的数据和内容，提供给用户一个集成的体验。常见的Mashups是Mapping Mashups和Video Mashups</p>
+<p>在Mix06上微软有2个讲座讨论了AJAX架构和应用方面的问题，具体的内容，参考下面这个博客</p>
+<p>Architecting and using ASP.NET "Atlas"<br>
+<a href="http://blogs.msdn.com/davbosch/archive/2006/03/24/560266.aspx">http://blogs.msdn.com/davbosch/archive/2006/03/24/560266.aspx</a></p>
+<p>4。使用Atlas的虚拟地球地图控件构造美国国家公园的Mashup</p>
+<p>Building a Mashup of National Parks using the Atlas Virtual Earth Map control<br>
+<a href="http://blogs.msdn.com/jhawk/archive/2006/03/26/561658.aspx">http://blogs.msdn.com/jhawk/archive/2006/03/26/561658.aspx</a></p>
+<p>5。[来源: <a href="http://weblogs.asp.net/scottgu/archive/2006/02/22/438738.aspx" target="_blank">Scott Guthrie</a>] ASP.NET RSS Toolkit，功能包括可用来显示RSS的RSS Data Source控件以及生成RSS的RSS HTTP handler</p>
+<p>Awesome ASP.NET 2.0 RSS Tool-Kit Released<br>
+<a href="http://blogs.msdn.com/dmitryr/archive/2006/02/21/536552.aspx">http://blogs.msdn.com/dmitryr/archive/2006/02/21/536552.aspx</a></p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://blog.joycode.com/tag/net.html">.NET</a>
+      <a href="https://blog.joycode.com/tag/za-lei.html">杂类</a>
+    </p>
+  </div>
+
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'hcwang';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " 开心就好的代码人生 ",
+  "url" : "https://blog.joycode.com",
+  "image": "",
+  "description": ""
+}
+</script>
+</body>
+</html>

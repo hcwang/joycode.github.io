@@ -1,0 +1,272 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://blog.joycode.com/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/solid.css">
+
+
+
+
+  <link href="https://blog.joycode.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="开心就好的代码人生 Atom">
+
+
+
+ 
+
+<meta name="author" content="joycode" />
+<meta name="description" content="今天在CSDN论坛上看到一个网友在请教关于msxsl:script的用法。感觉这问题也许有点意思，所以在下面简述一下。 在MSXML里，你在msxsl:script里可以使用Javascript和VBScript，参考 \&lt;msxsl:script&gt; Element 但 …" />
+<meta name="keywords" content="">
+
+
+  <meta property="og:site_name" content="开心就好的代码人生"/>
+  <meta property="og:title" content="在.NET里用XSLT时怎么使用msxsl:script"/>
+  <meta property="og:description" content="今天在CSDN论坛上看到一个网友在请教关于msxsl:script的用法。感觉这问题也许有点意思，所以在下面简述一下。 在MSXML里，你在msxsl:script里可以使用Javascript和VBScript，参考 \&lt;msxsl:script&gt; Element 但 …"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://blog.joycode.com/2004/05/12/2004-05-12_05.06/"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2004-05-12 05:06:00+08:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="https://blog.joycode.com/author/joycode.html">
+  <meta property="article:section" content="业界评论"/>
+  <meta property="og:image" content="">
+
+  <title>开心就好的代码人生 &ndash; 在.NET里用XSLT时怎么使用msxsl:script</title>
+
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="https://blog.joycode.com/">
+      <img src="https://blog.joycode.com/theme/img/profile.png" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://blog.joycode.com/"></a>
+    </h1>
+
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="https://getpelican.com/" >Pelican</a>
+          </li>
+          <li>
+            <a target="_self" href="https://www.python.org/" >Python.org</a>
+          </li>
+          <li>
+            <a target="_self" href="https://palletsprojects.com/p/jinja/" >Jinja2</a>
+          </li>
+          <li>
+            <a target="_self" href="#" >You can modify those links in your config file</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-You can add links in your config file"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-You can add links in your config file"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-Another social link"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-Another social link"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="2004-05-12_05.06">在.NET里用XSLT时怎么使用msxsl:script</h1>
+    <p>
+      Posted on 三 12 五月 2004 in <a href="https://blog.joycode.com/category/ye-jie-ping-lun.html">业界评论</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>今天在<a href="http://expert.csdn.net/expert/forum.asp">CSDN论坛</a>上看到一个网友在<a href="http://expert.csdn.net/Expert/topic/3056/3056602.xml?temp=.3494532">请教关于msxsl:script的用法</a>。感觉这问题也许有点意思，所以在下面简述一下。</p>
+<p>在MSXML里，你在msxsl:script里可以使用Javascript和VBScript，参考</p>
+<p><a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/xmlsdk/htm/xsl_elm_qz_4s50.asp">\&lt;msxsl:script&gt; Element</a></p>
+<p>但在.NET里，你只能使用那些.NET支持的语言，包括C#，VB.NET，JScript等。</p>
+<p>譬如，我们想在XSLT里计算下面这个XML里people的和，</p>
+<p>\&lt;root&gt;<br>
+  \&lt;people&gt;1\&lt;/people&gt;<br>
+  \&lt;people&gt;2\&lt;/people&gt;<br>
+  \&lt;people&gt;3\&lt;/people&gt;<br>
+  \&lt;people&gt;4\&lt;/people&gt;<br>
+\&lt;/root&gt;</p>
+<p>我们可以使用象这样的XSLT</p>
+<p>\&lt;xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;<br>
+\&lt;xsl:output method="text" /&gt;</p>
+<p>\&lt;xsl:template match="/"&gt;<br>
+   sum:\&lt;xsl:value-of select="sum(root/people)"/&gt;<br>
+\&lt;/xsl:template&gt;</p>
+<p>\&lt;/xsl:stylesheet&gt;</p>
+<p>在MSXML和浏览器里，我们也可以这么做，</p>
+<p>\&lt;xsl:stylesheet version="1.0"<br>
+      xmlns:xsl="http://www.w3.org/1999/XSL/Transform"<br>
+      xmlns:msxsl="urn:schemas-microsoft-com:xslt"<br>
+      xmlns:user="anything here"&gt;</p>
+<p>\&lt;xsl:output method="text" /&gt;</p>
+<p>\&lt;msxsl:script language="JavaScript" implements-prefix="user"&gt;<br>
+\&lt;![CDATA[<br>
+   function sum(nodelist)<br>
+   {<br>
+      var d = 0;<br>
+      var node = nodelist.nextNode();<br>
+      while (node != null)<br>
+      {<br>
+  d += parseInt(node.text);<br>
+  node = nodelist.nextNode();<br>
+      }</p>
+<p>return d;<br>
+   }<br>
+]]&gt;<br>
+\&lt;/msxsl:script&gt;</p>
+<p>\&lt;xsl:template match="/"&gt;<br>
+  sum:\&lt;xsl:value-of select="user:sum(root/people)"/&gt;<br>
+\&lt;/xsl:template&gt;</p>
+<p>\&lt;/xsl:stylesheet&gt;</p>
+<p>但如果你在.NET下使用上述XSLT的话，你就会得到下列错误：</p>
+<p>Unhandled Exception: System.Xml.Xsl.XsltException: Function 'user:sum()' has failed. ---&gt; System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation. ---&gt; Microsoft.JScript.JScriptException: Function expected<br>
+Function expected<br>
+   at Microsoft.JScript.LateBinding.Call(Binder binder, Object[] arguments, ParameterModifier[] modifiers, CultureInfo culture, String[] namedParameters, Boolean construct, Boolean brackets, VsaEngine engine)<br>
+   at Microsoft.JScript.LateBinding.Call(Object[] arguments, Boolean construct,Boolean brackets, VsaEngine engine)<br>
+   at Microsoft.Xslt.CompiledScripts.JScript.ScriptClass_1.sum(Object nodelist)<br>
+....</p>
+<p>为什么？因为在MSXML里，nodelist这个nodeset参数是个IXMLDOMNodeList实例，其nextNode方法返回一个IXMLDOMNode实例。</p>
+<p>而.NET则把这个nodeset参数映射到了System.Xml.XPath.XPathNodeIterator或其子类的实例(至于其他的Mapping，请参考<a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/cpguide/html/cpconXSLTStylesheetScriptingUsingMsxslscript.asp">XSLT Stylesheet Scripting using \&lt;msxsl:script&gt;</a>或后面提到的Aaron Skonnard的文章)。实际上，如果你运行上述转换的话，你看到的是XPathQueryIterator类。但不管如何，在.NET下，你只能使用.NET下的类，而不能使用那些跟MSXML有关的类/方法，譬如</p>
+<p>\&lt;xsl:stylesheet version="1.0"<br>
+      xmlns:xsl="http://www.w3.org/1999/XSL/Transform"<br>
+      xmlns:msxsl="urn:schemas-microsoft-com:xslt"<br>
+      xmlns:user="anything here"<br>
+&gt;</p>
+<p>\&lt;xsl:output method="text" /&gt;</p>
+<p>\&lt;msxsl:script language="Javascript" implements-prefix="user"&gt;<br>
+function getType(nxpni)<br>
+{<br>
+  return nxpni.GetType().Name;<br>
+}</p>
+<p>function sum(nxpni)<br>
+{<br>
+  var d = 0;<br>
+  while (nxpni.MoveNext())<br>
+ d += Convert.ToInt32(nxpni.Current.Value);</p>
+<p>return d;<br>
+}<br>
+\&lt;/msxsl:script&gt;</p>
+<p>\&lt;xsl:template match="/"&gt;<br>
+   type:\&lt;xsl:value-of select="user:getType(.)"/&gt;<br>
+   sum:\&lt;xsl:value-of select="user:sum(root/people)"/&gt;<br>
+\&lt;/xsl:template&gt;</p>
+<p>\&lt;/xsl:stylesheet&gt;</p>
+<p>当然你也可使用C#</p>
+<p>\&lt;xsl:stylesheet version="1.0"<br>
+      xmlns:xsl="http://www.w3.org/1999/XSL/Transform"<br>
+      xmlns:msxsl="urn:schemas-microsoft-com:xslt"<br>
+      xmlns:user="anything here"<br>
+&gt;</p>
+<p>\&lt;xsl:output method="text" /&gt;</p>
+<p>\&lt;msxsl:script language="C#" implements-prefix="user"&gt;<br>
+string getType(XPathNodeIterator nxpni)<br>
+{<br>
+  return nxpni.GetType().Name;<br>
+}</p>
+<p>int sum(XPathNodeIterator nxpni)<br>
+{<br>
+  int d = 0;<br>
+  while (nxpni.MoveNext())<br>
+ d += Convert.ToInt32(nxpni.Current.Value);</p>
+<p>return d;<br>
+}<br>
+\&lt;/msxsl:script&gt;</p>
+<p>\&lt;xsl:template match="/"&gt;<br>
+   type:\&lt;xsl:value-of select="user:getType(.)"/&gt;<br>
+   sum:\&lt;xsl:value-of select="user:sum(root/people)"/&gt;<br>
+\&lt;/xsl:template&gt;</p>
+<p>\&lt;/xsl:stylesheet&gt;</p>
+<p><a href="http://skonnard.com/">Aaron Skonnard</a>在MSDN杂志上的专栏《The XML Files 》里对此曾有专述</p>
+<p><a href="http://msdn.microsoft.com/msdnmag/issues/02/03/xml/">Extending XSLT with JScript, C#, and Visual Basic .NET</a></p>
+<p>如果你想在XSLT里使用.NET下的扩展函数的话，参考微软<a href="http://blogs.msdn.com/dareobasanjo">Dare Obasanjo</a>在MSDN上的Extreme XML专栏</p>
+<p><a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dnexxml/html/xml11172003.asp">EXSLT Meets XPath</a></p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+    </p>
+  </div>
+
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'hcwang';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " 开心就好的代码人生 ",
+  "url" : "https://blog.joycode.com",
+  "image": "",
+  "description": ""
+}
+</script>
+</body>
+</html>

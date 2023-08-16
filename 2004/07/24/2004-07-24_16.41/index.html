@@ -1,0 +1,255 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://blog.joycode.com/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/solid.css">
+
+
+
+
+  <link href="https://blog.joycode.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="开心就好的代码人生 Atom">
+
+
+
+ 
+
+<meta name="author" content="joycode" />
+<meta name="description" content="在CSDN论坛上看到下列问题，如果把DataReader当作DataGrid的DataSource，在DataGrid.DataBind()之后，在下列两种情形下，DataReader的IsClosed的值是不同的 IDataReader reader = SomeDBCommand.ExecuteReader(); DataGrid1.DataSource = reader; DataGrid1.DataBind(); 在这里，reader的IsClosed的值是false IDataReader reader = SomeDBCommand.ExecuteReader(CommandBehavior.CloseConnection); DataGrid1.DataSource = reader; DataGrid1.DataBind(); 在这 …" />
+<meta name="keywords" content="">
+
+
+  <meta property="og:site_name" content="开心就好的代码人生"/>
+  <meta property="og:title" content="DataReader.IsClosed属性"/>
+  <meta property="og:description" content="在CSDN论坛上看到下列问题，如果把DataReader当作DataGrid的DataSource，在DataGrid.DataBind()之后，在下列两种情形下，DataReader的IsClosed的值是不同的 IDataReader reader = SomeDBCommand.ExecuteReader(); DataGrid1.DataSource = reader; DataGrid1.DataBind(); 在这里，reader的IsClosed的值是false IDataReader reader = SomeDBCommand.ExecuteReader(CommandBehavior.CloseConnection); DataGrid1.DataSource = reader; DataGrid1.DataBind(); 在这 …"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://blog.joycode.com/2004/07/24/2004-07-24_16.41/"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2004-07-24 16:41:00+08:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="https://blog.joycode.com/author/joycode.html">
+  <meta property="article:section" content="业界评论"/>
+  <meta property="og:image" content="">
+
+  <title>开心就好的代码人生 &ndash; DataReader.IsClosed属性</title>
+
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="https://blog.joycode.com/">
+      <img src="https://blog.joycode.com/theme/img/profile.png" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://blog.joycode.com/"></a>
+    </h1>
+
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="https://getpelican.com/" >Pelican</a>
+          </li>
+          <li>
+            <a target="_self" href="https://www.python.org/" >Python.org</a>
+          </li>
+          <li>
+            <a target="_self" href="https://palletsprojects.com/p/jinja/" >Jinja2</a>
+          </li>
+          <li>
+            <a target="_self" href="#" >You can modify those links in your config file</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-You can add links in your config file"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-You can add links in your config file"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-Another social link"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-Another social link"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="2004-07-24_16.41">DataReader.IsClosed属性</h1>
+    <p>
+      Posted on 六 24 七月 2004 in <a href="https://blog.joycode.com/category/ye-jie-ping-lun.html">业界评论</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>在CSDN论坛上看到<a href="http://community.csdn.net/Expert/topic/3204/3204480.xml">下列问题</a>，如果把DataReader当作DataGrid的DataSource，在DataGrid.DataBind()之后，在下列两种情形下，DataReader的IsClosed的值是不同的</p>
+<ol>
+<li>IDataReader reader = SomeDBCommand.ExecuteReader();<br>
+DataGrid1.DataSource = reader;<br>
+DataGrid1.DataBind();</li>
+</ol>
+<p>在这里，reader的IsClosed的值是false</p>
+<ol>
+<li>IDataReader reader = SomeDBCommand.ExecuteReader(CommandBehavior.CloseConnection);<br>
+DataGrid1.DataSource = reader;<br>
+DataGrid1.DataBind();</li>
+</ol>
+<p>在这里，reader的IsClosed的值是true</p>
+<p>结论是，如果DataReader的CommandBehavior是CloseConnection的话，DataGrid1.DataBind()在某种(也许是非直接的)方式下，调用了DataReader的Close方法。在网上找到了一个<a href="http://www.schmiddy.net/blog/2003/10/connection_pool.html">类似的讨论</a>，但他们没有给出原因。</p>
+<p>把DataReader作为DataGrid的DataSource时，DataReader是当作IEnumerable来看待的，从IEnumerable可以获取IEnumerator，然后可以用它的MoveNext/Current来依次获取每个记录，难道MoveNext调用了DataReader的Close方法？做了个试验</p>
+<p>using System;<br>
+using System.Data;<br>
+using System.Data.OleDb;<br>
+using System.Data.SqlClient;<br>
+using System.Collections;</p>
+<p>class TestClose<br>
+{<br>
+  static void Main()<br>
+  {<br>
+ SqlConnection conn = new SqlConnection("server=localhost;database=pubs;uid=sa;pwd=;");<br>
+ SqlCommand cmd = new SqlCommand("select * from authors", conn);</p>
+<p>conn.Open();<br>
+ SqlDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);<br>
+ TestRead(reader);<br>
+ reader.Close();</p>
+<p>conn.Open();<br>
+ reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);<br>
+ TestMoveNext(reader);<br>
+ reader.Close();</p>
+<p>}</p>
+<p>static void TestRead(IDataReader reader)<br>
+  {<br>
+ while (reader.Read());<br>
+ Console.WriteLine("after Read(), reader is closed? {0}", reader.IsClosed);<br>
+  }</p>
+<p>static void TestMoveNext(IDataReader reader)<br>
+  {<br>
+ IEnumerator e = ((IEnumerable)reader).GetEnumerator();<br>
+ while (e.MoveNext());<br>
+ Console.WriteLine("after MoveNext(), reader is closed?{0}", reader.IsClosed);<br>
+  }</p>
+<p>}</p>
+<p>输出是<br>
+after Read(), reader is closed? False<br>
+after MoveNext(), reader is closed? <strong>True</strong></p>
+<p>果不其然啊，用Lutz Roeder的<a href="http://www.aisto.com/roeder/dotnet/">Reflector</a>(大力推荐！)工具看了一下.NET里SqlDataReader的实现</p>
+<p>IEnumerator System.Collections.IEnumerable.GetEnumerator()<br>
+{<br>
+      return new DbEnumerator(this, (CommandBehavior.Default != (CommandBehavior.CloseConnection &amp; this._behavior)));<br>
+}<br>
+</p>
+<p>可见SqlDataReader的CommandBehavior确实是传进去的，再看DbEnumerator的实现</p>
+<p>public DbEnumerator(IDataReader reader, bool closeReader)<br>
+{<br>
+      if (reader == null)<br>
+      {<br>
+            throw ADP.ArgumentNull("reader");<br>
+      }<br>
+      this._reader = reader;<br>
+      this.closeReader = closeReader;<br>
+}</p>
+<p>public bool MoveNext()<br>
+{<br>
+      object[] objArray1;<br>
+      if (this._schemaInfo == null)<br>
+      {<br>
+            this.BuildSchemaInfo();<br>
+      }<br>
+      this._current = null;<br>
+      if (this._reader.Read())<br>
+      {<br>
+            objArray1 = new object[this._schemaInfo.Length];<br>
+            this._reader.GetValues(objArray1);<br>
+            this._current = new DbDataRecord(this._schemaInfo, objArray1, this._descriptors, this._fieldNameLookup);<br>
+            return true;<br>
+      }<br>
+<strong>if (this.closeReader)<br>
+      {<br>
+            this._reader.Close();<br>
+      }<br>
+</strong>      return false;<br>
+}</p>
+<p>果然， 如果DataReader的CommandBehavior是CommandBehavior.CloseConnection的话，MoveNext调用了Close方法!</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+    </p>
+  </div>
+
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'hcwang';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " 开心就好的代码人生 ",
+  "url" : "https://blog.joycode.com",
+  "image": "",
+  "description": ""
+}
+</script>
+</body>
+</html>

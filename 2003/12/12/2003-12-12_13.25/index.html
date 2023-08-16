@@ -1,0 +1,214 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://blog.joycode.com/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/solid.css">
+
+
+
+
+  <link href="https://blog.joycode.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="开心就好的代码人生 Atom">
+
+
+
+ 
+
+<meta name="author" content="joycode" />
+<meta name="description" content="[IBuySpy Portal ]{lang=&#34;EN-US&#34;}[中使用]{lang=&#34;ZH-CN&#34;}[ PortalModuleControl ]{lang=&#34;EN-US&#34;}[这个继承自]{lang=&#34;ZH-CN&#34;}[UserControl]{lang=&#34;EN-US&#34;}[的类来作为站点中所有]{lang=&#34;ZH-CN&#34;}[Module]{lang=&#34;EN-US&#34;}[的基类，用户控件的工作方式是 …" />
+<meta name="keywords" content="">
+
+
+  <meta property="og:site_name" content="开心就好的代码人生"/>
+  <meta property="og:title" content="前几天看IBuySpy时记在OneNote里面的笔记"/>
+  <meta property="og:description" content="[IBuySpy Portal ]{lang=&#34;EN-US&#34;}[中使用]{lang=&#34;ZH-CN&#34;}[ PortalModuleControl ]{lang=&#34;EN-US&#34;}[这个继承自]{lang=&#34;ZH-CN&#34;}[UserControl]{lang=&#34;EN-US&#34;}[的类来作为站点中所有]{lang=&#34;ZH-CN&#34;}[Module]{lang=&#34;EN-US&#34;}[的基类，用户控件的工作方式是 …"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://blog.joycode.com/2003/12/12/2003-12-12_13.25/"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2003-12-12 13:25:00+08:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="https://blog.joycode.com/author/joycode.html">
+  <meta property="article:section" content="业界评论"/>
+  <meta property="og:image" content="">
+
+  <title>开心就好的代码人生 &ndash; 前几天看IBuySpy时记在OneNote里面的笔记</title>
+
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="https://blog.joycode.com/">
+      <img src="https://blog.joycode.com/theme/img/profile.png" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://blog.joycode.com/"></a>
+    </h1>
+
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="https://getpelican.com/" >Pelican</a>
+          </li>
+          <li>
+            <a target="_self" href="https://www.python.org/" >Python.org</a>
+          </li>
+          <li>
+            <a target="_self" href="https://palletsprojects.com/p/jinja/" >Jinja2</a>
+          </li>
+          <li>
+            <a target="_self" href="#" >You can modify those links in your config file</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-You can add links in your config file"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-You can add links in your config file"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-Another social link"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-Another social link"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="2003-12-12_13.25">前几天看IBuySpy时记在OneNote里面的笔记</h1>
+    <p>
+      Posted on 五 12 十二月 2003 in <a href="https://blog.joycode.com/category/ye-jie-ping-lun.html">业界评论</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>[IBuySpy Portal ]{lang="EN-US"}[中使用]{lang="ZH-CN"}[ PortalModuleControl ]{lang="EN-US"}[这个继承自]{lang="ZH-CN"}[UserControl]{lang="EN-US"}[的类来作为站点中所有]{lang="ZH-CN"}[Module]{lang="EN-US"}[的基类，用户控件的工作方式是，当页面上实例化一个用户控件时，自动将它的所有子控件全部]{lang="ZH-CN"}[Render]{lang="EN-US"}[成]{lang="ZH-CN"}[HTML]{lang="EN-US"}[，然后输出，为了提高]{lang="ZH-CN"}[Module]{lang="EN-US"}[的工作效率，每个]{lang="ZH-CN"}[Module]{lang="EN-US"}[可以设置自己的缓存时间，在缓存时间内，系统不会再重复]{lang="ZH-CN"}[Render]{lang="EN-US"}[它的所有子控件，而是在第一次]{lang="ZH-CN"}[Render]{lang="EN-US"}[的时候，把结果]{lang="ZH-CN"}[HTML]{lang="EN-US"}[文本缓存起来，当下次需要的时候再直接输出。]{lang="ZH-CN"}</p>
+<p>[实现缓存功能，]{lang="ZH-CN"}[IBuySpy]{lang="EN-US"}[是通过]{lang="ZH-CN"}[CachedPortalModuleControl]{lang="EN-US"}[实现的。]{lang="ZH-CN"}</p>
+<p>[因为]{lang="ZH-CN"}[IBuySpy]{lang="EN-US"}[页面上的]{lang="ZH-CN"}[Module]{lang="EN-US"}[都是通过]{lang="ZH-CN"}[LoadControl]{lang="EN-US"}[()]{lang="EN-US"}[方法来动态载入到页面上的，像这样：]{lang="ZH-CN"}</p>
+<p>PortalModuleControl portalModule = (PortalModuleControl) Page.LoadControl(_moduleSettings.DesktopSrc);</p>
+<p>portalModule.PortalId = portalSettings.PortalId;<br>
+portalModule.ModuleConfiguration = _moduleSettings;</p>
+<p>parent.Controls.Add(portalModule);</p>
+<p>[当检测到一个]{lang="ZH-CN"}[Module]{lang="EN-US"}[的]{lang="ZH-CN"}[CacheTime&gt;0]{lang="EN-US"}[时，代码则：]{lang="ZH-CN"}</p>
+<p>CachedPortalModuleControl portalModule = new CachedPortalModuleControl();</p>
+<p>portalModule.PortalId = portalSettings.PortalId;<br>
+portalModule.ModuleConfiguration = _moduleSettings;</p>
+<p>parent.Controls.Add(portalModule);</p>
+<p>[就是说，代码不会再载入]{lang="ZH-CN"}[PortalModuleControl]{lang="EN-US"}[类型的控件了，而是载入]{lang="ZH-CN"}[CachedPortalModuleControl]{lang="EN-US"}[来实现的。]{lang="ZH-CN"}</p>
+<p>[下面看看]{lang="ZH-CN"}[CachedPortalModuleControl]{lang="EN-US"}[是如何实现缓存的：]{lang="ZH-CN"}</p>
+<p>[private Strin]{lang="ZH-CN"}[g ]{lang="EN-US"}[_cach]{lang="ZH-CN"}[e]{lang="EN-US"}[dOutput = "";]{lang="ZH-CN"}</p>
+<p>[这里定义了一个]{lang="ZH-CN"}[String]{lang="EN-US"}[变量，保存缓存的内容]{lang="ZH-CN"}</p>
+<p>protected override void CreateChildControls() {</p>
+<p>if (_moduleConfiguration.CacheTime &gt; 0) {</p>
+<p>_cachedOutput = (String) Context.Cache[CacheKey];</p>
+<p>}</p>
+<p>[CreateChildControls()这个方法是在]{lang="ZH-CN"}[Control]{lang="EN-US"}[类每次被实例化时，都会执行的方法。首先检查这个]{lang="ZH-CN"}[Module]{lang="EN-US"}[是否启用了缓存，如果启用了，则从]{lang="ZH-CN"}[Context.Cache]{lang="EN-US"}[中寻找缓存，并载入到]{lang="ZH-CN"}[_cachedOutput]{lang="EN-US"}[中。]{lang="ZH-CN"}</p>
+<p>[（]{lang="ZH-CN"}[CachedPortalModuleControl]{lang="EN-US"}[实质上是一个]{lang="ZH-CN"}[Composite Control]{lang="EN-US"}[，有关复合控件的相关资料，参阅：]{lang="ZH-CN"}</p>
+<p>[ms-help://MS.VSCC.2003/MS.MSDNQTR.2003FEB.2052/cpguide/html/<br>
+cpcondevelopingcompositecontrols.htm）]{lang="ZH-CN"}</p>
+<p>if (_cachedOutput == null) {</p>
+<p>base.CreateChildControls();</p>
+<p>PortalModuleControl module = (PortalModuleControl) Page.LoadControl(_moduleConfiguration.DesktopSrc);</p>
+<p>module.ModuleConfiguration = this.ModuleConfiguration;</p>
+<p>module.PortalId = this.PortalId;</p>
+<p>this.Controls.Add(module);</p>
+<p>}</p>
+<p>[如果]{lang="ZH-CN"}[_cachedOutput]{lang="EN-US"}[为]{lang="ZH-CN"}[null]{lang="EN-US"}[，那么说明还没有缓存，于是调用]{lang="ZH-CN"}[base.CreateChildControls()]{lang="EN-US"}[，然后用]{lang="ZH-CN"}[LoadControl]{lang="EN-US"}[()]{lang="EN-US"}[方法重新（真实的）载入控件，并把这个控件放入本控件的子控件树中。]{lang="ZH-CN"}</p>
+<p>protected override void Render(HtmlTextWriter output) {</p>
+<p>if (_moduleConfiguration.CacheTime == 0) {</p>
+<p>base.Render(output);</p>
+<p>return;</p>
+<p>}</p>
+<p>[现在到了]{lang="ZH-CN"}[Render]{lang="EN-US"}[方法，这个方法用于输出控件的]{lang="ZH-CN"}[HTML]{lang="EN-US"}[，首先检查是否启用缓存，如果没有，直接调用]{lang="ZH-CN"}[base.Render()]{lang="EN-US"}[直接输出，然后]{lang="ZH-CN"}[return]{lang="EN-US"}[。]{lang="ZH-CN"}</p>
+<p>if (_cachedOutput == null) {</p>
+<p>TextWriter tempWriter = new StringWriter();</p>
+<p>base.Render(new HtmlTextWriter(tempWriter));</p>
+<p>_cachedOutput = tempWriter.ToString();</p>
+<p>Context.Cache.Insert(CacheKey, _cachedOutput, null, DateTime.Now.AddSeconds(_moduleConfiguration.CacheTime), TimeSpan.Zero);</p>
+<p>}</p>
+<p>[如果启用了缓存，但是用来保存缓存内容的变量为]{lang="ZH-CN"}[null]{lang="EN-US"}[，那么就调用]{lang="ZH-CN"}[base.Render()]{lang="EN-US"}[方法，把所有应该输出的]{lang="ZH-CN"}[HTML]{lang="EN-US"}[输出到]{lang="ZH-CN"}[_cachedOutput]{lang="EN-US"}[变量中，然后把这个变量的内容放入]{lang="ZH-CN"}[Context]{lang="EN-US"}[.Cache]{lang="EN-US"}[中。]{lang="ZH-CN"}</p>
+<p>output.Write(_cachedOutput);</p>
+<p>[最后，把这个变量中的]{lang="ZH-CN"}[HTML]{lang="EN-US"}[内容输出。]{lang="ZH-CN"}</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+    </p>
+  </div>
+
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'hcwang';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " 开心就好的代码人生 ",
+  "url" : "https://blog.joycode.com",
+  "image": "",
+  "description": ""
+}
+</script>
+</body>
+</html>

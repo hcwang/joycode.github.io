@@ -1,0 +1,187 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://blog.joycode.com/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/solid.css">
+
+
+
+
+  <link href="https://blog.joycode.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="开心就好的代码人生 Atom">
+
+
+
+ 
+
+<meta name="author" content="joycode" />
+<meta name="description" content="[]{#_Toc260419283}第1篇 准备 []{#_Toc260419284}第1章 引言 在本章中，首先我们将介绍作为.NET开发人员，在进入iPhone/iPad开发领域当中所遇到的主要障碍。同时，我们也要对于将要进入的全新领域有一个简 …" />
+<meta name="keywords" content="跨界开发">
+
+
+  <meta property="og:site_name" content="开心就好的代码人生"/>
+  <meta property="og:title" content="跨界开发连载1"/>
+  <meta property="og:description" content="[]{#_Toc260419283}第1篇 准备 []{#_Toc260419284}第1章 引言 在本章中，首先我们将介绍作为.NET开发人员，在进入iPhone/iPad开发领域当中所遇到的主要障碍。同时，我们也要对于将要进入的全新领域有一个简 …"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://blog.joycode.com/2010/12/10/116143/"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2010-12-10 14:27:00+08:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="https://blog.joycode.com/author/joycode.html">
+  <meta property="article:section" content="跨界开发-iOS"/>
+  <meta property="article:tag" content="跨界开发"/>
+  <meta property="og:image" content="">
+
+  <title>开心就好的代码人生 &ndash; 跨界开发连载1</title>
+
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="https://blog.joycode.com/">
+      <img src="https://blog.joycode.com/theme/img/profile.png" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://blog.joycode.com/"></a>
+    </h1>
+
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="https://getpelican.com/" >Pelican</a>
+          </li>
+          <li>
+            <a target="_self" href="https://www.python.org/" >Python.org</a>
+          </li>
+          <li>
+            <a target="_self" href="https://palletsprojects.com/p/jinja/" >Jinja2</a>
+          </li>
+          <li>
+            <a target="_self" href="#" >You can modify those links in your config file</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-You can add links in your config file"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-You can add links in your config file"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-Another social link"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-Another social link"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="116143">跨界开发连载1</h1>
+    <p>
+      Posted on 五 10 十二月 2010 in <a href="https://blog.joycode.com/category/kua-jie-kai-fa-ios.html">跨界开发-iOS</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <h3>[]{#_Toc260419283}第1篇 准备</h3>
+<h4>[]{#_Toc260419284}第1章 引言</h4>
+<p>在本章中，首先我们将介绍作为.NET开发人员，在进入iPhone/iPad开发领域当中所遇到的主要障碍。同时，我们也要对于将要进入的全新领域有一个简单的感性认识，从而克服这种恐惧感，如果你已经信心满满，并且已经对于Mac OS X以及iPhone/iPad平台以及相关的开发环境有所接触，那么可以直接跳转到下一章进行更加系统的学习。</p>
+<h5>[]{#_Toc260419285}1.1 面前的六座大山</h5>
+<p>开发者往往对于开发语言以及开发环境有着宗教般的狂热，尤其对于已经入门但尚未运用精熟的初学者，更是如此。作为一名专业的开发人员，我们已经习惯了在论坛、博客上看到各种关于开发语言以及开发环境的辩论赛，比如论证.NET与Java孰优孰劣，C以及C++谁的生命力更强等等。往往这种论证会持续一段时间后不了了之，而后再过一段时间，新的类似的辩论赛又会重复上演。</p>
+<p>这与宗教信仰一般，我们很难通过简单的辩论，就可以让另外一方改变自己的观点。所以这种争论除了浪费时间之外，对于开发者来说，没有任何益处。</p>
+<p>其实不仅开发者，最终用户也会经常争论Windows XP以及Mac OS X谁更符合用户习惯、Linux与Windows哪个操作系统更加安全之类的问题。这种问题真的有解吗？我个人认为很多答案都需要限定相关的条件才可以给出答案。并且很多答案只有形而上学的意义，并不是完全普适的真理。</p>
+<p>而本书的“越界开发”，面向那些已经沉浸于.NET开发两年以上的开发人员，帮助他们跨越以下六个大的障碍：</p>
+<p><strong>1.操作系统</strong>：作为国内的开发人员来说，尤其是.NET开发人员，Windows基本上就是其开发的全部，我们的日常工作以及编程都是在Windows上进行。开发后的应用程序要么部署到Windows Server上，要么部署到Windows Mobile，或者以Windows上的其它应用作为宿主，比如Microsoft Office或者Silverlight等。而Mac，由于其价格以及其它相关的因素，对于我们非常遥远，从而显得异常神秘。而在本书中，由于面向iPhone上进行开发，所以我们则必须与Mac OS X为伴。这是我们需要跨越的第一道障碍。</p>
+<p><strong>2.开发环境</strong>：Visual Studio是我本人用过的最好的IDE，尤其是刚刚发布的Visual Studio 2010，吸收了历史上所有相关IDE的长处，终于成为集大成者。而在本书中，我们则必须了解并且使用一个神秘的IDE套件：XCode、Interface Builder以及Instruments等。在这其中，很多原有的开发习惯都需要进行调整以及适应，可能刚开始的一周你会非常的不适应。</p>
+<p><strong>3.开发语言</strong>： 作为C#开发人员，可能你已经知道所谓的“#”，其实是代表着四个加号，即C#相当于C++++。所以C#与C以及C++是属于近亲关系，但在基因上有着很多改良。而Objective-C，单从字面上来说，与C也属于同一家族，但当你亲自阅读一段Objective-C源代码的时候，你会发现理想与事实的差距。因为事实上Objective-C是一门你很少听说过的Smalltalk 80的进化。</p>
+<p><strong>4.框架类库</strong>：作为C#开发人员，我们相比于C/C++开发人员来说，已经幸福了很多。因为.NET Framework已经为我们提供了丰富的Class Library，比如处理XML、HTTP请求等，只需要调用相关的类库中的API就可以非常简单的完成。在iPhone当中，我们同样也有一个类库，即Cocoa Touch（开发Mac OS X上的应用，我们需要使用的类库是Cocoa,在iPhone/iPad上则使用Cocoa Touch。两者的关系类似于.NET Framework与.NET Compact Framework）。快速掌握框架类库提供的功能也是我们必须跨越的一道障碍。</p>
+<p><strong>5.部署平台</strong>：相信本书的部分读者都有着Windows Mobile的开发经验。本书的部署平台虽然也是手机操作系统，但它与Windows Mobile有着很多的不同。最大的不同的就是其单任务处理机制，可能会在初期让你发狂。而对于那些原来没有接触过Windows Mobile开发的读者来说，iPhone开发与你原有的部署平台也有着很大的不同。</p>
+<p><strong>6. 市场推广</strong>：在笔者的日常工作中，会与很多.NET开发人员进行交流。大部分开发人员往往都会关注于开发过程，而对于开发完成后，已经成为“商业”的软件会如何在市场上推广，他们往往并不关心。而对于iPhone/iPad开发者来说，必须要自己承担所开发出来的成果的推广工作，所以这也将成为其重要的障碍。</p>
+<p>写到这儿，可能有部分读者在心中已经打了退堂鼓。既然有这么多困难，我们为什么还要学习iPhone/iPad开发呢？</p>
+<p>iPhone作为一款新发布的手机，于2007年1月9日，由苹果公司面向全球进行发布（见图1.1），在很短的时间内，就已经风靡全球，成为很多时尚潮人所必备的数码精品。而随之2010年4月3日，iPad的发布，更加推动了这个趋势。众多的开发商开始着力于面向iPhone/iPad平台的开发。与此同时，众多的iPhone/iPad平台上的造富神话也吸着众多的开发人员。</p>
+<p>根据苹果公司在2010年1月5日公布的数据，其苹果应用商店（App Store）上的软件已经被下载超过30亿次。需要了解的是，App Store此时才运营仅仅一年半，在2009年9月份开始，其下载量已经超过了20亿次，那么相当于自2009年9月份，平均每天有1010万个程序被用户下载，在每秒钟则高达300个应用被下载。</p>
+<p>创造符合用户习惯的软件，供更多的用户使用，是我们软件开发者的梦想。而iPhone/iPad平台则可以帮助我们实现这个梦想。</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://blog.joycode.com/tag/kua-jie-kai-fa.html">跨界开发</a>
+    </p>
+  </div>
+
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'hcwang';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " 开心就好的代码人生 ",
+  "url" : "https://blog.joycode.com",
+  "image": "",
+  "description": ""
+}
+</script>
+</body>
+</html>

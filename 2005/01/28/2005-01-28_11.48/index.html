@@ -1,0 +1,188 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://blog.joycode.com/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/solid.css">
+
+
+
+
+  <link href="https://blog.joycode.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="开心就好的代码人生 Atom">
+
+
+
+ 
+
+<meta name="author" content="joycode" />
+<meta name="description" content="目前开心的主要兴趣是在Visual Studio Team System当中，因为在一个软件开发团队当中，最重要的已经不只是开发工具本身了，而是包括需求 …" />
+<meta name="keywords" content="C#编程, 操作系统, 软件推荐">
+
+
+  <meta property="og:site_name" content="开心就好的代码人生"/>
+  <meta property="og:title" content="Visual Studio Team System 1204 CTP Extensibility Kit &amp; MSF Agile 文档"/>
+  <meta property="og:description" content="目前开心的主要兴趣是在Visual Studio Team System当中，因为在一个软件开发团队当中，最重要的已经不只是开发工具本身了，而是包括需求 …"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://blog.joycode.com/2005/01/28/2005-01-28_11.48/"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2005-01-28 11:48:00+08:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="https://blog.joycode.com/author/joycode.html">
+  <meta property="article:section" content="业界评论"/>
+  <meta property="article:tag" content="C#编程"/>
+  <meta property="article:tag" content="操作系统"/>
+  <meta property="article:tag" content="软件推荐"/>
+  <meta property="og:image" content="">
+
+  <title>开心就好的代码人生 &ndash; Visual Studio Team System 1204 CTP Extensibility Kit &amp; MSF Agile 文档</title>
+
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="https://blog.joycode.com/">
+      <img src="https://blog.joycode.com/theme/img/profile.png" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://blog.joycode.com/"></a>
+    </h1>
+
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="https://getpelican.com/" >Pelican</a>
+          </li>
+          <li>
+            <a target="_self" href="https://www.python.org/" >Python.org</a>
+          </li>
+          <li>
+            <a target="_self" href="https://palletsprojects.com/p/jinja/" >Jinja2</a>
+          </li>
+          <li>
+            <a target="_self" href="#" >You can modify those links in your config file</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-You can add links in your config file"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-You can add links in your config file"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-Another social link"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-Another social link"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="2005-01-28_11.48">Visual Studio Team System 1204 CTP Extensibility Kit & MSF Agile 文档</h1>
+    <p>
+      Posted on 五 28 一月 2005 in <a href="https://blog.joycode.com/category/ye-jie-ping-lun.html">业界评论</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>目前开心的主要兴趣是在Visual Studio Team System当中，因为在一个软件开发团队当中，最重要的已经不只是开发工具本身了，而是包括需求管理、Bug管理、测试、建模等等，以前微软及其合作伙伴提供了一系列的独立工具帮助大家完成这些功能，但现在，所有这一切都可以在Visual Studio Team System的统一的IDE当中完成。</p>
+<p>昨天参加了MSDN全球网站的一次聊天活动，在该活动当中，来自Product Team的专家们就用户关心的问题一一进行了回答，受益匪浅。</p>
+<p>通过这次聊天活动，也可以看出，用户的需求是非常多的，但微软不可能在短时间内完全满足所有客户的需求，比如希望找到一个CVS迁移到VSTS工具，微软在V1的时候不会提供（仅提供了VSS以及ClearCase的迁移工具），一位专家说，这正是我们的ISV的大好机会。</p>
+<p>另外，还有好多团队可能并不满足于VSTS自带的MSF以及XP方法论模板，希望可以对这些流程以及角色进行自定义，创建符合自己公司需要的模板，那么如何做呢？</p>
+<p>还好，我们现在有了Visual Studio Team System 1204 CTP Extensibility Kit，使用它可以很方便的在VSTS的DEC CTP版本中进行以下功能的定制，并且提供了部分示例代码：</p>
+<p>1)<strong>创建自己的Work Item Type</strong>：如果你选择了MSF Agile方法论模板，那么Work Item Types将会有：Bug，Requirement、Task等等，如果你想创建自己的Type，比如Risk，可以使用这个工具来完成;</p>
+<p>2)<strong>创建自己的测试类型</strong>：在VSTS当中，内建了压力测试、网络测试、单元测试，但现在的测试方法层出不穷，我们可以依靠这个扩展工具来扩展自己的测试类型;</p>
+<p>3)<strong>创建自己的签入/签出规则</strong>:在VSTS当中，根据选择的不同的方法论模板，可以有不同的签入/签出规则，那么可不可以创建自己的签入/签出规则呢？答案也是可以的。</p>
+<p>4)<strong>创建自己的方法论模板</strong>:每个公司都有自己的方法论，VSTS提供了XP、MSF（Agile以及相当于CMM3层次的Completed MSF)，如果开发团队希望自定义，或者把类似于RUP的软件过程理论创建到VSTS当中，我们也提供了自定义方式;</p>
+<p>5)<strong>创建自己的事件通知机制</strong>：在VSTS当中，如果有人签入代码或者其它Item，可以有邮件通知给其它团队成员，但如果我们希望实现，使用Windows Messenger来通知团队成员，别担心，我们也有扩展机制;</p>
+<p>6)<strong>创建自己的工具藕合服务</strong>：VSTS提供了对象模型及服务，以便让ISV把自己的工具集成到VSTS当中，或者自定义一些视图以及UI或者行为。</p>
+<p>7）<strong>大量有用的Slides</strong>：在该扩展包当中，也包含了十多个Slides，用以讲解如何进行上述的各种扩展。</p>
+<p>感兴趣吗？那么现在就开始下载吧。</p>
+<p>VSTS 扩展工具包：<a href="http://www.microsoft.com/downloads/details.aspx?FamilyID=e42ecbda-de64-4acc-9197-c16734b4bf60&amp;displaylang=en">http://www.microsoft.com/downloads/details.aspx?FamilyID=e42ecbda-de64-4acc-9197-c16734b4bf60&amp;displaylang=en</a></p>
+<p>MSF Agile文档：<a href="http://www.gotdotnet.com/workspaces/workspace.aspx?id=b6973c97-2af8-4681-a585-9ec387ee0688">http://www.gotdotnet.com/workspaces/workspace.aspx?id=b6973c97-2af8-4681-a585-9ec387ee0688</a></p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://blog.joycode.com/tag/cbian-cheng.html">C#编程</a>
+      <a href="https://blog.joycode.com/tag/cao-zuo-xi-tong.html">操作系统</a>
+      <a href="https://blog.joycode.com/tag/ruan-jian-tui-jian.html">软件推荐</a>
+    </p>
+  </div>
+
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'hcwang';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " 开心就好的代码人生 ",
+  "url" : "https://blog.joycode.com",
+  "image": "",
+  "description": ""
+}
+</script>
+</body>
+</html>

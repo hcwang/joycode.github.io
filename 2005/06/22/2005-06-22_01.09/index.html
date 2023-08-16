@@ -1,0 +1,198 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://blog.joycode.com/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/solid.css">
+
+
+
+
+  <link href="https://blog.joycode.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="开心就好的代码人生 Atom">
+
+
+
+ 
+
+<meta name="author" content="joycode" />
+<meta name="description" content="昨天在MSN上跟蝈蝈辩论WebService返回DataSet/DataTable的做法是否很好，没有取得一致观点。 其实这不完全是WebService的问题，而是涉及在总的应用架构里使用DataSet/DataTable的问题。 我同意，这个问题不能一 …" />
+<meta name="keywords" content="">
+
+
+  <meta property="og:site_name" content="开心就好的代码人生"/>
+  <meta property="og:title" content="WebService返回DataSet/DataTable的争议"/>
+  <meta property="og:description" content="昨天在MSN上跟蝈蝈辩论WebService返回DataSet/DataTable的做法是否很好，没有取得一致观点。 其实这不完全是WebService的问题，而是涉及在总的应用架构里使用DataSet/DataTable的问题。 我同意，这个问题不能一 …"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://blog.joycode.com/2005/06/22/2005-06-22_01.09/"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2005-06-22 01:09:00+08:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="https://blog.joycode.com/author/joycode.html">
+  <meta property="article:section" content="业界评论"/>
+  <meta property="og:image" content="">
+
+  <title>开心就好的代码人生 &ndash; WebService返回DataSet/DataTable的争议</title>
+
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="https://blog.joycode.com/">
+      <img src="https://blog.joycode.com/theme/img/profile.png" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://blog.joycode.com/"></a>
+    </h1>
+
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="https://getpelican.com/" >Pelican</a>
+          </li>
+          <li>
+            <a target="_self" href="https://www.python.org/" >Python.org</a>
+          </li>
+          <li>
+            <a target="_self" href="https://palletsprojects.com/p/jinja/" >Jinja2</a>
+          </li>
+          <li>
+            <a target="_self" href="#" >You can modify those links in your config file</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-You can add links in your config file"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-You can add links in your config file"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-Another social link"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-Another social link"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="2005-06-22_01.09">WebService返回DataSet/DataTable的争议</h1>
+    <p>
+      Posted on 三 22 六月 2005 in <a href="https://blog.joycode.com/category/ye-jie-ping-lun.html">业界评论</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>昨天在MSN上跟蝈蝈<a href="/ghj/archive/2005/06/21/55309.aspx" target="_blank">辩论</a>WebService返回DataSet/DataTable的做法是否很好，没有取得一致观点。</p>
+<p>其实这不完全是WebService的问题，而是涉及在总的应用架构里使用DataSet/DataTable的问题。</p>
+<p>我同意，这个问题不能一概而论。假如你的应用inherently没什么业务逻辑或者你的应用很简单(虽然大概要怀疑一下，简单的应用使用WebService的必要性)，或者你的目的就是把数据库里的数据显示出来，那就用DataSet/DataTable好了。DataSet/DataTable到底提供了不少有用的方法(过滤/排序/。。。)，而且具有在修改后端数据库后，不用修改中间编码，修改显示层的绑定编码即可将变动反应出来的灵活性。</p>
+<p>但DataSet/DataTable往往反映了你的数据库里的Schema，你的表现层跟你的数据库里的东西的耦合如此之强，是否恰当，应该是个需要考虑的问题。但一想到DataSet/DataTable如此地方便，灵活，而且因此编码过程效率很高，何乐不为呢？</p>
+<p>而且，一般来说，你的应用并不是只用来显示数据的，往往需要编辑(添加/修改/删除)数据。但DataSet/DataTable这样的容器提供了很好的功能，能帮你记住你的数据的状态，很符合Martin Fowler的PEAA一书里的<a href="http://www.martinfowler.com/eaaCatalog/unitOfWork.html" target="_blank">Unit of Work</a>模式。然后到最后，你可以用DataAdapter一次性地(虽然其中操作并不是一次性)把数据更新到数据库去。</p>
+<p>听上去很美妙，对么？</p>
+<p>然后你就会在很多地方操作DataSet/DataTable，即使编码难以避免地会有点重复，而且你是在直接操作数据，心里会有点不安，但想到DataSet/DataTable的种种好处，哎，这么方便。。。。before you know it，类似的操作会散居各个逻辑层，哎，什么domain model，我这database-driven programming也蛮好的。。。等到要维护时，或需要改版时再看，业务逻辑象映山红般满山遍野。。。。哎，反正我的项目比较小，重头开始吧。。。。If you didn't learn anything here, we will be looking forward to another unmaintainable project。。。。(有点夸张)</p>
+<p><a href="http://www.hanselman.com/blog/ReturningDataSetsFromWebServicesIsTheSpawnOfSatanAndRepresentsAllThatIsTrulyEvilInTheWorld.aspx" target="_blank">Scott Hanselman</a>说，“Returning DataSets from WebServices is the Spawn of Satan and Represents All That Is Truly Evil in the World (<strong>从WebService返回DataSet，是撒旦的产物，代表了世界上一切真正邪恶的东西</strong>)”，虽然我没那么极端，但真想说，Amen!<img alt="" border="0" src="/emoticons/emotion-1.gif"></p>
+<p>相关连接</p>
+<ol>
+<li>
+<p><a href="http://msdn.microsoft.com/msdnmag/issues/03/04/XMLFiles/" target="_blank">Aaron Skonnard</a>谈到从WebService返回DataSet对Interoperability的影响</p>
+</li>
+<li>
+<p><a href="http://www.hanselman.com/blog/ReturningDataSetsFromWebServicesIsTheSpawnOfSatanAndRepresentsAllThatIsTrulyEvilInTheWorld.aspx" target="_blank">Scott Hanselman</a>又说，DataSet是只碗，不是水果，强类型DataSet是只上面画了个苹果的碗而已</p>
+</li>
+<li>
+<p><a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dnaspp/html/CustEntCls.asp" target="_blank">Karl Seguin</a>在MSDN上的文章“<a href="http://www.microsoft.com/china/msdn/library/webservices/asp.net/CustEntCls.mspx" target="_blank">掌握 ASP.NET 之路：自定义实体类简介</a>”里指出了DataSet的问题</p>
+</li>
+<li>
+<p><a href="http://objectsharp.com/Blogs/barry/archive/2004/02/10/273.aspx" target="_blank">Barry Gervin</a>不同意，罗列了DataSet的种种好处</p>
+</li>
+<li>
+<p><a href="http://jelle.druyts.net/PermaLink.aspx?guid=61676665-06a7-443a-9462-71dae713539e" target="_blank">Jelle Druyts</a>也不同意，称DataSet不是邪恶</p>
+</li>
+<li>
+<p>模式和实践里的2篇关于把DataSet用作DTO的文章，总结了其中的优弱点<br>
+<a href="http://msdn.microsoft.com/library/en-us/dnpatterns/html/ImpDTODataSet.asp?frame=true" target="_blank">Implementing Data Transfer Object in .NET with a DataSet</a><br>
+<a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dnpatterns/html/ImpDTOtypedDataSet.asp" target="_blank">Implementing Data Transfer Object in .NET with a Typed DataSet</a></p>
+</li>
+</ol>
+  </div>
+  <div class="tag-cloud">
+    <p>
+    </p>
+  </div>
+
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'hcwang';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " 开心就好的代码人生 ",
+  "url" : "https://blog.joycode.com",
+  "image": "",
+  "description": ""
+}
+</script>
+</body>
+</html>

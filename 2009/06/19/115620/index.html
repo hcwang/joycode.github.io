@@ -1,0 +1,256 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://blog.joycode.com/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/solid.css">
+
+
+
+
+  <link href="https://blog.joycode.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="开心就好的代码人生 Atom">
+
+
+
+ 
+
+<meta name="author" content="joycode" />
+<meta name="description" content="IE8发布之后，市场份额在节节上升当中。由于目前Windows 7在市场当中的反响相当不错，相信随着Windows 7的上市，IE8的市场份额更会打着滚儿的上升。 对于网站主来说，除了做好IE8的兼容之外（其实就是W3C的标准兼容），还有一个细节需要 …" />
+<meta name="keywords" content="">
+
+
+  <meta property="og:site_name" content="开心就好的代码人生"/>
+  <meta property="og:title" content="如何判断当前浏览器是否是IE8?"/>
+  <meta property="og:description" content="IE8发布之后，市场份额在节节上升当中。由于目前Windows 7在市场当中的反响相当不错，相信随着Windows 7的上市，IE8的市场份额更会打着滚儿的上升。 对于网站主来说，除了做好IE8的兼容之外（其实就是W3C的标准兼容），还有一个细节需要 …"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://blog.joycode.com/2009/06/19/115620/"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2009-06-19 21:16:00+08:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="https://blog.joycode.com/author/joycode.html">
+  <meta property="article:section" content="业界评论"/>
+  <meta property="og:image" content="">
+
+  <title>开心就好的代码人生 &ndash; 如何判断当前浏览器是否是IE8?</title>
+
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="https://blog.joycode.com/">
+      <img src="https://blog.joycode.com/theme/img/profile.png" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://blog.joycode.com/"></a>
+    </h1>
+
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="https://getpelican.com/" >Pelican</a>
+          </li>
+          <li>
+            <a target="_self" href="https://www.python.org/" >Python.org</a>
+          </li>
+          <li>
+            <a target="_self" href="https://palletsprojects.com/p/jinja/" >Jinja2</a>
+          </li>
+          <li>
+            <a target="_self" href="#" >You can modify those links in your config file</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-You can add links in your config file"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-You can add links in your config file"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-Another social link"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-Another social link"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="115620">如何判断当前浏览器是否是IE8?</h1>
+    <p>
+      Posted on 五 19 六月 2009 in <a href="https://blog.joycode.com/category/ye-jie-ping-lun.html">业界评论</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>IE8发布之后，市场份额在节节上升当中。由于目前Windows 7在市场当中的反响相当不错，相信随着Windows 7的上市，IE8的市场份额更会打着滚儿的上升。</p>
+<p>对于网站主来说，除了做好IE8的兼容之外（其实就是W3C的标准兼容），还有一个细节需要注意，那就是如何来判断当前用户使用的是不是IE8。有很多哥们儿就说了，这还不容易吗？使用UserAgent不就可以了，根据当前的UserAgent字符串，查看一下是不是IE8？类似于展波兄给出的<a href="http://blog.joycode.com/zhanbos/archive/2009/05/20/115577.joy">如何判断.NET版本</a>一样。</p>
+<p>如果你真的认为使用这个字符串就可以正确判断目标浏览器的版本号,那就有些很傻很天真了。作为一个完全兼容W3C标准的微软浏览器，在IE8当中为了照顾目前世面上大部分网站的需要，其总共提供了三个渲染引擎，即IE8标准模式，IE7的兼容模式，以及IE6的Quirks模式。而IE8的UserAgent字符串也会动态的根据渲染引擎不同而采用不同的字符串。比如以下三种情况：</p>
+<p>1. 在最终用户访问你的网站时，点击了地址栏右侧兼容模式按钮;</p>
+<p>2. 你的网站中的相应页面使用了IE7兼容字符串，即\&lt;meta content="IE=EmulateIE7" http-equiv="X-UA-Compatible"/&gt;,或者在Web服务器 （IIS/Apache)的HTTP Header信息当中作了相应的设置;</p>
+<p>3. 微软为了协助贵公司的网站页面在IE8下显示更加兼容，在IE8兼容列表当中将贵公司的网站地址加入了一个Windows Update维护列表中（如果您的网站在此列表当中，并且您相信您的网站其实已经完全兼容W3C标准，所以想从此列表移除，可以发送邮件至<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#105;&#101;&#112;&#111;&#64;&#109;&#105;&#99;&#114;&#111;&#115;&#111;&#102;&#116;&#46;&#99;&#111;&#109;">&#105;&#101;&#112;&#111;&#64;&#109;&#105;&#99;&#114;&#111;&#115;&#111;&#102;&#116;&#46;&#99;&#111;&#109;</a>申请移除)。</p>
+<p>那么在以上三种情况下，你得到的UseAgent字符串将会是IE7，而不是IE8。</p>
+<p>那么如何正确判断当前浏览器是不是IE8呢? 使用以下代码即可：</p>
+<p>::: csharpcode
+       1:  function getInternetExplorerVersion()</p>
+<div class="highlight"><pre><span></span><code><span class="w">   </span><span class="mi">2</span><span class="p">:</span><span class="w">  </span><span class="o">//</span><span class="w"> </span><span class="n">Returns</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">Windows</span><span class="w"> </span><span class="n">Internet</span><span class="w"> </span><span class="n">Explorer</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span>
+
+<span class="w">   </span><span class="mi">3</span><span class="p">:</span><span class="w">  </span><span class="o">//</span><span class="w"> </span><span class="p">(</span><span class="n">indicating</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">another</span><span class="w"> </span><span class="n">browser</span><span class="p">)</span><span class="o">.</span>
+
+<span class="w">   </span><span class="mi">4</span><span class="p">:</span><span class="w">  </span><span class="p">{</span>
+
+<span class="w">   </span><span class="mi">5</span><span class="p">:</span><span class="w">     </span><span class="k">var</span><span class="w"> </span><span class="n">rv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="n">Return</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="n">assumes</span><span class="w"> </span><span class="n">failure</span><span class="o">.</span>
+
+<span class="w">   </span><span class="mi">6</span><span class="p">:</span><span class="w">     </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">navigator</span><span class="o">.</span><span class="n">appName</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;Microsoft Internet Explorer&#39;</span><span class="p">)</span>
+
+<span class="w">   </span><span class="mi">7</span><span class="p">:</span><span class="w">     </span><span class="p">{</span>
+
+<span class="w">   </span><span class="mi">8</span><span class="p">:</span><span class="w">        </span><span class="k">var</span><span class="w"> </span><span class="n">ua</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">navigator</span><span class="o">.</span><span class="n">userAgent</span><span class="p">;</span>
+
+<span class="w">   </span><span class="mi">9</span><span class="p">:</span><span class="w">        </span><span class="k">var</span><span class="w"> </span><span class="n">re</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">new</span><span class="w"> </span><span class="n">RegExp</span><span class="p">(</span><span class="s2">&quot;MSIE ([0-9]{1,}[\.0-9]{0,})&quot;</span><span class="p">);</span>
+
+<span class="w">  </span><span class="mi">10</span><span class="p">:</span><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">exec</span><span class="p">(</span><span class="n">ua</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb nb-Type">null</span><span class="p">)</span>
+
+<span class="w">  </span><span class="mi">11</span><span class="p">:</span><span class="w">           </span><span class="n">rv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parseFloat</span><span class="p">(</span><span class="w"> </span><span class="n">RegExp</span><span class="o">.$</span><span class="mi">1</span><span class="w"> </span><span class="p">);</span>
+
+<span class="w">  </span><span class="mi">12</span><span class="p">:</span><span class="w">     </span><span class="p">}</span>
+
+<span class="w">  </span><span class="mi">13</span><span class="p">:</span><span class="w">     </span><span class="k">return</span><span class="w"> </span><span class="n">rv</span><span class="p">;</span>
+
+<span class="w">  </span><span class="mi">14</span><span class="p">:</span><span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="mi">15</span><span class="p">:</span><span class="w">  </span><span class="n">function</span><span class="w"> </span><span class="n">checkVersion</span><span class="p">()</span>
+
+<span class="w">  </span><span class="mi">16</span><span class="p">:</span><span class="w">  </span><span class="p">{</span>
+
+<span class="w">  </span><span class="mi">17</span><span class="p">:</span><span class="w">     </span><span class="k">var</span><span class="w"> </span><span class="n">msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;You&#39;re not using Windows Internet Explorer.&quot;</span><span class="p">;</span>
+
+<span class="w">  </span><span class="mi">18</span><span class="p">:</span><span class="w">     </span><span class="k">var</span><span class="w"> </span><span class="n">ver</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getInternetExplorerVersion</span><span class="p">();</span>
+
+<span class="w">  </span><span class="mi">19</span><span class="p">:</span><span class="w">     </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">ver</span><span class="o">&gt;</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="p">)</span>
+
+<span class="w">  </span><span class="mi">20</span><span class="p">:</span><span class="w">     </span><span class="p">{</span>
+
+<span class="w">  </span><span class="mi">21</span><span class="p">:</span><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">ver</span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">8.0</span><span class="w"> </span><span class="p">)</span>
+
+<span class="w">  </span><span class="mi">22</span><span class="p">:</span><span class="w">           </span><span class="n">msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;You&#39;re using a recent copy of Windows Internet Explorer.&quot;</span>
+
+<span class="w">  </span><span class="mi">23</span><span class="p">:</span><span class="w">        </span><span class="k">else</span>
+
+<span class="w">  </span><span class="mi">24</span><span class="p">:</span><span class="w">           </span><span class="n">msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;You should upgrade your copy of Windows Internet Explorer.&quot;</span><span class="p">;</span>
+
+<span class="w">  </span><span class="mi">25</span><span class="p">:</span><span class="w">      </span><span class="p">}</span>
+
+<span class="w">  </span><span class="mi">26</span><span class="p">:</span><span class="w">     </span><span class="n">alert</span><span class="p">(</span><span class="w"> </span><span class="n">msg</span><span class="w"> </span><span class="p">);</span>
+
+<span class="w">  </span><span class="mi">27</span><span class="p">:</span><span class="w">  </span><span class="p">}</span>
+</code></pre></div>
+
+<p>:::</p>
+<p>.csharpcode, .csharpcode pre<br>
+{<br>
+font-size: small;<br>
+color: black;<br>
+font-family: consolas, "Courier New", courier, monospace;<br>
+background-color: #ffffff;<br>
+/*white-space: pre;*/<br>
+}<br>
+.csharpcode pre { margin: 0em; }<br>
+.csharpcode .rem { color: #008000; }<br>
+.csharpcode .kwrd { color: #0000ff; }<br>
+.csharpcode .str { color: #006080; }<br>
+.csharpcode .op { color: #0000c0; }<br>
+.csharpcode .preproc { color: #cc6633; }<br>
+.csharpcode .asp { background-color: #ffff00; }<br>
+.csharpcode .html { color: #800000; }<br>
+.csharpcode .attr { color: #ff0000; }<br>
+.csharpcode .alt<br>
+{<br>
+background-color: #f4f4f4;<br>
+width: 100%;<br>
+margin: 0em;<br>
+}<br>
+.csharpcode .lnum { color: #606060; }</p>
+<p>其实此问题，是我负责的一个客户前端时间询问我的。美国一个好哥们<a href="http://blogs.msdn.com/giorgio/archive/2009/04/14/how-to-detect-ie8-using-javascript-client-side.aspx">Giorgio Sardo</a>帮我解决了此问题。在他的贴子当中，还有其它一些您可能感兴趣的内容，比如如何判断当前浏览器是否支持网页快讯(WebSlice)，加速器(Accelerator)以及可视化搜索（Visual Search）等。您也可以一并阅读。</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+    </p>
+  </div>
+
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'hcwang';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " 开心就好的代码人生 ",
+  "url" : "https://blog.joycode.com",
+  "image": "",
+  "description": ""
+}
+</script>
+</body>
+</html>

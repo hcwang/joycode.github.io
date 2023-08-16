@@ -1,0 +1,280 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://blog.joycode.com/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/solid.css">
+
+
+
+
+  <link href="https://blog.joycode.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="开心就好的代码人生 Atom">
+
+
+
+ 
+
+<meta name="author" content="joycode" />
+<meta name="description" content="【原文地址】CSS Control Adapter Toolkit Update 【原文发表日期】Friday, September 08, 2006 6:53 PM 今天，我们发布了ASP.NET 2.0的CSS控件适配器的更新版本，内中包含了bug fixes，用户建议的 …" />
+<meta name="keywords" content=".NET, ASP.NET, Tips and Tricks">
+
+
+  <meta property="og:site_name" content="开心就好的代码人生"/>
+  <meta property="og:title" content="CSS 控件适配器工具包新版发布"/>
+  <meta property="og:description" content="【原文地址】CSS Control Adapter Toolkit Update 【原文发表日期】Friday, September 08, 2006 6:53 PM 今天，我们发布了ASP.NET 2.0的CSS控件适配器的更新版本，内中包含了bug fixes，用户建议的 …"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://blog.joycode.com/2006/09/10/2006-09-10_03.20/"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2006-09-10 03:20:00+08:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="https://blog.joycode.com/author/joycode.html">
+  <meta property="article:section" content="业界评论"/>
+  <meta property="article:tag" content=".NET"/>
+  <meta property="article:tag" content="ASP.NET"/>
+  <meta property="article:tag" content="Tips and Tricks"/>
+  <meta property="og:image" content="">
+
+  <title>开心就好的代码人生 &ndash; CSS 控件适配器工具包新版发布</title>
+
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="https://blog.joycode.com/">
+      <img src="https://blog.joycode.com/theme/img/profile.png" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://blog.joycode.com/"></a>
+    </h1>
+
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="https://getpelican.com/" >Pelican</a>
+          </li>
+          <li>
+            <a target="_self" href="https://www.python.org/" >Python.org</a>
+          </li>
+          <li>
+            <a target="_self" href="https://palletsprojects.com/p/jinja/" >Jinja2</a>
+          </li>
+          <li>
+            <a target="_self" href="#" >You can modify those links in your config file</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-You can add links in your config file"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-You can add links in your config file"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-Another social link"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-Another social link"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="2006-09-10_03.20">CSS 控件适配器工具包新版发布</h1>
+    <p>
+      Posted on 日 10 九月 2006 in <a href="https://blog.joycode.com/category/ye-jie-ping-lun.html">业界评论</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>【原文地址】<a href="http://weblogs.asp.net/scottgu/archive/2006/09/08/CSS-Control-Adapter-Toolkit-Update.aspx" target="">CSS Control Adapter Toolkit Update</a><br>
+【原文发表日期】Friday, September 08, 2006 6:53 PM</p>
+<p>今天，我们发布了<a href="http://www.asp.net/cssadapters/Default.aspx" target="_blank">ASP.NET 2.0的CSS控件适配器</a>的更新版本，内中包含了bug fixes，用户建议的的功能，以及对新控件的支持。你可以免费下载，马上开始使用它们，来给予下列ASP.NET控件用纯粹的CSS优化过的标识(markup)：:</p>
+<ul>
+<li>Menu</li>
+<li>TreeView</li>
+<li>GridView <code>&lt;font color="#ff0000"&gt;</code><strong>(新)</strong><code>&lt;/font&gt;</code></li>
+<li>DetailsView</li>
+<li>FormsView</li>
+<li>DataList</li>
+<li>Login <code>&lt;font color="#ff0000"&gt;</code><strong>(新)</strong><code>&lt;/font&gt;</code></li>
+<li>ChangePassword <code>&lt;font color="#ff0000"&gt;</code><strong>(新)</strong><code>&lt;/font&gt;</code></li>
+<li>CreateUser <code>&lt;font color="#ff0000"&gt;</code><strong>(新)</strong><code>&lt;/font&gt;</code></li>
+<li>PasswordRecovery <code>&lt;font color="#ff0000"&gt;</code><strong>(新)</strong><code>&lt;/font&gt;</code></li>
+<li>LoginStatus <code>&lt;font color="#ff0000"&gt;</code><strong>(新)</strong><code>&lt;/font&gt;</code></li>
+</ul>
+<p>在<a href="http://weblogs.asp.net/scottgu/archive/2006/05/02/CSS-Control-Adapter-Toolkit-for-ASP.NET-2.0-.aspx" target="_blank">CSS控件适配器第一次发行</a>时，我曾写帖子说明过，这些控件适配器使用了ASP.NET 2.0中一个新的内置的扩展机制，叫做“控件适配器(control adapters)”。控件适配器允许你将其接入(plug-in)任何ASP.NET 服务器控件，然后它就会覆盖，修改或细调( tweak)那个控件的显示输出逻辑。</p>
+<p>控件适配器很酷的地方是，它们[不要求]{.underline}页面开发人员对一个新的控件编程，或修改控件编程模型的semantics，即，跟以前一样，你仍旧使用同样的控件属性，方法，事件和模板。建造页面的开发人员可以完全忘却使用了控件适配器，控件适配器模型使得注册和封装这样的支持非常干净。</p>
+<p><strong>快速入门示范</strong></p>
+<p>在免费的<a href="http://msdn.microsoft.com/vstudio/express/vwd/" target="_blank">Visual Web Developer</a>或Visual Studio 2005中使用CSS控件适配器工具包，按下列步骤做：</p>
+<p>[第一步：安装CSS控件适配器工具包]{.underline}:  </p>
+<p>下载和安装CSS 控件适配器工具包到你的机器上。<a href="http://www.asp.net/cssadapters/">点击这里</a>下载一个Visual Studio的.VSI 模板项目，它会生成一个配置了CSS控件适配器的可以运行的项目模板。这是个安全的下载，它不会修改VS或ASP.NET中的任何文件或设置，所以你不要担心它是否会对现有编码造成问题。</p>
+<p>[第二步：创建一个注册了CSS控件适配器的新网站]{.underline}:</p>
+<p>在Visual Web Developer或VS 2005中，在菜单里选择文件-&gt;新网站。这会打开“新网站”对话框。选择你的编程语言，然后选择新安装的“CSS友好网站(CSS Friendly Web Site)”项目模板：</p>
+<p><img alt="" src="http://www.scottgu.com/blogposts/css2/step1.jpg"></p>
+<p>这会为你创建一个新的网站项目，它的app_code目录里已经包含了CSS控件适配器的源码。它也包含了一些默认的CSS样式文件，其中有为你预先定义好了的样式类的名称(class name)，你可以用它们来定制你需要的任何CSS标识(CSS markup)：</p>
+<p><img alt="" src="http://www.scottgu.com/blogposts/css2/step2.jpg"></p>
+<p>[第三步：试一些CSS样式控件例子:]{.underline} </p>
+<p>要看控件适配器是如何改变服务器控件的标识的话，研究一下默认添加到新项目中的walkthrough子目录</p>
+<p><img alt="" src="http://www.scottgu.com/blogposts/css2/step6.jpg"></p>
+<p>例如，在下图中，SimpleMenu.aspx网页静态地定义了一个菜单控件，该控件连到了一个OnClick事件处理方法(或者，你也可以使用导航直接转到一个特定的网页去)：</p>
+<p><code>&lt;!-- Code Insert --&gt;</code></p>
+<div>
+
+`<font color="blue">`{=html}\<`</font>`{=html}`<font color="maroon">`{=html}asp:Menu`</font>`{=html}`<font color="red">`{=html} ID`</font>`{=html}`<font color="blue">`{=html}="EntertainmentMenu"`</font>`{=html}`<font color="red">`{=html} runat`</font>`{=html}`<font color="blue">`{=html}="server"`</font>`{=html}`<font color="red">`{=html} Orientation`</font>`{=html}`<font color="blue">`{=html}="Horizontal"`</font>`{=html}`<font color="red">`{=html} onmenuitemclick`</font>`{=html}`<font color="blue">`{=html}="Menu_OnClick"`</font>`{=html}`<font color="red">`{=html} CssSelectorClass`</font>`{=html}`<font color="blue">`{=html}="SimpleEntertainmentMenu"\>`</font>`{=html}`<font color="black">`{=html}  
+    `</font>`{=html}`<font color="blue">`{=html}\<`</font>`{=html}`<font color="maroon">`{=html}Items`</font>`{=html}`<font color="blue">`{=html}\>`</font>`{=html}`<font color="black">`{=html}  
+        `</font>`{=html}`<font color="blue">`{=html}\<`</font>`{=html}`<font color="maroon">`{=html}asp:MenuItem`</font>`{=html}`<font color="red">`{=html} Text`</font>`{=html}`<font color="blue">`{=html}="Music"\>`</font>`{=html}`<font color="black">`{=html}  
+            `</font>`{=html}`<font color="blue">`{=html}\<`</font>`{=html}`<font color="maroon">`{=html}asp:MenuItem`</font>`{=html}`<font color="red">`{=html} Text`</font>`{=html}`<font color="blue">`{=html}="Classical"`</font>`{=html}`<font color="red">`{=html} `</font>`{=html}`<font color="blue">`{=html}/\>  
+            \<`</font>`{=html}`<font color="maroon">`{=html}asp:MenuItem`</font>`{=html}`<font color="red">`{=html} Text`</font>`{=html}`<font color="blue">`{=html}="Rock"\>`</font>`{=html}`<font color="black">`{=html}  
+                `</font>`{=html}`<font color="blue">`{=html}\<`</font>`{=html}`<font color="maroon">`{=html}asp:MenuItem`</font>`{=html}`<font color="red">`{=html} Text`</font>`{=html}`<font color="blue">`{=html}="Electric"`</font>`{=html}`<font color="red">`{=html} `</font>`{=html}`<font color="blue">`{=html}/\>  
+                \<`</font>`{=html}`<font color="maroon">`{=html}asp:MenuItem`</font>`{=html}`<font color="red">`{=html} Text`</font>`{=html}`<font color="blue">`{=html}="Acoustical"`</font>`{=html}`<font color="red">`{=html} `</font>`{=html}`<font color="blue">`{=html}/\>  
+            \<!--`</font-->`{=html}`<font color="maroon">`{=html}asp:MenuItem`</font>`{=html}`<font color="blue">`{=html}\>`</font>`{=html}`<font color="black">`{=html}  
+            `</font>`{=html}`<font color="blue">`{=html}\<`</font>`{=html}`<font color="maroon">`{=html}asp:MenuItem`</font>`{=html}`<font color="red">`{=html} Text`</font>`{=html}`<font color="blue">`{=html}="Jazz"`</font>`{=html}`<font color="red">`{=html} `</font>`{=html}`<font color="blue">`{=html}/\>  
+        \<!--`</font-->`{=html}`<font color="maroon">`{=html}asp:MenuItem`</font>`{=html}`<font color="blue">`{=html}\>`</font>`{=html}`<font color="black">`{=html}  
+        `</font>`{=html}`<font color="blue">`{=html}\<`</font>`{=html}`<font color="maroon">`{=html}asp:MenuItem`</font>`{=html}`<font color="red">`{=html} Text`</font>`{=html}`<font color="blue">`{=html}="Movies"`</font>`{=html}`<font color="red">`{=html} Selectable`</font>`{=html}`<font color="blue">`{=html}="false"\>`</font>`{=html}`<font color="black">`{=html}  
+            `</font>`{=html}`<font color="blue">`{=html}\<`</font>`{=html}`<font color="maroon">`{=html}asp:MenuItem`</font>`{=html}`<font color="red">`{=html} Text`</font>`{=html}`<font color="blue">`{=html}="Action"`</font>`{=html}`<font color="red">`{=html} `</font>`{=html}`<font color="blue">`{=html}/\>  
+            \<`</font>`{=html}`<font color="maroon">`{=html}asp:MenuItem`</font>`{=html}`<font color="red">`{=html} Text`</font>`{=html}`<font color="blue">`{=html}="Drama"`</font>`{=html}`<font color="red">`{=html} `</font>`{=html}`<font color="blue">`{=html}/\>  
+            \<`</font>`{=html}`<font color="maroon">`{=html}asp:MenuItem`</font>`{=html}`<font color="red">`{=html} Text`</font>`{=html}`<font color="blue">`{=html}="Musical"`</font>`{=html}`<font color="red">`{=html} `</font>`{=html}`<font color="blue">`{=html}/\>  
+        \<!--`</font-->`{=html}`<font color="maroon">`{=html}asp:MenuItem`</font>`{=html}`<font color="blue">`{=html}\>`</font>`{=html}`<font color="black">`{=html}  
+    `</font>`{=html}`<font color="blue">`{=html}\<!--`</font-->`{=html}`<font color="maroon">`{=html}Items`</font>`{=html}`<font color="blue">`{=html}\>`</font>`{=html}`<font color="black">`{=html}  
+`</font>`{=html}`<font color="blue">`{=html}\<!--`</font-->`{=html}`<font color="maroon">`{=html}asp:Menu`</font>`{=html}`<font color="blue">`{=html}\>`</font>`{=html}`<font color="black">`{=html}`</font>`{=html}
+
+</div>
+
+<p>在code-behind里，Menu_OnClick事件的编码是象这样的：</p>
+<p><code>&lt;!-- Code Insert --&gt;</code></p>
+<div>
+
+    `<font color="blue">`{=html}Public Sub `</font>`{=html}`<font color="black">`{=html}Menu_OnClick(`</font>`{=html}`<font color="blue">`{=html}ByVal `</font>`{=html}`<font color="black">`{=html}sender `</font>`{=html}`<font color="blue">`{=html}As Object`</font>`{=html}`<font color="black">`{=html}, `</font>`{=html}`<font color="blue">`{=html}ByVal `</font>`{=html}`<font color="black">`{=html}e `</font>`{=html}`<font color="blue">`{=html}As `</font>`{=html}`<font color="black">`{=html}MenuEventArgs)  
+        MessageLabel.Text `</font>`{=html}`<font color="blue">`{=html}= `</font>`{=html}`<font color="#808080">`{=html}"You selected " `</font>`{=html}`<font color="black">`{=html}& e.Item.Text & `</font>`{=html}`<font color="#808080">`{=html}"."  
+        `</font>`{=html}`<font color="black">`{=html}e.Item.Selected `</font>`{=html}`<font color="blue">`{=html}= True  
+    End Sub`</font>`{=html}
+
+</div>
+
+<p><code>&lt;!-- End Code Insert --&gt;</code></p>
+<p>在运行时，CSS控件适配器会导致菜单输出使用了\&lt;li&gt;和\&lt;ul&gt;元素的CSS样式化了的的标识，而不是表格，当我们应用一个CSS样式表到页面时，我们将得到一个好看的分层的下拉式菜单：</p>
+<p><img alt="" src="http://www.scottgu.com/blogposts/css2/step4.jpg"></p>
+<p>在看这些样本例子时，你也许要看一下CheckBoxTreeView 这个例子。它示范了如何用CSS来样式化\&lt;asp:treeview&gt;控件以使用行内( inline)的复选框：</p>
+<p><img alt="" src="http://www.scottgu.com/blogposts/css2/step5.jpg"></p>
+<p><strong>那么CSS控件适配器是如何工作的呢？</strong></p>
+<p>控件适配器是些继承了System.Web.UI.Adapters.ControlAdapter基类的类，实现了绘制/渲染(rendering)方法，这些方法允许控件适配器完全定制一个单独的控件显示的标识。当你使用CSS友好网站项目模板创建一个新的网站项目时，11个预建的与CSS友好的控件适配器的源码就被自动地加到你的app_code目录中了：</p>
+<p><img alt="" src="http://www.scottgu.com/blogposts/css2/step3.jpg"></p>
+<p>你可以原本不动地使用这些控件适配器类，不需要改变编码，就能得到与CSS友好的输出，或者你可以对它们进行细调，假如你需要对显示输出做任意定制的话。</p>
+<p>控件适配器是通过在当前项目的应用程序根目录的直接子目录，/App_Browsers里，添加一个.browser文件，来与 ASP.NET注册的。.browser 文件里包含了如下所示的简单的标识，允许你指定哪个控件适配器应该用在哪个控件上：</p>
+<p><code>&lt;!-- Begin Code --&gt;</code></p>
+<div>
+
+`<font color="blue">`{=html}\<`</font>`{=html}`<font color="maroon">`{=html}browsers`</font>`{=html}`<font color="blue">`{=html}\>`</font>`{=html}`<font color="black">`{=html}  
+  `</font>`{=html}`<font color="blue">`{=html}\<`</font>`{=html}`<font color="maroon">`{=html}browser`</font>`{=html}`<font color="red">`{=html} refID`</font>`{=html}`<font color="blue">`{=html}="Default"\>`</font>`{=html}`<font color="black">`{=html}  
+    `</font>`{=html}`<font color="blue">`{=html}\<`</font>`{=html}`<font color="maroon">`{=html}controlAdapters`</font>`{=html}`<font color="blue">`{=html}\>`</font>`{=html}`<font color="black">`{=html}  
+      `</font>`{=html}`<font color="blue">`{=html}\<`</font>`{=html}`<font color="maroon">`{=html}adapter`</font>`{=html}`<font color="red">`{=html} controlType`</font>`{=html}`<font color="blue">`{=html}="System.Web.UI.WebControls.Menu"`</font>`{=html}`<font color="red">`{=html} adapterType`</font>`{=html}`<font color="blue">`{=html}="CSSFriendly.MenuAdapter"`</font>`{=html}`<font color="red">`{=html} `</font>`{=html}`<font color="blue">`{=html}/\>  
+      \<`</font>`{=html}`<font color="maroon">`{=html}adapter`</font>`{=html}`<font color="red">`{=html} controlType`</font>`{=html}`<font color="blue">`{=html}="System.Web.UI.WebControls.TreeView"`</font>`{=html}`<font color="red">`{=html} adapterType`</font>`{=html}`<font color="blue">`{=html}="CSSFriendly.TreeViewAdapter"`</font>`{=html}`<font color="red">`{=html} `</font>`{=html}`<font color="blue">`{=html}/\>  
+      \<`</font>`{=html}`<font color="maroon">`{=html}adapter`</font>`{=html}`<font color="red">`{=html} controlType`</font>`{=html}`<font color="blue">`{=html}="System.Web.UI.WebControls.DetailsView"`</font>`{=html}`<font color="red">`{=html} adapterType`</font>`{=html}`<font color="blue">`{=html}="CSSFriendly.DetailsViewAdapter"`</font>`{=html}`<font color="red">`{=html} `</font>`{=html}`<font color="blue">`{=html}/\>  
+      \<`</font>`{=html}`<font color="maroon">`{=html}adapter`</font>`{=html}`<font color="red">`{=html} controlType`</font>`{=html}`<font color="blue">`{=html}="System.Web.UI.WebControls.FormView"`</font>`{=html}`<font color="red">`{=html} adapterType`</font>`{=html}`<font color="blue">`{=html}="CSSFriendly.FormViewAdapter"`</font>`{=html}`<font color="red">`{=html} `</font>`{=html}`<font color="blue">`{=html}/\>  
+      \<`</font>`{=html}`<font color="maroon">`{=html}adapter`</font>`{=html}`<font color="red">`{=html} controlType`</font>`{=html}`<font color="blue">`{=html}="System.Web.UI.WebControls.DataList"`</font>`{=html}`<font color="red">`{=html} adapterType`</font>`{=html}`<font color="blue">`{=html}="CSSFriendly.DataListAdapter"`</font>`{=html}`<font color="red">`{=html} `</font>`{=html}`<font color="blue">`{=html}/\>  
+      \<`</font>`{=html}`<font color="maroon">`{=html}adapter`</font>`{=html}`<font color="red">`{=html} controlType`</font>`{=html}`<font color="blue">`{=html}="System.Web.UI.WebControls.GridView"`</font>`{=html}`<font color="red">`{=html} adapterType`</font>`{=html}`<font color="blue">`{=html}="CSSFriendly.GridViewAdapter"`</font>`{=html}`<font color="red">`{=html} `</font>`{=html}`<font color="blue">`{=html}/\>  
+      \<`</font>`{=html}`<font color="maroon">`{=html}adapter`</font>`{=html}`<font color="red">`{=html} controlType`</font>`{=html}`<font color="blue">`{=html}="System.Web.UI.WebControls.ChangePassword"`</font>`{=html}`<font color="red">`{=html} adapterType`</font>`{=html}`<font color="blue">`{=html}="CSSFriendly.ChangePasswordAdapter"`</font>`{=html}`<font color="red">`{=html} `</font>`{=html}`<font color="blue">`{=html}/\>  
+      \<`</font>`{=html}`<font color="maroon">`{=html}adapter`</font>`{=html}`<font color="red">`{=html} controlType`</font>`{=html}`<font color="blue">`{=html}="System.Web.UI.WebControls.Login"`</font>`{=html}`<font color="red">`{=html} adapterType`</font>`{=html}`<font color="blue">`{=html}="CSSFriendly.LoginAdapter"`</font>`{=html}`<font color="red">`{=html} `</font>`{=html}`<font color="blue">`{=html}/\>  
+      \<`</font>`{=html}`<font color="maroon">`{=html}adapter`</font>`{=html}`<font color="red">`{=html} controlType`</font>`{=html}`<font color="blue">`{=html}="System.Web.UI.WebControls.LoginStatus"`</font>`{=html}`<font color="red">`{=html} adapterType`</font>`{=html}`<font color="blue">`{=html}="CSSFriendly.LoginStatusAdapter"`</font>`{=html}`<font color="red">`{=html} `</font>`{=html}`<font color="blue">`{=html}/\>  
+      \<`</font>`{=html}`<font color="maroon">`{=html}adapter`</font>`{=html}`<font color="red">`{=html} controlType`</font>`{=html}`<font color="blue">`{=html}="System.Web.UI.WebControls.CreateUserWizard"`</font>`{=html}`<font color="red">`{=html} adapterType`</font>`{=html}`<font color="blue">`{=html}="CSSFriendly.CreateUserWizardAdapter"`</font>`{=html}`<font color="red">`{=html} `</font>`{=html}`<font color="blue">`{=html}/\>  
+      \<`</font>`{=html}`<font color="maroon">`{=html}adapter`</font>`{=html}`<font color="red">`{=html} controlType`</font>`{=html}`<font color="blue">`{=html}="System.Web.UI.WebControls.PasswordRecovery"`</font>`{=html}`<font color="red">`{=html} adapterType`</font>`{=html}`<font color="blue">`{=html}="CSSFriendly.PasswordRecoveryAdapter"`</font>`{=html}`<font color="red">`{=html} `</font>`{=html}`<font color="blue">`{=html}/\>  
+    \<!--`</font-->`{=html}`<font color="maroon">`{=html}controlAdapters`</font>`{=html}`<font color="blue">`{=html}\>`</font>`{=html}`<font color="black">`{=html}  
+  `</font>`{=html}`<font color="blue">`{=html}\<!--`</font-->`{=html}`<font color="maroon">`{=html}browser`</font>`{=html}`<font color="blue">`{=html}\>`</font>`{=html}`<font color="black">`{=html}  
+`</font>`{=html}`<font color="blue">`{=html}\<!--`</font-->`{=html}`<font color="maroon">`{=html}browsers`</font>`{=html}`<font color="blue">`{=html}\>`</font>`{=html}`<font color="black">`{=html}`</font>`{=html}
+
+</div>
+
+<p><code>&lt;!-- End Code --&gt;</code></p>
+<p>如果需要，你可以针对不同的浏览器定制不同的控件适配器，或者定义这些控件适配器为“默认(Default)”，这样就会对访问你的应用的所有的浏览器都默认应用这些适配器。</p>
+<p>做完这些配置后，就算搞定了，之后，你就可以使用标准的CSS样式表来定制所有的样式信息了。</p>
+<p>如有疑问或要汇报任何bug或问题的话，请访问<a href="http://forums.asp.net/">http://forums.asp.net</a>网站的<a href="http://forums.asp.net/1018/ShowForum.aspx" target="_blank">CSS Control Adapters 论坛</a>。上面的CSS控件适配器在VS 2005网站项目模型(Web Site Project Model)和VS 2005 Web应用项目模型(Web Application Project Model)两者中都可使用。而且，CSS控件适配器有VB和C#两个版本你可以用。</p>
+<p>在这里我要提起<a href="http://www.groovybits.com/" target="_blank">Russ和Heidi</a>，为他们在创建CSS 控件适配器和样本例子方面的出色工作表示特别的感谢！</p>
+<p>谢谢，</p>
+<p>Scott</p>
+<p>标签：<a href="http://weblogs.asp.net/scottgu/archive/tags/ASP.NET/default.aspx" rel="tag">ASP.NET</a>, <a href="http://weblogs.asp.net/scottgu/archive/tags/.NET/default.aspx" rel="tag">.NET</a>, <a href="http://weblogs.asp.net/scottgu/archive/tags/Tips+and+Tricks/default.aspx" rel="tag">Tips and Tricks</a></p>
+<p>(思归译)</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://blog.joycode.com/tag/net.html">.NET</a>
+      <a href="https://blog.joycode.com/tag/aspnet.html">ASP.NET</a>
+      <a href="https://blog.joycode.com/tag/tips-and-tricks.html">Tips and Tricks</a>
+    </p>
+  </div>
+
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'hcwang';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " 开心就好的代码人生 ",
+  "url" : "https://blog.joycode.com",
+  "image": "",
+  "description": ""
+}
+</script>
+</body>
+</html>

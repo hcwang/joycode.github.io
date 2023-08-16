@@ -1,0 +1,179 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://blog.joycode.com/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/solid.css">
+
+
+
+
+  <link href="https://blog.joycode.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="开心就好的代码人生 Atom">
+
+
+
+ 
+
+<meta name="author" content="joycode" />
+<meta name="description" content="在我们的网络应用里，我们需要生成新的Project Items模板，而且拥有新的扩展名(譬如&#34;.joy&#34;)。但我们希望由此产生的新文件(譬如&#34;a.joy&#34;) 跟通 …" />
+<meta name="keywords" content="">
+
+
+  <meta property="og:site_name" content="开心就好的代码人生"/>
+  <meta property="og:title" content="怎样做才能让VS.NET IDE支持新的扩展名"/>
+  <meta property="og:description" content="在我们的网络应用里，我们需要生成新的Project Items模板，而且拥有新的扩展名(譬如&#34;.joy&#34;)。但我们希望由此产生的新文件(譬如&#34;a.joy&#34;) 跟通 …"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://blog.joycode.com/2004/12/17/2004-12-17_05.41/"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2004-12-17 05:41:00+08:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="https://blog.joycode.com/author/joycode.html">
+  <meta property="article:section" content="业界评论"/>
+  <meta property="og:image" content="">
+
+  <title>开心就好的代码人生 &ndash; 怎样做才能让VS.NET IDE支持新的扩展名</title>
+
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="https://blog.joycode.com/">
+      <img src="https://blog.joycode.com/theme/img/profile.png" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://blog.joycode.com/"></a>
+    </h1>
+
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="https://getpelican.com/" >Pelican</a>
+          </li>
+          <li>
+            <a target="_self" href="https://www.python.org/" >Python.org</a>
+          </li>
+          <li>
+            <a target="_self" href="https://palletsprojects.com/p/jinja/" >Jinja2</a>
+          </li>
+          <li>
+            <a target="_self" href="#" >You can modify those links in your config file</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-You can add links in your config file"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-You can add links in your config file"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-Another social link"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-Another social link"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="2004-12-17_05.41">怎样做才能让VS.NET IDE支持新的扩展名</h1>
+    <p>
+      Posted on 五 17 十二月 2004 in <a href="https://blog.joycode.com/category/ye-jie-ping-lun.html">业界评论</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>在我们的网络应用里，我们需要生成新的Project Items模板，而且拥有新的扩展名(譬如".joy")。但我们希望由此产生的新文件(譬如"a.joy") 跟通常生成的"a.aspx"文件的行为一样，即，有设计视图，可以往上面拖控件，HTML视图支持Intellisense，等等。</p>
+<p>我们参照了<a href="http://www.sellsbrothers.com/">Chris Sells网站</a>上<a href="http://www.sellsbrothers.com/writing/default.aspx?content=projectitemtemplatesvb.htm">Michael Weinhardt的文章</a>，经过少许改动后，能够在VS.NET IDE里成功生成新的文件(a.joy)以及相应的code behind文件(a.joy.vb)。然后参照下面2个连接里的提示，</p>
+<p><a href="http://weblogs.asp.net/ralfw/archive/2004/11/05/252865.aspx">http://weblogs.asp.net/ralfw/archive/2004/11/05/252865.aspx</a></p>
+<p><a href="http://dotnetjunkies.com/WebLog/darrell.norton/archive/2004/04/21/11837.aspx">http://dotnetjunkies.com/WebLog/darrell.norton/archive/2004/04/21/11837.aspx</a> (这个连接中的最后一个答复者遇到了跟我们一样的问题)</p>
+<p>我们对注册表里下列的几个Key添加了对应的条目，</p>
+<p>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\VisualStudio\7.1\Editors<br>
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\VisualStudio\7.1\Editors<br>
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\VisualStudio\7.1\Languages</p>
+<p>理论上讲，在编辑a.joy时，我们应该得到HTML编辑器，但我们得到的却是XML编辑器。</p>
+<p>我们估计是注册表里的问题，所以我们试着改动注册表，几乎找遍了所有跟".aspx"有关的条目，都为".joy"添加了相应的条目，但我们得到的却总是XML编辑器。</p>
+<p>感觉这不应该是个很难的问题，因为改动扩展名是很正常的事，譬如微软中国网站用的是“.mspx”。实际上，要运行的话，只要改动IIS里的应用影射，以及在machine.config或web.config里添加相应的httpHandler即可。</p>
+<p>估计是我们的方法不对，这里高人甚多，特别是这里微软VS.NET产品组的朋友，如果能指点一下的话，不胜感激之致</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+    </p>
+  </div>
+
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'hcwang';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " 开心就好的代码人生 ",
+  "url" : "https://blog.joycode.com",
+  "image": "",
+  "description": ""
+}
+</script>
+</body>
+</html>

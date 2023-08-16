@@ -1,0 +1,229 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://blog.joycode.com/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/solid.css">
+
+
+
+
+  <link href="https://blog.joycode.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="开心就好的代码人生 Atom">
+
+
+
+ 
+
+<meta name="author" content="joycode" />
+<meta name="description" content="实质上是通过WindowsIdentity.Impersonate()的方法，其中需要调用Win API来获得活用的Handle，用法其实很简单，因为在自己的代码中需要用到，就稍微封装了一下： ?public class IdentityImpersonation …" />
+<meta name="keywords" content="">
+
+
+  <meta property="og:site_name" content="开心就好的代码人生"/>
+  <meta property="og:title" content="一个在.net下进行用户模拟的类"/>
+  <meta property="og:description" content="实质上是通过WindowsIdentity.Impersonate()的方法，其中需要调用Win API来获得活用的Handle，用法其实很简单，因为在自己的代码中需要用到，就稍微封装了一下： ?public class IdentityImpersonation …"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://blog.joycode.com/2003/10/24/2003-10-24_21.41/"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2003-10-24 21:41:00+08:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="https://blog.joycode.com/author/joycode.html">
+  <meta property="article:section" content="业界评论"/>
+  <meta property="og:image" content="">
+
+  <title>开心就好的代码人生 &ndash; 一个在.net下进行用户模拟的类</title>
+
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="https://blog.joycode.com/">
+      <img src="https://blog.joycode.com/theme/img/profile.png" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://blog.joycode.com/"></a>
+    </h1>
+
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="https://getpelican.com/" >Pelican</a>
+          </li>
+          <li>
+            <a target="_self" href="https://www.python.org/" >Python.org</a>
+          </li>
+          <li>
+            <a target="_self" href="https://palletsprojects.com/p/jinja/" >Jinja2</a>
+          </li>
+          <li>
+            <a target="_self" href="#" >You can modify those links in your config file</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-You can add links in your config file"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-You can add links in your config file"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-Another social link"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-Another social link"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="2003-10-24_21.41">一个在.net下进行用户模拟的类</h1>
+    <p>
+      Posted on 五 24 十月 2003 in <a href="https://blog.joycode.com/category/ye-jie-ping-lun.html">业界评论</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>实质上是通过WindowsIdentity.Impersonate()的方法，其中需要调用Win API来获得活用的Handle，用法其实很简单，因为在自己的代码中需要用到，就稍微封装了一下：</p>
+<p>?public class IdentityImpersonation {</p>
+<p>??[DllImport("advapi32.dll", SetLastError=true)]<br>
+??public static extern bool LogonUser(String lpszUsername, String lpszDomain, String lpszPassword,<br>
+???int dwLogonType, int dwLogonProvider, ref IntPtr phToken);</p>
+<p>??[DllImport("advapi32.dll", CharSet=CharSet.Auto, SetLastError=true)]<br>
+??public extern static bool DuplicateToken(IntPtr ExistingTokenHandle,<br>
+???int SECURITY_IMPERSONATION_LEVEL, ref IntPtr DuplicateTokenHandle);</p>
+<p>??[DllImport("kernel32.dll", CharSet=CharSet.Auto)]<br>
+??public extern static bool CloseHandle(IntPtr handle);</p>
+<p>??// 要模拟的用户的用户名、密码、域(机器名)<br>
+??private String _sImperUsername;<br>
+??private String _sImperPassword;<br>
+??private String _sImperDomain;<br>
+??// 记录模拟上下文<br>
+??private WindowsImpersonationContext _imperContext;<br>
+??private IntPtr _adminToken;<br>
+??private IntPtr _dupeToken;<br>
+??// 是否已停止模拟<br>
+??private Boolean _bClosed;</p>
+<p>??public IdentityImpersonation(String impersonationUsername, String impersonationPassword, String impersonationDomain) {<br>
+???_sImperUsername = impersonationUsername;<br>
+???_sImperPassword = impersonationPassword;<br>
+???_sImperDomain = impersonationDomain;</p>
+<p>???_adminToken = IntPtr.Zero;<br>
+???_dupeToken = IntPtr.Zero;<br>
+???_bClosed = true;<br>
+??}</p>
+<p>??\~IdentityImpersonation() {<br>
+???if(! _bClosed) {<br>
+????StopImpersonation();<br>
+???}<br>
+??}</p>
+<p>??public Boolean BeginImpersonate() {<br>
+?<br>
+???Boolean bLogined = LogonUser(_sImperUsername, _sImperDomain, _sImperPassword, 2, 0, ref _adminToken);<br>
+???<br>
+???if(! bLogined) {<br>
+????return false;<br>
+???}</p>
+<p>???Boolean bDuped = DuplicateToken(_adminToken, 2, ref _dupeToken);</p>
+<p>???if(! bDuped) {<br>
+????return false;<br>
+???}</p>
+<p>???WindowsIdentity fakeId = new WindowsIdentity(_dupeToken);<br>
+???_imperContext = fakeId.Impersonate();</p>
+<p>???_bClosed = false;</p>
+<p>???return true;<br>
+??}</p>
+<p>??public void StopImpersonate() {<br>
+???_imperContext.Undo();<br>
+???CloseHandle(_dupeToken);<br>
+???CloseHandle(_adminToken);<br>
+???_bClosed = true;<br>
+??}<br>
+?}</p>
+<p>?</p>
+<p>使用示例：</p>
+<p>IdentityImpersonation imper = new IdentityImpersonation("tsg", "123456", "webreal");<br>
+imper.BeginImpersonation();<br>
+// ...<br>
+imper.StopImpersonation();</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+    </p>
+  </div>
+
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'hcwang';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " 开心就好的代码人生 ",
+  "url" : "https://blog.joycode.com",
+  "image": "",
+  "description": ""
+}
+</script>
+</body>
+</html>

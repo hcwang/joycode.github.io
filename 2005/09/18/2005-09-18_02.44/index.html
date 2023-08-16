@@ -1,0 +1,208 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://blog.joycode.com/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/solid.css">
+
+
+
+
+  <link href="https://blog.joycode.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="开心就好的代码人生 Atom">
+
+
+
+ 
+
+<meta name="author" content="joycode" />
+<meta name="description" content="随LINQ一起来的工具里，有个Entity Class Generator Tool，叫SQLMetal，能连接到数据库直接产生跟数据表对应的Entity Class，就象上个帖子里的例子一样 SqlMetal /server:(local) /database:DLINQ /delayfetch /pluralize /namespace …" />
+<meta name="keywords" content=".NET">
+
+
+  <meta property="og:site_name" content="开心就好的代码人生"/>
+  <meta property="og:title" content="代码生成器 SQLMetal"/>
+  <meta property="og:description" content="随LINQ一起来的工具里，有个Entity Class Generator Tool，叫SQLMetal，能连接到数据库直接产生跟数据表对应的Entity Class，就象上个帖子里的例子一样 SqlMetal /server:(local) /database:DLINQ /delayfetch /pluralize /namespace …"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://blog.joycode.com/2005/09/18/2005-09-18_02.44/"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2005-09-18 02:44:00+08:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="https://blog.joycode.com/author/joycode.html">
+  <meta property="article:section" content="业界评论"/>
+  <meta property="article:tag" content=".NET"/>
+  <meta property="og:image" content="">
+
+  <title>开心就好的代码人生 &ndash; 代码生成器 SQLMetal</title>
+
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="https://blog.joycode.com/">
+      <img src="https://blog.joycode.com/theme/img/profile.png" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://blog.joycode.com/"></a>
+    </h1>
+
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="https://getpelican.com/" >Pelican</a>
+          </li>
+          <li>
+            <a target="_self" href="https://www.python.org/" >Python.org</a>
+          </li>
+          <li>
+            <a target="_self" href="https://palletsprojects.com/p/jinja/" >Jinja2</a>
+          </li>
+          <li>
+            <a target="_self" href="#" >You can modify those links in your config file</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-You can add links in your config file"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-You can add links in your config file"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-Another social link"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-Another social link"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="2005-09-18_02.44">代码生成器 SQLMetal</h1>
+    <p>
+      Posted on 日 18 九月 2005 in <a href="https://blog.joycode.com/category/ye-jie-ping-lun.html">业界评论</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>随LINQ一起来的工具里，有个Entity Class Generator Tool，叫SQLMetal，能连接到数据库直接产生跟数据表对应的Entity Class，就象上个帖子里的例子一样</p>
+<p>SqlMetal /server:(local) /database:DLINQ /delayfetch /pluralize /namespace:LINQ.Examples.QuickStart /code:User.cs</p>
+<p>也可以先生成一个Schema XML文件，譬如</p>
+<p>SqlMetal /server:(local) /database:DLINQ /pluralize /xml:User.xml</p>
+<p>对应上个贴里的Users表的XML是这样的</p>
+<p>\&lt;Database xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="DLINQ"&gt;<br>
+  \&lt;Schema Name="Dbo"&gt;<br>
+    \&lt;Table Name="users" Property="Users" Class="User"&gt;<br>
+      \&lt;Column Name="LogonID" Type="System.String" DbType="NVarChar(20) NOT NULL" Nullable="false" IsIdentity="true" /&gt;<br>
+      \&lt;Column Name="Name" Type="System.String" DbType="NVarChar(40)" /&gt;<br>
+      \&lt;Column Name="Password" Type="System.String" DbType="NVarChar(20)" /&gt;<br>
+      \&lt;Column Name="EmailAddress" Type="System.String" DbType="NVarChar(40)" /&gt;<br>
+      \&lt;Column Name="LastLogon" Type="System.DateTime" DbType="DateTime" Nullable="true" /&gt;<br>
+      \&lt;PrimaryKey Name="PK__users__09DE7BCC"&gt;<br>
+        \&lt;Column Name="LogonID" /&gt;<br>
+      \&lt;/PrimaryKey&gt;<br>
+      \&lt;Index Name="PK__users__09DE7BCC" Style="CLUSTERED" IsUnique="true"&gt;<br>
+        \&lt;Column Name="LogonID" /&gt;<br>
+      \&lt;/Index&gt;<br>
+    \&lt;/Table&gt;<br>
+  \&lt;/Schema&gt;<br>
+\&lt;/Database&gt;</p>
+<p>你可以修改其中内容 (<strong>但居然无法修改生成的property name??</strong>)，然后再运行SQLMetal来产生编码</p>
+<p>SqlMetal /namespace:LINQ.Examples.QuickStart /code:User.cs User.xml</p>
+<p>注意，生成的Entity Class是个partial class</p>
+<p>public <strong><code>&lt;font color="#ff0000"&gt;</code>partial<code>&lt;/font&gt;</code></strong> class User : System.Data.DLinq.IChangeNotifier<br>
+{<br>
+  //....<br>
+}</p>
+<p>里面是对应数据表字段的变量和property们，你可以在另外的文件里定义该类的操作，譬如</p>
+<p>public partial class User<br>
+{<br>
+  public void Test()<br>
+  {<br>
+     Console.WriteLine("User:Test():" + Name);<br>
+  }</p>
+<p>//.....<br>
+}</p>
+<p>这样，即使你用SQLMetal重新生成Entity Class文件，也不会影响你定义操作的文件。将来IDE大概会支持，或者顶多在Build过程中多加一步</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://blog.joycode.com/tag/net.html">.NET</a>
+    </p>
+  </div>
+
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'hcwang';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " 开心就好的代码人生 ",
+  "url" : "https://blog.joycode.com",
+  "image": "",
+  "description": ""
+}
+</script>
+</body>
+</html>

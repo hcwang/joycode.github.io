@@ -1,0 +1,246 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://blog.joycode.com/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/solid.css">
+
+
+
+
+  <link href="https://blog.joycode.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="开心就好的代码人生 Atom">
+
+
+
+ 
+
+<meta name="author" content="joycode" />
+<meta name="description" content="上次的第二个问题是，为什么动态生成的DropDownList控件，在PostBack后，在Page_Load里其选择的项没有被设置。 拿TestDyn1.aspx为例，如果你在第一个(静态)下拉框里选择2，在第二个(动态)下拉框 …" />
+<meta name="keywords" content="">
+
+
+  <meta property="og:site_name" content="开心就好的代码人生"/>
+  <meta property="og:title" content="动态控件的状态问题 (续2)"/>
+  <meta property="og:description" content="上次的第二个问题是，为什么动态生成的DropDownList控件，在PostBack后，在Page_Load里其选择的项没有被设置。 拿TestDyn1.aspx为例，如果你在第一个(静态)下拉框里选择2，在第二个(动态)下拉框 …"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://blog.joycode.com/2004/10/26/2004-10-26_04.51/"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2004-10-26 04:51:00+08:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="https://blog.joycode.com/author/joycode.html">
+  <meta property="article:section" content="业界评论"/>
+  <meta property="og:image" content="">
+
+  <title>开心就好的代码人生 &ndash; 动态控件的状态问题 (续2)</title>
+
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="https://blog.joycode.com/">
+      <img src="https://blog.joycode.com/theme/img/profile.png" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://blog.joycode.com/"></a>
+    </h1>
+
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="https://getpelican.com/" >Pelican</a>
+          </li>
+          <li>
+            <a target="_self" href="https://www.python.org/" >Python.org</a>
+          </li>
+          <li>
+            <a target="_self" href="https://palletsprojects.com/p/jinja/" >Jinja2</a>
+          </li>
+          <li>
+            <a target="_self" href="#" >You can modify those links in your config file</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-You can add links in your config file"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-You can add links in your config file"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-Another social link"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-Another social link"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="2004-10-26_04.51">动态控件的状态问题 (续2)</h1>
+    <p>
+      Posted on 二 26 十月 2004 in <a href="https://blog.joycode.com/category/ye-jie-ping-lun.html">业界评论</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>上次的第二个问题是，为什么动态生成的DropDownList控件，在PostBack后，在Page_Load里其选择的项没有被设置。</p>
+<p>拿TestDyn1.aspx为例，如果你在第一个(静态)下拉框里选择2，在第二个(动态)下拉框里选择3，然后按Click Me按钮，你的输出是这样的</p>
+<p>[Page_Load]静态:1<br>
+[Page_Load]动态:0<br>
+[Button_Click]静态:1<br>
+[Button_Click]动态:2</p>
+<p>不管你选什么，第二项总是<br>
+[Page_Load]动态:0</p>
+<p>即，动态下拉框的选项在Page_Load没有被正确设置，但在Button的Click事件里被正确设置了。</p>
+<p>大家知道，表单控件(TextBox, CheckBox, DropDownList, ListBox,....) 的输入值或被选状态与ViewState无关，而是在Load Postback Data阶段被设置的，因为它们都实现了IPostBackDataHandler接口。</p>
+<p>上次说到动态控件被加入父控件的Controls集合时，会通过阶段“追赶(catch-up)”过程来赶上父控件当前的阶段，如果你仔细看一下<a href="http://blog.joycode.com/saucer/archive/2004/10/20/35927.aspx">前一个贴</a>里leighsword和microhelper贴的Control的AddedControl方法，你将看到</p>
+<p>control.InitRecursive(control1);<br>
+...<br>
+control.LoadViewStateRecursive(obj1);<br>
+...<br>
+control.LoadRecursive();<br>
+...</p>
+<p>并没有涉及Load Postback Data。那么这个阶段是什么时候被执行的呢？如果你参考<a href="http://www.aisto.com/roeder/dotnet/">Reflector</a>(也可以参考<a href="http://blog.joycode.com/saucer/archive/2004/10/21/36124.aspx">上一个贴</a>的2个回贴)里System.Web.UI.Page的ProcessRequestMain()方法，在去掉了那些Trace语句后是这样的：</p>
+<p>base.InitRecursive(null);</p>
+<p>if (this.IsPostBack)<br>
+{<br>
+      this.LoadPageViewState();</p>
+<p>//注意，这里是._requestValueCollection<br>
+<strong><code>&lt;font color="#ff0000"&gt;</code>this.ProcessPostData(this._requestValueCollection, true);<code>&lt;/font&gt;</code></strong> //第二个参数表明是否是在Load前调用的<br>
+}<br>
+<br>
+base.LoadRecursive();</p>
+<p>if (this.IsPostBack)<br>
+{</p>
+<p>//注意，这里是._leftoverPostData，即，尚未被处理的PostData<br>
+<strong><code>&lt;font color="#ff0000"&gt;</code> this.ProcessPostData(this._leftoverPostData, false);<code>&lt;/font&gt;</code></strong><br>
+<br>
+ this.RaiseChangedEvents();<br>
+<br>
+ this.RaisePostBackEvent(this._requestValueCollection);<br>
+<br>
+}</p>
+<p>base.PreRenderRecursiveInternal();</p>
+<p>this.SavePageViewState();</p>
+<p>base.RenderControl(this.CreateHtmlTextWriter(this.Response.Output));</p>
+<p>ProcessPostData会根据Request.Form里每对名字/值，看是否有实现了IPostBackDataHandler接口的对应名字的控件，有的话，就会调用该控件的LoadPostData方法，譬如DropDownList的LoadPostData是这样的</p>
+<p>bool IPostBackDataHandler.LoadPostData(string postDataKey, NameValueCollection postCollection)<br>
+{<br>
+      string[] textArray1 = postCollection.GetValues(postDataKey);<br>
+      if (textArray1 != null)<br>
+      {<br>
+            int num1 = this.Items.FindByValueInternal(textArray1[0]);<br>
+            if (this.SelectedIndex != num1)<br>
+            {<br>
+                  this.SelectedIndex = num1;<br>
+                  return true;<br>
+            }<br>
+      }<br>
+      return false;<br>
+}<br>
+<br>
+从上面可见，ProcessPostData在Load前被执行了一次，在Load后又会被执行一次。看上去有点怪，但这正是系统给你的方便，允许你在Load里动态生成控件，并让那些实现了IPostBackDataHandler接口的控件获取用户输入的值或选择的状态。</p>
+<p>在我们当前的情形下，我们的动态控件是在Load里生成的，错过了第一次ProcessPostData，所以在Page_Load里其选项还没有被正确设置，但第二次ProcessPostData让其获取了用户输入的值或选择的状态，所以在Button的Click事件里被正确设置了。</p>
+<p>这也意味着，如果我们的表单控件是在Load之后生成的，譬如你的控件是在PreRender事件里生成的，</p>
+<p>void Page_PreRender(Object sender, EventArgs e)<br>
+{<br>
+   DropDownList ddlDynamic2 = new DropDownList();<br>
+   ddlDynamic2.ID = "ddlDynamic2";</p>
+<p>form1.Controls.Add(ddlDynamic2);</p>
+<p>if (!IsPostBack)<br>
+   {<br>
+      for (int i=1; i \&lt;=3; i++)<br>
+          ddlDynamic2.Items.Add(new ListItem(i.ToString(), i.ToString()));<br>
+   }<br>
+   else<br>
+     Response.Write("[Page_Load]动态2:" + ddlDynamic2.SelectedIndex + "\&lt;BR&gt;");<br>
+}</p>
+<p>那么尽管它可以恢复ViewState，但因为它错过了2次ProcessPostData机会，它不可能获取用户输入的值或选择的状态。同时这些控件也不会触发Changed Events 与 Postback Events。 当然，你尽可以使用Request.Form来获取用户输入的值或选择的状态，但这跟我们的讨论无关。</p>
+<p>所以，如果你需要产生动态控件，而且需要获取用户设置的输入值或触发Changed Events 与 Postback Events事件的话，最好在Load阶段或之前生成。</p>
+<p>关于ASP.NET里Page事件及其次序的细节，请参考MVP <a href="http://weblogs.asp.net/pwilson/">Paul Wilson</a>的文章<br>
+<a href="http://aspalliance.com/articleViewer.aspx?aId=134&amp;pId=">Page Events: Order and PostBack</a></p>
+<p>也请参考</p>
+<p><a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dnaspp/html/aspnet-pageobjectmodel.asp">The ASP.NET Page Object Model</a></p>
+<p><a href="http://weblogs.asp.net/eporter/archive/2003/07/15/10109.aspx">Page Life-cycle in ASP.NET</a></p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+    </p>
+  </div>
+
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'hcwang';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " 开心就好的代码人生 ",
+  "url" : "https://blog.joycode.com",
+  "image": "",
+  "description": ""
+}
+</script>
+</body>
+</html>

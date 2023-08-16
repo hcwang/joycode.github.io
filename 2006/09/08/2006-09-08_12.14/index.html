@@ -1,0 +1,198 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://blog.joycode.com/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/solid.css">
+
+
+
+
+  <link href="https://blog.joycode.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="开心就好的代码人生 Atom">
+
+
+
+ 
+
+<meta name="author" content="joycode" />
+<meta name="description" content="【原文地址】IronPython 1.0 Released 【原文发表日期】Wednesday, September 06, 2006 1:27 AM 我非常兴奋地宣布，今天我们发布了IronPython .NET项目的V1.0版。点击这里从CodePlex免费下载相关的程序，源码以及教 …" />
+<meta name="keywords" content=".NET">
+
+
+  <meta property="og:site_name" content="开心就好的代码人生"/>
+  <meta property="og:title" content="IronPython 1.0发布了"/>
+  <meta property="og:description" content="【原文地址】IronPython 1.0 Released 【原文发表日期】Wednesday, September 06, 2006 1:27 AM 我非常兴奋地宣布，今天我们发布了IronPython .NET项目的V1.0版。点击这里从CodePlex免费下载相关的程序，源码以及教 …"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://blog.joycode.com/2006/09/08/2006-09-08_12.14/"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2006-09-08 12:14:00+08:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="https://blog.joycode.com/author/joycode.html">
+  <meta property="article:section" content="业界评论"/>
+  <meta property="article:tag" content=".NET"/>
+  <meta property="og:image" content="">
+
+  <title>开心就好的代码人生 &ndash; IronPython 1.0发布了</title>
+
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="https://blog.joycode.com/">
+      <img src="https://blog.joycode.com/theme/img/profile.png" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://blog.joycode.com/"></a>
+    </h1>
+
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="https://getpelican.com/" >Pelican</a>
+          </li>
+          <li>
+            <a target="_self" href="https://www.python.org/" >Python.org</a>
+          </li>
+          <li>
+            <a target="_self" href="https://palletsprojects.com/p/jinja/" >Jinja2</a>
+          </li>
+          <li>
+            <a target="_self" href="#" >You can modify those links in your config file</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-You can add links in your config file"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-You can add links in your config file"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-Another social link"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-Another social link"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="2006-09-08_12.14">IronPython 1.0发布了</h1>
+    <p>
+      Posted on 五 08 九月 2006 in <a href="https://blog.joycode.com/category/ye-jie-ping-lun.html">业界评论</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>【原文地址】<a href="http://weblogs.asp.net/scottgu/archive/2006/09/06/IronPython-1.0-Released.aspx">IronPython 1.0 Released</a><br>
+【原文发表日期】Wednesday, September 06, 2006 1:27 AM</p>
+<p>我非常兴奋地宣布，今天我们发布了IronPython .NET项目的V1.0版。<a href="http://www.codeplex.com/Wiki/View.aspx?ProjectName=IronPython" target="_blank">点击这里从CodePlex免费下载相关的程序，源码以及教程</a>。</p>
+<p>IronPython是Python编程语言在.NET平台上的实现。它支持一个可交互的控制台，该控制台支持完全的动态编译，并且可以让Python程序员访问所有的.NET库，同时还保持对Python语言完全的兼容性。</p>
+<p>IronPython提供了编程语言可以如何利用我们在去年发行的.NET 2.0版本的CLR中新加入的动态语言特性的一个极好的例子。譬如，象“轻量级编码生成”这样的CLR特性，现在可以让动态语言很快地在内存里编译和JIT源码，而且还有之后把它垃圾回收的能力。这意味着，你可以在运行时很快地动态调整类型，而且不用泄漏生成的编码。</p>
+<p>IronPython也是我们在研究如何把动态语言的优点与象.NET 这样一个丰富的类库框架和执行环境结合在一起的一个很好的例子。微软IronPython项目的主架构师Jim Hugunin最近<a href="http://weblog.infoworld.com/udell/screenroom/ironpython_flv.html" target="_blank">与Jon Udell 做了一个非常棒的采访录像</a>，在其中，他示范了一堆展示IronPython特点的非常酷的使用情形(scenarios)。他的演示包括用Python来编写一个计算器程序，里面用到了WPF(即Avalon)和与Speech API的集成。他也示范了如何用象C#这样的强类型语言来重构性能要求非常高的Python编码，以及两者是如何无缝地集成的。你可以点击下面这个屏幕截图来完整收看这个采访录像：</p>
+<p><a href="http://weblog.infoworld.com/udell/screenroom/ironpython_flv.html"><img alt="" src="http://www.scottgu.com/BlogPosts/python/step1.jpg"></a></p>
+<p>展望未来，你将看到更多的动态语言出现在.NET平台上，更多更酷的新使用情形将成为可能。</p>
+<p>希望本文对你有所帮助，</p>
+<p>Scott</p>
+<p>::: postfoot</p>
+<div>
+
+标签：[.NET](http://weblogs.asp.net/scottgu/archive/tags/.NET/default.aspx){rel="tag"}
+
+</div>
+
+<div>
+
+ 
+
+</div>
+
+<div>
+
+(思归译)
+
+</div>
+<p>:::</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://blog.joycode.com/tag/net.html">.NET</a>
+    </p>
+  </div>
+
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'hcwang';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " 开心就好的代码人生 ",
+  "url" : "https://blog.joycode.com",
+  "image": "",
+  "description": ""
+}
+</script>
+</body>
+</html>

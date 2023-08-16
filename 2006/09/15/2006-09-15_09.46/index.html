@@ -1,0 +1,223 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://blog.joycode.com/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/solid.css">
+
+
+
+
+  <link href="https://blog.joycode.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="开心就好的代码人生 Atom">
+
+
+
+ 
+
+<meta name="author" content="joycode" />
+<meta name="description" content="【原文地址】Tip/Trick: Enabling Back/Forward-Button Support for ASP.NET AJAX UpdatePanel 【原文发表日期】Thursday, September 14, 2006 12:25 PM Nikhil最近写了一个好帖子，是关于一个叫做HistoryControl的支持AJAX的新ASP.NET 控件的 …" />
+<meta name="keywords" content=".NET, ASP.NET, Atlas, Tips and Tricks">
+
+
+  <meta property="og:site_name" content="开心就好的代码人生"/>
+  <meta property="og:title" content="技巧和诀窍：在ASP.NET AJAX UpdatePanel中实现对后退/前进按钮的支持"/>
+  <meta property="og:description" content="【原文地址】Tip/Trick: Enabling Back/Forward-Button Support for ASP.NET AJAX UpdatePanel 【原文发表日期】Thursday, September 14, 2006 12:25 PM Nikhil最近写了一个好帖子，是关于一个叫做HistoryControl的支持AJAX的新ASP.NET 控件的 …"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://blog.joycode.com/2006/09/15/2006-09-15_09.46/"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2006-09-15 09:46:00+08:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="https://blog.joycode.com/author/joycode.html">
+  <meta property="article:section" content="业界评论"/>
+  <meta property="article:tag" content=".NET"/>
+  <meta property="article:tag" content="ASP.NET"/>
+  <meta property="article:tag" content="Atlas"/>
+  <meta property="article:tag" content="Tips and Tricks"/>
+  <meta property="og:image" content="">
+
+  <title>开心就好的代码人生 &ndash; 技巧和诀窍：在ASP.NET AJAX UpdatePanel中实现对后退/前进按钮的支持</title>
+
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="https://blog.joycode.com/">
+      <img src="https://blog.joycode.com/theme/img/profile.png" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://blog.joycode.com/"></a>
+    </h1>
+
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="https://getpelican.com/" >Pelican</a>
+          </li>
+          <li>
+            <a target="_self" href="https://www.python.org/" >Python.org</a>
+          </li>
+          <li>
+            <a target="_self" href="https://palletsprojects.com/p/jinja/" >Jinja2</a>
+          </li>
+          <li>
+            <a target="_self" href="#" >You can modify those links in your config file</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-You can add links in your config file"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-You can add links in your config file"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-Another social link"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-Another social link"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="2006-09-15_09.46">技巧和诀窍：在ASP.NET AJAX UpdatePanel中实现对后退/前进按钮的支持</h1>
+    <p>
+      Posted on 五 15 九月 2006 in <a href="https://blog.joycode.com/category/ye-jie-ping-lun.html">业界评论</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>【原文地址】<a href="http://weblogs.asp.net/scottgu/archive/2006/09/14/Tip_2F00_Trick_3A00_-Enabling-Back_2F00_Forward_2D00_Button-Support-for-ASP.NET-AJAX-UpdatePanel.aspx" target="" title="技巧和诀窍：在ASP.NET AJAX UpdatePanel中实现对后退/前进按钮的支持">Tip/Trick: Enabling Back/Forward-Button Support for ASP.NET AJAX UpdatePanel</a><br>
+【原文发表日期】Thursday, September 14, 2006 12:25 PM</p>
+<p>Nikhil<a href="http://www.nikhilk.net/BackButtonSupport.aspx">最近写了一个好帖子</a>，是关于一个叫做HistoryControl的支持AJAX的新ASP.NET 控件的。把它加到页面上后，允许开发人员用编程手段往浏览器的历史记录里添加逻辑视图(logical view)。这将使得支持AJAX的网站更加有用，而且遵循传统web应用所遵循的标准的前进/后退的导航惯例。</p>
+<p>譬如，通过Nikhil的HistoryControl，开发人员可以编写类似下面这样的编码来响应一个列表的选择变动，并且把列表选择当作标识符添加到浏览器的历史记录中去：</p>
+<div>
+
+`<font color="blue">`{=html}private void `</font>`{=html}`<font color="black">`{=html}ContentList_SelectedIndexChanged(`</font>`{=html}`<font color="blue">`{=html}object `</font>`{=html}`<font color="black">`{=html}sender, EventArgs e) {  
+   history.AddEntry(contentList.SelectedIndex.ToString()`</font>`{=html}`<font color="blue">`{=html};  
+`</font>`{=html}`<font color="black">`{=html}}`</font>`{=html}
+
+</div>
+
+<p>你一旦往历史控件里添加新项后，浏览器中的后退/前进按钮就被激活了。Nikhil的历史控件提供了一个Navigate事件，当你在浏览器里按后退/前进按钮时，这个事件就会被触发，同时它在事件处理函数的参数里提供了早先在把逻辑视图添加进浏览器历史记录时所用的那个标识符。然后你就可以使用这个标识符来把页面回复到跟这个历史记录相对应的页面状态了：</p>
+<div>
+
+`<font color="blue">`{=html}private void `</font>`{=html}`<font color="black">`{=html}HistoryControl_Navigate(`</font>`{=html}`<font color="blue">`{=html}object `</font>`{=html}`<font color="black">`{=html}sender, HistoryEventArgs e) {
+
+<div class="highlight"><pre><span></span><code>&lt;/p&gt;
+</code></pre></div>
+
+
+    `</font>`{=html}`<font color="blue">`{=html}int `</font>`{=html}`<font color="black">`{=html}selectedIndex `</font>`{=html}`<font color="blue">`{=html}= `</font>`{=html}`<font color="maroon">`{=html}0`</font>`{=html}`<font color="blue">`{=html};
+
+    if `</font>`{=html}`<font color="black">`{=html}(String.IsNullOrEmpty(e.Identifier) `</font>`{=html}`<font color="blue">`{=html}== false`</font>`{=html}`<font color="black">`{=html}) {  
+        selectedIndex `</font>`{=html}`<font color="blue">`{=html}= `</font>`{=html}`<font color="black">`{=html}Int32.Parse(e.Identifier)`</font>`{=html}`<font color="blue">`{=html};  
+    `</font>`{=html}`<font color="black">`{=html}}
+
+    `</font>`{=html}`<font color="darkgreen">`{=html}// Update the content being displayed in the page  
+    `</font>`{=html}`<font color="black">`{=html}contentList.SelectedIndex `</font>`{=html}`<font color="blue">`{=html}= `</font>`{=html}`<font color="black">`{=html}selectedIndex`</font>`{=html}`<font color="blue">`{=html};
+
+    `</font>`{=html}`<font color="darkgreen">`{=html}// Mark the update panels as needing an update  
+    `</font>`{=html}`<font color="black">`{=html}mainUpdatePanel.Update()`</font>`{=html}`<font color="blue">`{=html};  
+`</font>`{=html}`<font color="black">`{=html}}`</font>`{=html}
+
+</div>
+
+<p>这样你的用户在使用AJAX应用时也能使用前进/后退按钮来作导航了。你可以在<a href="http://www.nikhilk.net/BackButtonSupport.aspx" target="_blank">这里下载Nikhil的历史控件的编码，开始用在你的项目里</a>。</p>
+<p>希望本文对你有所帮助，</p>
+<p>Scott</p>
+<p>::: postfoot</p>
+<div>
+
+标签：[ASP.NET](http://weblogs.asp.net/scottgu/archive/tags/ASP.NET/default.aspx){rel="tag"}, [.NET](http://weblogs.asp.net/scottgu/archive/tags/.NET/default.aspx){rel="tag"}, [Atlas](http://weblogs.asp.net/scottgu/archive/tags/Atlas/default.aspx){rel="tag"}, [Tips and Tricks](http://weblogs.asp.net/scottgu/archive/tags/Tips+and+Tricks/default.aspx){rel="tag"}
+
+</div>
+
+<p>(思归译)
+:::</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://blog.joycode.com/tag/net.html">.NET</a>
+      <a href="https://blog.joycode.com/tag/aspnet.html">ASP.NET</a>
+      <a href="https://blog.joycode.com/tag/atlas.html">Atlas</a>
+      <a href="https://blog.joycode.com/tag/tips-and-tricks.html">Tips and Tricks</a>
+    </p>
+  </div>
+
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'hcwang';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " 开心就好的代码人生 ",
+  "url" : "https://blog.joycode.com",
+  "image": "",
+  "description": ""
+}
+</script>
+</body>
+</html>

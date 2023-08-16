@@ -1,0 +1,176 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://blog.joycode.com/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/solid.css">
+
+
+
+
+  <link href="https://blog.joycode.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="开心就好的代码人生 Atom">
+
+
+
+ 
+
+<meta name="author" content="joycode" />
+<meta name="description" content="博客堂源代码自从去年开始就一直紧跟ASP.NET MVC的进度，开发了很长时间，一直都不好意思拿出来给大家显白显白。主要原因是Bug太多 …" />
+<meta name="keywords" content="">
+
+
+  <meta property="og:site_name" content="开心就好的代码人生"/>
+  <meta property="og:title" content="Joycode.MVC 0.5已经发布了"/>
+  <meta property="og:description" content="博客堂源代码自从去年开始就一直紧跟ASP.NET MVC的进度，开发了很长时间，一直都不好意思拿出来给大家显白显白。主要原因是Bug太多 …"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://blog.joycode.com/2009/06/25/115629/"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2009-06-25 16:28:00+08:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="https://blog.joycode.com/author/joycode.html">
+  <meta property="article:section" content="业界评论"/>
+  <meta property="og:image" content="">
+
+  <title>开心就好的代码人生 &ndash; Joycode.MVC 0.5已经发布了</title>
+
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="https://blog.joycode.com/">
+      <img src="https://blog.joycode.com/theme/img/profile.png" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://blog.joycode.com/"></a>
+    </h1>
+
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="https://getpelican.com/" >Pelican</a>
+          </li>
+          <li>
+            <a target="_self" href="https://www.python.org/" >Python.org</a>
+          </li>
+          <li>
+            <a target="_self" href="https://palletsprojects.com/p/jinja/" >Jinja2</a>
+          </li>
+          <li>
+            <a target="_self" href="#" >You can modify those links in your config file</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-You can add links in your config file"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-You can add links in your config file"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-Another social link"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-Another social link"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="115629">Joycode.MVC 0.5已经发布了</h1>
+    <p>
+      Posted on 四 25 六月 2009 in <a href="https://blog.joycode.com/category/ye-jie-ping-lun.html">业界评论</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>博客堂源代码自从去年开始就一直紧跟ASP.NET MVC的进度，开发了很长时间，一直都不好意思拿出来给大家显白显白。主要原因是Bug太多，实在是拿不出手。但在开发过程当中，实在是需要听取大家的反馈意见，所以现在把相关的工作做了一下整理，先把0.5的第一个CTP发布出来，以听到相关的建议。目前博客堂还运行的是0.4版本，所以像BING的搜索在博客堂上还没有出现，取而代之的是Google的BlogBar功能（不过Google的BlogBar对页面加载还会有一定的阻碍的）。</p>
+<p>如果您希望下载源代码，请确保您的开发环境与我一样（其它环境主要是我个人没有进行过测试，希望各位有测试结果可以通知一下）。</p>
+<p>1. IDE: Visual Studio 2008 SP1;</p>
+<p>2. .NET Framework Version: 3.5 SP1;</p>
+<p>3. ASP.NET MVC: 1.0;</p>
+<p>4. OS: Windows 7 RC/Windows Vista/Windows Server; (ASP.NET MVC在IIS6下运行还需要特殊配置);</p>
+<p>5. SQL Server 2008: 2005应该也可以，但我没有做过测试。</p>
+<p>点击<a href="http://joycode.codeplex.com/SourceControl/ListDownloadableCommits.aspx">此处</a>查看或者下载源代码;点击<a href="http://joycode.codeplex.com/Release/ProjectReleases.aspx?ReleaseId=29231">此处</a>下载安装文件（不含源文件)</p>
+<p>目前版本尚有很多Bug，不推荐普通用户下载。非常感谢。</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+    </p>
+  </div>
+
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'hcwang';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " 开心就好的代码人生 ",
+  "url" : "https://blog.joycode.com",
+  "image": "",
+  "description": ""
+}
+</script>
+</body>
+</html>

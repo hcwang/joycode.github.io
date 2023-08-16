@@ -1,0 +1,185 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://blog.joycode.com/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/solid.css">
+
+
+
+
+  <link href="https://blog.joycode.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="开心就好的代码人生 Atom">
+
+
+
+ 
+
+<meta name="author" content="joycode" />
+<meta name="description" content="在上一篇文章中，提到了在我的流程监控系统中应用了新浪发送短信的Web Service，得到了大家的响应。很多人对此非常感兴趣 …" />
+<meta name="keywords" content="C#编程">
+
+
+  <meta property="og:site_name" content="开心就好的代码人生"/>
+  <meta property="og:title" content="新浪短信Web Service"/>
+  <meta property="og:description" content="在上一篇文章中，提到了在我的流程监控系统中应用了新浪发送短信的Web Service，得到了大家的响应。很多人对此非常感兴趣 …"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://blog.joycode.com/2004/03/23/16939/"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2004-03-23 12:09:00+08:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="https://blog.joycode.com/author/joycode.html">
+  <meta property="article:section" content="业界评论"/>
+  <meta property="article:tag" content="C#编程"/>
+  <meta property="og:image" content="">
+
+  <title>开心就好的代码人生 &ndash; 新浪短信Web Service</title>
+
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="https://blog.joycode.com/">
+      <img src="https://blog.joycode.com/theme/img/profile.png" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://blog.joycode.com/"></a>
+    </h1>
+
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="https://getpelican.com/" >Pelican</a>
+          </li>
+          <li>
+            <a target="_self" href="https://www.python.org/" >Python.org</a>
+          </li>
+          <li>
+            <a target="_self" href="https://palletsprojects.com/p/jinja/" >Jinja2</a>
+          </li>
+          <li>
+            <a target="_self" href="#" >You can modify those links in your config file</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-You can add links in your config file"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-You can add links in your config file"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-Another social link"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-Another social link"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="16939">新浪短信Web Service</h1>
+    <p>
+      Posted on 二 23 三月 2004 in <a href="https://blog.joycode.com/category/ye-jie-ping-lun.html">业界评论</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p><img alt="" src="http://image2.sina.com.cn/sms/change/dxsygb_fcnn/sms020901.gif">在<a href="http://blog.joycode.com/joy/posts/16786.aspx">上一篇文章</a>中，提到了在我的流程监控系统中应用了新浪发送短信的Web Service，得到了大家的响应。很多人对此非常感兴趣。</p>
+<p>在得到该资源的推荐者张炜先生（开发合作部的同事）的允许后，我决定公布此资源，并且提供如同鸡肋般的示例代码。</p>
+<p>该资源的该问地址为：<a href="http://smsinter.sina.com.cn/ws/smswebservice0101.wsdl">http://smsinter.sina.com.cn/ws/smswebservice0101.wsdl</a>，这是一个WSDL文件格式，您可以直接在您的VS.NET环境中直接添加Web引用，把该地址输入即可。</p>
+<p>该Web Service就只有一个方法，即string sendXml(carrier,userid,password,mobilenumber,content,msgtype)。各个参数全部为string类型，其含义基本如下（可能不正确）。</p>
+<ul>
+<li>carrier:运营商名称，这里面可以随便输，不过似乎没有任何显示，不知道里面有没有其它奥秘。</li>
+<li>userid:您在新浪无线上注册的手机ID，即<a href="http://sms.sina.com.cn">http://sms.sina.com.cn</a>。</li>
+<li>password:您在新浪无线上注册手机时所使用的密码。</li>
+<li>mobilenumber:对方的手机号码;</li>
+<li>content:发送短消息的内容;</li>
+<li>msgtype:发送短消息的类型，我估计支持彩信，不过我目前仅使用文本短信方式，似乎随便输什么都可以，我使用的是“Text”。</li>
+</ul>
+<p>示例如下：</p>
+<p>Sina.SMSWS ws = new Sina.SMSWS();<br>
+   string result = ws.sendXml("Sina",textBox1.Text,textBox2.Text,textBox3.Text,textBox4.Text,"new");</p>
+<p>资费标准请参看新浪无线网站上的相关说明，应该是一条一角钱，不过也或者是一条两角线。由于其后台可能使用了消息队列机制，在繁忙的时候，可能会有几秒钟延迟。</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://blog.joycode.com/tag/cbian-cheng.html">C#编程</a>
+    </p>
+  </div>
+
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'hcwang';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " 开心就好的代码人生 ",
+  "url" : "https://blog.joycode.com",
+  "image": "",
+  "description": ""
+}
+</script>
+</body>
+</html>

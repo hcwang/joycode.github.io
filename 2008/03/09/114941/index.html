@@ -1,0 +1,177 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://blog.joycode.com/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/solid.css">
+
+
+
+
+  <link href="https://blog.joycode.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="开心就好的代码人生 Atom">
+
+
+
+ 
+
+<meta name="author" content="joycode" />
+<meta name="description" content="开心相信,博客堂的很多朋友都看过电影木乃伊,记得有一个场景就是当某个木乃伊复活前,从地下爬出来很多很多黑黑 …" />
+<meta name="keywords" content="">
+
+
+  <meta property="og:site_name" content="开心就好的代码人生"/>
+  <meta property="og:title" content="木乃伊中的Bugs(1): MembershipUser.IsOnline与Profile的关系"/>
+  <meta property="og:description" content="开心相信,博客堂的很多朋友都看过电影木乃伊,记得有一个场景就是当某个木乃伊复活前,从地下爬出来很多很多黑黑 …"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://blog.joycode.com/2008/03/09/114941/"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2008-03-09 14:10:00+08:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="https://blog.joycode.com/author/joycode.html">
+  <meta property="article:section" content="业界评论"/>
+  <meta property="og:image" content="">
+
+  <title>开心就好的代码人生 &ndash; 木乃伊中的Bugs(1): MembershipUser.IsOnline与Profile的关系</title>
+
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="https://blog.joycode.com/">
+      <img src="https://blog.joycode.com/theme/img/profile.png" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://blog.joycode.com/"></a>
+    </h1>
+
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="https://getpelican.com/" >Pelican</a>
+          </li>
+          <li>
+            <a target="_self" href="https://www.python.org/" >Python.org</a>
+          </li>
+          <li>
+            <a target="_self" href="https://palletsprojects.com/p/jinja/" >Jinja2</a>
+          </li>
+          <li>
+            <a target="_self" href="#" >You can modify those links in your config file</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-You can add links in your config file"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-You can add links in your config file"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-Another social link"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-Another social link"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="114941">木乃伊中的Bugs(1): MembershipUser.IsOnline与Profile的关系</h1>
+    <p>
+      Posted on 日 09 三月 2008 in <a href="https://blog.joycode.com/category/ye-jie-ping-lun.html">业界评论</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>开心相信,博客堂的很多朋友都看过电影木乃伊,记得有一个场景就是当某个木乃伊复活前,从地下爬出来很多很多黑黑的小虫子,而且数量一直在急剧增加,这个是我看到过的比较恐怖的场景.去年在美国参加MIX07的时候,曾经跑到好莱坞的环球影城中体验了一把这种仿真场景,坐着过山车来到一个墓地,突然地下面跑出来很多虫子,围着自己的脚打转(其实应该就是风机吹的小风),虽然知道不是真的,但那种感觉还是让自己感觉很颤抖.</p>
+<p>在开发博客堂新版本的时候,我也经常有这种感觉,时不时的就发现自己的应用程序当中出现了一些小Bug,当把这些小Bug给杀死的时候,你会发现会有更多的Bug出现,周而复始,有时候会让你想把服务器给砸掉,把内存拔下来,把硬盘给踩碎的感觉.呵呵,估计每个程序员都有过类似的想法吧?</p>
+<p>开心相信,每个Bug之间都有关联,所以我们需要擒贼先擒王,找到主要的Bug,然后再进行跟踪,虽然现在博客堂的服务还不是非常稳定,但开心准备与大家一起分享这种捉Bug的乐趣,下面是第一篇.</p>
+<p>先讲第一个小Bugs.在博客堂当前使用的版本当中,重载了MembershipProvider, RoleProvider以及ProfileProvider,比如在MemberShipProvider中增加了一个静态方法,MembershipUser GetUserByLiveID(string GUID),入参是由Windows Live ID传递过来的一个唯一标识(类似于GUID),而返回值则是MemberShipUser类型的变量.当在系统中发现当前Live ID登录者已经与用户进行过绑定时,会返回此MemberShipUser,如果未绑定,则返回null.这个方法目前运行良好,既没有破坏MembershipProvider的整体性,还起到功能扩充的作用.</p>
+<p>另外,可能大家注意到了在首页上还显示了当前用户是否在线的状态,其原理并不是使用Messenger的API调用的,因为实际上Windows Live ID登录过程当中,系统只能得到一个唯一标识符号,并不能拿到大家的Live ID以及其它任何信息,所以在线状态使用的是MembershipUser.IsOnline来进行判断的.相信大家对于这个判断过程应该有所了解了:通过MembershipUser.LastActivityDate中存储的时间,是否大于系统当前时间减去在web.config中配置的UserIsOnlineTimeWindow(Membership配置节)的时间间隔来进行比较来判定的.MembershipUser.LastActivityDate标识用户在系统当中最后一次活动的时间,而UserIsOnlineTimeWindows给出一个以分钟为单位的时间间隔(目前博客堂设置的是20分钟).</p>
+<p>这样就有了一个问题,即什么时候系统会更新这个LastActivityDate的时间值?通过Membership.GetUser(true)来获取当前用户信息的时候,会自动更新此值.或者你自己手工更新MembershipUser.LastActivityDate,并且再调用Membership.UpdateUser方法的时候也会更新此值.但可能没有人会想到,你使用Profile.GetPropertyValue(string propertyname)的时候也会更新此值吧?</p>
+<p>比如,现在在博客堂,你点击某个人的头像的时候,会查看此人的信息,比如生日,积分以及地区等,这些信息其实是存储在Profile当中的,系统会自动通过Profile.GetPropertyValue(string propertyname)来获得相应的值,但如果你查看一下此时所调用的存储过程,会发现它竟然会自动更新对应用户的LastActivityDate的值.从而导致了一个怪现象,就是昨天的时候,你只要点击某个人的头像,某个人就会联机了.</p>
+<p>解决方案也很简单,在后台对应的存储过程当中,删掉Update语句即可.</p>
+<p>如果在您的应用当中,也使用了MembershipUser.IsOnline来标识用户状态,并且使用Profile来存储用户的一些基本信息的时候,切记要注意此部分.</p>
+<p>参考文章: <a href="http://connect.microsoft.com/VisualStudio/feedback/ViewFeedback.aspx?FeedbackID=103554">http://connect.microsoft.com/VisualStudio/feedback/ViewFeedback.aspx?FeedbackID=103554</a></p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+    </p>
+  </div>
+
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'hcwang';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " 开心就好的代码人生 ",
+  "url" : "https://blog.joycode.com",
+  "image": "",
+  "description": ""
+}
+</script>
+</body>
+</html>

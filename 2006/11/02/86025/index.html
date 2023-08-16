@@ -1,0 +1,191 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://blog.joycode.com/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/solid.css">
+
+
+
+
+  <link href="https://blog.joycode.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="开心就好的代码人生 Atom">
+
+
+
+ 
+
+<meta name="author" content="joycode" />
+<meta name="description" content="在Web 1.0时代，由于内容是由网站专职的编辑来提供的，所以需要使用CMS系统，供这些网站编辑来提交新内容。在Web 2.0时代，网站是由人 …" />
+<meta name="keywords" content="业界评论, 软件推荐">
+
+
+  <meta property="og:site_name" content="开心就好的代码人生"/>
+  <meta property="og:title" content="我的创意(1):网站的CMS系统的构想"/>
+  <meta property="og:description" content="在Web 1.0时代，由于内容是由网站专职的编辑来提供的，所以需要使用CMS系统，供这些网站编辑来提交新内容。在Web 2.0时代，网站是由人 …"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://blog.joycode.com/2006/11/02/86025/"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2006-11-02 09:36:00+08:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="https://blog.joycode.com/author/joycode.html">
+  <meta property="article:section" content="业界评论"/>
+  <meta property="article:tag" content="业界评论"/>
+  <meta property="article:tag" content="软件推荐"/>
+  <meta property="og:image" content="">
+
+  <title>开心就好的代码人生 &ndash; 我的创意(1):网站的CMS系统的构想</title>
+
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="https://blog.joycode.com/">
+      <img src="https://blog.joycode.com/theme/img/profile.png" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://blog.joycode.com/"></a>
+    </h1>
+
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="https://getpelican.com/" >Pelican</a>
+          </li>
+          <li>
+            <a target="_self" href="https://www.python.org/" >Python.org</a>
+          </li>
+          <li>
+            <a target="_self" href="https://palletsprojects.com/p/jinja/" >Jinja2</a>
+          </li>
+          <li>
+            <a target="_self" href="#" >You can modify those links in your config file</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-You can add links in your config file"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-You can add links in your config file"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-Another social link"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-Another social link"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="86025">我的创意(1):网站的CMS系统的构想</h1>
+    <p>
+      Posted on 四 02 十一月 2006 in <a href="https://blog.joycode.com/category/ye-jie-ping-lun.html">业界评论</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>在Web 1.0时代，由于内容是由网站专职的编辑来提供的，所以需要使用CMS系统，供这些网站编辑来提交新内容。在Web 2.0时代，网站是由人民群众创造的，所以出现了很多各式各样的开放式系统，比如使用<a href="http://search.live.com/results.aspx?q=metadataAPI&amp;mkt=en-US&amp;form=QBNO" target="_blank">BlogMetaDataAPI</a>来提交内容的系统。</p>
+<p><a href="http://search.live.com/results.aspx?q=metadataAPI&amp;mkt=en-US&amp;form=QBNO" target="_blank">BlogMetaDataAPI</a>目前被很多BLOG系统所使用，包括博客堂所采用的基础架构.Text。虽然在Web 2.0初期，大家都在使用在线Web编辑器为BLOG提交内容，但这种提交总得来说还是有很多局限性的，比如：</p>
+<ol>
+<li>用户体验不一致：由于Web的性质决定，很多客户体验与普通的Windows Application并不一致，比如在Word中我可以先按PringScreen键拷屏，然后直接粘到编辑器中，但在Web中就做不到这一点;</li>
+<li>响应时间慢、易崩溃：如果增加了过多的文字或者调用到一些特殊的属性。很容易出现响应时间慢的特点，并且导致崩溃（现在崩溃现象越来越少见了）。</li>
+<li>需要在线写：在不联网的情况下，你必须要先写到记事本或者Word文档中，等到联网的时候再提交。</li>
+<li>浏览器标准的兼容性：比如博客堂使用的在线Web编辑器在IE6中工作良好，在IE7中就无法正常显示（相信很多博主已经遇到此问题了）。</li>
+</ol>
+<p>我也是基于以上原因，以及工作繁忙，有将近一年的时间没有写BLOG。所以最近当我提高了发文数量后，很多人感觉到很诧异：开心怎么了？其实我只是有了一件顺手的工具，即<a href="http://windowslivewriter.spaces.live.com/" target="_blank">Windows Live Writer</a>。当然，使用Word 2007也可以直接发送博客，不过一来程序太笨重，二来博客堂对Word 2007的发布功能支持的并不是非常好。</p>
+<p>一年前，曾经也有过一个构想，就是采用Outlook发送邮件的方式来发布博客。很显然，Live Space已经实现了这个功能，不过只能发给它自己。所以<a href="http://blog.joycode.com/roboo" rel="豆腐的Blog" target="_blank">豆腐</a>与<a href="http://blog.joycode.com/dotey" target="_blank">宝玉</a>已经完成了大部分代码，实现功能大体如下：</p>
+<ul>
+<li>在网站（这个网站一直没有时间开发）上使用邮件注册一个帐号，并且关联自己的博客地址以及帐号信息（可多选）;</li>
+<li>在注册通过后，会得到一个特殊的邮件地址，然后就可以使用任意邮件客户端（Outlook, Outlook Express，Web mail）将自己写好的文章发到该邮件地址中;</li>
+<li>文章实时张贴在自己关联的各博客地址上;</li>
+<li>同时服务器端保留了你发送的BLOG文章的内容，我们还可以使用这个内容做“博客搜索”、“博客搬家”等等更有创意的内容。</li>
+</ul>
+<p>由于<a href="http://blog.joycode.com/roboo" target="_blank">豆腐</a>先生已经移民到加拿大了，<a href="http://blog.joycode.com/dotey" target="_blank">宝玉</a>与开心的工作也很忙，这个项目也暂时搁置了。我想，是否可以把此项目已经开发完成的代码放在<a href="http://www.codeplex.com/" target="_blank" title=".NET 开源基地">Codeplex</a>上，做成一个开源项目，大家一起来参与开发呢？:)</p>
+<p>回到Web 1.0,毕竟现在国内排名前几名的网站大部分还基于网站编辑。我的想法就是，虽然Web 2.0的人民群众们已经享受到了<a href="http://windowslivewriter.spaces.live.com/" target="_blank">Windows Live Writer</a>等带来的好处了。为什么不让我们的网站编辑们也享受一下这种好处呢？</p>
+<p>可不可以把网站的CMS系统使用MetaDataAPI来进行开发，不使用在线编辑器，而是直接使用Word、<a href="http://windowslivewriter.spaces.live.com/" target="_blank">Windows Live Writer</a>编写自己的CMS系统呢？有人说，Word和Windows Live Writer很难自定义。Oh my god，你难道没有听说过Smart document (<a href="http://blog.joycode.com/kaneboy" target="_blank">Kaneboy</a> &amp; <a href="http://blog.joycode.com/liqiang" target="_blank">QiangLi</a>快来给大家补补课），以及<a href="http://dev.live.com/blogs/devlive/archive/2006/08/14/44.aspx" target="_blank">Live Writer SDK</a>？</p>
+<p>Any feedback? :)</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://blog.joycode.com/tag/ye-jie-ping-lun.html">业界评论</a>
+      <a href="https://blog.joycode.com/tag/ruan-jian-tui-jian.html">软件推荐</a>
+    </p>
+  </div>
+
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'hcwang';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " 开心就好的代码人生 ",
+  "url" : "https://blog.joycode.com",
+  "image": "",
+  "description": ""
+}
+</script>
+</body>
+</html>

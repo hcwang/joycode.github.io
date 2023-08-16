@@ -1,0 +1,189 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://blog.joycode.com/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/solid.css">
+
+
+
+
+  <link href="https://blog.joycode.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="开心就好的代码人生 Atom">
+
+
+
+ 
+
+<meta name="author" content="joycode" />
+<meta name="description" content="Anders Hejlsberg接受Channel 9的采访，谈到如何把数据编程与对象编程统一起来 也参考 The LINQ Project 上面有 LINQ的技术预览，包括示范程序，白皮书文档，hands-on labs以及为使用LINQ技术编程所需的编译器支持，可以在Visual Studio 2005 …" />
+<meta name="keywords" content=".NET, 杂类">
+
+
+  <meta property="og:site_name" content="开心就好的代码人生"/>
+  <meta property="og:title" content="New features in C# 3.0"/>
+  <meta property="og:description" content="Anders Hejlsberg接受Channel 9的采访，谈到如何把数据编程与对象编程统一起来 也参考 The LINQ Project 上面有 LINQ的技术预览，包括示范程序，白皮书文档，hands-on labs以及为使用LINQ技术编程所需的编译器支持，可以在Visual Studio 2005 …"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://blog.joycode.com/2005/09/15/2005-09-15_00.39/"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2005-09-15 00:39:00+08:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="https://blog.joycode.com/author/joycode.html">
+  <meta property="article:section" content="业界评论"/>
+  <meta property="article:tag" content=".NET"/>
+  <meta property="article:tag" content="杂类"/>
+  <meta property="og:image" content="">
+
+  <title>开心就好的代码人生 &ndash; New features in C# 3.0</title>
+
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="https://blog.joycode.com/">
+      <img src="https://blog.joycode.com/theme/img/profile.png" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://blog.joycode.com/"></a>
+    </h1>
+
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="https://getpelican.com/" >Pelican</a>
+          </li>
+          <li>
+            <a target="_self" href="https://www.python.org/" >Python.org</a>
+          </li>
+          <li>
+            <a target="_self" href="https://palletsprojects.com/p/jinja/" >Jinja2</a>
+          </li>
+          <li>
+            <a target="_self" href="#" >You can modify those links in your config file</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-You can add links in your config file"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-You can add links in your config file"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-Another social link"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-Another social link"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="2005-09-15_00.39">New features in C# 3.0</h1>
+    <p>
+      Posted on 四 15 九月 2005 in <a href="https://blog.joycode.com/category/ye-jie-ping-lun.html">业界评论</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p><a href="http://channel9.msdn.com/ShowPost.aspx?PostID=10276" target="_blank">Anders Hejlsberg接受Channel 9的采访</a>，谈到如何把数据编程与对象编程统一起来</p>
+<p>也参考</p>
+<p><a href="http://msdn.microsoft.com/netframework/future/linq/" target="_blank" title="The LINQ Project">The LINQ Project</a></p>
+<p>上面有 LINQ的技术预览，包括示范程序，白皮书文档，hands-on labs以及为使用LINQ技术编程所需的编译器支持，可以在Visual Studio 2005 下使用</p>
+<p><a href="http://msdn.microsoft.com/vcsharp/future/" target="_blank" title="C# Future Versions">MSDN上的C# 将来版本网站</a>罗列了很多资源，包括，</p>
+<p><a href="http://download.microsoft.com/download/9/5/0/9503e33e-fde6-4aed-b5d0-ffe749822f1b/csharp%203.0%20specification.doc" target="_blank" title="C# 3.0 Language Specification">C# 3.0 Language Specification</a></p>
+<p>这篇blog提到了下面这些new features</p>
+<p><a href="http://blogs.sarkhouston.com/jrobertson/archive/2005/07/19/2742.aspx">http://blogs.sarkhouston.com/jrobertson/archive/2005/07/19/2742.aspx</a></p>
+<p>Extension methods<br>
+Lambda expressions<br>
+Type inference and implicit types<br>
+Anonymous types<br>
+Expression Trees<br>
+Concurrency<br>
+Object Initializers<br>
+Dynamic Typing</p>
+<p>9月22日MSDN将有个聊天活动，讨论C# 3.0的new features</p>
+<p><a href="http://msdn.microsoft.com/chats/#05_0922_MSDN_CL" target="_blank">C# 3.0 Language Enhancements</a></p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://blog.joycode.com/tag/net.html">.NET</a>
+      <a href="https://blog.joycode.com/tag/za-lei.html">杂类</a>
+    </p>
+  </div>
+
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'hcwang';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " 开心就好的代码人生 ",
+  "url" : "https://blog.joycode.com",
+  "image": "",
+  "description": ""
+}
+</script>
+</body>
+</html>

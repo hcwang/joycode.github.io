@@ -1,0 +1,431 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://blog.joycode.com/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/solid.css">
+
+
+
+
+  <link href="https://blog.joycode.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="开心就好的代码人生 Atom">
+
+
+
+ 
+
+<meta name="author" content="joycode" />
+<meta name="description" content="Bruce Tate 在他的书《Bitter Java》里谈到了Server-side Java 中的 antipatterns ，其中一个叫做“Magic Servlet” 。在这个Servlet 里，混杂了model，view和controller的编码，搞得责任不清，维护或扩展起来很麻 …" />
+<meta name="keywords" content="ASP.NET/IIS, 小题大做, 架构与模式">
+
+
+  <meta property="og:site_name" content="开心就好的代码人生"/>
+  <meta property="og:title" content="【小题大做】 Antipattern: Magic Page"/>
+  <meta property="og:description" content="Bruce Tate 在他的书《Bitter Java》里谈到了Server-side Java 中的 antipatterns ，其中一个叫做“Magic Servlet” 。在这个Servlet 里，混杂了model，view和controller的编码，搞得责任不清，维护或扩展起来很麻 …"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://blog.joycode.com/2005/09/12/2005-09-12_11.18/"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2005-09-12 11:18:00+08:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="https://blog.joycode.com/author/joycode.html">
+  <meta property="article:section" content="业界评论"/>
+  <meta property="article:tag" content="ASP.NET/IIS"/>
+  <meta property="article:tag" content="小题大做"/>
+  <meta property="article:tag" content="架构与模式"/>
+  <meta property="og:image" content="">
+
+  <title>开心就好的代码人生 &ndash; 【小题大做】 Antipattern: Magic Page</title>
+
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="https://blog.joycode.com/">
+      <img src="https://blog.joycode.com/theme/img/profile.png" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://blog.joycode.com/"></a>
+    </h1>
+
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="https://getpelican.com/" >Pelican</a>
+          </li>
+          <li>
+            <a target="_self" href="https://www.python.org/" >Python.org</a>
+          </li>
+          <li>
+            <a target="_self" href="https://palletsprojects.com/p/jinja/" >Jinja2</a>
+          </li>
+          <li>
+            <a target="_self" href="#" >You can modify those links in your config file</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-You can add links in your config file"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-You can add links in your config file"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-Another social link"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-Another social link"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="2005-09-12_11.18">【小题大做】 Antipattern: Magic Page</h1>
+    <p>
+      Posted on 一 12 九月 2005 in <a href="https://blog.joycode.com/category/ye-jie-ping-lun.html">业界评论</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>Bruce Tate 在他的书《<a href="http://www.manning.com/books/tate/contents" target="_blank">Bitter Java</a>》里谈到了Server-side Java 中的 antipatterns ，其中一个叫做“Magic Servlet” 。在这个Servlet 里，混杂了model，view和controller的编码，搞得责任不清，维护或扩展起来很麻烦。</p>
+<p>其实在ASP.NET世界里也一样，如果你在论坛上混长了，类似<a href="http://samples.gotdotnet.com/quickstart/util/srcview.aspx?path=/quickstart/aspplus/samples/webforms/data/datagrid9.src&amp;file=CS\datagrid9.aspx&amp;font=3" target="_blank">下面的编码</a>随处可见，我们不妨叫它为 “ Magic Page”， <img alt="" border="0" src="/emoticons/emotion-1.gif">。问题是，这些红字的语句是否应该出现在这里？</p>
+<p>(<strong>注</strong>：我知道这是个样品程序而已，求全责备恐怕是有点荒唐，但类似的编码在论坛上的帖子里经常出现，到底是什么原因呢？是程序员技术不精还是模仿造成的？)</p>
+<p><code>&lt;font color="#ff0000"&gt;</code>\&lt;%@ Import Namespace="System.Data" %&gt;<br>
+\&lt;%@ Import Namespace="System.Data.SqlClient" %&gt;<code>&lt;/font&gt;</code></p>
+<p>\&lt;html&gt;</p>
+<p>\&lt;head&gt;</p>
+<p><code>&lt;font color="#ff0000"&gt;</code>SqlConnection myConnection;<br>
+    public Hashtable StateIndex;<code>&lt;/font&gt;</code></p>
+<p>protected void Page_Load(Object Src, EventArgs E)<br>
+    {<br>
+<code>&lt;font color="#ff0000"&gt;</code> myConnection = new SqlConnection("server=(local)\NetSDK;database=pubs;Trusted_Connection=yes");<code>&lt;/font&gt;</code></p>
+<p>if (!IsPostBack)<br>
+            BindGrid();</p>
+<p><code>&lt;font color="#ff0000"&gt;</code>StateIndex = new Hashtable();<br>
+        StateIndex["CA"] = 0;<br>
+        StateIndex["IN"] = 1;<br>
+        StateIndex["KS"] = 2;<br>
+        StateIndex["MD"] = 3;<br>
+        StateIndex["MI"] = 4;<br>
+        StateIndex["OR"] = 5;<br>
+        StateIndex["TN"] = 6;<br>
+        StateIndex["UT"] = 7;<br>
+<code>&lt;/font&gt;</code>    }</p>
+<p>public void MyDataGrid_Edit(Object sender, DataGridCommandEventArgs E)<br>
+    {<br>
+        MyDataGrid.EditItemIndex = (int)E.Item.ItemIndex;<br>
+        BindGrid();<br>
+    }</p>
+<p>public void MyDataGrid_Cancel(Object sender, DataGridCommandEventArgs E)<br>
+    {<br>
+        MyDataGrid.EditItemIndex = -1;<br>
+        BindGrid();<br>
+    }</p>
+<p>public void MyDataGrid_Update(Object sender, DataGridCommandEventArgs E)<br>
+    {<br>
+        if (Page.IsValid)<br>
+        {<br>
+<code>&lt;font color="#ff0000"&gt;</code>String updateCmd = "UPDATE Authors SET au_id = \@Id, au_lname = \@LName, au_fname = \@FName, phone = \@Phone, "<br>
+                + "address = \@Address, city = \@City, state = \@State, zip = \@Zip, contract = \@Contract where au_id = \@Id";<code>&lt;/font&gt;</code></p>
+<p><code>&lt;font color="#ff0000"&gt;</code>            SqlCommand myCommand = new SqlCommand(updateCmd, myConnection);<code>&lt;/font&gt;</code></p>
+<p><code>&lt;font color="#ff0000"&gt;</code>            myCommand.Parameters.Add(new SqlParameter("@Id", SqlDbType.NVarChar, 11));<br>
+            myCommand.Parameters.Add(new SqlParameter("@LName", SqlDbType.NVarChar, 40));<br>
+            myCommand.Parameters.Add(new SqlParameter("@FName", SqlDbType.NVarChar, 20));<br>
+            myCommand.Parameters.Add(new SqlParameter("@Phone", SqlDbType.NChar, 12));<br>
+            myCommand.Parameters.Add(new SqlParameter("@Address", SqlDbType.NVarChar, 40));<br>
+            myCommand.Parameters.Add(new SqlParameter("@City", SqlDbType.NVarChar, 20));<br>
+            myCommand.Parameters.Add(new SqlParameter("@State", SqlDbType.NChar, 2));<br>
+            myCommand.Parameters.Add(new SqlParameter("@Zip", SqlDbType.NChar, 5));<br>
+            myCommand.Parameters.Add(new SqlParameter("@Contract", SqlDbType.NVarChar,1));<code>&lt;/font&gt;</code></p>
+<p><code>&lt;font color="#ff0000"&gt;</code>            myCommand.Parameters["@Id"].Value = MyDataGrid.DataKeys[(int)E.Item.ItemIndex];<code>&lt;/font&gt;</code></p>
+<p><code>&lt;font color="#ff0000"&gt;</code>            String[] cols = {"LName","FName","Phone","Address","City","Zip"};<code>&lt;/font&gt;</code></p>
+<p><code>&lt;font color="#ff0000"&gt;</code>            for (int i=0; i            {<br>
+                String colvalue = ((TextBox)E.Item.FindControl("edit_" + cols[i])).Text;<br>
+                myCommand.Parameters["@" + cols[i]].Value = Server.HtmlEncode(colvalue);<br>
+            }<code>&lt;/font&gt;</code></p>
+<p><code>&lt;font color="#ff0000"&gt;</code>            myCommand.Parameters["@State"].Value = ((DropDownList)E.Item.FindControl("edit_State")).SelectedItem.ToString();<code>&lt;/font&gt;</code></p>
+<p><code>&lt;font color="#ff0000"&gt;</code>            if (((CheckBox)E.Item.FindControl("edit_Contract")).Checked = true)<br>
+                myCommand.Parameters["@Contract"].Value = "1";<br>
+            else<br>
+                myCommand.Parameters["@Contract"].Value = "0";<code>&lt;/font&gt;</code></p>
+<p><code>&lt;font color="#ff0000"&gt;</code>            myCommand.Connection.Open();<code>&lt;/font&gt;</code></p>
+<p><code>&lt;font color="#ff0000"&gt;</code>            try<br>
+            {<br>
+                myCommand.ExecuteNonQuery();<br>
+                Message.InnerHtml = "<strong>Record Updated</strong><br>
+" + updateCmd;<br>
+                MyDataGrid.EditItemIndex = -1;<br>
+            }<br>
+            catch (SqlException e)<br>
+            {<br>
+                if (e.Number == 2627)<br>
+                    Message.InnerHtml = "ERROR: A record already exists with the same primary key";<br>
+                else<br>
+                    Message.InnerHtml = "ERROR: Could not update record, please ensure the fields are correctly filled out";<br>
+                Message.Style["color"] = "red";<br>
+            }<code>&lt;/font&gt;</code></p>
+<p><code>&lt;font color="#ff0000"&gt;</code>            myCommand.Connection.Close();<code>&lt;/font&gt;</code></p>
+<p>BindGrid();<br>
+        }<br>
+        else<br>
+        {<br>
+            Message.InnerHtml = "ERROR: Please check each field for error conditions.";<br>
+            Message.Style["color"] = "red";<br>
+        }<br>
+    }</p>
+<p>private void MyDataGrid_ItemDataBound(object sender, System.Web.UI.WebControls.DataGridItemEventArgs e)<br>
+    {<br>
+        if (e.Item.ItemType == ListItemType.EditItem)<br>
+        {<br>
+            for (int i = 0; i             {<br>
+                try<br>
+                {<br>
+                    if (e.Item.Controls[i].Controls[1].GetType().ToString() == "System.Web.UI.WebControls.TextBox")<br>
+                    {<br>
+                        TextBox tb = (TextBox)e.Item.Controls[i].Controls[1];<br>
+                        tb.Text = Server.HtmlDecode(tb.Text);<br>
+                    }<br>
+                }<br>
+                catch<br>
+                {</p>
+<p>}<br>
+            }<br>
+        }<br>
+    }</p>
+<p>public void BindGrid()<br>
+    {<br>
+<code>&lt;font color="#ff0000"&gt;</code> SqlDataAdapter myCommand = new SqlDataAdapter("select * from Authors", myConnection);<code>&lt;/font&gt;</code></p>
+<p><code>&lt;font color="#ff0000"&gt;</code>        DataSet ds = new DataSet();<br>
+        myCommand.Fill(ds, "Authors");<code>&lt;/font&gt;</code></p>
+<p><code>&lt;font color="#ff0000"&gt;</code>        MyDataGrid.DataSource=ds.Tables["Authors"].DefaultView;<br>
+        MyDataGrid.DataBind();<br>
+<code>&lt;/font&gt;</code>    }</p>
+<p>\&lt;/head&gt;</p>
+<p>\&lt;body style="font: 10pt verdana"&gt;</p>
+<p>\&lt;form runat="server"&gt;</p>
+<p>\&lt;h3&gt;\&lt;font face="Verdana"&gt;Updating a Row of Data w/ Validation\&lt;/font&gt;\&lt;/h3&gt;</p>
+<p>\&lt;span id="Message" EnableViewState="false" style="font: arial 11pt;" runat="server"/&gt;\&lt;p&gt;</p>
+<p>\&lt;ASP:DataGrid id="MyDataGrid" runat="server"<br>
+      Width="800"<br>
+      BackColor="#ccccff"<br>
+      BorderColor="black"<br>
+      ShowFooter="false"<br>
+      CellPadding=3<br>
+      CellSpacing="0"<br>
+      Font-Name="Verdana"<br>
+      Font-Size="8pt"<br>
+      HeaderStyle-BackColor="#aaaadd"<br>
+      OnEditCommand="MyDataGrid_Edit"<br>
+      OnCancelCommand="MyDataGrid_Cancel"<br>
+      OnUpdateCommand="MyDataGrid_Update"<br>
+      DataKeyField="au_id"<br>
+      AutoGenerateColumns="false"<br>
+      OnItemDataBound="MyDataGrid_ItemDataBound"<br>
+    &gt;</p>
+<p>\&lt;Columns&gt;<br>
+        \&lt;asp:EditCommandColumn EditText="Edit" CancelText="Cancel" UpdateText="Update"  ItemStyle-Wrap="false"/&gt;<br>
+        \&lt;asp:BoundColumn HeaderText="au_id" SortExpression="au_id" ReadOnly="True" DataField="au_id" ItemStyle-Wrap="false"/&gt;<br>
+        \&lt;asp:TemplateColumn HeaderText="au_lname" SortExpression="au_lname"&gt;<br>
+          \&lt;ItemTemplate&gt;<br>
+            \&lt;asp:Label runat="server" Text='\&lt;%# DataBinder.Eval(Container.DataItem, "au_lname") %&gt;'/&gt;<br>
+          \&lt;/ItemTemplate&gt;<br>
+          \&lt;EditItemTemplate&gt;<br>
+            \&lt;nobr&gt;<br>
+            \&lt;asp:TextBox runat="server" id="edit_LName" Text='\&lt;%# DataBinder.Eval(Container.DataItem, "au_lname") %&gt;'/&gt;<br>
+            \&lt;asp:RequiredFieldValidator id="au_lnameReqVal"<br>
+                ControlToValidate="edit_LName"<br>
+                Display="Dynamic"<br>
+                Font-Name="Verdana" Font-Size="12"<br>
+                runat=server&gt;<br>
+                    &nbsp;<em><br>
+            \&lt;/asp:RequiredFieldValidator&gt;<br>
+          \&lt;/EditItemTemplate&gt;<br>
+        \&lt;/asp:TemplateColumn&gt;<br>
+        \&lt;asp:TemplateColumn HeaderText="au_fname" SortExpression="au_fname"&gt;<br>
+          \&lt;ItemTemplate&gt;<br>
+            \&lt;asp:Label runat="server" Text='\&lt;%# DataBinder.Eval(Container.DataItem, "au_fname") %&gt;'/&gt;<br>
+          \&lt;/ItemTemplate&gt;<br>
+          \&lt;EditItemTemplate&gt;<br>
+            \&lt;nobr&gt;<br>
+            \&lt;asp:TextBox runat="server" id="edit_FName" Text='\&lt;%# DataBinder.Eval(Container.DataItem, "au_fname") %&gt;'/&gt;<br>
+            \&lt;asp:RequiredFieldValidator id="au_fnameReqVal"<br>
+                ControlToValidate="edit_FName"<br>
+                Display="Dynamic"<br>
+                Font-Name="Verdana" Font-Size="12"<br>
+                runat=server&gt;<br>
+                    &nbsp;</em><br>
+            \&lt;/asp:RequiredFieldValidator&gt;<br>
+          \&lt;/EditItemTemplate&gt;<br>
+        \&lt;/asp:TemplateColumn&gt;<br>
+        \&lt;asp:TemplateColumn HeaderText="phone" SortExpression="phone"&gt;<br>
+          \&lt;ItemTemplate&gt;<br>
+            \&lt;asp:Label runat="server" Text='\&lt;%# DataBinder.Eval(Container.DataItem, "phone") %&gt;'/&gt;<br>
+          \&lt;/ItemTemplate&gt;<br>
+          \&lt;EditItemTemplate&gt;<br>
+            \&lt;nobr&gt;<br>
+            \&lt;asp:TextBox runat="server" id="edit_Phone" Text='\&lt;%# DataBinder.Eval(Container.DataItem, "phone") %&gt;'/&gt;<br>
+            \&lt;asp:RequiredFieldValidator id="phoneReqVal"<br>
+                ControlToValidate="edit_Phone"<br>
+                Display="Dynamic"<br>
+                Font-Name="Verdana" Font-Size="12"<br>
+                runat=server&gt;<br>
+                    &nbsp;*<br>
+            \&lt;/asp:RequiredFieldValidator&gt;<br>
+            \&lt;asp:RegularExpressionValidator id="phoneRegexVal"<br>
+                ControlToValidate="edit_Phone"<br>
+                ValidationExpression="[0-9]{3} [0-9]{3}-[0-9]{4}"<br>
+                Display="Dynamic"<br>
+                Font-Name="Arial" Font-Size="11"<br>
+                runat=server&gt;<br>
+                    * Phone must be in form: XXX XXX-XXXX \&lt;br&gt;<br>
+            \&lt;/asp:RegularExpressionValidator&gt;<br>
+          \&lt;/EditItemTemplate&gt;<br>
+        \&lt;/asp:TemplateColumn&gt;<br>
+        \&lt;asp:TemplateColumn HeaderText="address" SortExpression="address"&gt;<br>
+          \&lt;ItemTemplate&gt;<br>
+            \&lt;asp:Label runat="server" Text='\&lt;%# DataBinder.Eval(Container.DataItem, "address") %&gt;'/&gt;<br>
+          \&lt;/ItemTemplate&gt;<br>
+          \&lt;EditItemTemplate&gt;<br>
+            \&lt;asp:TextBox runat="server" id="edit_Address" Text='\&lt;%# DataBinder.Eval(Container.DataItem, "address") %&gt;'/&gt;<br>
+          \&lt;/EditItemTemplate&gt;<br>
+        \&lt;/asp:TemplateColumn&gt;<br>
+        \&lt;asp:TemplateColumn HeaderText="city" SortExpression="city"&gt;<br>
+          \&lt;ItemTemplate&gt;<br>
+            \&lt;asp:Label runat="server" Text='\&lt;%# DataBinder.Eval(Container.DataItem, "city") %&gt;'/&gt;<br>
+   &amp;n<br>
+bsp;      \&lt;/ItemTemplate&gt;<br>
+          \&lt;EditItemTemplate&gt;<br>
+            \&lt;asp:TextBox runat="server" id="edit_City" Text='\&lt;%# DataBinder.Eval(Container.DataItem, "city") %&gt;'/&gt;<br>
+          \&lt;/EditItemTemplate&gt;<br>
+        \&lt;/asp:TemplateColumn&gt;<br>
+        \&lt;asp:TemplateColumn HeaderText="state" SortExpression="state"&gt;<br>
+          \&lt;ItemTemplate&gt;<br>
+            \&lt;asp:Label runat="server" Text='\&lt;%# DataBinder.Eval(Container.DataItem, "state") %&gt;'/&gt;<br>
+          \&lt;/ItemTemplate&gt;<br>
+          \&lt;EditItemTemplate&gt;<br>
+            \&lt;asp:DropDownList runat="server" SelectedIndex='<code>&lt;font color="#ff0000"&gt;</code>\&lt;%# StateIndex[(String)((DataRowView)Container.DataItem)["state"]] %&gt;<code>&lt;/font&gt;</code>' id="edit_State"&gt;<br>
+                  \&lt;asp:ListItem&gt;CA\&lt;/asp:ListItem&gt;<br>
+                  \&lt;asp:ListItem&gt;IN\&lt;/asp:ListItem&gt;<br>
+                  \&lt;asp:ListItem&gt;KS\&lt;/asp:ListItem&gt;<br>
+                  \&lt;asp:ListItem&gt;MD\&lt;/asp:ListItem&gt;<br>
+                  \&lt;asp:ListItem&gt;MI\&lt;/asp:ListItem&gt;<br>
+                  \&lt;asp:ListItem&gt;OR\&lt;/asp:ListItem&gt;<br>
+                  \&lt;asp:ListItem&gt;TN\&lt;/asp:ListItem&gt;<br>
+                  \&lt;asp:ListItem&gt;UT\&lt;/asp:ListItem&gt;<br>
+            \&lt;/asp:DropDownList&gt;<br>
+          \&lt;/EditItemTemplate&gt;<br>
+        \&lt;/asp:TemplateColumn&gt;<br>
+        \&lt;asp:TemplateColumn HeaderText="zip" SortExpression="zip"&gt;<br>
+          \&lt;ItemTemplate&gt;<br>
+            \&lt;asp:Label runat="server" Text='\&lt;%# DataBinder.Eval(Container.DataItem, "zip") %&gt;'/&gt;<br>
+          \&lt;/ItemTemplate&gt;<br>
+          \&lt;EditItemTemplate&gt;<br>
+            \&lt;asp:TextBox runat="server" id="edit_Zip" Text='\&lt;%# DataBinder.Eval(Container.DataItem, "zip") %&gt;'/&gt;<br>
+            \&lt;asp:RegularExpressionValidator id="RegularExpressionValidator1"<br>
+                ASPClass="RegularExpressionValidator" ControlToValidate="edit_Zip"<br>
+                ValidationExpression="[0-9]{5}"<br>
+                Display="Dynamic"<br>
+                Font-Name="Arial" Font-Size="11"<br>
+                runat=server&gt;<br>
+                    * Zip Code must be 5 numeric digits \&lt;br&gt;<br>
+            \&lt;/asp:RegularExpressionValidator&gt;<br>
+          \&lt;/EditItemTemplate&gt;<br>
+        \&lt;/asp:TemplateColumn&gt;<br>
+        \&lt;asp:TemplateColumn HeaderText="contract" SortExpression="contract"&gt;<br>
+          \&lt;ItemTemplate&gt;<br>
+            \&lt;asp:Label runat="server" Text='\&lt;%# DataBinder.Eval(Container.DataItem, "contract", "{0}") %&gt;'/&gt;<br>
+          \&lt;/ItemTemplate&gt;<br>
+          \&lt;EditItemTemplate&gt;<br>
+            \&lt;asp:CheckBox runat="server" id="edit_Contract" Checked='\&lt;%# DataBinder.Eval(Container.DataItem, "contract") %&gt;'/&gt;<br>
+          \&lt;/EditItemTemplate&gt;<br>
+        \&lt;/asp:TemplateColumn&gt;<br>
+      \&lt;/Columns&gt;</p>
+<p>\&lt;/ASP:DataGrid&gt;</p>
+<p>\&lt;/form&gt;</p>
+<p>\&lt;/body&gt;<br>
+\&lt;/html&gt;</p>
+<p>跟本帖子的主题不相关，在上面的例程中，还有一个不懂的地方是，每次更新一条数据，为什么需要对整个DataGrid做DataBind()？为什么不能对当前这个DataGridItem做重新DataBind()？(DataGridItem是支持DataBind()的，但无法改变当前这个DataGridItem的ItemType)。。。。。。我的看法是，选择是否对整个DataGrid重新做DataBind()应该是高层次的policy，应该由应用的需求或程序员来决定，而不应该通过控件来强制执行</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://blog.joycode.com/tag/aspnetiis.html">ASP.NET/IIS</a>
+      <a href="https://blog.joycode.com/tag/xiao-ti-da-zuo.html">小题大做</a>
+      <a href="https://blog.joycode.com/tag/jia-gou-yu-mo-shi.html">架构与模式</a>
+    </p>
+  </div>
+
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'hcwang';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " 开心就好的代码人生 ",
+  "url" : "https://blog.joycode.com",
+  "image": "",
+  "description": ""
+}
+</script>
+</body>
+</html>

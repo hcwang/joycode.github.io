@@ -1,0 +1,179 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://blog.joycode.com/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/solid.css">
+
+
+
+
+  <link href="https://blog.joycode.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="开心就好的代码人生 Atom">
+
+
+
+ 
+
+<meta name="author" content="joycode" />
+<meta name="description" content="在4月20日Bill Gates参加的“创新·中国·未来”大会上，由搜狐公司演示了其使用SilverLight所构建的以奥运为主题的产品，但由于一些花絮，可能并不是所有的朋友都对此有所了解。不过 …" />
+<meta name="keywords" content="软件推荐">
+
+
+  <meta property="og:site_name" content="开心就好的代码人生"/>
+  <meta property="og:title" content="SilverLight开发基础答疑(3)"/>
+  <meta property="og:description" content="在4月20日Bill Gates参加的“创新·中国·未来”大会上，由搜狐公司演示了其使用SilverLight所构建的以奥运为主题的产品，但由于一些花絮，可能并不是所有的朋友都对此有所了解。不过 …"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://blog.joycode.com/2007/04/21/101533/"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2007-04-21 21:41:00+08:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="https://blog.joycode.com/author/joycode.html">
+  <meta property="article:section" content="业界评论"/>
+  <meta property="article:tag" content="软件推荐"/>
+  <meta property="og:image" content="">
+
+  <title>开心就好的代码人生 &ndash; SilverLight开发基础答疑(3)</title>
+
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="https://blog.joycode.com/">
+      <img src="https://blog.joycode.com/theme/img/profile.png" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://blog.joycode.com/"></a>
+    </h1>
+
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="https://getpelican.com/" >Pelican</a>
+          </li>
+          <li>
+            <a target="_self" href="https://www.python.org/" >Python.org</a>
+          </li>
+          <li>
+            <a target="_self" href="https://palletsprojects.com/p/jinja/" >Jinja2</a>
+          </li>
+          <li>
+            <a target="_self" href="#" >You can modify those links in your config file</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-You can add links in your config file"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-You can add links in your config file"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-Another social link"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-Another social link"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="101533">SilverLight开发基础答疑(3)</h1>
+    <p>
+      Posted on 六 21 四月 2007 in <a href="https://blog.joycode.com/category/ye-jie-ping-lun.html">业界评论</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p><a href="http://blog.joycode.com/wp-content/uploads/images/blog.joycode.com/joy/1308/o_WindowsLiveWriter_SilverLight3_130AC_Silverlight_poweredby_static%5B14%5D.png"><img align="left" alt="" border="0" height="151" src="http://blog.joycode.com/wp-content/uploads/images/blog.joycode.com/joy/1308/o_WindowsLiveWriter_SilverLight3_130AC_Silverlight_poweredby_static_thumb%5B14%5D.png" style="border-right: 0px;border-top: 0px;border-left: 0px;border-bottom: 0px" width="201"></a>在4月20日Bill Gates参加的“创新·中国·未来”大会上，由<a href="http://www.sohu.com" target="_blank">搜狐</a>公司演示了其<a href="http://it.sohu.com/20070420/n249572571.shtml" target="_blank">使用SilverLight所构建的以奥运为主题的产品</a>，但由于一些花絮，可能并不是所有的朋友都对此有所了解。不过在4月30日在美国拉斯维加斯举办的<a href="http://www.mix07.com" target="_blank">MIX07</a>大会上，将会再次展示<a href="https://content.visitmix.com/public/sessions.aspx" target="_blank">该产品</a>。同时在此次大会上将会更多的关于SilverLight的内幕信息披露。开心将会参与此次盛会，不知道哪位也会同往。:)</p>
+<p>本次会议后，也见到了Laurence Moroney先生，Laurence先生曾经先后写作过Ajax以及WPF相关的书籍，其中那本Ajax书就是由<a href="http://blog.joycode.com/dflying" target="_blank">DFlying</a>所翻译（上周也到上海见到了DFlying，对其未来的前途表示祝贺）。在不到一个月的时间内，Laurence先生就访问中国两次，帮助很多使用新技术的公司解决了问题，在此，对<a href="http://blogs.msdn.com/webnext" target="_blank">Laurence</a>先生表示感谢。</p>
+<p><strong>[5. 是否有相应的工具帮助我们开发基于SilverLight的作品，还是仅能使用记事本？]{.underline}</strong></p>
+<p><strong>问题描述</strong>：虽然XAML语言是一个轻量级的语言，并且应用于SilverLight的XAML语言中的标签相对较少，但如果单纯使用记事本来撰写SilverLight应用仍然是一件复杂的事情，微软是否会提供相应的工具帮助我们开发基于SilverLight的作品呢？</p>
+<p><strong>解答</strong>：微软将会面向美工人员以及开发人员提供相应的开发工具，从而帮助更加快速的开发相应的应用。面向美工人员我们提供Expression Design进行素材设计，提供Expression Blend进行交互设计，以下是Expression Blend面向SilverLight所提供的项目类型（由于尚在开发期内，不保证在RTM时完全相同）：</p>
+<p><img alt="" border="0" height="100" src="http://blog.joycode.com/wp-content/uploads/images/blog.joycode.com/joy/1308/o_WindowsLiveWriter_SilverLight3_130AC_clip_image002%5B6%5D%5B2%5D.jpg" style="border-right: 0px;border-top: 0px;border-left: 0px;border-bottom: 0px" width="240"></p>
+<p>而面向开发人员，微软会为Visual Studio 2005提供相应的插件帮助他们开发Java Script业务逻辑代码，也可以使用所见即所得的方式开发XAML表现层，该插件可以在SilverLight的SDK中安装。而面向Orcas，微软应该会集成该项目。</p>
+<p><strong>[6.  使用SilverLight来播放音视频文件，是否需要客户端操作系统安装Windows Media Player播放器？]{.underline}</strong></p>
+<p><strong>问题描述</strong>：SilverLight作为一款跨平台、跨浏览器的解决方案，支持强大的视音频处理能力。其主要支持的视音频格式主要包括MP3、WMV以及WMA格式，我们知道在Mac机上并没有相应的Windows Media Player播放器，那么如果要播放类似文件，需要先在操作系统上安装Windows Media Player播放器？</p>
+<p><strong>解答</strong>：不需要，虽然目前的CTP版本的运行时仅仅只有1M左右，但在此运行时当中，已经包括了Windows Media的解码技术，这也就意味着你不需要在客户端操作系统中安装任何的Windows Media Player等软件，即可播放相应的视音频文件，并且在未来的版本中，微软还将提供DRM技术支持，帮助您进行版权保护功能。</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://blog.joycode.com/tag/ruan-jian-tui-jian.html">软件推荐</a>
+    </p>
+  </div>
+
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'hcwang';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " 开心就好的代码人生 ",
+  "url" : "https://blog.joycode.com",
+  "image": "",
+  "description": ""
+}
+</script>
+</body>
+</html>

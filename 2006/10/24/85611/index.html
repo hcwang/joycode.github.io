@@ -1,0 +1,195 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://blog.joycode.com/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/solid.css">
+
+
+
+
+  <link href="https://blog.joycode.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="开心就好的代码人生 Atom">
+
+
+
+ 
+
+<meta name="author" content="joycode" />
+<meta name="description" content="翻译了两篇Sidebar Gadget的文章后，决定自己写一个教程，与准备投身于Sidebar Gadget开发的劳苦大众们分享一下经验。也当作自己个人学习Gadget开发的一些总结，使自己可以学习得深入一些。欢迎大家 …" />
+<meta name="keywords" content="">
+
+
+  <meta property="og:site_name" content="开心就好的代码人生"/>
+  <meta property="og:title" content="Sidebar Gadget开发教程(1)"/>
+  <meta property="og:description" content="翻译了两篇Sidebar Gadget的文章后，决定自己写一个教程，与准备投身于Sidebar Gadget开发的劳苦大众们分享一下经验。也当作自己个人学习Gadget开发的一些总结，使自己可以学习得深入一些。欢迎大家 …"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://blog.joycode.com/2006/10/24/85611/"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2006-10-24 15:17:00+08:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="https://blog.joycode.com/author/joycode.html">
+  <meta property="article:section" content="业界评论"/>
+  <meta property="og:image" content="">
+
+  <title>开心就好的代码人生 &ndash; Sidebar Gadget开发教程(1)</title>
+
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="https://blog.joycode.com/">
+      <img src="https://blog.joycode.com/theme/img/profile.png" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://blog.joycode.com/"></a>
+    </h1>
+
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="https://getpelican.com/" >Pelican</a>
+          </li>
+          <li>
+            <a target="_self" href="https://www.python.org/" >Python.org</a>
+          </li>
+          <li>
+            <a target="_self" href="https://palletsprojects.com/p/jinja/" >Jinja2</a>
+          </li>
+          <li>
+            <a target="_self" href="#" >You can modify those links in your config file</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-You can add links in your config file"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-You can add links in your config file"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-Another social link"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-Another social link"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="85611">Sidebar Gadget开发教程(1)</h1>
+    <p>
+      Posted on 二 24 十月 2006 in <a href="https://blog.joycode.com/category/ye-jie-ping-lun.html">业界评论</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>翻译了两篇Sidebar Gadget的文章后，决定自己写一个教程，与准备投身于Sidebar Gadget开发的劳苦大众们分享一下经验。也当作自己个人学习Gadget开发的一些总结，使自己可以学习得深入一些。欢迎大家就这一系列文章提出批评斧正。本部分准备介绍一些基础知识。</p>
+<p><strong>关于SideBar</strong></p>
+<p>SideBar是Windows Vista特有的一个显示子系统（曾经宣布为Windows XP以及Windows Server 2003也开发Sidebar，但该项目现已取消），在中文系统中称之为<a href="http://blog.joycode.com/wp-content/uploads/images/blog.joycode.com/joy/1308/o_WindowsLiveWriter_SidebarGadget1_D6EF_image%7B0%7D%5B20%5D.png"><img align="right" alt="" border="0" height="165" src="http://blog.joycode.com/wp-content/uploads/images/blog.joycode.com/joy/1308/o_WindowsLiveWriter_SidebarGadget1_D6EF_image%7B0%7D_thumb%5B14%5D.png" style="border-right: 0px;border-top: 0px;border-left: 0px;border-bottom: 0px" width="452"></a>“边栏”。其执行程序，我们可以在以下目录中找到[SystemInstalledDriver:]\program files\Windows Sidebar，此文件夹 结构大体如右图所示，各文件夹以及文件的具体作用如下：</p>
+<ul>
+<li>Sidebar.exe：此文件即Sidebar.exe的主执行文件，如果你在Windows Vista当中未打开边栏，可以直接执行该文件即打开。</li>
+<li>Sbdrop.dll：Sidebar拖抻支持文件;</li>
+<li>settings.ini: Sidebar设置文件，可以设置默认启动Gadget等特性。</li>
+<li>wlstrvc.dll: Weather Gadget(即显示天气的小工具）所依赖的ActiveXControl，显示RSS信息的Gadget所依赖的ActiveX控件是置身在System32目录下msfeeds.dll文件;</li>
+<li>en-us: 英文相关的资源文件;</li>
+<li>zh-CN:简体中文相关的资源文件;</li>
+<li>Gadgets文件夹:该文件夹中包括多个子文件夹，每个子文件夹均是Windows Vista默认自带的Gadgets解压后的形式。</li>
+<li>Shared Gadget：存储在此文件夹中的Gadget可以供同一机器上的多用户共同使用。<strong><a href="http://blog.joycode.com/wp-content/uploads/images/blog.joycode.com/joy/1308/o_WindowsLiveWriter_SidebarGadget1_D6EF_image%7B0%7D%5B28%5D.png"><img align="right" alt="" border="0" height="480" src="http://blog.joycode.com/wp-content/uploads/images/blog.joycode.com/joy/1308/o_WindowsLiveWriter_SidebarGadget1_D6EF_image%7B0%7D_thumb%5B20%5D.png" style="border-right: 0px;border-top: 0px;border-left: 0px;border-bottom: 0px" width="96"></a></strong></li>
+</ul>
+<p>而用户自行安装的Gadget可以在[SystemInstalledDriver:]\users\[user name]\appdata\local\microsoft\windows sidebar\gadgets\中查找到。</p>
+<p><strong>关于Gadget</strong></p>
+<p>在中文系统中，Gadget被翻译为“小工具”，微软的Gadget基本上分为三种，即Live Gadget、Sidebar Gadget以及Slideshow Gadget：</p>
+<ul>
+<li>Live Gadget：如果大家访问<a href="http://www.live.com">http://www.live.com</a>，会发现其页面可以进行自定义，而自定义的小型页面模块，我们称之为Live Gadget;</li>
+<li>Slideshow Gadget：Windows Vista支持未来的笔记本电脑除了主显示屏外，还可以有一个外置的小型显示屏，类似于双屏手机中外置显示屏，在不开电脑电源的情况下，从这个扩展显示屏上获取自己想要的信息，而实现这个功能的模块称之为Slideshow Gadget;</li>
+<li>Sidebar Gadget:本教程中所指的Gadget是此种，依赖于Windows Sidebar所执行的Gadget。</li>
+</ul>
+<p>另外，这三种Gadget目前的开发环境、执行环境以及开发方式均不统一，不能统用。至于未来规划，开心也不是非常清楚。有知道的可以在此透露一下。</p>
+<p>其实Gadget本身非常简单，如果感兴趣，可以访问<a href="http://go.microsoft.com/fwlink/?LinkId=55696">http://go.microsoft.com/fwlink/?LinkId=55696</a>，并且随意下载一个SideBar Gadget。把其另存在桌面上，比如那个计算器Gadget(<a href="http://gallery.microsoft.com/liveitemdetail.aspx?li=d6152b70-2908-4176-b491-610c4f538bd4&amp;l=1">Calculator</a>)。其后缀名为.gadget。我们现在把后缀名改为.zip，在Windows XP系统上可以双击打开，就会看到其目录结构。</p>
+<p>也就是说，Gadget本身是包含一堆HTML、JavaScript、CSS以及图片文件一个压缩包，其压缩格式可以采用ZIP格式，也可以采用CAB格式。采用CAB格式，可以进行数字签名，参阅我上一篇<a href="http://blog.joycode.com/joy/archive/2006/10/24/85594.aspx" target="_blank">译文</a>。在这个Gadget中使用Gadget.xml这个文件来描述此Gadget的通用信息，如名称、作者、版本、是否有设置文件、图标等等。此文件可以放置在根目录中，也可以放置在不同语言文件夹中，如en-us或者zh-cn当中。</p>
+<p>系统自带的Gadget大部分都使用了一些特别开发的ActiveX控件。我们自己开发的Gadget如果是想使用Microsoft Gadget Gallery（即<a href="http://go.microsoft.com/fwlink/?LinkId=55696">http://go.microsoft.com/fwlink/?LinkId=55696</a>）方式或者后缀名为.gadget方式分发，那么只能调用系统中已有的ActiveX控件，而不能创建自己的ActiveX控件。如果你想自己制作可执行的安装文件包，那么你就可以为所欲为了（流氓软件???呵呵)。</p>
+<p>Javascript可以调用的ActiveX控件也非常多，比如使用Scripting.FileSystemObject访问文件系统，使用Microsoft.XmlDom分析XML文件，使用Microsoft.XMLHTTP调用Web Service等。所以Gadget可以做很多事情。</p>
+<p>那么可以做什么事情呢？这就得依赖于我们的头脑不断闪现的灵感火花了。</p>
+<p><strong><em>问答题：博客堂，你认为哪部分可以提供Gadget服务呢？:)</em></strong></p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+    </p>
+  </div>
+
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'hcwang';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " 开心就好的代码人生 ",
+  "url" : "https://blog.joycode.com",
+  "image": "",
+  "description": ""
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,207 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://blog.joycode.com/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/solid.css">
+
+
+
+
+  <link href="https://blog.joycode.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="开心就好的代码人生 Atom">
+
+
+
+ 
+
+<meta name="author" content="joycode" />
+<meta name="description" content="看到有人对.NET中正则表示式的Alternation Constructs不太理解，这里写个简单例子说明一下。 英语里说 &#34;0 feet&#34;(0英尺), &#34;1 foot&#34;(一英尺)，&#34;2 feet&#34;(二英尺)，&#34;3 feet&#34;(三英尺),...我们怎么 …" />
+<meta name="keywords" content="">
+
+
+  <meta property="og:site_name" content="开心就好的代码人生"/>
+  <meta property="og:title" content="不太好理解的Alternation Constructs"/>
+  <meta property="og:description" content="看到有人对.NET中正则表示式的Alternation Constructs不太理解，这里写个简单例子说明一下。 英语里说 &#34;0 feet&#34;(0英尺), &#34;1 foot&#34;(一英尺)，&#34;2 feet&#34;(二英尺)，&#34;3 feet&#34;(三英尺),...我们怎么 …"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://blog.joycode.com/2004/08/13/2004-08-13_05.19/"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2004-08-13 05:19:00+08:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="https://blog.joycode.com/author/joycode.html">
+  <meta property="article:section" content="业界评论"/>
+  <meta property="og:image" content="">
+
+  <title>开心就好的代码人生 &ndash; 不太好理解的Alternation Constructs</title>
+
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="https://blog.joycode.com/">
+      <img src="https://blog.joycode.com/theme/img/profile.png" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://blog.joycode.com/"></a>
+    </h1>
+
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="https://getpelican.com/" >Pelican</a>
+          </li>
+          <li>
+            <a target="_self" href="https://www.python.org/" >Python.org</a>
+          </li>
+          <li>
+            <a target="_self" href="https://palletsprojects.com/p/jinja/" >Jinja2</a>
+          </li>
+          <li>
+            <a target="_self" href="#" >You can modify those links in your config file</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-You can add links in your config file"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-You can add links in your config file"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-Another social link"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-Another social link"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="2004-08-13_05.19">不太好理解的Alternation Constructs</h1>
+    <p>
+      Posted on 五 13 八月 2004 in <a href="https://blog.joycode.com/category/ye-jie-ping-lun.html">业界评论</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>看到<a href="http://community.csdn.net/Expert/topic/3268/3268488.xml?temp=.4400446">有人</a>对.NET中正则表示式的<a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/cpgenref/html/cpconalternationconstructs.asp">Alternation Constructs</a>不太理解，这里写个简单例子说明一下。</p>
+<p>英语里说 "0 feet"(0英尺), "1 foot"(一英尺)，"2 feet"(二英尺)，"3 feet"(三英尺),...我们怎么来匹配这些字符串？</p>
+<p>这个例子很简单，象 <br>
+ "\^0<em>1 foot|[02-9] feet|[1-9]\d+ feet\$"<br>
+或<br>
+ "\^0</em>1 foot|(?:(?:[02-9]|[1-9]\d+) feet)\$"</p>
+<p>这样的表达式大概就行了。</p>
+<p>下面用Alternation Constructs来演示一下。</p>
+<p>1。 "\^\d+ f(?(?\&lt;=\b0*1 f)oo|ee)t\$"</p>
+<p>在这里，(?\&lt;=\b0<em>1 f) is a zero-width positive lookbehind, (?(?\&lt;=\b0</em>1 f)oo|ee) 表示</p>
+<p>假如前面3个字符是1 f的话(有可能有些前置的0)，那么匹配oo，否则匹配ee</p>
+<p>2。 "\^((?\&lt;one&gt;0*1)|[02-9]|\d{2,}) f(?(one)oo|ee)t\$"</p>
+<p>在前面我们尝试匹配1(有可能有些前置的0)，假如1被匹配的话，表明第一部分(?\&lt;one&gt;0*1)被captured了，group "one"就有了定义</p>
+<p>在第二部分里</p>
+<p>(?(one)oo|ee)</p>
+<p>说，假如前面的group "one"被captured了，那么就匹配oo，否则匹配ee</p>
+<p>这里是个测试编码</p>
+<p>using System;<br>
+using System.Text.RegularExpressions;</p>
+<p>class TestRegAC<br>
+{<br>
+  static void Main()<br>
+  {<br>
+ string[] slist = {"11 foot", "01 feet", "1 foot", "1 feet", "2 feet", "3 foot", "10 feet", "100 foot", "0 feet", "001 foot"};<br>
+ Regex re = new Regex(@"\^\d+ f(?(?\&lt;=\b0*1 f)oo|ee)t\$", RegexOptions.IgnoreCase);<br>
+ foreach (string s in slist)<br>
+ {<br>
+  Console.WriteLine("{0} matches? {1}", s, re.IsMatch(s));<br>
+ }</p>
+<p>Console.WriteLine();</p>
+<p>re = new Regex(@"\^((?\&lt;one&gt;0*1)|[02-9]|\d{2,}) f(?(one)oo|ee)t\$", RegexOptions.IgnoreCase);<br>
+ foreach (string s in slist)<br>
+ {<br>
+  Console.WriteLine("{0} matches? {1}", s, re.IsMatch(s));<br>
+ }<br>
+  }<br>
+}</p>
+<p>同时参考</p>
+<p><a href="http://www.ftponline.com/vsm/2004_06/magazine/columns/qa/default_pf.aspx">Manipulate Text With Regular Expressions</a></p>
+<p>里面有个匹配25-09-2003后任一天的例子，很有意思</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+    </p>
+  </div>
+
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'hcwang';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " 开心就好的代码人生 ",
+  "url" : "https://blog.joycode.com",
+  "image": "",
+  "description": ""
+}
+</script>
+</body>
+</html>

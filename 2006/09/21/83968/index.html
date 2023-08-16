@@ -1,0 +1,192 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://blog.joycode.com/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/solid.css">
+
+
+
+
+  <link href="https://blog.joycode.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="开心就好的代码人生 Atom">
+
+
+
+ 
+
+<meta name="author" content="joycode" />
+<meta name="description" content="什么是WPF，经常看博客堂以及博客园的朋友，我相信眼睛都快磨出茧子来了。WPF嘛，就是现在称之为Windows Presentation Foundation，小名叫Avalon的那个东东，为了更好 …" />
+<meta name="keywords" content="C#编程, 软件推荐">
+
+
+  <meta property="og:site_name" content="开心就好的代码人生"/>
+  <meta property="og:title" content="WPF, WPF/E释疑"/>
+  <meta property="og:description" content="什么是WPF，经常看博客堂以及博客园的朋友，我相信眼睛都快磨出茧子来了。WPF嘛，就是现在称之为Windows Presentation Foundation，小名叫Avalon的那个东东，为了更好 …"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://blog.joycode.com/2006/09/21/83968/"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2006-09-21 11:18:00+08:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="https://blog.joycode.com/author/joycode.html">
+  <meta property="article:section" content="业界评论"/>
+  <meta property="article:tag" content="C#编程"/>
+  <meta property="article:tag" content="软件推荐"/>
+  <meta property="og:image" content="">
+
+  <title>开心就好的代码人生 &ndash; WPF, WPF/E释疑</title>
+
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="https://blog.joycode.com/">
+      <img src="https://blog.joycode.com/theme/img/profile.png" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://blog.joycode.com/"></a>
+    </h1>
+
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="https://getpelican.com/" >Pelican</a>
+          </li>
+          <li>
+            <a target="_self" href="https://www.python.org/" >Python.org</a>
+          </li>
+          <li>
+            <a target="_self" href="https://palletsprojects.com/p/jinja/" >Jinja2</a>
+          </li>
+          <li>
+            <a target="_self" href="#" >You can modify those links in your config file</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-You can add links in your config file"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-You can add links in your config file"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-Another social link"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-Another social link"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="83968">WPF, WPF/E释疑</h1>
+    <p>
+      Posted on 四 21 九月 2006 in <a href="https://blog.joycode.com/category/ye-jie-ping-lun.html">业界评论</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>什么是WPF，经常看博客堂以及<a href="http://www.cnblogs.com/" target="_blank">博客园</a>的朋友，我相信眼睛都快磨出茧子来了。WPF嘛，就是现在称之为Windows Presentation Foundation，小名叫Avalon的那个东东，为了更好的实现Windows Vista体验的基础层架构，是.NET 3.0的一部分。如果一句话以蔽之，就是<em>一个更有生产力的、更统一的用来管理用户界面、文档及多媒体等的模型。</em>再仔细说说，更有生产力就是指开发丰富实用外观不费劲，易于快速开发，而更统一则是指开发B/S以及C/S可<a href="http://blog.joycode.com/wp-content/uploads/images/blog.joycode.com/joy/1308/o_WindowsLiveWriter_WPFWPFE_D8D_image010.png"><img align="right" alt="XAML方式" border="0" height="194" src="http://blog.joycode.com/wp-content/uploads/images/blog.joycode.com/joy/1308/o_WindowsLiveWriter_WPFWPFE_D8D_image0_thumb8.png" style="border-top-width: 0px;border-left-width: 0px;border-bottom-width: 0px;border-right-width: 0px" width="259"></a>以统一知识域，不需要分而化之。</p>
+<p>讲到WPF，就要提到XAML，XAML是WPF的声明性语言，提供对界面、文档以及多媒体等界面层逻辑的渲染。而且XAML可以直接在IE中打开（如右图）。同时，还有一种XBAP方式（如左图），也可以在IE中打开。两者会有一些异同，这在下面会做表述。</p>
+<p>那么WPF/E呢，可能知道者就比较少了。这里面的E是指的Everywhere，也就是可以让WPF到处可以运行。我们知道，WPF本身是WinFX也就是现在的.NET 3.0的一部分，所以想要运行WPF，客户端必须安装.NET 3.0,而.NET 3.0的安装条件是Windows XP、Windows Vista、Windows Server 2003、<em>Windows Longhorn Server</em>之四大金钢。那么你如果想让WPF<a href="http://blog.joycode.com/wp-content/uploads/images/blog.joycode.com/joy/1308/o_WindowsLiveWriter_WPFWPFE_D8D_image015.png"><img align="left" alt="" border="0" height="180" src="http://blog.joycode.com/wp-content/uploads/images/blog.joycode.com/joy/1308/o_WindowsLiveWriter_WPFWPFE_D8D_image0_thumb11.png" style="border-top-width: 0px;border-left-width: 0px;border-bottom-width: 0px;border-right-width: 0px" width="240"></a>到处可以运行，就必须首先做到.NET可以到处安装。虽然说有专家预计在Windows Vista推出24月之内，全球会有2亿用户会使用上已经内置.NET 3.0的OS。但还有很多兄弟们仍然战斗在其它操作系统、其它浏览器、其它设备上，如何让这些兄弟们可以共享WPF之乐呢？这就是WPF/E。</p>
+<p>而WPF/E，小名Jolt，目前正在紧锣密鼓的开发当中，一些细节尚未披露，目前可以知道的是它是使用Javascript来实 现，用来使其可以跨平台、跨浏览器、跨设备来使用。它也同样采用有些异构化的XAML来编写（主要添加了一些特殊的Javascript标记）。</p>
+<p>对于开发人员来说，喜欢究根问底。这些方式，.EXE, .XAML,.XBAP还有WPF/E到底有何异同？在各种场合下面应该如何使用呢？我相信很多人会非常好奇。虽然看了很多DEMO，相信也有一些朋友在一些细节上还是有很多模糊。在青岛的时候，我做了下面这个表（当时<a href="http://blog.joycode.com/zhanbos">展波兄</a>也通过越洋电话提供免费支持），希望对大家有帮助。</p>
+<div class="highlight"><pre><span></span><code>&lt;/p&gt;
+</code></pre></div>
+
+<hr>
+<div class="highlight"><pre><span></span><code>                 .EXE   XAML   XBAP   WPF/E
+</code></pre></div>
+
+<p>IE宿主运行         No     Yes    Yes    Yes
+  支持其它浏览器     No     No     No     Yes
+  支持其它操作系统   No     No     No     Yes
+  跨设备             No     No     No     Yes
+  支持业务逻辑       Yes    No     Yes    Yes
+  需要.NET 3.0       Yes    Yes    Yes    No</p>
+<hr>
+<p>希望对大家理解这些概念有所帮助。</p>
+<p>补记：关于.NET 3.0的命名，我个人总觉得是一个败笔，因为.NET 3.0必须依赖于.NET 2.0的存在，没有.NET 2.0，则无法使用.NET 3.0，所以可以说.NET 3.0=.NET 2.0+WPF+WCF+WWF+WCS+...。同时原计划中的3.0有可能会被命名为3.5，而3.5倒不必依赖于3.0了，不然就没完没了了。据说当初之所以改名字是怕别人混淆，怎么刚推完.NET，又开始推WinFX了?归纳到同一品牌下我没有异议，但突然直接升级为3.0，倒使得此事有些让人混淆了，甚至有些同事至今都分不清WinFX与.NET 3.0的区别。</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://blog.joycode.com/tag/cbian-cheng.html">C#编程</a>
+      <a href="https://blog.joycode.com/tag/ruan-jian-tui-jian.html">软件推荐</a>
+    </p>
+  </div>
+
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'hcwang';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " 开心就好的代码人生 ",
+  "url" : "https://blog.joycode.com",
+  "image": "",
+  "description": ""
+}
+</script>
+</body>
+</html>

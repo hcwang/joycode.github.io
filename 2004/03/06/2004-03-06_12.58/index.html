@@ -1,0 +1,196 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://blog.joycode.com/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/solid.css">
+
+
+
+
+  <link href="https://blog.joycode.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="开心就好的代码人生 Atom">
+
+
+
+ 
+
+<meta name="author" content="joycode" />
+<meta name="description" content="再一个WinForm中添加对其包含的一个按钮button1的Click事件的event handler，我们在C# V1.x中常常这样写： this.button1.Click += new System.EventHandler(this.button1_Click); private void button1_Click(object sender, System.EventArgs e) { MessageBox.Show(&#34;Button 1 is clicked&#34;); } &lt;font size=&#34;2&#34;&gt;&lt;font face=&#34;Courier New&#34;&gt;当然VS.NET的支持让我们不需要手工写出这么多代码。不过当event handler不需要使用sender, e的情况下 …" />
+<meta name="keywords" content="C#">
+
+
+  <meta property="og:site_name" content="开心就好的代码人生"/>
+  <meta property="og:title" content="Whidbey C#: 匿名方法 | Anonymous Method"/>
+  <meta property="og:description" content="再一个WinForm中添加对其包含的一个按钮button1的Click事件的event handler，我们在C# V1.x中常常这样写： this.button1.Click += new System.EventHandler(this.button1_Click); private void button1_Click(object sender, System.EventArgs e) { MessageBox.Show(&#34;Button 1 is clicked&#34;); } &lt;font size=&#34;2&#34;&gt;&lt;font face=&#34;Courier New&#34;&gt;当然VS.NET的支持让我们不需要手工写出这么多代码。不过当event handler不需要使用sender, e的情况下 …"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://blog.joycode.com/2004/03/06/2004-03-06_12.58/"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2004-03-06 12:58:00+08:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="https://blog.joycode.com/author/joycode.html">
+  <meta property="article:section" content="业界评论"/>
+  <meta property="article:tag" content="C#"/>
+  <meta property="og:image" content="">
+
+  <title>开心就好的代码人生 &ndash; Whidbey C#: 匿名方法 | Anonymous Method</title>
+
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="https://blog.joycode.com/">
+      <img src="https://blog.joycode.com/theme/img/profile.png" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://blog.joycode.com/"></a>
+    </h1>
+
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="https://getpelican.com/" >Pelican</a>
+          </li>
+          <li>
+            <a target="_self" href="https://www.python.org/" >Python.org</a>
+          </li>
+          <li>
+            <a target="_self" href="https://palletsprojects.com/p/jinja/" >Jinja2</a>
+          </li>
+          <li>
+            <a target="_self" href="#" >You can modify those links in your config file</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-You can add links in your config file"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-You can add links in your config file"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-Another social link"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-Another social link"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="2004-03-06_12.58">Whidbey C#: 匿名方法 | Anonymous Method</h1>
+    <p>
+      Posted on 六 06 三月 2004 in <a href="https://blog.joycode.com/category/ye-jie-ping-lun.html">业界评论</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>再一个WinForm中添加对其包含的一个按钮button1的Click事件的event handler，我们在C# V1.x中常常这样写：</p>
+<p>this.button1.Click += new System.<strong>EventHandler</strong>(this.button1_Click);</p>
+<p>private void button1_Click(object sender, System.<strong>EventArgs</strong> e)</p>
+<p>{</p>
+<p><strong>MessageBox</strong>.Show("Button 1 is clicked");</p>
+<p>}</p>
+<p><code>&lt;font size="2"&gt;</code><code>&lt;font face="Courier New"&gt;</code>当然VS.NET的支持让我们不需要手工写出这么多代码。不过当event handler不需要使用sender, e的情况下，能不能只写出event handler的body而无需考虑代理的signature?<code>&lt;/font&gt;</code><code>&lt;/font&gt;</code></p>
+<p><code>&lt;font size="2"&gt;</code><code>&lt;font face="Courier New"&gt;</code><code>&lt;/font&gt;</code><code>&lt;/font&gt;</code> </p>
+<p><code>&lt;font size="2"&gt;</code><code>&lt;font face="Courier New"&gt;</code><code>&lt;/font&gt;</code><code>&lt;/font&gt;</code><code>&lt;font size="2"&gt;</code><code>&lt;font face="Courier New"&gt;</code>在C# V2.0，anonymous method提供了这一可能。上面的代码可以改写为：<code>&lt;/font&gt;</code><code>&lt;/font&gt;</code></p>
+<p><code>&lt;font size="2"&gt;</code><code>&lt;font face="Courier New"&gt;</code><code>&lt;/font&gt;</code><code>&lt;/font&gt;</code> </p>
+<p><code>&lt;font size="2"&gt;</code></p>
+<p>this.button1.Click += delegate</p>
+<p>{</p>
+<p><strong>MessageBox</strong>.Show("Button 1 is clicked");</p>
+<p>};</p>
+<div class="highlight"><pre><span></span><code>&lt;p class=&quot;MsoNormal&quot;&gt;
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>&lt;span&gt;
+</code></pre></div>
+
+<p><code>&lt;font size="1"&gt;</code><br>
+贴子以"现状"提供且没有任何担保也没有授予任何权利。 <code>&lt;/font&gt;</code></p>
+<div class="highlight"><pre><span></span><code>&lt;/p&gt;
+</code></pre></div>
+
+<p><code>&lt;/span&gt;</code><code>&lt;/font&gt;</code></p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://blog.joycode.com/tag/c.html">C#</a>
+    </p>
+  </div>
+
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'hcwang';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " 开心就好的代码人生 ",
+  "url" : "https://blog.joycode.com",
+  "image": "",
+  "description": ""
+}
+</script>
+</body>
+</html>

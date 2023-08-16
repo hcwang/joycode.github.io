@@ -1,0 +1,251 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://blog.joycode.com/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/solid.css">
+
+
+
+
+  <link href="https://blog.joycode.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="开心就好的代码人生 Atom">
+
+
+
+ 
+
+<meta name="author" content="joycode" />
+<meta name="description" content="这个问题反复在论坛出现，其实这个问题在MSDN上早就有答案 1。英文版:Top Questions about the DataGrid Web Server Control(Mike Pope and Nikhil Kothari) 2。中文版:DataGrid Web 伺服器控制项的常 …" />
+<meta name="keywords" content="ASP.NET/IIS">
+
+
+  <meta property="og:site_name" content="开心就好的代码人生"/>
+  <meta property="og:title" content="给静态DataGrid动态添加列的问题"/>
+  <meta property="og:description" content="这个问题反复在论坛出现，其实这个问题在MSDN上早就有答案 1。英文版:Top Questions about the DataGrid Web Server Control(Mike Pope and Nikhil Kothari) 2。中文版:DataGrid Web 伺服器控制项的常 …"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://blog.joycode.com/2005/08/03/2005-08-03_22.51/"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2005-08-03 22:51:00+08:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="https://blog.joycode.com/author/joycode.html">
+  <meta property="article:section" content="业界评论"/>
+  <meta property="article:tag" content="ASP.NET/IIS"/>
+  <meta property="og:image" content="">
+
+  <title>开心就好的代码人生 &ndash; 给静态DataGrid动态添加列的问题</title>
+
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="https://blog.joycode.com/">
+      <img src="https://blog.joycode.com/theme/img/profile.png" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://blog.joycode.com/"></a>
+    </h1>
+
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="https://getpelican.com/" >Pelican</a>
+          </li>
+          <li>
+            <a target="_self" href="https://www.python.org/" >Python.org</a>
+          </li>
+          <li>
+            <a target="_self" href="https://palletsprojects.com/p/jinja/" >Jinja2</a>
+          </li>
+          <li>
+            <a target="_self" href="#" >You can modify those links in your config file</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-You can add links in your config file"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-You can add links in your config file"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-Another social link"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-Another social link"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="2005-08-03_22.51">给静态DataGrid动态添加列的问题</h1>
+    <p>
+      Posted on 三 03 八月 2005 in <a href="https://blog.joycode.com/category/ye-jie-ping-lun.html">业界评论</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p><a href="http://community.csdn.net/Expert/topic/4185/4185071.xml?temp=.335293" target="_blank">这个问题</a>反复在论坛出现，其实这个问题在MSDN上早就有答案<br>
+1。英文版:<a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dv_vstechart/html/vbtchTopQuestionsAboutASPNETDataGridServerControl.asp" target="_blank">Top Questions about the DataGrid Web Server Control(Mike Pope and Nikhil Kothari)<br>
+</a>2。中文版:<a href="http://www.microsoft.com/taiwan/msdn/library/2002/Feb-2002/whitepaper/vbtchtopquestionsaboutaspnetdatagridservercontrol.htm" target="_blank">DataGrid Web 伺服器控制项的常见问题</a></p>
+<p>可惜，论坛上的风气不太好，你即使给了连接，真正去看的人大概并不多</p>
+<p>诀窍是，如果动态添加了列的话，需要在下一次PostBack时，在LoadViewState或更早把这些列重新添加。原因是，在Page类递归调用LoadViewState时，会调用DataGrid的CreateChildControls，而DataGrid的(实际上是它的父类的实现)CreateChildControls会调用DataGrid的CreateControlHierarchy()方法。在其中，DataGrid会根据当前的列的数目构造DataGridItem里的东西，然后从ViewState里恢复原来的数据。如果你没有重新添加你的动态列的话，你的动态列在PostBack后就会消失，更不用谈触发列里的控件的事件了</p>
+<p>检验你的动态控件在PostBack后是否还在的一个方法是，加一个按钮看PostBack后的行为</p>
+<p>下面是一个简单的测试</p>
+<p>\&lt;html&gt;<br>
+\&lt;body&gt;<br>
+\&lt;form runat="server"&gt;<br>
+\&lt;asp:DataGrid id="DataGrid1" runat="server"<br>
+GridLines="Both" AutoGenerateColumns="false"<br>
+OnItemCommand="DataGrid1_ItemCommand"&gt;<br>
+ \&lt;Columns&gt;<br>
+ \&lt;asp:ButtonColumn HeaderText="Static Button" Text="Click Me"<br>
+ CommandName="Static"/&gt;<br>
+ \&lt;asp:TemplateColumn HeaderText="Data"&gt;<br>
+  \&lt;ItemTemplate&gt;\&lt;%#Container.DataItem%&gt;\&lt;/ItemTemplate&gt;<br>
+ \&lt;/asp:TemplateColumn&gt;<br>
+ \&lt;/Columns&gt;<br>
+\&lt;/asp:DataGrid&gt;<br>
+\&lt;asp:Button id="btnAddAColumn" runat="server" Text="Add a column" OnClick="AddButtonColumn"/&gt;<br>
+\&lt;asp:Button id="btnRefresh" runat="server" Text="Refresh" /&gt;<br>
+\&lt;/form&gt;<br>
+\&lt;/body&gt;<br>
+\&lt;/html&gt;</p>
+<p>void BindGrid()<br>
+{<br>
+ DataGrid1.DataSource = new string[] {"a","b","c"};<br>
+ DataGrid1.DataBind();<br>
+}</p>
+<p>void Page_Load(object sender, EventArgs e)<br>
+{<br>
+  if (!IsPostBack)<br>
+  {<br>
+ BindGrid();<br>
+  }<br>
+}</p>
+<p>void DataGrid1_ItemCommand(Object sender, DataGridCommandEventArgs e)<br>
+{<br>
+ Response.Write("ItemCommand is called<br>
+");<br>
+ LinkButton btn = e.CommandSource as LinkButton;<br>
+ if (btn != null)<br>
+  Response.Write(String.Format("{0} is clicked on row {1}", btn.CommandName, e.Item.ItemIndex));</p>
+<p>}</p>
+<p>//lifted from the original post<br>
+public void CreateGridColumn(DataGrid OperationDataGrid)<br>
+{<br>
+   ButtonColumn NewButCol = new ButtonColumn() ;<br>
+   NewButCol.Text = "编辑" ;<br>
+   NewButCol.HeaderText = "操作" ;<br>
+   NewButCol.CommandName = "Edit" ;<br>
+   NewButCol.ButtonType = ButtonColumnType.LinkButton;<br>
+   NewButCol.Visible = true ;<br>
+   OperationDataGrid.Columns.Add(NewButCol) ;<br>
+   //OperationDataGrid.Columns.AddAt(1,NewButCol) ;<br>
+}</p>
+<p>bool ButtonAdded<br>
+{<br>
+ get {<br>
+  object o = ViewState["ButtonAdded"];<br>
+  if (o == null)<br>
+   return false;<br>
+  else return (bool)o;<br>
+     }<br>
+ set { ViewState["ButtonAdded"] = value;}<br>
+}</p>
+<p>void AddButtonColumn(object sender, EventArgs e)<br>
+{<br>
+ CreateGridColumn(DataGrid1);<br>
+ ButtonAdded = true;<br>
+ BindGrid();<br>
+ btnAddAColumn.Visible = false;<br>
+}</p>
+<p>protected override void LoadViewState(object savedState)<br>
+{<br>
+ base.LoadViewState(savedState);</p>
+<p>//在这里重新添加，假如已经添加的话<br>
+ if (ButtonAdded)<br>
+ CreateGridColumn(DataGrid1);<br>
+}</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://blog.joycode.com/tag/aspnetiis.html">ASP.NET/IIS</a>
+    </p>
+  </div>
+
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'hcwang';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " 开心就好的代码人生 ",
+  "url" : "https://blog.joycode.com",
+  "image": "",
+  "description": ""
+}
+</script>
+</body>
+</html>

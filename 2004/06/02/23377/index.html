@@ -1,0 +1,184 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://blog.joycode.com/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/solid.css">
+
+
+
+
+  <link href="https://blog.joycode.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="开心就好的代码人生 Atom">
+
+
+
+ 
+
+<meta name="author" content="joycode" />
+<meta name="description" content="在使用Outlook/Exchange的时候，如果你使用日历来安排自己的日程，那么在通过Exchange就能够得到你自己的忙/闲信息，从而合理的安排时间，比如你的同事可能会根据你 …" />
+<meta name="keywords" content="C#编程, 软件推荐">
+
+
+  <meta property="og:site_name" content="开心就好的代码人生"/>
+  <meta property="og:title" content="团队日历Web部件及MSN Messenger机器人"/>
+  <meta property="og:description" content="在使用Outlook/Exchange的时候，如果你使用日历来安排自己的日程，那么在通过Exchange就能够得到你自己的忙/闲信息，从而合理的安排时间，比如你的同事可能会根据你 …"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://blog.joycode.com/2004/06/02/23377/"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2004-06-02 13:18:00+08:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="https://blog.joycode.com/author/joycode.html">
+  <meta property="article:section" content="业界评论"/>
+  <meta property="article:tag" content="C#编程"/>
+  <meta property="article:tag" content="软件推荐"/>
+  <meta property="og:image" content="">
+
+  <title>开心就好的代码人生 &ndash; 团队日历Web部件及MSN Messenger机器人</title>
+
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="https://blog.joycode.com/">
+      <img src="https://blog.joycode.com/theme/img/profile.png" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://blog.joycode.com/"></a>
+    </h1>
+
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="https://getpelican.com/" >Pelican</a>
+          </li>
+          <li>
+            <a target="_self" href="https://www.python.org/" >Python.org</a>
+          </li>
+          <li>
+            <a target="_self" href="https://palletsprojects.com/p/jinja/" >Jinja2</a>
+          </li>
+          <li>
+            <a target="_self" href="#" >You can modify those links in your config file</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-You can add links in your config file"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-You can add links in your config file"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-Another social link"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-Another social link"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="23377">团队日历Web部件及MSN Messenger机器人</h1>
+    <p>
+      Posted on 三 02 六月 2004 in <a href="https://blog.joycode.com/category/ye-jie-ping-lun.html">业界评论</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>在使用Outlook/Exchange的时候，如果你使用日历来安排自己的日程，那么在通过Exchange就能够得到你自己的忙/闲信息，从而合理的安排时间，比如你的同事可能会根据你的忙/闲信息来选择一个合适的时间段来安排一次会议。当然，使用Outlook 2003在新建会议的时候，你可以在“计划”中得到所有参与人员的忙/闲信息。如果能够在Microsoft SharePoint Portal Server 2003或者Microsoft Windows SharePoint Service 2.0里面集中的显示某个部门及成员的所有忙/闲信息，对于安排一次部门活动来说，会更加直观。</p>
+<p>如果你遇到这种情况，可以尝试使用一下我这两天开发出来的团队日历Web部件，软件效果图如下：</p>
+<p><img alt="" src="http://blog.joycode.com/wp-content/uploads/images/blog.joycode.com/joy/414/o_calendar2.GIF"></p>
+<p>使用该部件，可以显示出来你指定的成员的忙/闲及外出信息，所有成员不需要维护此数据，只需要使用Outlook安排自己的日程，即可对显示信息进行自动更新。</p>
+<p>安装后，请先进行一下初始设置，在其Exchange Server属性中指定本单位的Exchange Server的地址（</p>
+<p><img alt="" src="http://blog.joycode.com/wp-content/uploads/images/blog.joycode.com/joy/414/o_calendar1.GIF"></p>
+<p>目前不支持https协议），注意，一定要加上public及最后的反斜杠。然后选择数据来源，此属性指定所要显示成员的数据来源，如果你选择了手工输入，那么请在其下的“用户邮件”属性中一一输入成员的邮件地址，用“;”进行分隔，也可以选择“门户成员”，则会自动显示该门户成员的忙/闲信息，不需要手工指定，最后一个选项是通过指定团队领导，则会把该领导的下属成员全部包括进来（<code>&lt;font color="#ff0000"&gt;</code>此属性尚未实现<code>&lt;/font&gt;</code>）。</p>
+<p><strong>注意</strong>：为使该WebPart有权访问Exchange，请把信任关系更改为Full，否则您会得到一个权限异常。同时，该dll未加强名称，所以不要试图在GAC中安装。</p>
+<p>前段时间曾经发布过一个更改域用户密码的Web Part，不过在dwp文件中有一个bug，可能使很多朋友遇到了困扰，安装不成功。我现在已经把更新版本的Web Part一起打入了安装包，您可以一起使用。</p>
+<p>如果您是本人的MSN Messenger的线上好友，那么这两天晚上可能会发现有一个机器人老跟你逗着玩。如果您对此感兴趣，可以在下列地址找到该机器人的下载地址，该机器人使用的是DotMSN，一个免费提供的MSNP协议的纯.NET程序集，该程序集可以在<a href="http://members.home.nl/b.geertsema/dotMSN/">http://members.home.nl/b.geertsema/dotMSN/</a> 中找到。</p>
+<p><em>点此下载团队日历及域用户密码更改Web部件(失效）</em></p>
+<p><em>点此下载MSN Messenger机器人（失效）</em></p>
+<p><em>由于空间有限，请从快下载，本周末(2004-6-5)该下载链接将无效。</em></p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://blog.joycode.com/tag/cbian-cheng.html">C#编程</a>
+      <a href="https://blog.joycode.com/tag/ruan-jian-tui-jian.html">软件推荐</a>
+    </p>
+  </div>
+
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'hcwang';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " 开心就好的代码人生 ",
+  "url" : "https://blog.joycode.com",
+  "image": "",
+  "description": ""
+}
+</script>
+</body>
+</html>

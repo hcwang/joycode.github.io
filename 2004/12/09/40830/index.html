@@ -1,0 +1,204 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://blog.joycode.com/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/solid.css">
+
+
+
+
+  <link href="https://blog.joycode.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="开心就好的代码人生 Atom">
+
+
+
+ 
+
+<meta name="author" content="joycode" />
+<meta name="description" content=".NET在全世界的影响程序越来越高，InfoWorld所作的一个统计，编程时优先选择的API框架，Microsoft .NET占53％，而J2EE目前占47％（这是一个多选题）。仔细想一下，.NET概念提出来不超过四年，真正有实际产品也就是两年多一些 …" />
+<meta name="keywords" content="C#编程, 业界评论">
+
+
+  <meta property="og:site_name" content="开心就好的代码人生"/>
+  <meta property="og:title" content="CLR is everywhere"/>
+  <meta property="og:description" content=".NET在全世界的影响程序越来越高，InfoWorld所作的一个统计，编程时优先选择的API框架，Microsoft .NET占53％，而J2EE目前占47％（这是一个多选题）。仔细想一下，.NET概念提出来不超过四年，真正有实际产品也就是两年多一些 …"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://blog.joycode.com/2004/12/09/40830/"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2004-12-09 21:50:00+08:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="https://blog.joycode.com/author/joycode.html">
+  <meta property="article:section" content="业界评论"/>
+  <meta property="article:tag" content="C#编程"/>
+  <meta property="article:tag" content="业界评论"/>
+  <meta property="og:image" content="">
+
+  <title>开心就好的代码人生 &ndash; CLR is everywhere</title>
+
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="https://blog.joycode.com/">
+      <img src="https://blog.joycode.com/theme/img/profile.png" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://blog.joycode.com/"></a>
+    </h1>
+
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="https://getpelican.com/" >Pelican</a>
+          </li>
+          <li>
+            <a target="_self" href="https://www.python.org/" >Python.org</a>
+          </li>
+          <li>
+            <a target="_self" href="https://palletsprojects.com/p/jinja/" >Jinja2</a>
+          </li>
+          <li>
+            <a target="_self" href="#" >You can modify those links in your config file</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-You can add links in your config file"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-You can add links in your config file"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-Another social link"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-Another social link"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="40830">CLR is everywhere</h1>
+    <p>
+      Posted on 四 09 十二月 2004 in <a href="https://blog.joycode.com/category/ye-jie-ping-lun.html">业界评论</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>.NET在全世界的影响程序越来越高，<a href="http://www.infoworld.com/">InfoWorld</a>所作的一个统计，编程时优先选择的API框架，Microsoft .NET占53％，而J2EE目前占47％（这是一个多选题）。仔细想一下，.NET概念提出来不超过四年，真正有实际产品也就是两年多一些，而现在就稳居业界第一的地位。</p>
+<p>相信博客堂的朋友们都了解SQL Server的一些优越特性，其中最重要的一点就是SQL Server 2005对.NET Framework 2.0的良好支持，譬如使用C#来编写存储过程之类的。可是有没有人曾经想过有一天Oracle以及IBM也会支持这些特性？？？</p>
+<p>OK，至少我没有想到，我相信大部分开发人员看到这儿，可能也不会相信是真的，那么，就来看看他们网站上的新闻吧:</p>
+<p>IBM: [<a href="http://www-106.ibm.com/developerworks/db2/library/techarticle/dm-0404zikopoulos/">A look at the new functions in DB2 Universal Database</a> （消息来源：IBM DeveloperWorks）]{.atitle}</p>
+<p><img alt="" src="http://www-106.ibm.com/developerworks/db2/library/techarticle/dm-0404zikopoulos/Picture2.gif"></p>
+<p><code>&lt;font size="2"&gt;</code><strong>与Visual Studio.NET的集成</strong><code>&lt;/font&gt;</code><br>
+<img alt="" src="http://www-106.ibm.com/developerworks/db2/library/techarticle/dm-0404zikopoulos/Picture3.gif"></p>
+<p><strong><code>&lt;font size="2"&gt;</code>使用CLR来创建存储过程<code>&lt;/font&gt;</code></strong></p>
+<div class="highlight"><pre><span></span><code>&lt;p&gt;
+</code></pre></div>
+
+<p>Oracle:</p>
+<div class="highlight"><pre><span></span><code><span class="o">&lt;</span><span class="nt">a</span><span class="w"> </span><span class="nt">href</span><span class="o">=</span><span class="s2">&quot;http://news.moneycentral.msn.com/ticker/article.asp?Symbol=US:ORCL&amp;amp;Feed=PR&amp;amp;Date=20041207&amp;amp;ID=4131881&quot;</span><span class="o">&gt;</span>
+</code></pre></div>
+
+<p>[Oracle Introduces Oracle(R) Database 10g Release 2<code>&lt;/a&gt;</code> （消息来源：MSN Money）]{.heading1black}</p>
+<div class="highlight"><pre><span></span><code>&lt;/p&gt;
+</code></pre></div>
+
+<p>似乎DBA们也应该开始学习一下.NET了...</p>
+<p>BTW: 昨天在济南酒店中吃午饭时，偶遇原来傲姿时代公司的老同事，目前就职于Oracle，偶有所感，以此为记...</p>
+<p>[]{lang="ZH-CN"} </p>
+<div class="highlight"><pre><span></span><code>&lt;p&gt;
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>&lt;span lang=&quot;ZH-CN&quot;&gt;
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>&lt;/p&gt;
+</code></pre></div>
+
+<p>[贴子以]{lang="ZH-CN"}<code>&lt;font face="Times New Roman"&gt;</code>"<code>&lt;/font&gt;</code>[现状]{lang="ZH-CN"}<code>&lt;font face="Times New Roman"&gt;</code>"<code>&lt;/font&gt;</code>[提供且没有任何担保也没有授予任何权利]{lang="ZH-CN"}</p>
+<p><code>&lt;/span&gt;</code></p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://blog.joycode.com/tag/cbian-cheng.html">C#编程</a>
+      <a href="https://blog.joycode.com/tag/ye-jie-ping-lun.html">业界评论</a>
+    </p>
+  </div>
+
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'hcwang';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " 开心就好的代码人生 ",
+  "url" : "https://blog.joycode.com",
+  "image": "",
+  "description": ""
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,235 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://blog.joycode.com/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/solid.css">
+
+
+
+
+  <link href="https://blog.joycode.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="开心就好的代码人生 Atom">
+
+
+
+ 
+
+<meta name="author" content="joycode" />
+<meta name="description" content="![](http://blog.joycode.com/wp-content/uploads/images/blog.joycode.com/joy/414/t_taiji.jpg) 遇到麻烦了！ 嗯，让我先来整理一下思路，如何讲清楚这个问题。好的，就让我们这样来说吧 …" />
+<meta name="keywords" content="C#编程, 似水年华">
+
+
+  <meta property="og:site_name" content="开心就好的代码人生"/>
+  <meta property="og:title" content="一起来打太极(4)"/>
+  <meta property="og:description" content="![](http://blog.joycode.com/wp-content/uploads/images/blog.joycode.com/joy/414/t_taiji.jpg) 遇到麻烦了！ 嗯，让我先来整理一下思路，如何讲清楚这个问题。好的，就让我们这样来说吧 …"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://blog.joycode.com/2003/12/01/8009/"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2003-12-01 17:40:00+08:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="https://blog.joycode.com/author/joycode.html">
+  <meta property="article:section" content="业界评论"/>
+  <meta property="article:tag" content="C#编程"/>
+  <meta property="article:tag" content="似水年华"/>
+  <meta property="og:image" content="">
+
+  <title>开心就好的代码人生 &ndash; 一起来打太极(4)</title>
+
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="https://blog.joycode.com/">
+      <img src="https://blog.joycode.com/theme/img/profile.png" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://blog.joycode.com/"></a>
+    </h1>
+
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="https://getpelican.com/" >Pelican</a>
+          </li>
+          <li>
+            <a target="_self" href="https://www.python.org/" >Python.org</a>
+          </li>
+          <li>
+            <a target="_self" href="https://palletsprojects.com/p/jinja/" >Jinja2</a>
+          </li>
+          <li>
+            <a target="_self" href="#" >You can modify those links in your config file</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-You can add links in your config file"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-You can add links in your config file"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-Another social link"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-Another social link"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="8009">一起来打太极(4)</h1>
+    <p>
+      Posted on 一 01 十二月 2003 in <a href="https://blog.joycode.com/category/ye-jie-ping-lun.html">业界评论</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <div>
+
+![](http://blog.joycode.com/wp-content/uploads/images/blog.joycode.com/joy/414/t_taiji.jpg)
+
+遇到麻烦了！
+
+嗯，让我先来整理一下思路，如何讲清楚这个问题。好的，就让我们这样来说吧，首先我们创建两个Project，第一个Project是Class Library，即类库的，里面有一个实体类及一个控制类，假设实体类如何下：
+
+public class User  
+{  
+    public User()  
+    {  
+    }  
+   private string name;  
+   private int age;  
+   private DateTime birthDay;  
+   public string Name  
+  {  
+      get{return this.name;}  
+      set{this.name=value;}  
+  }  
+  public int Age  
+  {  
+       get{return this.age;}  
+       set{this.age=value;}  
+  }  
+  public DateTime BirthDay  
+  {  
+     get{ return this.birthDay;}  
+     set{ this.birthDay=value;}  
+  }  
+｝
+
+然后再做一个控制类，里面就一个方法，这个方法返回一个User\[\]的数组。
+
+public User\[\] GetUser(){...}
+
+OK，第二个Project是一个ASP.NET的Web应用程序，并且引用上面的这个Class Library，在其默认ASP.NET页面上放一个DataGrid，然后这个DataGrid的数据源指定为上面那个项目中的控制类的方法，即将DataGrid1绑定到一个User\[\]数组上，大家可以试一下，这是可以成功的。因为DataSource的数据源可以为实现了System.Collections.IEnumerable接口的对象，而数组类型是继承自System.Array的，System.Array实现了System.Collections.IEnumerable接口。
+
+但是接下来，我们引入Web Service，即先解除ASP.NET的Web应用对于Class Library的引用关系，然后Web Service引用Class Library，而ASP.NET通过**Web引用**建立与Web Service项目的联系。如下图所示
+
+`<font color="#0000ff">`{=html}ASP.NET\_\_*[WEB引用]{.underline}*\_\_Web Service\_\_\_[*引用*]{.underline}\_\_\_\_Class Library`</font>`{=html}
+
+在Web Service项目当中，建立一个Web Method对Class Library进行一下Wrap:
+
+\[WebMethod\] public User\[\] GetUser()  
+{  
+   //直接调用Class Library中的GetUser方法，并且返回其结果;  
+｝
+
+然后在ASP.NET的默认ASP.NET页面中调用此Web方法，进行数据绑定，现在再查看，肯定会得到一个异常，说无法绑定。
+
+我追踪了一下午，基本上发现了问题所在：
+
+-   当加入Web Service的时候，ASP.NET将User类进行了一个包装，注意，这时候的User不是Class Library中定义的User类了，而是Web Service Client端由VS.NET自己定义的一个User类;
+-   Web Service中的这个User类所创建的数组无法进行数据绑定，甚至无法将这个类的数组通过强制类型转换转换为Class Library中声明的那个User类的数组。
+
+问题就是这样，但解决方案尚未出来，希望哪位大侠不吝赐教！
+
+需求又出来新版本了，数据库设计也基本上出来了。不过今天晚上他们又要去需求方汇报，不知道需求是不是还会改？
+
+周末拜见了岳父岳母大人，已经正式取得合法的恋爱执照了![尴尬的笑脸](http://messenger.china.msn.com/Resource/emoticons/red_smile.gif)
+
+</div>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://blog.joycode.com/tag/cbian-cheng.html">C#编程</a>
+      <a href="https://blog.joycode.com/tag/si-shui-nian-hua.html">似水年华</a>
+    </p>
+  </div>
+
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'hcwang';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " 开心就好的代码人生 ",
+  "url" : "https://blog.joycode.com",
+  "image": "",
+  "description": ""
+}
+</script>
+</body>
+</html>

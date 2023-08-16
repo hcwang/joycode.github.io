@@ -1,0 +1,203 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://blog.joycode.com/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/solid.css">
+
+
+
+
+  <link href="https://blog.joycode.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="开心就好的代码人生 Atom">
+
+
+
+ 
+
+<meta name="author" content="joycode" />
+<meta name="description" content="【原文地址】Tip/Trick: Using IIS7 on Vista with VS 2005 【原文发表日期】 Tuesday, September 19, 2006 7:41 AM 上个星期，几个人都询问我怎么在Windows Vista上使用VS 2005 建立IIS7上的网站。具体来说 …" />
+<meta name="keywords" content="ASP.NET, IIS7, Tips and Tricks, Visual Studio">
+
+
+  <meta property="og:site_name" content="开心就好的代码人生"/>
+  <meta property="og:title" content="技巧和诀窍：在VS 2005里使用Vista的IIS7"/>
+  <meta property="og:description" content="【原文地址】Tip/Trick: Using IIS7 on Vista with VS 2005 【原文发表日期】 Tuesday, September 19, 2006 7:41 AM 上个星期，几个人都询问我怎么在Windows Vista上使用VS 2005 建立IIS7上的网站。具体来说 …"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://blog.joycode.com/2006/09/20/2006-09-20_03.50/"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2006-09-20 03:50:00+08:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="https://blog.joycode.com/author/joycode.html">
+  <meta property="article:section" content="业界评论"/>
+  <meta property="article:tag" content="ASP.NET"/>
+  <meta property="article:tag" content="IIS7"/>
+  <meta property="article:tag" content="Tips and Tricks"/>
+  <meta property="article:tag" content="Visual Studio"/>
+  <meta property="og:image" content="">
+
+  <title>开心就好的代码人生 &ndash; 技巧和诀窍：在VS 2005里使用Vista的IIS7</title>
+
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="https://blog.joycode.com/">
+      <img src="https://blog.joycode.com/theme/img/profile.png" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://blog.joycode.com/"></a>
+    </h1>
+
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="https://getpelican.com/" >Pelican</a>
+          </li>
+          <li>
+            <a target="_self" href="https://www.python.org/" >Python.org</a>
+          </li>
+          <li>
+            <a target="_self" href="https://palletsprojects.com/p/jinja/" >Jinja2</a>
+          </li>
+          <li>
+            <a target="_self" href="#" >You can modify those links in your config file</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-You can add links in your config file"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-You can add links in your config file"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-Another social link"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-Another social link"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="2006-09-20_03.50">技巧和诀窍：在VS 2005里使用Vista的IIS7</h1>
+    <p>
+      Posted on 三 20 九月 2006 in <a href="https://blog.joycode.com/category/ye-jie-ping-lun.html">业界评论</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>【原文地址】<a href="http://weblogs.asp.net/scottgu/archive/2006/09/19/Tip_2F00_Trick_3A00_-Using-IIS7-on-Vista-with-VS-2005.aspx" target="" title="技巧和诀窍：在VS 2005里使用Vista的IIS7">Tip/Trick: Using IIS7 on Vista with VS 2005</a><br>
+【原文发表日期】 Tuesday, September 19, 2006 7:41 AM</p>
+<p>上个星期，几个人都询问我怎么在Windows Vista上使用VS 2005 建立IIS7上的网站。具体来说，他们都遇到了一个问题，在试图连接IIS7时，他们要么看到一个对话框要求他们安装FrontPage服务器扩展，要么得到一个“你必须是管理员组的成员”的出错消息，如下图所示：</p>
+<p><img alt="" src="http://www.scottgu.com/blogposts/iis7vs2005/step1.jpg"></p>
+<p>Bradley发表了 <a href="http://blogs.msdn.com/webdevtools/archive/2006/09/18/761206.aspx" target="_blank">一个很好的帖子</a>，描述了如何使得VS 2005连接到IIS 7.0的详细步骤。简短地说，你需要按下面二个步骤进行：</p>
+<p>1) 你需要确认在IIS7里安装了可选的IIS 6 Management Compatibility(IIS 6管理兼容)这个选项。这将为新的配置系统安装一个与VS 2005使用的老的Metabase API相兼容的API。你可以在Vista 控制面板中的Turn Windows Features on or Off(打开/关闭Windows特性)对话框里选择该选项：</p>
+<p><img alt="" src="http://www.scottgu.com/blogposts/iis7vs2005/step2.jpg">  </p>
+<p>2) 你需要确定以高级权限来运行VS 2005，这样你才能有管理权限连接到IIS。如果要调试一个服务，或者创建网站或者改动影响整个机器的配置时，你需要拥有管理权限。具体做法是，在启动VS时，右击VS图标，然后选择“以管理员身份运行(Run as Administrator)”：</p>
+<p><img alt="" src="http://www.scottgu.com/blogposts/iis7vs2005/step3.jpg"></p>
+<p>注意，假如你启动了UAC(用户访问控制)的话(注：UAC在Vista中默认是启动的)，即使你的用户账号已经是管理员组成员，你还是需要这么做。如果你禁止了UAC(你可以通过控制面板来这么做)，那么这第二步就不需要了。如果你使用VS 2005内置的Web服务器的话，那么你不需要以高级权限运行VS 2005，因为内置的Web服务器是以非高级权限运行的。而且这个步骤也只有在本地连接，运行/调试IIS时才需要。</p>
+<p>我们将会更新Visual Studio 2005来提供更准确的错误消息，在将来，会以更自然的方式来向你指明以上的步骤。在目前，只要使用上面这些步骤，就可以搞定了。</p>
+<p>希望本文对你有所帮助，</p>
+<p>Scott</p>
+<p>::: postfoot</p>
+<div>
+
+标签：[ASP.NET](http://weblogs.asp.net/scottgu/archive/tags/ASP.NET/default.aspx){rel="tag"}, [Visual Studio](http://weblogs.asp.net/scottgu/archive/tags/Visual+Studio/default.aspx){rel="tag"}, [IIS7](http://weblogs.asp.net/scottgu/archive/tags/IIS7/default.aspx){rel="tag"}, [Tips and Tricks](http://weblogs.asp.net/scottgu/archive/tags/Tips+and+Tricks/default.aspx){rel="tag"}
+
+</div>
+
+<div>
+
+ 
+
+</div>
+
+<p>(思归译)
+:::</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://blog.joycode.com/tag/aspnet.html">ASP.NET</a>
+      <a href="https://blog.joycode.com/tag/iis7.html">IIS7</a>
+      <a href="https://blog.joycode.com/tag/tips-and-tricks.html">Tips and Tricks</a>
+      <a href="https://blog.joycode.com/tag/visual-studio.html">Visual Studio</a>
+    </p>
+  </div>
+
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'hcwang';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " 开心就好的代码人生 ",
+  "url" : "https://blog.joycode.com",
+  "image": "",
+  "description": ""
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,173 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://blog.joycode.com/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/solid.css">
+
+
+
+
+  <link href="https://blog.joycode.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="开心就好的代码人生 Atom">
+
+
+
+ 
+
+<meta name="author" content="joycode" />
+<meta name="description" content="因为想在部门基于SharePoint的项目里面做一个嵌在页面里面的客户端文件浏览和多文件上传的东东，所以前两天用VB写了个ActiveX控件在弄，正在想方设法提高文件上传的效率，今天上午就在文档里面发现客户端在安装了 …" />
+<meta name="keywords" content="非公开随笔">
+
+
+  <meta property="og:site_name" content="开心就好的代码人生"/>
+  <meta property="og:title" content="MS对SharePoint的支持力度...？"/>
+  <meta property="og:description" content="因为想在部门基于SharePoint的项目里面做一个嵌在页面里面的客户端文件浏览和多文件上传的东东，所以前两天用VB写了个ActiveX控件在弄，正在想方设法提高文件上传的效率，今天上午就在文档里面发现客户端在安装了 …"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://blog.joycode.com/2003/11/27/2003-11-27_19.50/"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2003-11-27 19:50:00+08:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="https://blog.joycode.com/author/joycode.html">
+  <meta property="article:section" content="业界评论"/>
+  <meta property="article:tag" content="非公开随笔"/>
+  <meta property="og:image" content="">
+
+  <title>开心就好的代码人生 &ndash; MS对SharePoint的支持力度...？</title>
+
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="https://blog.joycode.com/">
+      <img src="https://blog.joycode.com/theme/img/profile.png" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://blog.joycode.com/"></a>
+    </h1>
+
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="https://getpelican.com/" >Pelican</a>
+          </li>
+          <li>
+            <a target="_self" href="https://www.python.org/" >Python.org</a>
+          </li>
+          <li>
+            <a target="_self" href="https://palletsprojects.com/p/jinja/" >Jinja2</a>
+          </li>
+          <li>
+            <a target="_self" href="#" >You can modify those links in your config file</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-You can add links in your config file"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-You can add links in your config file"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-Another social link"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-Another social link"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="2003-11-27_19.50">MS对SharePoint的支持力度...？</h1>
+    <p>
+      Posted on 四 27 十一月 2003 in <a href="https://blog.joycode.com/category/ye-jie-ping-lun.html">业界评论</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>因为想在部门基于SharePoint的项目里面做一个嵌在页面里面的客户端文件浏览和多文件上传的东东，所以前两天用VB写了个ActiveX控件在弄，正在想方设法提高文件上传的效率，今天上午就在文档里面发现客户端在安装了Office2003后，会自动安装一个“<code>&lt;font face="Courier New"&gt;</code>STSUpld.UploadCtl<code>&lt;/font&gt;</code>”的ActiveX控件，SharePoint Portal Server里面就是用这个“标准”的控件来进行多文件的上传。</p>
+<p>于是偶就“兴高采烈”的开始计划用这个东东了，接下来马上发现，除了一页基本上没有多大用处的控件说明之外，没有任何文档说明如何用这个东东，页面里面如何用这个东东来把文件上传上去，没有任何资料，不管是SharePoint的SDK还是MSDN还是Google...</p>
+<p>在进行基于SharePoint Service 2.0进行开发的过程中，我“深刻”的感受到微软对这个产品好像并不是非常重视，根本没有提供全面的技术文档支持，于是暗自怀疑，SharePoint这个东东不知微软到底支持度如何...要知道，基于微软的平台做东西，最害怕的就是微软的产品策略和支持策略。</p>
+<p>或者，微软只是希望我们直接用SharePoint Portal Server，而不鼓励基于SharePoint Service的开发？</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://blog.joycode.com/tag/fei-gong-kai-sui-bi.html">非公开随笔</a>
+    </p>
+  </div>
+
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'hcwang';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " 开心就好的代码人生 ",
+  "url" : "https://blog.joycode.com",
+  "image": "",
+  "description": ""
+}
+</script>
+</body>
+</html>

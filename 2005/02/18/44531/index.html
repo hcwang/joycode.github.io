@@ -1,0 +1,194 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://blog.joycode.com/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/solid.css">
+
+
+
+
+  <link href="https://blog.joycode.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="开心就好的代码人生 Atom">
+
+
+
+ 
+
+<meta name="author" content="joycode" />
+<meta name="description" content="注：为了方便大家尽快了解如何利用Visual Studio Team System在自己的团队当中展开开发工作，本人现在开始进行MSF Agile Beta版文档的汉化工作，原始文档可以在&lt;font face=&#34;Verdana&#34; color=&#34;#3f3d3d&#34; size=&#34;2&#34;&gt;http://lab.msdn.microsoft.com/teamsystem …" />
+<meta name="keywords" content="C#编程, 软件推荐">
+
+
+  <meta property="og:site_name" content="开心就好的代码人生"/>
+  <meta property="og:title" content="MSF Agile Beta 汉化教程（一）"/>
+  <meta property="og:description" content="注：为了方便大家尽快了解如何利用Visual Studio Team System在自己的团队当中展开开发工作，本人现在开始进行MSF Agile Beta版文档的汉化工作，原始文档可以在&lt;font face=&#34;Verdana&#34; color=&#34;#3f3d3d&#34; size=&#34;2&#34;&gt;http://lab.msdn.microsoft.com/teamsystem …"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://blog.joycode.com/2005/02/18/44531/"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2005-02-18 11:41:00+08:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="https://blog.joycode.com/author/joycode.html">
+  <meta property="article:section" content="业界评论"/>
+  <meta property="article:tag" content="C#编程"/>
+  <meta property="article:tag" content="软件推荐"/>
+  <meta property="og:image" content="">
+
+  <title>开心就好的代码人生 &ndash; MSF Agile Beta 汉化教程（一）</title>
+
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="https://blog.joycode.com/">
+      <img src="https://blog.joycode.com/theme/img/profile.png" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://blog.joycode.com/"></a>
+    </h1>
+
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="https://getpelican.com/" >Pelican</a>
+          </li>
+          <li>
+            <a target="_self" href="https://www.python.org/" >Python.org</a>
+          </li>
+          <li>
+            <a target="_self" href="https://palletsprojects.com/p/jinja/" >Jinja2</a>
+          </li>
+          <li>
+            <a target="_self" href="#" >You can modify those links in your config file</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-You can add links in your config file"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-You can add links in your config file"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-Another social link"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-Another social link"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="44531">MSF Agile Beta 汉化教程（一）</h1>
+    <p>
+      Posted on 五 18 二月 2005 in <a href="https://blog.joycode.com/category/ye-jie-ping-lun.html">业界评论</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p><em>注：为了方便大家尽快了解如何利用Visual Studio Team System在自己的团队当中展开开发工作，本人现在开始进行MSF Agile Beta版文档的汉化工作，原始文档可以在</em><a href="http://lab.msdn.microsoft.com/teamsystem/workshop/msfagile/default.aspx" title="http://lab.msdn.microsoft.com/teamsystem/workshop/msfagile/default.aspx"><code>&lt;font face="Verdana" color="#3f3d3d" size="2"&gt;</code><em>http://lab.msdn.microsoft.com/teamsystem/workshop/msfagile/default.aspx</em><code>&lt;/font&gt;</code></a><em>中下载得到。限于本人水平，有些汉化可能并不达意，欢迎大家批评斧正。同时，如果您有意参与汉化，也请与我来信说明。</em></p>
+<p><em>版权：本汉化文档欢迎转载，但请在转载的时候，请注意保证本文的完整性，注明英文文档地址，及汉化作者名称，及原始出处（以超链接方式给出，而不是仅仅提供站点名称）</em></p>
+<p><em>特别注明：本文档并非单纯的汉化原英文文档，部分内容是开心的个人开发过程中的随想，欢迎斧正。</em></p>
+<h1>前言</h1>
+<p>在中国的法律建设当中，有一个十六字方针，相信上过高中政治课程的同志们都已经非常熟悉了，这就是“有法可依，有法必依，执法必严，违法必究”。其实，在团队开发当中，为了保障开发的正常进行，这十六字方针仍然适用。下面就一一进行解释：</p>
+<ul>
+<li>有法可依</li>
+</ul>
+<p>在团队开发当中，为了能够更加快速的交付客户所需要的质量稳定的软件产品，需要有一定的开发理论作为支撑，这就是软件开发过程当中的“法”。在业界，这种方法论并不缺少，比如著名的有：MSF（微软解决方案框架）、RUP（Rational统一过程理论）、XP（极限编程）等。</p>
+<ul>
+<li>有法必依</li>
+</ul>
+<p>有了这些软件过程的方法论，那么如何真正有效的贯彻实施？这就需要有工具来配合，使这些方法论真正能够贯彻在软件开发的各个环节中。其实，在大家的开发团队当中，这种工具已经或多或少的在使用了，比如开发环境：Visual Studio.NET，Borland C# Builder;版本管理工具：Visual SourceSafe，CVS; Bug管理工具;项目管理工具;测试工具等。</p>
+<ul>
+<li>执法必严</li>
+</ul>
+<p>但目前的工具在软件开发团队当中，并不是特别顺手，因为各个工具都独立存在，在功能上互相交叉，但又无法相互共享其结果。最终的结果是在开发当中造成严重脱节，软件团队成员之中怨声载道，项目也一再延期。可见，光是有工具是不行的，而且必须要有一个<strong>集成</strong>的工具，能够把各个环节能够统一出来,每个环节都可以量化管理，推动项目能够良性开发。</p>
+<ul>
+<li>违法必穷</li>
+</ul>
+<p>有了良好的工具及方法论，那么在公司里面也应该有相应的公司章程，开发团队绩效考核办法等绑定，从而确立整个团队开发的奖惩措施，更有效的发挥软件开发团队的潜力。</p>
+<p>大家知道，微软的MSF至今已经发展到3.0，是微软及微软合作伙伴在软件开发过程当中，根据自己的实践总结的一套方法理论。但MSF并不一定适合所有的ISV（独立软件开发商），所以在4.0推出时，我们将MSF分成两个版本，一个是软量级的：MSF Agile，适合绝大部分开发团队使用；另外一个是MSF Complete，适合已经通过或者相当于CMM 3级的软件企业使用。</p>
+<p>目前，MSF Agile还处于Beta阶级，本教程将介绍MSF Agile的基本内容，以便让大家对此有所了解，并且在本教程当中，将会结合VSTS来介绍该方法论，不是单纯的“纸上谈兵”。</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://blog.joycode.com/tag/cbian-cheng.html">C#编程</a>
+      <a href="https://blog.joycode.com/tag/ruan-jian-tui-jian.html">软件推荐</a>
+    </p>
+  </div>
+
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'hcwang';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " 开心就好的代码人生 ",
+  "url" : "https://blog.joycode.com",
+  "image": "",
+  "description": ""
+}
+</script>
+</body>
+</html>

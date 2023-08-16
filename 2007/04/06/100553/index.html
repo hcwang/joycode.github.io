@@ -1,0 +1,187 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://blog.joycode.com/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/solid.css">
+
+
+
+
+  <link href="https://blog.joycode.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="开心就好的代码人生 Atom">
+
+
+
+ 
+
+<meta name="author" content="joycode" />
+<meta name="description" content="很多朋友可能已经开始尝试使用WPF/E来在网络上制作一些动画，在其中可能遇到了一些问题。尤其是当前公开版本还是CTP，所以有一些东西在互联 …" />
+<meta name="keywords" content="C#编程, 软件推荐">
+
+
+  <meta property="og:site_name" content="开心就好的代码人生"/>
+  <meta property="og:title" content="WPF/E开发基础答疑(1)"/>
+  <meta property="og:description" content="很多朋友可能已经开始尝试使用WPF/E来在网络上制作一些动画，在其中可能遇到了一些问题。尤其是当前公开版本还是CTP，所以有一些东西在互联 …"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://blog.joycode.com/2007/04/06/100553/"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2007-04-06 09:56:00+08:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="https://blog.joycode.com/author/joycode.html">
+  <meta property="article:section" content="业界评论"/>
+  <meta property="article:tag" content="C#编程"/>
+  <meta property="article:tag" content="软件推荐"/>
+  <meta property="og:image" content="">
+
+  <title>开心就好的代码人生 &ndash; WPF/E开发基础答疑(1)</title>
+
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="https://blog.joycode.com/">
+      <img src="https://blog.joycode.com/theme/img/profile.png" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://blog.joycode.com/"></a>
+    </h1>
+
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="https://getpelican.com/" >Pelican</a>
+          </li>
+          <li>
+            <a target="_self" href="https://www.python.org/" >Python.org</a>
+          </li>
+          <li>
+            <a target="_self" href="https://palletsprojects.com/p/jinja/" >Jinja2</a>
+          </li>
+          <li>
+            <a target="_self" href="#" >You can modify those links in your config file</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-You can add links in your config file"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-You can add links in your config file"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-Another social link"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-Another social link"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="100553">WPF/E开发基础答疑(1)</h1>
+    <p>
+      Posted on 五 06 四月 2007 in <a href="https://blog.joycode.com/category/ye-jie-ping-lun.html">业界评论</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>很多朋友可能已经开始尝试使用WPF/E来在网络上制作一些动画，在其中可能遇到了一些问题。尤其是当前公开版本还是CTP，所以有一些东西在互联网中得不到解答，本人不才，准备通过本博客系列为大家进行答疑解惑。（由于WPF/E的正式名称即将公布，所以在正式名称公布后，本系列教程也会进行更新）</p>
+<p><strong>[1. WPF/E是否可以支持嵌入式字体?]{.underline}</strong></p>
+<p><strong>问题描述</strong>:在设计HTML网页的时候，我们会碰到很多类似的问题。一个网页中的字体在设计期非常好看，但当我们发布之后，却发现用户体验惨不忍睹，这其中最大的原因就是字体的不同。比如设计师使用Windows Vista来进行设计，使用了微软雅黑字体。而此种字体在早期Windows版本以及其它操作系统当中并不存在，浏览器会按照自己的方式来使用替代字体（或者CSS中指定的替代字体），从而导致用户体验非常差。如何解决这种问题呢？</p>
+<p><strong>解答</strong>：我们可以使用FontUri这种方式来嵌入字体，从而解决此种问题，根据当前版本的SDK文档中，我们可以看到，FontUri属性可以应用于Glyphs标签。</p>
+<p><strong>示例</strong>:  把字体从你的Windows/Fonts目录中拷出（或者从其它地方获得），拷贝到您的WPF/E相应的目录当中，然后在您的XAML语句中按照以下方式进行撰写：</p>
+<p>\&lt;Canvas x:Name="GlyphDisplayCanvas" Canvas.Left="0" Canvas.Top="0" &gt;</p>
+<p>\&lt;Glyphs x:Name="GlyphDisplay" Fill="Black" FontUri="./simhei.ttf" FontRenderingEmSize="48" UnicodeString="Hello, WPF/E？" /&gt;</p>
+<p>\&lt;/Canvas&gt;</p>
+<p><strong>[2. WPF/E如何支持中文显示?]{.underline}</strong></p>
+<p><strong>问题描述</strong>：在前段时间我的文章留言中，有一位朋友询问如何支持中文。可能很多朋友已经注意到了，在TextBlock或者其它元素当中，如果输入中文，那么在最终显示效果当中，您可能会注意到，这些汉字全部显示为了一个规矩的方框，而不是我们想像中的汉字，那么如何解决此问题呢?</p>
+<p><strong>解答</strong>：的确在当前版本的WPF/E应用程序当中，很多元素其实不支持中文或者更准确地说，是双字节语言（比如韩文以及日文），但解决也比较简单，查看前面的问题解答，您或者已经得到了解答，即使用UnicodeString方式对其进行设置。当然，如果您查看SDK文档也会发现，这个UnicodeString也只能应用于Glyphs。</p>
+<p>示例：同上面问题的解答一样，只需要把应用程序代码中的UnicodeString替换为中文即可，如下：</p>
+<p>\&lt;Canvas x:Name="GlyphDisplayCanvas" Canvas.Left="0" Canvas.Top="0" &gt;</p>
+<p>\&lt;Glyphs x:Name="GlyphDisplay" Fill="Black" FontUri="./simhei.ttf" FontRenderingEmSize="48" UnicodeString="生日快乐，开心就好" /&gt;</p>
+<p>\&lt;/Canvas&gt;</p>
+<p><em>以上问题解答得益于公司同事<a href="http://channel9.msdn.com/Showpost.aspx?postid=272239" target="_blank">Laurence Moroney</a>（其太太是华人，前段时间刚访问过中国)</em></p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://blog.joycode.com/tag/cbian-cheng.html">C#编程</a>
+      <a href="https://blog.joycode.com/tag/ruan-jian-tui-jian.html">软件推荐</a>
+    </p>
+  </div>
+
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'hcwang';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " 开心就好的代码人生 ",
+  "url" : "https://blog.joycode.com",
+  "image": "",
+  "description": ""
+}
+</script>
+</body>
+</html>

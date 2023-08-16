@@ -1,0 +1,183 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://blog.joycode.com/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/solid.css">
+
+
+
+
+  <link href="https://blog.joycode.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="开心就好的代码人生 Atom">
+
+
+
+ 
+
+<meta name="author" content="joycode" />
+<meta name="description" content="经常坐飞机，有时候就想能不能有一个系统能够让我了解我所乘坐的飞机的具体情况，以及机场的准确位置。当然，目前我 …" />
+<meta name="keywords" content="C#编程, 软件推荐">
+
+
+  <meta property="og:site_name" content="开心就好的代码人生"/>
+  <meta property="og:title" content="实时监测机场的起降情况"/>
+  <meta property="og:description" content="经常坐飞机，有时候就想能不能有一个系统能够让我了解我所乘坐的飞机的具体情况，以及机场的准确位置。当然，目前我 …"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://blog.joycode.com/2007/03/29/99996/"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2007-03-29 10:56:00+08:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="https://blog.joycode.com/author/joycode.html">
+  <meta property="article:section" content="业界评论"/>
+  <meta property="article:tag" content="C#编程"/>
+  <meta property="article:tag" content="软件推荐"/>
+  <meta property="og:image" content="">
+
+  <title>开心就好的代码人生 &ndash; 实时监测机场的起降情况</title>
+
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="https://blog.joycode.com/">
+      <img src="https://blog.joycode.com/theme/img/profile.png" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://blog.joycode.com/"></a>
+    </h1>
+
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="https://getpelican.com/" >Pelican</a>
+          </li>
+          <li>
+            <a target="_self" href="https://www.python.org/" >Python.org</a>
+          </li>
+          <li>
+            <a target="_self" href="https://palletsprojects.com/p/jinja/" >Jinja2</a>
+          </li>
+          <li>
+            <a target="_self" href="#" >You can modify those links in your config file</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-You can add links in your config file"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-You can add links in your config file"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-Another social link"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-Another social link"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="99996">实时监测机场的起降情况</h1>
+    <p>
+      Posted on 四 29 三月 2007 in <a href="https://blog.joycode.com/category/ye-jie-ping-lun.html">业界评论</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>经常坐飞机，有时候就想能不能有一个系统能够让我了解我所乘坐的飞机的具体情况，以及机场的准确位置。当然，目前我对首都机场的了解简直比我家还要熟悉。上海虹桥、深圳以及广州白云等机场也是比较了解的。但是当我第一次到达西雅图机场的时候，当时还真有一些昏头昏脑，实在太大了，呵呵。</p>
+<p>在首都机场的网站上，我们可以查找到各航班的信息，比如是否晚点、计划时间等，而且是以图表方式给出的。但是能否以更加精确的方式来反应呢？想像一下，如果您能<a href="http://blog.joycode.com/wp-content/uploads/images/blog.joycode.com/joy/1308/o_WindowsLiveWriter_114be95a222a_99A5_image%5B4%5D.png"><img align="left" alt="" border="0" height="297" src="http://blog.joycode.com/wp-content/uploads/images/blog.joycode.com/joy/1308/o_WindowsLiveWriter_114be95a222a_99A5_image_thumb%5B4%5D.png" style="border-right: 0px;border-top: 0px;border-left: 0px;border-bottom: 0px" width="389"></a>够以实时动画的方式查看各个航班的信息：是否满员、飞机实时的具体位置、方向、起飞降落时间、机型等等情况，那是多么爽的一件事情呀？如果您对这件事情比较感兴趣，那么请看左图。这是苏黎士机场的实际运营情况。当然为了“反恐大业”的需要，您可以看到的这个版本使用了一些历史数据，而没有接收实时的数据。</p>
+<p>网站地址：</p>
+<p><a href="http://wpf.netfx3.com/direct/zurich/zeuswpf.xbap">http://wpf.netfx3.com/direct/zurich/zeuswpf.xbap</a></p>
+<p>软件需求：</p>
+<p>操作系统必须是Windows XP+SP2、Windows Server 2003+SP1或者Windows Vista，前两者操作系统必须安装.NET Framework 3.0。</p>
+<p>键盘操作：</p>
+<p>Ctrl+鼠标右键：扩大视野范围(Zoom Out)</p>
+<p>鼠标左键拖动：移动视野范围</p>
+<p>鼠标右键拖动：缩小视野范围(Zoom In)</p>
+<p>英文博客信息：<a href="http://blogs.msdn.com/tims/archive/2007/03/27/great-wpf-applications-13-z-rich-airport.aspx">http://blogs.msdn.com/tims/archive/2007/03/27/great-wpf-applications-13-z-rich-airport.aspx</a></p>
+<p>我感觉国内的一些ISV软件厂商可以借助WPF的机遇，做一些富有创新的软件，比如股票软件、基金软件等等。可能基于原来的软件开发的难度，有很多创新我们无法付诸实施，但现在既然有了WPF这么强大的工具，我们还在等什么呢？:)</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://blog.joycode.com/tag/cbian-cheng.html">C#编程</a>
+      <a href="https://blog.joycode.com/tag/ruan-jian-tui-jian.html">软件推荐</a>
+    </p>
+  </div>
+
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'hcwang';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " 开心就好的代码人生 ",
+  "url" : "https://blog.joycode.com",
+  "image": "",
+  "description": ""
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,204 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://blog.joycode.com/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/solid.css">
+
+
+
+
+  <link href="https://blog.joycode.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="开心就好的代码人生 Atom">
+
+
+
+ 
+
+<meta name="author" content="joycode" />
+<meta name="description" content="话说从前，书接上回。开心已经向大家提出了一个需求，并且给出解决技术难题的思路，不知道有多少位朋友已经开始尝试 …" />
+<meta name="keywords" content="C#编程, 业界评论">
+
+
+  <meta property="og:site_name" content="开心就好的代码人生"/>
+  <meta property="og:title" content="Sidebar Gadget开发教程(3)"/>
+  <meta property="og:description" content="话说从前，书接上回。开心已经向大家提出了一个需求，并且给出解决技术难题的思路，不知道有多少位朋友已经开始尝试 …"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://blog.joycode.com/2006/11/04/86110/"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2006-11-04 10:02:00+08:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="https://blog.joycode.com/author/joycode.html">
+  <meta property="article:section" content="业界评论"/>
+  <meta property="article:tag" content="C#编程"/>
+  <meta property="article:tag" content="业界评论"/>
+  <meta property="og:image" content="">
+
+  <title>开心就好的代码人生 &ndash; Sidebar Gadget开发教程(3)</title>
+
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="https://blog.joycode.com/">
+      <img src="https://blog.joycode.com/theme/img/profile.png" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://blog.joycode.com/"></a>
+    </h1>
+
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="https://getpelican.com/" >Pelican</a>
+          </li>
+          <li>
+            <a target="_self" href="https://www.python.org/" >Python.org</a>
+          </li>
+          <li>
+            <a target="_self" href="https://palletsprojects.com/p/jinja/" >Jinja2</a>
+          </li>
+          <li>
+            <a target="_self" href="#" >You can modify those links in your config file</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-You can add links in your config file"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-You can add links in your config file"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-Another social link"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-Another social link"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="86110">Sidebar Gadget开发教程(3)</h1>
+    <p>
+      Posted on 六 04 十一月 2006 in <a href="https://blog.joycode.com/category/ye-jie-ping-lun.html">业界评论</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>话说<a href="http://blog.joycode.com/joy/archive/2006/10/24/85611.aspx" target="_blank">从前</a>，书接<a href="http://blog.joycode.com/joy/archive/2006/11/01/86016.aspx" target="_blank">上回</a>。开心已经向大家提出了一个需求，并且给出解决技术难题的思路，不知道有多少位朋友已经开始尝试编写自己的第一个非“Hello World”的Sidebar Gadget了。那么今天开始，我们就开始逐步介绍开发Sidebar Gadget的具体方式。</p>
+<p><strong>使用Gadget.xml来定义Sidebar Gadget</strong></p>
+<p>就像计算机语言都会有一个入口函数一样，Sidebar Gadget在启动时也会有一个主入口，而这个主入口文件呢就是Gadget.xml。但该文件你可以存放在多个区域，即Gadget的根目录，或者Gadget的地区语言(如zh-cn, en-us等)目录。按照我的理解，Gadget应该先会找最适合地区语言目录下的Gadget.xml，其次再找根目录中gadget.xml，而一个典型的Gadget.xml文件结构如下所示（Vista自带的时钟Gadget的描述文件，文档中红色文字为开心的注释文字，而注释中的数字标识与附图中的数字标识一一对应）：</p>
+<p>\&lt;?xml version="1.0" encoding="utf-8"?&gt;<br>
+\&lt;gadget&gt;<br>
+\&lt;name&gt;时钟\&lt;/name&gt; <code>&lt;font color="#ff0000"&gt;</code>定义Gadget名称(1)<code>&lt;/font&gt;</code>            <br>
+\&lt;namespace&gt;microsoft.windows\&lt;/namespace&gt;<code>&lt;font color="#ff0000"&gt;</code> 定义Gadget的命名空间，与JS交互<code>&lt;/font&gt;</code><br>
+\&lt;version&gt;1.0.0.0\&lt;/version&gt; <code>&lt;font color="#ff0000"&gt;</code>版本信息(2)<code>&lt;/font&gt;</code><br>
+\&lt;author name="Microsoft Corporation"&gt; <code>&lt;font color="#ff0000"&gt;</code>作者信息(3)<code>&lt;/font&gt;</code><br>
+\&lt;info url="<a href="http://go.microsoft.com/fwlink/?LinkId=55696%22">http://go.microsoft.com/fwlink/?LinkId=55696%22</a> text="www.gallery.microsoft.com"/&gt; <code>&lt;font color="#ff0000"&gt;</code>作者网站的链接地址<a href="http://blog.joycode.com/wp-content/uploads/images/blog.joycode.com/joy/1308/o_WindowsLiveWriter_SidebarGadget3_1301E_image018.png"><img align="right" alt="" border="0" height="353" src="http://blog.joycode.com/wp-content/uploads/images/blog.joycode.com/joy/1308/o_WindowsLiveWriter_SidebarGadget3_1301E_image0_thumb14.png" style="border-top-width: 0px;border-left-width: 0px;border-bottom-width: 0px;border-right-width: 0px" width="506"></a>(4)<code>&lt;/font&gt;</code><br>
+\&lt;logo src="logo.png"/&gt;<code>&lt;font color="#ff0000"&gt;</code>作者的Logo信息(5)<code>&lt;/font&gt;</code><br>
+\&lt;/author&gt;<br>
+\&lt;copyright&gt;? 2006\&lt;/copyright&gt; <code>&lt;font color="#ff0000"&gt;</code>版权信息(6)<code>&lt;/font&gt;</code><br>
+\&lt;description&gt;查看您所在时区或全球任何城市的时钟。\&lt;/description&gt; <code>&lt;font color="#ff0000"&gt;</code>功能描述信息(7)<code>&lt;/font&gt;</code><br>
+\&lt;icons&gt;<br>
+\&lt;icon height="48" width="48" src="icon.png"/&gt; <code>&lt;font color="#ff0000"&gt;</code>显示在小工具待选箱时的图标(8)<code>&lt;/font&gt;</code><br>
+\&lt;/icons&gt;<br>
+\&lt;hosts&gt;<br>
+\&lt;host name="sidebar"&gt;<code>&lt;font color="#ff0000"&gt;</code>仅支持Sidebar，未来如果大一统了，可能Live.com或者Slideshow都会使用统一的方式<code>&lt;/font&gt;</code><br>
+\&lt;base type="html" apiVersion="1.0.0" src="clock.html"/&gt;<code>&lt;font color="#ff0000"&gt;</code>type仅支持html，未来有可能会支持WPF,WPF/E或者AJAX;src用以指明主界面的HTML源文件<code>&lt;/font&gt;</code><br>
+\&lt;permissions&gt;full\&lt;/permissions&gt;<code>&lt;font color="#ff0000"&gt;</code>目前仅可以设置Full，请参阅<code>&lt;/font&gt;</code><a href="http://blog.joycode.com/joy/archive/2006/10/24/85594.aspx" target="_blank"><code>&lt;font color="#ff0000"&gt;</code>此文<code>&lt;/font&gt;</code></a><br>
+\&lt;platform minPlatformVersion="1.0"/&gt;<br>
+\&lt;defaultImage src="drag.png"/&gt;<code>&lt;font color="#ff0000"&gt;</code>在从小工具备选箱用鼠标拖到Sidebar时所显示的Logo<code>&lt;/font&gt;</code><br>
+\&lt;/host&gt;<br>
+\&lt;/hosts&gt;<br>
+\&lt;/gadget&gt;</p>
+<p><a href="http://blog.joycode.com/wp-content/uploads/images/blog.joycode.com/joy/1308/o_WindowsLiveWriter_SidebarGadget3_1301E_image019.png"><img align="left" alt="" border="0" height="190" src="http://blog.joycode.com/wp-content/uploads/images/blog.joycode.com/joy/1308/o_WindowsLiveWriter_SidebarGadget3_1301E_image0_thumb15.png" style="border-top-width: 0px;border-left-width: 0px;border-bottom-width: 0px;border-right-width: 0px" width="180"></a> 通过上面的信息，Sidebar可以得到Gadget中的相关信息，但一个Gadget还不止如此，比如上面的这个时钟显示在Sidebar当中时，应该如 左图所示。在这个截图中，我们注意到有一个小扳手式的图标，使用它可以选择自己心爱的钟表外型或者进行其它的自定义设置，那么此部分是如何反应在源代码中的？</p>
+<p>还有，有一些Gadget，比如自带的RSS Reader，当单击某文章标题时，会自动在左侧弹出来一个Flyout窗口，这个窗口的设置如何在源代码中反应呢？</p>
+<p>还有，系统自带的那个CPU以及内存使用量的Gadget，类似于汽车的转速表，它又是如何得到这种实时的系统信息的呢？</p>
+<p>还有，当把一个Gadget从Sidebar拖到桌面时，其页面大小会发生改变，这又是为什么呢？</p>
+<p>还有，Gadget中有很多透明效果，比如那个表的周围就是透明的，呈一个圆形，或者其它类型，而不是我们常见网页的矩形，这又是为什么呢？</p>
+<p>还有，Gadget中的服务器端与客户端交互实现局部刷新却又没有使用ASP.NET AJAX框架，这又是为什么呢？</p>
+<p>呵呵，如果你感兴趣，欢迎继续阅读本教程，今天就先到这儿吧。</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://blog.joycode.com/tag/cbian-cheng.html">C#编程</a>
+      <a href="https://blog.joycode.com/tag/ye-jie-ping-lun.html">业界评论</a>
+    </p>
+  </div>
+
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'hcwang';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " 开心就好的代码人生 ",
+  "url" : "https://blog.joycode.com",
+  "image": "",
+  "description": ""
+}
+</script>
+</body>
+</html>

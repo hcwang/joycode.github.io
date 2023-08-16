@@ -1,0 +1,181 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://blog.joycode.com/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/solid.css">
+
+
+
+
+  <link href="https://blog.joycode.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="开心就好的代码人生 Atom">
+
+
+
+ 
+
+<meta name="author" content="joycode" />
+<meta name="description" content="上次提到的Scott Hanselman的帖子还是去年的，最近好象DataSet与Custom Entity之争又有升温的迹象，连我们敬爱的Dino Esposito也出手了。 在刚出版的八月份的MSDN杂志上，在他的《Cutting Edge …" />
+<meta name="keywords" content="">
+
+
+  <meta property="og:site_name" content="开心就好的代码人生"/>
+  <meta property="og:title" content="&#34;how do I see my data?&#34;"/>
+  <meta property="og:description" content="上次提到的Scott Hanselman的帖子还是去年的，最近好象DataSet与Custom Entity之争又有升温的迹象，连我们敬爱的Dino Esposito也出手了。 在刚出版的八月份的MSDN杂志上，在他的《Cutting Edge …"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://blog.joycode.com/2005/07/05/2005-07-05_12.02/"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2005-07-05 12:02:00+08:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="https://blog.joycode.com/author/joycode.html">
+  <meta property="article:section" content="业界评论"/>
+  <meta property="og:image" content="">
+
+  <title>开心就好的代码人生 &ndash; &#34;how do I see my data?&#34;</title>
+
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="https://blog.joycode.com/">
+      <img src="https://blog.joycode.com/theme/img/profile.png" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://blog.joycode.com/"></a>
+    </h1>
+
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="https://getpelican.com/" >Pelican</a>
+          </li>
+          <li>
+            <a target="_self" href="https://www.python.org/" >Python.org</a>
+          </li>
+          <li>
+            <a target="_self" href="https://palletsprojects.com/p/jinja/" >Jinja2</a>
+          </li>
+          <li>
+            <a target="_self" href="#" >You can modify those links in your config file</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-You can add links in your config file"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-You can add links in your config file"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-Another social link"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-Another social link"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="2005-07-05_12.02">"how do I see my data?"</h1>
+    <p>
+      Posted on 二 05 七月 2005 in <a href="https://blog.joycode.com/category/ye-jie-ping-lun.html">业界评论</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>上次提到的<a href="http://www.hanselman.com/blog/ReturningDataSetsFromWebServicesIsTheSpawnOfSatanAndRepresentsAllThatIsTrulyEvilInTheWorld.aspx" target="">Scott Hanselman的帖子</a>还是去年的，最近好象DataSet与Custom Entity之争又有<a href="http://codebetter.com/blogs/sahil.malik/archive/2005/06/07/64172.aspx">升温</a>的迹象，连我们敬爱的<a href="http://weblogs.asp.net/despos/">Dino Esposito</a>也出手了。</p>
+<p>在刚出版的八月份的MSDN杂志上，在他的《Cutting Edge》专栏里发表了题为《DataSets vs Collections》的文章。文章对DataSet，强类型DataSet以及Custom Entity做了详细的比较。他的结论是，DataSet和Custom Entity各有所长，两者都能达到目的，但DataSet适于做prototyping以及规模小，资金缺，周期短的项目，而Custom Entity因其带来的复杂性，大概不太适于类似项目。但对规模大，时间长，复杂的企业项目来说，Custom Entity及其集合带来的复杂性跟他们在性能，表达性，可读性以及可维护性方面的好处相比，是微不足道的。</p>
+<p>在网上查询的时候，发现了下面这篇Frans Bouma的文章<br>
+<a href="http://weblogs.asp.net/fbouma/archive/2004/10/09/240225.aspx">Solving the Data Access problem: to O/R map or not To O/R map</a></p>
+<p>文章内容是讨论O/R映射的，但其中的观点对DataSet与Custom Entity之争好象有点启发性。作者总结了当前对数据的最流行的三种看法，以及相对应的三种不同的解决方案：</p>
+<p>1。数据表的方法 -- 完全从数据库的角度出发，开发人员直接在内存里操作数据，解决方案无非是操作DataSet/DataTable，用存储过程或用 VS.NET生成的SQL 语句来操作数据库，用些象“数据行”，“客户记录(Customer record)”这样的术语。这是个非常流行的开发方法，其流行的原因不外于，一是有VS.NET的支持，二是与.NET之前的ADO的做法很相近。</p>
+<p>2。Chen / Yourdon的实体(Entity)方法 -- 也是从数据库的角度出发，但与第一种方法的不同之处是，开发人员是想在编码里使用关系模型的思路，对纯粹的DataSet/DataTable不感冒，爱谈论“客户实体(Customer Entity )”，而不是“客户记录(Customer record)”。这样的“客户实体”并不包含行为/规则(behavior/rules )，或者最多包含些约束(constraint)类的底层规则。对他们来说，数据库里的数据只是数据而已，而实体则是基于属性(attribute)的关系(relation)而已。这样的实体可以通过SELECT语句动态产生，这对实现报表功能很重要。这种方法一般对实体数据采用O/R映射方法，对动态数据则采用类似Dataset / DataTable的方法。这种方法也很流行，是70年代以来行之有效的技术。</p>
+<p>3。Fowler / Evans的领域模型(Domain Model)方法 -- 领域模型谈论的是业务领域里的实体，譬如象“客户”，“订单”一类的概念，包含数据和行为，所有的业务规则都在具体类里实现，通过继承和多态，形成类阶层体系，最后数据通过使用O/R Mapper保存到数据库。</p>
+<p>与第二种方法不同的是， 领域模型里，类模型占主导地位，关系模型居于次要地位。而且在第一/二种方法里，行为一般是通过一个类似CustomerManager这样的类来施加到本身没有行为的实体上去的，而不象在第三种方法里，行为一般包含在类里，不需要类似的manager类。</p>
+<p>至于那种方法最好，作者认为，这取决于你认为哪种方法最合乎逻辑以及你想怎么跟数据打交道，哪种方法更符合你的思路(fits your way of thinking)，是否满足类似可维护性，扩缩性，以及开发/部署的效率等等需求，这个决定往往非同小可，对软件的架构会产生深远的影响。</p>
+<p>当然，还有一种作者没提到的方法，</p>
+<p>4。OODB。。。。。对象即是数据，数据即是对象，不用为O/R映射烦恼，至于为什么OODB没有流行，则是另外的问题了。</p>
+<p>=========================================</p>
+<p>在现实世界里，往往是以往的经历决定了采用哪种方法，试想一下，同一个.NET项目，让一个有VB背景的人做，或让一个有JAVA背景的人来做，他们的决定会一样么？<img alt="" src="/emoticons/emotion-1.gif"></p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+    </p>
+  </div>
+
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'hcwang';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " 开心就好的代码人生 ",
+  "url" : "https://blog.joycode.com",
+  "image": "",
+  "description": ""
+}
+</script>
+</body>
+</html>

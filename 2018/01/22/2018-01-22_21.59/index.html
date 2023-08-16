@@ -1,0 +1,212 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://blog.joycode.com/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/solid.css">
+
+
+
+
+  <link href="https://blog.joycode.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="开心就好的代码人生 Atom">
+
+
+
+ 
+
+<meta name="author" content="joycode" />
+<meta name="description" content="学习始终是一件让人疲惫的事情，而我个人又特别钟爱发散性学习，所以虽然这几天如饥似渴的学习了很多新内容，但学 …" />
+<meta name="keywords" content="Core ML, Machine Learning, 吴恩达, 机器学习">
+
+
+  <meta property="og:site_name" content="开心就好的代码人生"/>
+  <meta property="og:title" content="机器学习学习笔记(2)"/>
+  <meta property="og:description" content="学习始终是一件让人疲惫的事情，而我个人又特别钟爱发散性学习，所以虽然这几天如饥似渴的学习了很多新内容，但学 …"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://blog.joycode.com/2018/01/22/2018-01-22_21.59/"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2018-01-22 21:59:00+08:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="https://blog.joycode.com/author/joycode.html">
+  <meta property="article:section" content="业界评论"/>
+  <meta property="article:tag" content="Core ML"/>
+  <meta property="article:tag" content="Machine Learning"/>
+  <meta property="article:tag" content="吴恩达"/>
+  <meta property="article:tag" content="机器学习"/>
+  <meta property="og:image" content="">
+
+  <title>开心就好的代码人生 &ndash; 机器学习学习笔记(2)</title>
+
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="https://blog.joycode.com/">
+      <img src="https://blog.joycode.com/theme/img/profile.png" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://blog.joycode.com/"></a>
+    </h1>
+
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="https://getpelican.com/" >Pelican</a>
+          </li>
+          <li>
+            <a target="_self" href="https://www.python.org/" >Python.org</a>
+          </li>
+          <li>
+            <a target="_self" href="https://palletsprojects.com/p/jinja/" >Jinja2</a>
+          </li>
+          <li>
+            <a target="_self" href="#" >You can modify those links in your config file</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-You can add links in your config file"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-You can add links in your config file"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-Another social link"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-Another social link"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="2018-01-22_21.59">机器学习学习笔记(2)</h1>
+    <p>
+      Posted on 一 22 一月 2018 in <a href="https://blog.joycode.com/category/ye-jie-ping-lun.html">业界评论</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>学习始终是一件让人疲惫的事情，而我个人又特别钟爱发散性学习，所以虽然这几天如饥似渴的学习了很多新内容，但学习笔记却一拖再拖，始终没有落笔。</p>
+<p>简单的来说，这几天除了观看了吴恩达的视频之外，还开始根据其中提到的术语，通过搜索引擎以及维基百科，不断拓展学习的外延，先后了解了DNN/CNN/RNN等术语，然后又查看了TensorFlow/Caffee等框架，由于个人目前比较钟爱Swift语言，所以又通过Apple Developer网站阅读了部分Core ML以及Vision的文档。但这些知识直到目前为止，尚未真正落实到纸面上。所以随着看到的资料越多，疑惑也越来越大。最终决定，还是需要收收心，先从基础入手。</p>
+<h1>什么是机器学习</h1>
+<p><a href="https://zh.wikipedia.org/zh-hans/机器学习">维基百科</a>上关于机器学习是这样介绍的：</p>
+<blockquote>
+<p>机器学习有下面几种定义：</p>
+<ul>
+<li>机器学习是一门人工智能的科学，该领域的主要研究对象是人工智能，特 别是如何在经验学习中改善具体算法的性能。</li>
+<li>机器学习是对能通过经验自动改进的计算机算法的研究。</li>
+<li>机器学习是用数据或以往的经验，以此优化计算机程序的性能标准。</li>
+</ul>
+<p>一种经常引用的英文定义是：A computer program is said to learn from experience E with respect to some class of tasks T and performance measure P, if its performance at tasks in T, as measured by P, improves with experience E.</p>
+</blockquote>
+<p>这个定义似乎把“机器学习”说明白了，但似乎又云里雾里，并不是特别让人能够记忆深刻。作为一个曾经的开发者，我准备把这个定义简单化，机器学习就是让电脑从一堆杂乱无章的数据中，自行找到规律，并且形成算法的科学。</p>
+<p>在以前写代码的过程中，算法总是由程序员根据需求固化好的，然后将用户的输入，比如鼠标、触控、键盘输入等，根据一定的规律，转化为屏幕上的文字、动画或者语音给输出。但在面临一些特别复杂问题时，比如语音、图像识别、无人驾驶等，可能无能为力。而这些领域，恰恰是机器学习可以发挥特长的领域。</p>
+<h1>机器学习的分类</h1>
+<p>机器学习主要划分为监督式学习以及非监督式学习。其主要区别在于训练集是否有人对元素进行标注。</p>
+<h2>监督式学习</h2>
+<p><a href="https://zh.wikipedia.org/zh-hans/机器学习">维基百科</a>上的定义如下：</p>
+<blockquote>
+<p>监督学习从给定的训练数据集中学习出一个函数，当新的数据到来时，可以根据这个函数预测结果。监督学习的训练集要求是包括输入和输出，也可以说是特征和目标。训练集中的目标是由人标注的。常见的监督学习算法包括回归分析和统计分类。</p>
+</blockquote>
+<p>在监督式学习中，我们有一些现有的数据，并且这些数据是现实中客观存在的"right answer"。而且这些数据有着各种各样的标签。</p>
+<h3>回归分析</h3>
+<p>吴恩达的视频当中，给出了两个示例，第一个是关于房价的，我们搜集了一些房价数据，这个房价数据主要与房屋面积相关。将房屋面积作为横坐标，房价作为纵坐标，我们可以这些训练集标注在二维坐标系中，如果仔细观察，这其中会有一定的规律，基本上可以达到当有人告诉你一个房屋面积时，你可以告诉他房价大体的价格。而这个规律，其实就是一个线性函数。类似于下图。</p>
+<p><img alt="回归分析" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Linear_regression.svg/440px-Linear_regression.svg.png"></p>
+<h3>统计分类</h3>
+<p>关于统计分类，吴恩达给出了一个关于癌细胞的示例，比如根据过往的记录，我们有了一系列的实测到的细胞标本，这些标本中有些是癌细胞，有些是良性肿廇，每个细胞的大小都不一样。所以当我们拿到一个新检测到的细胞时，根据其大小，可以基本推测其是恶性或者是良性的。</p>
+<h2>非监督式学习</h2>
+<p><a href="https://zh.wikipedia.org/zh-hans/机器学习">维基百科</a>上的定义如下：</p>
+<blockquote>
+<p>无监督学习与监督学习相比，训练集没有人为标注的结果。常见的无监督学习算法有聚类。</p>
+</blockquote>
+<p>我们得到了一系数据，这些数据并没有准确的标签，不存在任何给定的标签。但这些数据总是会扎堆出现，所以当出现一个新数据时，如何给它找到一个合适的“堆”，是我们需要解决的问题。</p>
+<p>举例来说，现在的搜索引擎都有类似于“相关新闻”的内容，同样一件新闻，在不同的媒体平台（CNN/凤凰卫视/BBC/CCTV）都有报道，如何将所有不同媒体平台对于同一个新闻的报道给“堆”在一起，这就是无监督式学习所要解决的。</p>
+<h1>总结</h1>
+<p>纸上得来终觉浅，作为刚刚了解了机器学习定义以及分类的入门者来说，还有很多知识要学。不过能够学习新知识总是很兴奋的。我已经在我的Mac电脑上使用Docker安装了TensorFlow，准备再利用一周的时间了解一下基础知识，届时再来给大家汇报。[﻿]{.mce_SELRES_start mce-type="bookmark" style="display: inline-block; width: 0px; overflow: hidden; line-height: 0;"}</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://blog.joycode.com/tag/core-ml.html">Core ML</a>
+      <a href="https://blog.joycode.com/tag/machine-learning.html">Machine Learning</a>
+      <a href="https://blog.joycode.com/tag/wu-en-da.html">吴恩达</a>
+      <a href="https://blog.joycode.com/tag/ji-qi-xue-xi.html">机器学习</a>
+    </p>
+  </div>
+
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'hcwang';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " 开心就好的代码人生 ",
+  "url" : "https://blog.joycode.com",
+  "image": "",
+  "description": ""
+}
+</script>
+</body>
+</html>

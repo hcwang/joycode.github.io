@@ -1,0 +1,238 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://blog.joycode.com/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/solid.css">
+
+
+
+
+  <link href="https://blog.joycode.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="开心就好的代码人生 Atom">
+
+
+
+ 
+
+<meta name="author" content="joycode" />
+<meta name="description" content="在ASP.NET 1.x的时候，很多朋友可能需要进行跨页提交的处理，也就是从页面A能够提交到页面B，甚至不同的Control其目标处理页面也各不相同。尤其是从ASP/JSP/PHP转过来的开发人员，可能更有这种需求 …" />
+<meta name="keywords" content="C#编程">
+
+
+  <meta property="og:site_name" content="开心就好的代码人生"/>
+  <meta property="og:title" content="ASP.NET 2.0 Tips(1):跨页提交"/>
+  <meta property="og:description" content="在ASP.NET 1.x的时候，很多朋友可能需要进行跨页提交的处理，也就是从页面A能够提交到页面B，甚至不同的Control其目标处理页面也各不相同。尤其是从ASP/JSP/PHP转过来的开发人员，可能更有这种需求 …"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://blog.joycode.com/2005/08/03/61451/"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2005-08-03 13:00:00+08:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="https://blog.joycode.com/author/joycode.html">
+  <meta property="article:section" content="业界评论"/>
+  <meta property="article:tag" content="C#编程"/>
+  <meta property="og:image" content="">
+
+  <title>开心就好的代码人生 &ndash; ASP.NET 2.0 Tips(1):跨页提交</title>
+
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="https://blog.joycode.com/">
+      <img src="https://blog.joycode.com/theme/img/profile.png" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://blog.joycode.com/"></a>
+    </h1>
+
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="https://getpelican.com/" >Pelican</a>
+          </li>
+          <li>
+            <a target="_self" href="https://www.python.org/" >Python.org</a>
+          </li>
+          <li>
+            <a target="_self" href="https://palletsprojects.com/p/jinja/" >Jinja2</a>
+          </li>
+          <li>
+            <a target="_self" href="#" >You can modify those links in your config file</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-You can add links in your config file"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-You can add links in your config file"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-Another social link"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-Another social link"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="61451">ASP.NET 2.0 Tips(1):跨页提交</h1>
+    <p>
+      Posted on 三 03 八月 2005 in <a href="https://blog.joycode.com/category/ye-jie-ping-lun.html">业界评论</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>在ASP.NET 1.x的时候，很多朋友可能需要进行跨页提交的处理，也就是从页面A能够提交到页面B，甚至不同的Control其目标处理页面也各不相同。尤其是从ASP/JSP/PHP转过来的开发人员，可能更有这种需求。但很不幸，在ASP.NET 1.x的时候，处理这种跨页请求是十分丑陋的，需要非常多的“技巧化”处理。</p>
+<p>在ASP.NET 2.0的时候，对于跨页提交已经有了非常合理的解决方案，以下就是一个示例。</p>
+<p><strong>SourcePage.aspx</strong>: 请注意Button1的PostBackUrl属性设置</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;%</span><span class="o">...</span><span class="err">@</span><span class="w"> </span><span class="no">Page</span><span class="w"> </span><span class="no">Language</span><span class="o">=</span><span class="s2">&quot;C#&quot;</span><span class="w"> </span><span class="cp">%&gt;</span>
+
+<span class="cp">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">runat</span><span class="o">=</span><span class="s">&quot;server&quot;</span><span class="p">&gt;...</span>
+<span class="w">    </span><span class="kr">public</span><span class="w"> </span><span class="nx">string</span><span class="w"> </span><span class="nx">YourName</span>
+<span class="w">    </span><span class="p">...{</span>
+<span class="w">        </span><span class="nx">get</span>
+<span class="w">        </span><span class="p">...{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">TextBox1</span><span class="p">.</span><span class="nx">Text</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">xmlns</span><span class="o">=</span><span class="s">&quot;http://www.w3.org/1999/xhtml&quot;</span> <span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span> <span class="na">runat</span><span class="o">=</span><span class="s">&quot;server&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Untitled Page<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">form</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;form1&quot;</span> <span class="na">runat</span><span class="o">=</span><span class="s">&quot;server&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">asp:Label</span> <span class="na">ID</span><span class="o">=</span><span class="s">&quot;Label1&quot;</span> <span class="na">runat</span><span class="o">=</span><span class="s">&quot;server&quot;</span> <span class="na">Text</span><span class="o">=</span><span class="s">&quot;请输入您的姓名&quot;</span> <span class="na">Width</span><span class="o">=</span><span class="s">&quot;183px&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">asp:Label</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">asp:TextBox</span> <span class="na">ID</span><span class="o">=</span><span class="s">&quot;TextBox1&quot;</span> <span class="na">runat</span><span class="o">=</span><span class="s">&quot;server&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">asp:TextBox</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">asp:Button</span> <span class="na">ID</span><span class="o">=</span><span class="s">&quot;Button1&quot;</span> <span class="na">runat</span><span class="o">=</span><span class="s">&quot;server&quot;</span>  <span class="na">Text</span><span class="o">=</span><span class="s">&quot;提交&quot;</span> <span class="na">PostBackUrl</span><span class="o">=</span><span class="s">&quot;~/TargetPage.aspx&quot;</span> <span class="p">/&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+
+
+TargetPage.aspx：请注意PreviousPageType的属性设置
+
+<span class="cp">&lt;%</span><span class="o">...</span><span class="err">@</span><span class="w"> </span><span class="no">Page</span><span class="w"> </span><span class="no">Language</span><span class="o">=</span><span class="s2">&quot;C#&quot;</span><span class="w"> </span><span class="cp">%&gt;</span>
+<span class="cp">&lt;%</span><span class="o">...</span><span class="err">@</span><span class="w"> </span><span class="no">PreviousPageType</span><span class="w"> </span><span class="no">VirtualPath</span><span class="o">=</span><span class="s2">&quot;~/SourcePage.aspx&quot;</span><span class="w"> </span><span class="cp">%&gt;</span>
+
+<span class="cp">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">runat</span><span class="o">=</span><span class="s">&quot;server&quot;</span><span class="p">&gt;...</span>
+
+<span class="w">    </span><span class="kr">protected</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="nx">Page_Load</span><span class="p">(</span><span class="nx">object</span><span class="w"> </span><span class="nx">sender</span><span class="p">,</span><span class="w"> </span><span class="nx">EventArgs</span><span class="w"> </span><span class="nx">e</span><span class="p">)</span>
+<span class="w">    </span><span class="p">...{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">Label1</span><span class="p">.</span><span class="nx">Text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">PreviousPage</span><span class="p">.</span><span class="nx">YourName</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">xmlns</span><span class="o">=</span><span class="s">&quot;http://www.w3.org/1999/xhtml&quot;</span> <span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span> <span class="na">runat</span><span class="o">=</span><span class="s">&quot;server&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Untitled Page<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">form</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;form1&quot;</span> <span class="na">runat</span><span class="o">=</span><span class="s">&quot;server&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">asp:Label</span> <span class="na">ID</span><span class="o">=</span><span class="s">&quot;Label1&quot;</span> <span class="na">runat</span><span class="o">=</span><span class="s">&quot;server&quot;</span> <span class="p">&gt;&lt;/</span><span class="nt">asp:Label</span><span class="p">&gt;</span>
+
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<p><code>&lt;/span&gt;</code></p>
+<div class="highlight"><pre><span></span><code>&lt;/div&gt;
+</code></pre></div>
+
+<p>OK，就通过这么简单的两个属性设置，就可以非常方便的得到跨页提交的特性。当然，您也可以根据您自己的需求，比如每个Control需要提交到不同的页面来进行更加复杂的设置。</p>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://blog.joycode.com/tag/cbian-cheng.html">C#编程</a>
+    </p>
+  </div>
+
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'hcwang';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " 开心就好的代码人生 ",
+  "url" : "https://blog.joycode.com",
+  "image": "",
+  "description": ""
+}
+</script>
+</body>
+</html>

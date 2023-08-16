@@ -1,0 +1,197 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://blog.joycode.com/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.joycode.com/theme/font-awesome/css/solid.css">
+
+
+
+
+  <link href="https://blog.joycode.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="开心就好的代码人生 Atom">
+
+
+
+ 
+
+<meta name="author" content="joycode" />
+<meta name="description" content="可能有很多朋友发现了一些问题，比如使用http://blog.joycode.com/joy来访问开心的页面，或者使用http://blog.joycode.com/%5BSubfolder]方式访问其它堂主的首 …" />
+<meta name="keywords" content="">
+
+
+  <meta property="og:site_name" content="开心就好的代码人生"/>
+  <meta property="og:title" content="木乃伊中的Bugs(2):Server.Transfer与Form提交的回传地址"/>
+  <meta property="og:description" content="可能有很多朋友发现了一些问题，比如使用http://blog.joycode.com/joy来访问开心的页面，或者使用http://blog.joycode.com/%5BSubfolder]方式访问其它堂主的首 …"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://blog.joycode.com/2008/03/15/114986/"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2008-03-15 22:15:00+08:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="https://blog.joycode.com/author/joycode.html">
+  <meta property="article:section" content="业界评论"/>
+  <meta property="og:image" content="">
+
+  <title>开心就好的代码人生 &ndash; 木乃伊中的Bugs(2):Server.Transfer与Form提交的回传地址</title>
+
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="https://blog.joycode.com/">
+      <img src="https://blog.joycode.com/theme/img/profile.png" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://blog.joycode.com/"></a>
+    </h1>
+
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="https://getpelican.com/" >Pelican</a>
+          </li>
+          <li>
+            <a target="_self" href="https://www.python.org/" >Python.org</a>
+          </li>
+          <li>
+            <a target="_self" href="https://palletsprojects.com/p/jinja/" >Jinja2</a>
+          </li>
+          <li>
+            <a target="_self" href="#" >You can modify those links in your config file</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-You can add links in your config file"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-You can add links in your config file"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-Another social link"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-Another social link"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="114986">木乃伊中的Bugs(2):Server.Transfer与Form提交的回传地址</h1>
+    <p>
+      Posted on 六 15 三月 2008 in <a href="https://blog.joycode.com/category/ye-jie-ping-lun.html">业界评论</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>可能有很多朋友发现了一些问题，比如使用<a href="http://blog.joycode.com/joy">http://blog.joycode.com/joy</a>来访问开心的页面，或者使用<a href="http://blog.joycode.com/%5BSubfolder">http://blog.joycode.com/%5BSubfolder</a>]方式访问其它堂主的首页（后面不加上default.aspx)的话，会遇到各种各样莫名其妙的问题。</p>
+<p>1) 你当前未登录，使用登录链接进入到Windows Live ID登录校验后再次返回，会出现404错误;</p>
+<p>2) 登录后，使用搜索按钮在该博主文章中搜索相应关键词时也会出现404错误;</p>
+<p>先来讲讲目前的工作原理，大家知道，博客堂目前使用的是IIS7来运维的，而且我不太习惯使用通配符映射，总感觉那样性能消耗太严重，所以借用了Subtext中的方法，即使用错误页面映射，在IIS 7的错误页面当中指定自定义Url，即"\~/SystemMessages/FileNotFound.aspx"来进行处理。这样当你访问<a href="http://blog.joycode.com/joy">http://blog.joycode.com/joy</a>的时候，由于ASPNET_ISAPI无法对其进行处理，相应的各种HttpHandler/HttpModuler也无法对其进行操作，只能由IIS 7交给错误页面处理，亦即FileNotFound.aspx。</p>
+<p>在FileNotFound.aspx当中我们来对原始请求的URl进行分析，如果发现用户其实访问的是一个堂主的首页的话，类似于<a href="http://blog.joycode.com/%5BSubfolder">http://blog.joycode.com/%5BSubfolder</a>]这样的地址，那么就使用Server.Transfer，将相关请求转向到指定的首页地址，在这儿即"\~/Skins/default.aspx"，当然，在转向前我们会将相应的BlogConfig信息也一并转向过去，这样大家看到的页面就是当初请求时所想要看到的页面。</p>
+<p>但这时候会出现一个问题，<strong>即使用Server.Transfer(string path, bool preventForm)的时候，呈现的页面当中的Form的回传地址是真实的物理地址，而不是虚拟路径</strong>。在我们这儿是"\~/skins/default.aspx"（感兴趣可以这几天在登录后，去各堂主的首页，将鼠标放在“搜索”按钮上，看看IE状态栏的地址指向，或者使用浏览源文件的方式看看该页面上Form的回传地址）。因为<a href="http://blog.joycode.com/skins/default.aspx">http://blog.joycode.com/skins/default.aspx</a>根本不是某个博主的页面，而是后台通用的转向后的页面，所以我们在系统中将此页面进行了隐藏，所以最终当你搜索或者登录时会出现404错误。</p>
+<p>这个问题很麻烦，不过我有号称活MSDN的<a href="http://blog.joycode.com/dotey">宝玉</a>同志，所以我并不着急。不过宝玉同志告诉我解决方案只能通过客户端的JS，来重新对于Form的URL属性进行改写。解决倒是可以解决，但总感觉不够优美，破坏了程序的整体性。所以开心用了一周的时间一直在思考此问题。</p>
+<p>后来在阅读<a href="http://www.urlrewriting.net/">UrlRewriting</a>的源代码时，发现它都是使用Context.RewritePath来重写路径的，于是我也尝试使用这种方案来代替Server.Transfer，但发现了一个问题，Context.RewritePath想要达到转向的目的，必须在HttpApplication.OnBeginRequest事件中才能生效。在一个ASP.NET Page页面中就没有办法解决了，事实上，在判断当前是不是一个堂主页面时，程序已经运转到Page.OnLoad事件了。</p>
+<p>还能怎么办？与思归交流，他告诉我其实Context.RewritePath其实可以修改一些HTTP的内部参数，也就是说在调用Server.Transfer之前，调用Context.RewritePath还是有机会重写虚拟地址的。但我写了一个示例程序，发现其实根本没有修改。</p>
+<p>既然Context.RewritePath还是有机会修改的，那么问题可能出现在Server.Transfer上面，能不能换一下其它方案，比如Server.Execute?试了一下，得到的结果不是我想要的。于是回过头来重新看Server.Transfer,发现它除了Server.Transfer(string path)的重载外，还有一个Server.Transfer(IHttpHandler)的重载。那么怎么从一个ASP.NET Page转换为IHttpHandler呢？查MSDN，终于我发现System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath就是做这个作用的，哈哈。赶紧试一下，竟然成功了！</p>
+<p>测试代码如下：</p>
+<p>::: csharpcode
+       1:  private void RewriteUrl(string subfolder)</p>
+<div class="highlight"><pre><span></span><code><span class="w">   </span><span class="mi">2</span><span class="p">:</span><span class="w">  </span><span class="p">{</span>
+
+<span class="w">   </span><span class="mi">3</span><span class="p">:</span><span class="w">             </span><span class="nx">Context</span><span class="p">.</span><span class="nx">RewritePath</span><span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="nx">Format</span><span class="p">(</span><span class="s">&quot;~/{0}/default.aspx&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">subfolder</span><span class="p">),</span><span class="w"> </span><span class="kt">string</span><span class="p">.</span><span class="nx">Empty</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="p">.</span><span class="nx">Empty</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">);</span>
+
+<span class="w">   </span><span class="mi">4</span><span class="p">:</span><span class="w">             </span><span class="nx">IHttpHandler</span><span class="w"> </span><span class="nx">handler</span><span class="w"> </span><span class="p">=</span>
+
+<span class="nx">System</span><span class="p">.</span><span class="nx">Web</span><span class="p">.</span><span class="nx">Compilation</span><span class="p">.</span><span class="nx">BuildManager</span><span class="p">.</span><span class="nx">CreateInstanceFromVirtualPath</span><span class="p">(</span><span class="s">&quot;~/skins/Default.aspx&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">typeof</span><span class="p">(</span><span class="nx">Page</span><span class="p">))</span>
+
+<span class="k">as</span><span class="w"> </span><span class="nx">IHttpHandler</span><span class="p">;</span>
+
+<span class="w">   </span><span class="mi">5</span><span class="p">:</span><span class="w">             </span><span class="nx">Server</span><span class="p">.</span><span class="nx">Transfer</span><span class="p">(</span><span class="nx">handler</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">);</span>
+
+<span class="w">   </span><span class="mi">6</span><span class="p">:</span><span class="w">  </span><span class="p">}</span>
+</code></pre></div>
+
+<p>:::</p>
+<p>终于历经一周，我找到了解决方案，代码与原来的相比，就多了一行而已。</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+    </p>
+  </div>
+
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'hcwang';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " 开心就好的代码人生 ",
+  "url" : "https://blog.joycode.com",
+  "image": "",
+  "description": ""
+}
+</script>
+</body>
+</html>
